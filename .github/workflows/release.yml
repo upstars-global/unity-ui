@@ -54,3 +54,9 @@ jobs:
           )
           echo "::add-mask::$TOKEN"
           echo "GITHUB_TOKEN=$TOKEN" >> $GITHUB_ENV
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          REPO_URL: "${{ github.server_url }}/${{ github.repository }}"
+        run: npx semantic-release
