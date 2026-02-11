@@ -1,4 +1,4 @@
-import * as fs from 'node:fs'
+const fs = require('node:fs')
 const commitPartial = fs.readFileSync('./changelog-template-commit.hbs', { encoding: 'utf-8' })
 
 function finalizeContext(context) {
@@ -11,7 +11,7 @@ function finalizeContext(context) {
   return context
 }
 
-export default {
+module.exports = {
   branches: ['main'],
   preset: 'conventionalcommits',
   plugins: [
