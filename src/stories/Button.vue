@@ -34,6 +34,7 @@ const emit = defineEmits<{
 }>();
 
 const classes = computed(() => ({
+  'bg-primary-500': true,
   'storybook-button': true,
   'storybook-button--primary': props.primary,
   'storybook-button--secondary': !props.primary,
