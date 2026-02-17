@@ -72,7 +72,7 @@
         --text-title-sm-lineheight: 1.38rem;
     }
 
-    @screen md {
+    @screen lg {
         :root[data-product="king"] {
             --text-title-display-letterspacing: -.019em;
             --text-title-display-fontsize: 2.25rem;
