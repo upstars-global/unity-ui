@@ -55,39 +55,39 @@
         --text-title-fontweight: 600;
 
         /* Titles */
-        --text-title-display-letterspacing: -.019em;
-        --text-title-display-fontsize: 2.25rem;
-        --text-title-display-lineheight: 2.5rem;
+        --text-title-display-letterspacing: -.017em;
+        --text-title-display-fontsize: 1.88rem;
+        --text-title-display-lineheight: 2.13rem;
 
-        --text-title-lg-letterspacing: -.007em;
-        --text-title-lg-fontsize: 1.69rem;
-        --text-title-lg-lineheight: 2rem;
+        --text-title-lg-letterspacing: -.006em;
+        --text-title-lg-fontsize: 1.5rem;
+        --text-title-lg-lineheight: 1.75rem;
 
-        --text-title-md-letterspacing: -.004em;
-        --text-title-md-fontsize: 1.38rem;
-        --text-title-md-lineheight: 1.75rem;
+        --text-title-md-letterspacing: -.002em;
+        --text-title-md-fontsize: 1.25rem;
+        --text-title-md-lineheight: 1.5rem;
 
         --text-title-sm-letterspacing: 0;
-        --text-title-sm-fontsize: 1.19rem;
+        --text-title-sm-fontsize: 1.13rem;
         --text-title-sm-lineheight: 1.38rem;
     }
 
     @screen md {
         :root[data-product="king"] {
-            --text-title-display-letterspacing: -.017em;
-            --text-title-display-fontsize: 1.88rem;
-            --text-title-display-lineheight: 2.13rem;
+            --text-title-display-letterspacing: -.019em;
+            --text-title-display-fontsize: 2.25rem;
+            --text-title-display-lineheight: 2.5rem;
 
-            --text-title-lg-letterspacing: -.006em;
-            --text-title-lg-fontsize: 1.5rem;
-            --text-title-lg-lineheight: 1.75rem;
+            --text-title-lg-letterspacing: -.007em;
+            --text-title-lg-fontsize: 1.69rem;
+            --text-title-lg-lineheight: 2rem;
 
-            --text-title-md-letterspacing: -.002em;
-            --text-title-md-fontsize: 1.25rem;
-            --text-title-md-lineheight: 1.5rem;
+            --text-title-md-letterspacing: -.004em;
+            --text-title-md-fontsize: 1.38rem;
+            --text-title-md-lineheight: 1.75rem;
 
             --text-title-sm-letterspacing: 0;
-            --text-title-sm-fontsize: 1.13rem;
+            --text-title-sm-fontsize: 1.19rem;
             --text-title-sm-lineheight: 1.38rem;
         }
     }

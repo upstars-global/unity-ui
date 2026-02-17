@@ -7,7 +7,7 @@
 
     a, .text-link {
         @apply underline decoration-solid decoration-2 underline-offset-4;
-        @apply text-body;
+        @apply text-body transition-colors;
         color: var(--color-text-link-default);
         text-decoration-skip-ink: auto;
         text-decoration-color: var(--color-text-link-underline);
