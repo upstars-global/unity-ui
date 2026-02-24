@@ -29,7 +29,7 @@ const rows: Array<{ label: string; className: string; note?: string }> = [
 
     { label: 'Subtitle', className: 'text-subtitle' },
 
-    { label: 'Body / MD', className: 'text-body-md' },
+    { label: 'Body', className: 'text-body' },
     { label: 'Body / SM', className: 'text-body-sm' },
 
     { label: 'Caption', className: 'text-caption' },

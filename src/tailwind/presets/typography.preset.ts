@@ -77,7 +77,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'button-xl': [
         'var(--text-button-label-xl-fontsize)',
         {
-            lineHeight: 'normal',
+            lineHeight: '115%',
             letterSpacing: 'var(--text-button-label-letterspacing)',
             fontWeight: 'var(--text-button-label-fontweight)',
         },
@@ -85,7 +85,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'button-lg': [
         'var(--text-button-label-lg-fontsize)',
         {
-            lineHeight: 'normal',
+            lineHeight: '115%',
             letterSpacing: 'var(--text-button-label-letterspacing)',
             fontWeight: 'var(--text-button-label-fontweight)',
         },
@@ -93,7 +93,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'button-md': [
         'var(--text-button-label-md-fontsize)',
         {
-            lineHeight: 'normal',
+            lineHeight: '115%',
             letterSpacing: 'var(--text-button-label-letterspacing)',
             fontWeight: 'var(--text-button-label-fontweight)',
         },
@@ -101,7 +101,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'button-sm': [
         'var(--text-button-label-sm-fontsize)',
         {
-            lineHeight: 'normal',
+            lineHeight: '115%',
             letterSpacing: 'var(--text-button-label-letterspacing)',
             fontWeight: 'var(--text-button-label-fontweight)',
         },
@@ -126,9 +126,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
 
 const preset: Partial<Config> = {
     theme: {
-        extend: {
-            fontSize: typographyFontSize,
-        },
+        fontSize: typographyFontSize,
     },
     plugins: [
         plugin(({ addUtilities }) => {
