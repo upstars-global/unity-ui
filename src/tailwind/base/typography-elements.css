@@ -10,7 +10,7 @@
     h5 { @apply text-subtitle; }
 
     a, .text-link {
-        @apply underline decoration-solid decoration-2 underline-offset-4;
+        @apply underline decoration-solid;
         @apply transition-colors;
         color: var(--content-text-link-default);
         text-decoration-skip-ink: auto;
