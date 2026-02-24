@@ -21,6 +21,7 @@
     }
 
     a:hover, .text-link:hover {
+        color: var(--content-text-link-hover);
         /*text-decoration-color: var(--color-text-link-default);*/
     }
 
