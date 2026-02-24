@@ -59,7 +59,7 @@ export const Overview: Story = {
           <h2 :class="{ uppercase: args.useUppercase }">{{ args.text }}</h2>
           <h3 :class="{ uppercase: args.useUppercase }">{{ args.text }}</h3>
           <h4 :class="{ uppercase: args.useUppercase }">{{ args.text }}</h4>
-          <div class="text-body-md" :class="{ uppercase: args.useUppercase }">{{ args.text }}</div>
+          <div class="text-body" :class="{ uppercase: args.useUppercase }">{{ args.text }}</div>
           <a href="#" :class="{ uppercase: args.useUppercase }">{{ args.text }}</a>
         </div>
 
