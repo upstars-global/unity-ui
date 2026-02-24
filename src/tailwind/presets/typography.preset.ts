@@ -47,7 +47,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-body-lineheight)',
             letterSpacing: 'var(--text-body-letterspacing)',
-            fontWeight: 'var(--text-fontweight-regular)',
+            fontWeight: 'var(--text-fontweight-normal)',
         },
     ],
     'body-sm': [
@@ -55,7 +55,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-body-sm-lineheight)',
             letterSpacing: 'var(--text-body-sm-letterspacing)',
-            fontWeight: 'var(--text-fontweight-regular)',
+            fontWeight: 'var(--text-fontweight-normal)',
         },
     ],
     'caption': [
@@ -63,7 +63,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-caption-lineheight)',
             letterSpacing: 'var(--text-caption-letterspacing)',
-            fontWeight: 'var(--text-fontweight-regular)',
+            fontWeight: 'var(--text-fontweight-normal)',
         },
     ],
     'tiny': [
@@ -71,7 +71,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-tiny-lineheight)',
             letterSpacing: 'var(--text-tiny-letterspacing)',
-            fontWeight: 'var(--text-fontweight-regular)',
+            fontWeight: 'var(--text-fontweight-normal)',
         },
     ],
     'button-xl': [

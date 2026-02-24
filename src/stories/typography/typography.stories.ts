@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 type Args = {
     text: string
-    showGrid: boolean
-    showTagDemo: boolean
     useUppercase: boolean
 }
 
@@ -12,14 +10,10 @@ const meta = {
     tags: ['autodocs'],
     args: {
         text: 'The quick brown fox jumps over the lazy dog 123',
-        showGrid: true,
-        showTagDemo: true,
         useUppercase: false,
     },
     argTypes: {
         text: { control: 'text' },
-        showGrid: { control: 'boolean' },
-        showTagDemo: { control: 'boolean' },
         useUppercase: { control: 'boolean' },
     },
 } satisfies Meta<Args>
@@ -59,7 +53,7 @@ export const Overview: Story = {
         template: `
       <div class="p-6 space-y-8">
         <!-- Optional: show tag mapping demo (h1..h4 are styled via @layer base) -->
-        <div v-if="args.showTagDemo" class="space-y-3">
+        <div class="space-y-3">
           <div class="text-body-sm opacity-70">HTML tags (styled via @layer base)</div>
           <h1 :class="{ uppercase: args.useUppercase }">{{ args.text }}</h1>
           <h2 :class="{ uppercase: args.useUppercase }">{{ args.text }}</h2>
@@ -76,8 +70,7 @@ export const Overview: Story = {
           <div
             v-for="row in rows"
             :key="row.className"
-            class="rounded-md"
-            :class="args.showGrid ? 'border border-[rgb(var(--neutral-200))] p-4' : ''"
+            class="rounded-md border border-[rgb(var(--neutral-200))] p-4"
           >
             <div class="flex items-baseline justify-between gap-4">
               <div class="text-body-sm opacity-70">

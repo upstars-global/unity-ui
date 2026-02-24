@@ -8,6 +8,11 @@ export default {
     fontFamily: {
       sans: [ "var(--font-family)" ],
     },
+    fontWeight: {
+      normal: "var(--text-fontweight-normal)",
+      medium: "var(--text-fontweight-medium)",
+      bold: "var(--text-fontweight-bold)",
+    },
     screens: {
       "xxs": "320px",   // мінімум, страхує "малий телефон"
       "xs":  "390px",   // базовий мобайл (наша медіана)
@@ -18,49 +23,18 @@ export default {
       "2xl": "1440px",  // large desktop
       "3xl": "1600px"   // extra-large
     },
-    fontSize: {
-
-    },
     colors: {
-      transparent: "transparent",
-      primary: {
-        DEFAULT: "rgba(var(--primary-700), <alpha-value>)",
-        50: "rgba(var(--primary-50), <alpha-value>)",
-        100: "rgba(var(--primary-100), <alpha-value>)",
-        200: "rgba(var(--primary-200), <alpha-value>)",
-        300: "rgba(var(--primary-300), <alpha-value>)",
-        400: "rgba(var(--primary-400), <alpha-value>)",
-        500: "rgba(var(--primary-500), <alpha-value>)",
-        600: "rgba(var(--primary-600), <alpha-value>)",
-        700: "rgba(var(--primary-700), <alpha-value>)",
-        800: "rgba(var(--primary-800), <alpha-value>)",
-        900: "rgba(var(--primary-900), <alpha-value>)",
-      },
-      secondary: {
-        DEFAULT: "rgba(var(--secondary-500), <alpha-value>)",
-        50: "rgba(var(--secondary-50), <alpha-value>)",
-        100: "rgba(var(--secondary-100), <alpha-value>)",
-        200: "rgba(var(--secondary-200), <alpha-value>)",
-        300: "rgba(var(--secondary-300), <alpha-value>)",
-        400: "rgba(var(--secondary-400), <alpha-value>)",
-        500: "rgba(var(--secondary-500), <alpha-value>)",
-        600: "rgba(var(--secondary-600), <alpha-value>)",
-        700: "rgba(var(--secondary-700), <alpha-value>)",
-        800: "rgba(var(--secondary-800), <alpha-value>)",
-        900: "rgba(var(--secondary-900), <alpha-value>)",
-      },
-      neutral: {
-        DEFAULT: "rgba(var(--neutral-500), <alpha-value>)",
-        100: "rgba(var(--neutral-100), <alpha-value>)",
-        200: "rgba(var(--neutral-200), <alpha-value>)",
-        300: "rgba(var(--neutral-300), <alpha-value>)",
-        400: "rgba(var(--neutral-400), <alpha-value>)",
-        500: "rgba(var(--neutral-500), <alpha-value>)",
-        600: "rgba(var(--neutral-600), <alpha-value>)",
-        700: "rgba(var(--neutral-700), <alpha-value>)",
-        800: "rgba(var(--neutral-800), <alpha-value>)",
-        900: "rgba(var(--neutral-900), <alpha-value>)",
-      },
+      transparent: "var(--color-transparent)",
+      black: "var(--color-black)",
+      white: "var(--color-white)",
+      "bg-deep": "var(--bg-deep)",
+      "bg-surface": "var(--bg-surface)",
+      "bg-surface-alt": "var(--bg-surface-alt)",
+      "content-status-error": "var(--content-status-error)",
+      "content-status-success": "var(--content-status-success)",
+      "content-status-warning": "var(--content-status-warning)",
+      "content-text-primary": "var(--content-text-primary)",
+      "content-text-secondary": "var(--content-text-secondary)",
       error: {
         DEFAULT: "rgba(var(--error-500), <alpha-value>)",
       },

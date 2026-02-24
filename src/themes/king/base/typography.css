@@ -2,93 +2,71 @@
 
 @layer base {
     :root[data-product="king"] {
-        /* Base */
+
         --font-family: 'Poppins', system-ui, sans-serif;
-        --color-text-link-default: #3531f7;
-        --color-text-link-underline: rgba(53, 49, 247, 0.3);
-        --color-text-link-active: rgba(185, 182, 204, 0.2);
-        --color-text-link-contrast-default: rgba(255, 255, 255, 1);
-        --color-text-link-contrast-underline: rgba(232, 232, 232, 0.8);
-        --color-text-link-contrast-active: rgba(185, 182, 204, 0.2);
 
-        --text-body-letterspacing: .005em;
+        --text-body-letterspacing: -0.0125rem;
         --text-body-fontsize: 1rem;
-        --text-body-lineheight: 1.44rem;
-
-        --text-body-sm-letterspacing: .007em;
-        --text-body-sm-fontsize: .88rem;
+        --text-body-lineheight: 1.375rem;
+        --text-body-sm-letterspacing: -0.0125rem;
+        --text-body-sm-fontsize: 0.875rem;
         --text-body-sm-lineheight: 1.25rem;
-
-        --text-button-caption-letterspacing: .013em;
-        --text-button-caption-fontsize: .75rem;
-        --text-button-caption-fontweight: 500;
-
-        --text-button-label-letterspacing: .001em;
+        --text-button-caption-letterspacing: -0.025rem;
+        --text-button-caption-fontsize: 0.875rem;
+        --text-button-caption-fontweight: 400;
+        --text-button-label-letterspacing: -0.0063rem;
         --text-button-label-fontweight: 600;
-        --text-button-label-lg-fontsize: 1.13rem;
+        --text-button-label-lg-fontsize: 1rem;
         --text-button-label-md-fontsize: 1rem;
-        --text-button-label-sm-fontsize: .88rem;
-        --text-button-label-xl-fontsize: 1.13rem;
-        --text-button-label-xs-fontsize: .75rem;
-        --text-button-label-xs-lineheight: .88rem;
-
-        --text-caption-lineheight-2: .02rem;
-        --text-caption-fontsize: .75rem;
+        --text-button-label-sm-fontsize: 0.875rem;
+        --text-button-label-xl-fontsize: 1.125rem;
+        --text-button-label-xs-fontsize: 0.75rem;
+        --text-button-label-xs-lineheight: 0.875rem;
+        --text-caption-letterspacing: -0.0125rem;
+        --text-caption-fontsize: 0.75rem;
         --text-caption-lineheight: 1rem;
-
-        --text-fontweight-regular: 400;
-        --text-fontweight-medium: 500;
-        --text-fontweight-bold: 600;
-
-        --text-letterspacing-caps: .042em;
-        --text-paragraphspacing-body: .5rem;
-
-        --text-subtitle-letterspacing: .001em;
+        --text-fontweight-normal: 400;
+        --text-fontweight-medium: 600;
+        --text-fontweight-bold: 700;
+        --text-letterspacing-caps: 0.0562rem;
+        --text-paragraphspacing-body: 0.5rem;
+        --text-subtitle-letterspacing: -0.0125rem;
         --text-subtitle-fontsize: 1rem;
         --text-subtitle-lineheight: 1.25rem;
-        --text-subtitle-fontweight: 600;
+        --text-subtitle-fontweight: 700;
+        --text-tiny-letterspacing: -0.0125rem;
+        --text-tiny-fontsize: 0.625rem;
+        --text-tiny-lineheight: 0.625rem;
+        --text-title-fontweight: 800;
 
-        --text-tiny-letterspacing: .025em;
-        --text-tiny-fontsize: .63rem;
-        --text-tiny-lineheight: .75rem;
-
-        --text-title-fontweight: 600;
-
-        /* Titles */
-        --text-title-display-letterspacing: -.017em;
-        --text-title-display-fontsize: 1.88rem;
-        --text-title-display-lineheight: 2.13rem;
-
-        --text-title-lg-letterspacing: -.006em;
+        --text-title-display-letterspacing: -0.0313rem;
+        --text-title-display-fontsize: 1.875rem;
+        --text-title-display-lineheight: 2.125rem;
+        --text-title-lg-letterspacing: -0.0094rem;
         --text-title-lg-fontsize: 1.5rem;
         --text-title-lg-lineheight: 1.75rem;
-
-        --text-title-md-letterspacing: -.002em;
+        --text-title-md-letterspacing: -0.0031rem;
         --text-title-md-fontsize: 1.25rem;
         --text-title-md-lineheight: 1.5rem;
-
-        --text-title-sm-letterspacing: 0;
-        --text-title-sm-fontsize: 1.13rem;
-        --text-title-sm-lineheight: 1.38rem;
+        --text-title-sm-letterspacing: 0rem;
+        --text-title-sm-fontsize: 1.125rem;
+        --text-title-sm-lineheight: 1.375rem;
     }
 
     @screen lg {
         :root[data-product="king"] {
-            --text-title-display-letterspacing: -.019em;
+            --text-title-display-letterspacing: -0.0425rem;
             --text-title-display-fontsize: 2.25rem;
             --text-title-display-lineheight: 2.5rem;
-
-            --text-title-lg-letterspacing: -.007em;
-            --text-title-lg-fontsize: 1.69rem;
+            --text-title-lg-letterspacing: -0.012rem;
+            --text-title-lg-fontsize: 1.6875rem;
             --text-title-lg-lineheight: 2rem;
-
-            --text-title-md-letterspacing: -.004em;
-            --text-title-md-fontsize: 1.38rem;
+            --text-title-md-letterspacing: -0.0052rem;
+            --text-title-md-fontsize: 1.375rem;
             --text-title-md-lineheight: 1.75rem;
-
-            --text-title-sm-letterspacing: 0;
-            --text-title-sm-fontsize: 1.19rem;
-            --text-title-sm-lineheight: 1.38rem;
+            --text-title-sm-letterspacing: 0rem;
+            --text-title-sm-fontsize: 1.1875rem;
+            --text-title-sm-lineheight: 1.375rem;
         }
     }
 
