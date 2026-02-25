@@ -88,6 +88,7 @@
     --content-status-warning: var(--color-alpa-warning-100);
     --content-text-link-default: var(--color-alpa-primary-200);
     --content-text-link-hover: var(--color-alpa-primary-300);
+    --content-text-link-underline: var(--color-alpa-primary-50);
     --content-text-primary: var(--color-white);
     --content-text-secondary: var(--color-alpa-neutral-100);
 }
