@@ -22,7 +22,7 @@
 
     a:hover, .text-link:hover {
         color: var(--content-text-link-hover);
-        text-decoration-color: var(--content-text-link-default);
+        text-decoration-color: var(--content-text-link-hover);
     }
 
     b, strong {
