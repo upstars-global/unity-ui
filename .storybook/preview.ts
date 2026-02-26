@@ -44,6 +44,11 @@ const TAILWIND_VIEWPORTS = {
         styles: { width: '1600px', height: '900px' },
         type: 'desktop',
     },
+    '4xl': {
+        name: '4xl (1800)',
+        styles: { width: '1800px', height: '900px' },
+        type: 'desktop',
+    },
 } as const
 
 type ThemeKey = 'alpa' | 'king'
