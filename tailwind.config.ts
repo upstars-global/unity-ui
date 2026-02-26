@@ -23,6 +23,19 @@ export default {
       "2xl": "1440px",  // large desktop
       "3xl": "1600px"   // extra-large
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        md: "3.5rem",
+        '2xl': "0",
+        '3xl': "0",
+      },
+      screens: {
+        '2xl': "80rem",
+        '3xl': "104rem"
+      },
+    },
     colors: {
       transparent: "var(--color-transparent)",
       black: "var(--color-black)",
@@ -35,19 +48,6 @@ export default {
       "content-status-warning": "var(--content-status-warning)",
       "content-text-primary": "var(--content-text-primary)",
       "content-text-secondary": "var(--content-text-secondary)",
-      error: {
-        DEFAULT: "rgba(var(--error-500), <alpha-value>)",
-      },
-      warning: {
-        DEFAULT: "rgba(var(--warning-500), <alpha-value>)",
-      },
-      success: {
-        DEFAULT: "rgba(var(--success-500), <alpha-value>)",
-        100: "rgba(var(--success-100), <alpha-value>)",
-        500: "rgba(var(--success-500), <alpha-value>)",
-      },
-      alt: "var(--color-text-alt)",
-      /*body: "var(--color-text-body)",*/
     },
   },
 }
