@@ -1,0 +1,41 @@
+:root:not([data-product]) {
+    /* Brand palette */
+    --primary-50: 255, 255, 173;
+    --primary-100: 255, 255, 159;
+    --primary-200: 255, 255, 123;
+    --primary-300: 255, 209, 73;
+    --primary-400: 253, 216, 53;
+    --primary-500: 255, 208, 122;
+    --primary-600: 255, 185, 77;
+    --primary-700: 255, 160, 0;
+    --primary-800: 245, 124, 0;
+    --primary-900: 230, 81, 0;
+
+    --secondary-50: 230, 206, 255;
+    --secondary-100: 211, 181, 255;
+    --secondary-200: 195, 149, 255;
+    --secondary-300: 161, 83, 255;
+    --secondary-400: 140, 73, 245;
+    --secondary-500: 112, 59, 245;
+    --secondary-600: 92, 46, 181;
+    --secondary-700: 71, 26, 140;
+    --secondary-800: 46, 15, 108;
+    --secondary-900: 36, 10, 77;
+
+    /* Neutral palette */
+    --neutral-100: 232, 236, 242;
+    --neutral-200: 219, 223, 229;
+    --neutral-300: 182, 189, 204;
+    --neutral-400: 149, 153, 166;
+    --neutral-500: 89, 96, 112;
+    --neutral-600: 47, 54, 69;
+    --neutral-700: 38, 42, 52;
+    --neutral-800: 26, 29, 35;
+    --neutral-900: 0, 10, 18;
+
+    /* Status colors */
+    --error-500: 255, 94, 58;
+    --warning-500: 253, 216, 53;
+    --success-500: 27, 225, 118;
+
+}

@@ -1,0 +1,72 @@
+@tailwind base;
+
+@layer base {
+    :root:not([data-product]) {
+        /* Base */
+        --font-family: 'Inter', system-ui, sans-serif;
+        --text-body-letterspacing: -0.0125rem;
+        --text-body-fontsize: 1rem;
+        --text-body-lineheight: 1.5rem;
+        --text-body-sm-letterspacing: -0.0094rem;
+        --text-body-sm-fontsize: 0.875rem;
+        --text-body-sm-lineheight: 1.25rem;
+        --text-button-caption-letterspacing: -0.05rem;
+        --text-button-caption-fontsize: 0.6875rem;
+        --text-button-caption-fontweight: 400;
+        --text-button-label-letterspacing: -0.0125rem;
+        --text-button-label-fontweight: 500;
+        --text-button-label-lg-fontsize: 1.1875rem;
+        --text-button-label-md-fontsize: 1.0625rem;
+        --text-button-label-sm-fontsize: 0.9375rem;
+        --text-button-label-xl-fontsize: 1.25rem;
+        --text-button-label-xs-fontsize: 0.75rem;
+        --text-button-label-xs-lineheight: 0.875rem;
+        --text-caption-letterspacing: 0.0094rem;
+        --text-caption-fontsize: 0.75rem;
+        --text-caption-lineheight: 1rem;
+        --text-fontweight-normal: 400;
+        --text-fontweight-medium: 500;
+        --text-fontweight-bold: 600;
+        --text-letterspacing-caps: 0.0313rem;
+        --text-paragraphspacing-body: 0.5rem;
+        --text-subtitle-letterspacing: -0.0081rem;
+        --text-subtitle-fontsize: 1rem;
+        --text-subtitle-lineheight: 1.25rem;
+        --text-subtitle-fontweight: 700;
+        --text-tiny-letterspacing: 0.0188rem;
+        --text-tiny-fontsize: 0.625rem;
+        --text-tiny-lineheight: 0.625rem;
+        --text-title-fontweight: 800;
+
+        --text-title-display-letterspacing: -0.0375rem;
+        --text-title-display-fontsize: 2.5rem;
+        --text-title-display-lineheight: 2.75rem;
+        --text-title-lg-letterspacing: -0.0188rem;
+        --text-title-lg-fontsize: 2rem;
+        --text-title-lg-lineheight: 2.25rem;
+        --text-title-md-letterspacing: 0rem;
+        --text-title-md-fontsize: 1.5rem;
+        --text-title-md-lineheight: 1.75rem;
+        --text-title-sm-letterspacing: 0.0188rem;
+        --text-title-sm-fontsize: 1.25rem;
+        --text-title-sm-lineheight: 1.5rem;
+    }
+
+    @screen lg {
+        :root:not([data-product]) {
+            --text-title-display-letterspacing: -0.05rem;
+            --text-title-display-fontsize: 3.375rem;
+            --text-title-display-lineheight: 4rem;
+            --text-title-lg-letterspacing: -0.025rem;
+            --text-title-lg-fontsize: 3rem;
+            --text-title-lg-lineheight: 3.625rem;
+            --text-title-md-letterspacing: -0.0063rem;
+            --text-title-md-fontsize: 2rem;
+            --text-title-md-lineheight: 2.375rem;
+            --text-title-sm-letterspacing: 0.0125rem;
+            --text-title-sm-fontsize: 1.5rem;
+            --text-title-sm-lineheight: 1.75rem;
+        }
+    }
+
+}

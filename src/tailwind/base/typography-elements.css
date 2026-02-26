@@ -1,0 +1,31 @@
+@layer base {
+    body {
+        @apply font-normal;
+    }
+
+    h1 { @apply text-title-display; }
+    h2 { @apply text-title-lg; }
+    h3 { @apply text-title-md; }
+    h4 { @apply text-title-sm; }
+    h5 { @apply text-subtitle; }
+
+    a, .text-link {
+        @apply underline decoration-solid;
+        @apply transition-colors;
+        color: var(--content-text-link-default);
+        text-decoration-skip-ink: auto;
+        text-decoration-color: var(--content-text-link-underline);
+        text-underline-position: from-font;
+        text-decoration-thickness: .15em;
+        text-underline-offset: .2em;
+    }
+
+    a:hover, .text-link:hover {
+        color: var(--content-text-link-hover);
+        text-decoration-color: var(--content-text-link-hover);
+    }
+
+    b, strong {
+        font-weight: var(--text-fontweight-bold);
+    }
+}
