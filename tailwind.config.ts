@@ -14,14 +14,14 @@ export default {
       bold: "var(--text-fontweight-bold)",
     },
     screens: {
-      "xxs": "320px",   // мінімум, страхує "малий телефон"
-      "xs":  "390px",   // базовий мобайл (наша медіана)
-      "sm":  "500px",   // великі телефони+landscape
-      "md":  "760px",   // tablet portrait
-      "lg":  "1020px",  // tablet landscape/small desktop
-      "xl":  "1280px",  // базовий desktop (наші медіани 1284–1354)
-      "2xl": "1440px",  // large desktop
-      "3xl": "1600px"   // extra-large
+      "xxs": "320px",   // min-width, крайня межа
+      "xs":  "352px",   // адаптація для малих телефонів
+      "sm":  "545px",   // max-width для контейнера на мобайлі
+      "md":  "752px",   // таблет страховий
+      "lg":  "1088px",  // перехід у 2 колонки
+      "xl":  "1280px",  // десктоп: вимикаємо таббар, збіг з СС
+      "2xl": "1440px",  // базовий десктоп
+      "3xl": "1600px"   // extra-large+
     },
     container: {
       center: true,

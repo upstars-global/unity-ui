@@ -5,42 +5,42 @@ import '../src/themes/king/tailwind.css'
 
 const TAILWIND_VIEWPORTS = {
     xxs: {
-        name: 'xxs (320)',
+        name: 'xxs (320px)',
         styles: { width: '320px', height: '568px' },
         type: 'mobile',
     },
     xs: {
-        name: 'xs (390)',
-        styles: { width: '390px', height: '844px' },
+        name: 'xs (352px)',
+        styles: { width: '352px', height: '844px' },
         type: 'mobile',
     },
     sm: {
-        name: 'sm (500)',
-        styles: { width: '500px', height: '900px' },
+        name: 'sm (545px)',
+        styles: { width: '545px', height: '900px' },
         type: 'mobile',
     },
     md: {
-        name: 'md (760)',
-        styles: { width: '760px', height: '1024px' },
+        name: 'md (752px)',
+        styles: { width: '752px', height: '1024px' },
         type: 'tablet',
     },
     lg: {
-        name: 'lg (1020)',
-        styles: { width: '1020px', height: '768px' },
+        name: 'lg (1088px)',
+        styles: { width: '1088px', height: '768px' },
         type: 'desktop',
     },
     xl: {
-        name: 'xl (1280)',
+        name: 'xl (1280px)',
         styles: { width: '1280px', height: '800px' },
         type: 'desktop',
     },
     '2xl': {
-        name: '2xl (1440)',
+        name: '2xl (1440px)',
         styles: { width: '1440px', height: '900px' },
         type: 'desktop',
     },
     '3xl': {
-        name: '3xl (1600)',
+        name: '3xl (1600px)',
         styles: { width: '1600px', height: '900px' },
         type: 'desktop',
     },

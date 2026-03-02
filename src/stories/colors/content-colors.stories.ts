@@ -15,9 +15,9 @@ export const Cards: Story = {
   render: () => ({
     setup() {
       const statuses = [
-        { label: 'Success', className: 'bg-content-status-success' },
-        { label: 'Warning', className: 'bg-content-status-warning' },
-        { label: 'Error', className: 'bg-content-status-error' },
+        { label: 'Success', className: 'text-content-status-success' },
+        { label: 'Warning', className: 'text-content-status-warning' },
+        { label: 'Error', className: 'text-content-status-error' },
       ]
 
       return { statuses }
@@ -42,18 +42,7 @@ export const Cards: Story = {
                 v-for="status in statuses"
                 :key="'page-' + status.label"
                 :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-primary"
-              >
-                {{ status.label }}
-              </span>
-            </div>
-            <div class="mt-3 text-caption text-content-text-secondary">Badges / text-content-text-secondary</div>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span
-                v-for="status in statuses"
-                :key="'page-secondary-' + status.label"
-                :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-secondary"
+                class="rounded-full px-2.5 py-1 text-body"
               >
                 {{ status.label }}
               </span>
@@ -73,18 +62,7 @@ export const Cards: Story = {
                 v-for="status in statuses"
                 :key="'surface-' + status.label"
                 :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-primary"
-              >
-                {{ status.label }}
-              </span>
-            </div>
-            <div class="mt-3 text-caption text-content-text-secondary">Badges / text-content-text-secondary</div>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span
-                v-for="status in statuses"
-                :key="'surface-secondary-' + status.label"
-                :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-secondary"
+                class="rounded-full px-2.5 py-1 text-body"
               >
                 {{ status.label }}
               </span>
@@ -103,18 +81,7 @@ export const Cards: Story = {
                   v-for="status in statuses"
                   :key="'nested-' + status.label"
                   :class="status.className"
-                  class="rounded-full px-2.5 py-1 text-caption text-content-text-primary"
-                >
-                  {{ status.label }}
-                </span>
-              </div>
-              <div class="mt-3 text-caption text-content-text-secondary">Badges / text-content-text-secondary</div>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span
-                  v-for="status in statuses"
-                  :key="'nested-secondary-' + status.label"
-                  :class="status.className"
-                  class="rounded-full px-2.5 py-1 text-caption text-content-text-secondary"
+                  class="rounded-full px-2.5 py-1 text-body"
                 >
                   {{ status.label }}
                 </span>
@@ -131,25 +98,14 @@ export const Cards: Story = {
             <a href="#" class="mt-3 inline-flex text-link text-body-sm">Link example</a>
             <div class="mt-4 text-caption text-content-text-secondary">Badges / text-content-text-primary</div>
             <div class="mt-2 flex flex-wrap gap-2">
-              <span
+              <p
                 v-for="status in statuses"
                 :key="'surface-alt-' + status.label"
                 :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-primary"
+                class="rounded-full px-2.5 py-1 text-body"
               >
                 {{ status.label }}
-              </span>
-            </div>
-            <div class="mt-3 text-caption text-content-text-secondary">Badges / text-content-text-secondary</div>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span
-                v-for="status in statuses"
-                :key="'surface-alt-secondary-' + status.label"
-                :class="status.className"
-                class="rounded-full px-2.5 py-1 text-caption text-content-text-secondary"
-              >
-                {{ status.label }}
-              </span>
+              </p>
             </div>
           </article>
         </div>
