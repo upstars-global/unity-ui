@@ -1,4 +1,4 @@
-# @upstars/ui-kit
+# @upstars-global/ui-kit
 
 UI Kit package for Vue 3 applications.
 
@@ -14,21 +14,22 @@ yarn build
 
 ```ts
 import { defineAsyncComponent } from "vue";
-import "@upstars/ui-kit/themes/alpa";
+import "@upstars-global/ui-kit/themes/alpa";
 
-const UiComponent = defineAsyncComponent(() => import("@upstars/ui-kit/components/<ComponentName>"));
+const UiComponent = defineAsyncComponent(() => import("@upstars-global/ui-kit/components/<ComponentName>"));
 ```
 
 `<ComponentName>` публикуется из `src/components/<ComponentName>/index.ts`.
 
 ## Release
 
-1. Bump version in `package.json` (semver).
-2. Commit and push changes to `main`.
-3. Create and push tag `vX.Y.Z` (must match `package.json` version).
-4. GitHub Actions workflow `.github/workflows/publish-github-packages.yml` publishes package to GitHub Packages.
-5. In consumer (`front-ss`) update dependency, for example:
+1. Merge changes to `main` with Conventional Commits (`feat:`, `fix:`, `chore:` ...).
+2. Workflow `.github/workflows/release.yml` runs `semantic-release` and automatically:
+   - calculates next semver version,
+   - updates `CHANGELOG.md` and `package.json`,
+   - publishes package to GitHub Packages (`upstars-global`).
+3. In consumer (`front-ss`) update dependency, for example:
 
 ```bash
-yarn workspace @front/ss add @upstars/ui-kit@^X.Y.Z
+yarn workspace @front/ss add @upstars-global/ui-kit@^X.Y.Z
 ```
