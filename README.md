@@ -19,6 +19,8 @@ import "@upstars/ui-kit/themes/alpa";
 const UiComponent = defineAsyncComponent(() => import("@upstars/ui-kit/components/<ComponentName>"));
 ```
 
+`<ComponentName>` публикуется из `src/components/<ComponentName>/index.ts`.
+
 ## Release
 
 1. Bump version in `package.json` (semver).

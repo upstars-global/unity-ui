@@ -2,9 +2,35 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import { readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const rootDir = typeof __dirname !== 'undefined' ? __dirname : dirname(fileURLToPath(import.meta.url));
+
+function collectComponentEntries(dir: string, base = ''): Record<string, string> {
+  const entries: Record<string, string> = {};
+  const currentDir = join(dir, base);
+
+  for (const name of readdirSync(currentDir)) {
+    const relPath = base ? join(base, name) : name;
+    const absolutePath = join(dir, relPath);
+    const fileInfo = statSync(absolutePath);
+
+    if (fileInfo.isDirectory()) {
+      Object.assign(entries, collectComponentEntries(dir, relPath));
+      continue;
+    }
+
+    if (name === 'index.ts') {
+      const componentPath = base.replaceAll('\\', '/');
+      entries[`components/${componentPath}`] = absolutePath;
+    }
+  }
+
+  return entries;
+}
+
+const componentEntries = collectComponentEntries(join(rootDir, 'src/components'));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
@@ -26,6 +52,7 @@ export default defineConfig({
     lib: {
       entry: {
         index: join(rootDir, 'src/index.ts'),
+        ...componentEntries,
         'themes/alpa': join(rootDir, 'src/themes/alpa.ts'),
         'themes/king': join(rootDir, 'src/themes/king.ts')
       },

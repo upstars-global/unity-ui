@@ -16,6 +16,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js",
+      "require": "./dist/components/*.cjs"
+    },
     "./themes/alpa": {
       "types": "./dist/themes/alpa.d.ts",
       "import": "./dist/themes/alpa.js",
