@@ -1,18 +1,74 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-
-// https://vite.dev/config/
-import path, {join} from 'node:path';
+import dts from 'vite-plugin-dts';
+import { readdirSync, statSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+const rootDir = typeof __dirname !== 'undefined' ? __dirname : dirname(fileURLToPath(import.meta.url));
+
+function collectComponentEntries(dir: string, base = ''): Record<string, string> {
+  const entries: Record<string, string> = {};
+  const currentDir = join(dir, base);
+
+  for (const name of readdirSync(currentDir)) {
+    const relPath = base ? join(base, name) : name;
+    const absolutePath = join(dir, relPath);
+    const fileInfo = statSync(absolutePath);
+
+    if (fileInfo.isDirectory()) {
+      Object.assign(entries, collectComponentEntries(dir, relPath));
+      continue;
+    }
+
+    if (name === 'index.ts') {
+      const componentPath = base.replaceAll('\\', '/');
+      entries[`components/${componentPath}`] = absolutePath;
+    }
+  }
+
+  return entries;
+}
+
+const componentEntries = collectComponentEntries(join(rootDir, 'src/components'));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      tsconfigPath: join(rootDir, 'tsconfig.app.json'),
+      insertTypesEntry: true
+    })
+  ],
   resolve: {
     alias: {
-      '@src': join(dirname, 'src')
+      '@src': join(rootDir, 'src')
+    }
+  },
+  build: {
+    sourcemap: true,
+    cssCodeSplit: true,
+    lib: {
+      entry: {
+        index: join(rootDir, 'src/index.ts'),
+        ...componentEntries,
+        'themes/alpa': join(rootDir, 'src/themes/alpa.ts'),
+        'themes/king': join(rootDir, 'src/themes/king.ts')
+      },
+      formats: ['es', 'cjs'],
+      fileName: (format, entryName) => {
+        if (format === 'es') {
+          return `${entryName}.js`;
+        }
+        return `${entryName}.cjs`;
+      }
+    },
+    rollupOptions: {
+      external: ['vue'],
+      output: {
+        assetFileNames: 'assets/[name][extname]'
+      }
     }
   }
 })

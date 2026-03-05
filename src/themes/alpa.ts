@@ -1,0 +1,1 @@
+import './alpa/tailwind.css';

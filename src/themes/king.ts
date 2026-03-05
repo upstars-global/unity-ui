@@ -1,0 +1,1 @@
+import './king/tailwind.css';

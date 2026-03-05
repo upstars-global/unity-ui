@@ -1,5 +1,35 @@
-# Vue 3 + TypeScript + Vite
+# @upstars-global/ui-kit
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+UI Kit package for Vue 3 applications.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Development
+
+```bash
+yarn install
+yarn test
+yarn build
+```
+
+## Consume in app
+
+```ts
+import { defineAsyncComponent } from "vue";
+import "@upstars-global/ui-kit/themes/alpa";
+
+const UiComponent = defineAsyncComponent(() => import("@upstars-global/ui-kit/components/<ComponentName>"));
+```
+
+`<ComponentName>` публикуется из `src/components/<ComponentName>/index.ts`.
+
+## Release
+
+1. Merge changes to `main` with Conventional Commits (`feat:`, `fix:`, `chore:` ...).
+2. Workflow `.github/workflows/release.yml` runs `semantic-release` and automatically:
+   - calculates next semver version,
+   - updates `CHANGELOG.md` and `package.json`,
+   - publishes package to GitHub Packages (`upstars-global`).
+3. In consumer (`front-ss`) update dependency, for example:
+
+```bash
+yarn workspace @front/ss add @upstars-global/ui-kit@^X.Y.Z
+```

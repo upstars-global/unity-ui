@@ -14,6 +14,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      packages: write
 
     steps:
       - name: Checkout repo
@@ -27,6 +28,8 @@ jobs:
         with:
           node-version: 22.14.0
           cache: "yarn"
+          registry-url: https://npm.pkg.github.com
+          scope: "@upstars-global"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -58,5 +61,7 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_URL: "${{ github.server_url }}/${{ github.repository }}"
         run: npx semantic-release
