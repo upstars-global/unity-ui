@@ -64,26 +64,19 @@ module.exports = {
         }
       }
     ],
-    '@semantic-release/changelog',
+      "@semantic-release/changelog",
+      [ "@semantic-release/exec", {
+          prepareCmd: "node -e \"let pkg=require('./package.json'); pkg.version='${nextRelease.version}'; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));\"",
+          // successCmd: "node send-slack-notification.js \"${nextRelease.version}\" \"${process.env.REPO_URL}\"",
+      } ],
+      [ "@semantic-release/git", {
+          assets: [ "package.json", "CHANGELOG.md" ],
+          message: "chore(release): ${nextRelease.version} [skip ci]",
+      } ],
     [
       '@semantic-release/npm',
       {
         npmPublish: true
-      }
-    ],
-    /*[
-      '@semantic-release/exec',
-      {
-        prepareCmd:
-          "node -e \"let pkg=require('./package.json'); pkg.version='${nextRelease.version}'; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));\"",
-        successCmd: 'node send-slack-notification.js "${nextRelease.version}" "${process.env.REPO_URL}"'
-      }
-    ],*/
-    [
-      '@semantic-release/git',
-      {
-        assets: ['package.json', 'CHANGELOG.md'],
-        message: 'chore(release): ${nextRelease.version} [skip ci]'
       }
     ]
   ]
