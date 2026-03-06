@@ -1,3 +1,14 @@
+## [1.2.0](https://github.com/upstars-global/unity-ui/compare/v1.1.1...v1.2.0) (2026-03-06)
+
+### 🚀 Features
+
+* UN-2185 Define base variables
+ ([8d8d687](https://github.com/upstars-global/unity-ui/commit/8d8d6870c6ef020851e7e9109253b199eea52dee))
+
+
+* UN-2185 Define base variables
+ ([89aaebf](https://github.com/upstars-global/unity-ui/commit/89aaebfaf311ae6e00b50dc4b806077cebc7e4da))
+
 ## [1.1.1](https://github.com/upstars-global/unity-ui/compare/v1.1.0...v1.1.1) (2026-03-06)
 
 ### 🐛 Bug Fixes
