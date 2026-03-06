@@ -1,4 +1,4 @@
-# @upstars-global/ui-kit
+# @upstars-global/unity-ui
 
 UI Kit package for Vue 3 applications.
 
@@ -15,9 +15,9 @@ yarn build
 
 ```ts
 import { defineAsyncComponent } from "vue";
-import "@upstars-global/ui-kit/themes/alpa";
+import "@upstars-global/unity-ui/themes/alpa";
 
-const UiComponent = defineAsyncComponent(() => import("@upstars-global/ui-kit/components/<ComponentName>"));
+const UiComponent = defineAsyncComponent(() => import("@upstars-global/unity-ui/components/<ComponentName>"));
 ```
 
 `<ComponentName>` публикуется из `src/components/<ComponentName>/index.ts`.
@@ -32,5 +32,5 @@ const UiComponent = defineAsyncComponent(() => import("@upstars-global/ui-kit/co
 3. In consumer (`front-ss`) update dependency, for example:
 
 ```bash
-yarn workspace @front/ss add @upstars-global/ui-kit@^X.Y.Z
+yarn workspace @front/ss add @upstars-global/unity-ui@^X.Y.Z
 ```
