@@ -1,7 +1,10 @@
 import type { Preview } from '@storybook/vue3-vite'
+import { provide } from 'vue'
 import './css/tailwind.css'
-import '../src/themes/alpa/tailwind.css'
+import '../src/themes/alpa/style/tailwind.css'
 import '../src/themes/king/tailwind.css'
+import { AppConfigSymbol } from '../src/composables/useAppConfig'
+import { getThemeConfig } from '../src/themes/registry'
 
 const TAILWIND_VIEWPORTS = {
     xxs: {
@@ -74,6 +77,7 @@ export const globalTypes = {
 export const decorators = [
     (story, context) => {
         const choice = (context.globals.productTheme || 'default') as ThemeChoice
+        const activeTheme = choice === 'default' ? 'alpa' : choice
 
         if (choice === 'default') {
             document.documentElement.removeAttribute('data-product')
@@ -81,7 +85,15 @@ export const decorators = [
             document.documentElement.setAttribute('data-product', choice)
         }
 
-        return story()
+        const Story = story()
+        return {
+            components: { Story },
+            setup() {
+                provide(AppConfigSymbol, getThemeConfig(activeTheme))
+                return {}
+            },
+            template: '<Story />',
+        }
     },
 ]
 

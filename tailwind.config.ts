@@ -49,5 +49,10 @@ export default {
       "content-text-primary": "var(--content-text-primary)",
       "content-text-secondary": "var(--content-text-secondary)",
     },
+    extend: {
+      spacing: {
+        '18': '4.5rem'
+      }
+    },
   },
 }

@@ -1,3 +1,6 @@
-// Intentionally empty root entry.
-// Components are consumed via subpath imports, e.g. @upstars-global/unity-ui/components/<Name>.
-export {};
+export { UnityUI } from './plugins/vue-plugin';
+export { useAppConfig } from './composables/useAppConfig';
+export { getThemeConfig } from './themes/registry';
+
+export type { AppConfig } from './components/types';
+export type { UiThemeName, UiThemeIconName } from './themes/registry';
