@@ -36,14 +36,12 @@ const iconRaw = computed(() => {
 })
 
 const className = computed(() => {
-
   return [
-    'ui-icon',
     SIZE_CLASSES_LIST[props.size],
   ]
 })
 </script>
 
 <template>
-  <div v-if="iconRaw" :class="className" v-html="iconRaw" />
+  <div class="ui-icon" v-if="iconRaw" :class="className" v-html="iconRaw" />
 </template>
