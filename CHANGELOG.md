@@ -1,3 +1,21 @@
+## [1.3.0](https://github.com/upstars-global/unity-ui/compare/v1.2.0...v1.3.0) (2026-03-13)
+
+### 🚀 Features
+
+* UN-2188 add icon component
+ ([ae14c6a](https://github.com/upstars-global/unity-ui/commit/ae14c6a353f7233df8b65f22fb90806ce0ccf834))
+
+
+* UN-2188 add icon component
+ ([63c003a](https://github.com/upstars-global/unity-ui/commit/63c003a4cf4bbb74b4dfd414063b7ed2dfb56169))
+
+
+
+### 📖 Documentation
+
+* add installation instructions for dependent projects (local and GitLab CI)
+ ([33e1183](https://github.com/upstars-global/unity-ui/commit/33e1183e182d88bfb95ba152de40e07b33cde36a))
+
 ## [1.2.0](https://github.com/upstars-global/unity-ui/compare/v1.1.1...v1.2.0) (2026-03-06)
 
 ### 🚀 Features
