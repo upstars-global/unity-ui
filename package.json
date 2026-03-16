@@ -1,5 +1,5 @@
 {
-  "name": "@upstars-global/unity-ui",
+  "name": "unity-ui",
   "version": "1.3.0",
   "type": "module",
   "license": "ISC",
@@ -10,29 +10,6 @@
     "dist",
     "README.md"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./components/*": {
-      "types": "./dist/components/*.d.ts",
-      "import": "./dist/components/*.js",
-      "require": "./dist/components/*.cjs"
-    },
-    "./themes/alpa": {
-      "types": "./dist/themes/alpa.d.ts",
-      "import": "./dist/themes/alpa.js",
-      "require": "./dist/themes/alpa.cjs"
-    },
-    "./themes/king": {
-      "types": "./dist/themes/king.d.ts",
-      "import": "./dist/themes/king.js",
-      "require": "./dist/themes/king.cjs"
-    },
-    "./package.json": "./package.json"
-  },
   "sideEffects": [
     "**/*.css"
   ],

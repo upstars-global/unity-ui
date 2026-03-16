@@ -53,6 +53,7 @@ export default defineConfig({
       entry: {
         index: join(rootDir, 'src/index.ts'),
         ...componentEntries,
+        'tailwind/presets': join(rootDir, 'src/tailwind/presets/index.ts'),
         'themes/alpa': join(rootDir, 'src/themes/alpa.ts'),
         'themes/king': join(rootDir, 'src/themes/king.ts')
       },
