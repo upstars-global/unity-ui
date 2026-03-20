@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/upstars-global/unity-ui/compare/v1.3.0...v1.4.0) (2026-03-20)
+
+### 🚀 Features
+
+* UN-2471 config themes for using in products
+ ([03d968d](https://github.com/upstars-global/unity-ui/commit/03d968d75f26c91a0769abc10626b21c7b3429a1))
+
 ## [1.3.0](https://github.com/upstars-global/unity-ui/compare/v1.2.0...v1.3.0) (2026-03-13)
 
 ### 🚀 Features
