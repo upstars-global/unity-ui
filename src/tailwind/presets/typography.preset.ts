@@ -1,5 +1,5 @@
 import { type Config } from 'tailwindcss'
-import plugin from 'tailwindcss/plugin'
+import plugin from 'tailwindcss/plugin.js'
 
 const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'title-display': [
@@ -126,6 +126,14 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
 
 const preset: Partial<Config> = {
     theme: {
+        fontFamily: {
+            sans: ['var(--font-family)'],
+        },
+        fontWeight: {
+            normal: 'var(--text-fontweight-normal)',
+            medium: 'var(--text-fontweight-medium)',
+            bold: 'var(--text-fontweight-bold)',
+        },
         fontSize: typographyFontSize,
     },
     plugins: [
