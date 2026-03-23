@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import {computed} from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import type { UiThemeIconName } from '../../themes/registry'
 
@@ -18,7 +18,6 @@ const SIZE_CLASSES_LIST: Record<IconSize, string> = {
 
 defineOptions({
   name: 'UiIcon',
-  inheritAttrs: false
 })
 
 const props = withDefaults(defineProps<UiIconProps>(), {
@@ -43,5 +42,5 @@ const className = computed(() => {
 </script>
 
 <template>
-  <div class="ui-icon" v-if="iconRaw" :class="className" v-html="iconRaw" />
+  <div class="ui-icon" v-if="iconRaw" :class="className" v-html="iconRaw"  />
 </template>
