@@ -107,8 +107,8 @@ const DEFAULT_SPACING_VALUE_TO_KEY = new Map([
     ['10rem', '40'],
 ])
 
-const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--component-[a-z0-9-]+)\)\]/gi
-const ARBITRARY_PROPERTY_REGEX = /(?:[!@%\w:-]+:)*\[[a-z-]+:var\((--component-[a-z0-9-]+)\)\]/gi
+const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
+const ARBITRARY_PROPERTY_REGEX = /(?:[!@%\w:-]+:)*\[[a-z-]+:var\((--[a-z0-9-]+)\)\]/gi
 const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
@@ -437,7 +437,7 @@ function transformClassString(classString, definitions, presetVars, spacingValue
         return buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey)
     })
 
-    return utilityTransformed.replace(ARBITRARY_PROPERTY_REGEX, (classToken, componentVarName) => {
+    const arbitraryPropertyTransformed = utilityTransformed.replace(ARBITRARY_PROPERTY_REGEX, (classToken, componentVarName) => {
         const resolvedValue = resolveCssValue(componentVarName, definitions, presetVars)
 
         if (!resolvedValue?.value) {
@@ -447,7 +447,21 @@ function transformClassString(classString, definitions, presetVars, spacingValue
 
         meta.replacements += 1
         return buildArbitraryPropertyClass(classToken, resolvedValue, borderWidthValueToKey)
-    }).replace(/\s+/g, ' ').trim()
+    })
+
+    return arbitraryPropertyTransformed
+        .replace(/((?:[!@%\w:-]+:)*rounded(?:-[trbl]{1,2})?)-\[var\((--[a-z0-9-]+)\)\]/gi, (classToken, utilityBase, cssVarName) => {
+            const resolvedValue = resolveCssValue(cssVarName, definitions, presetVars)
+
+            if (!resolvedValue?.value || resolvedValue.kind !== 'literal') {
+                return classToken
+            }
+
+            const radiusKey = radiusValueToKey.get(resolvedValue.value)
+            return radiusKey ? `${utilityBase}-${radiusKey}` : classToken
+        })
+        .replace(/\s+/g, ' ')
+        .trim()
 }
 
 function isPlainObject(value) {

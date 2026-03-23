@@ -8,17 +8,17 @@ const button = {
             "base": "flex-row items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-16 h-8 gap-1 rounded-2 px-2 py-1",
+                    "container": "min-w-16 h-8 gap-1 rounded-[var(--radius-button-sm)] px-2 py-1",
                     "icon": "!w-6 !h-6",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
-                    "container": "min-w-24 h-10 gap-1 rounded-3 px-2 py-2",
+                    "container": "min-w-24 h-10 gap-1 rounded-[var(--radius-button-md)] px-2 py-2",
                     "icon": "!w-6 !h-6",
                     "label": "text-button-md truncate"
                 },
                 "lg": {
-                    "container": "min-w-24 h-12 gap-2 rounded-4 px-3.5 py-3",
+                    "container": "min-w-24 h-12 gap-2 rounded-[var(--radius-button-lg)] px-3.5 py-3",
                     "icon": "!w-6 !h-6",
                     "label": "text-button-lg truncate"
                 }
@@ -28,15 +28,15 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "h-8 rounded-2",
+                    "container": "h-8 rounded-[var(--radius-button-sm)]",
                     "icon": "w-4"
                 },
                 "md": {
-                    "container": "h-10 rounded-3",
+                    "container": "h-10 rounded-[var(--radius-button-md)]",
                     "icon": "w-6"
                 },
                 "lg": {
-                    "container": "h-12 rounded-4",
+                    "container": "h-12 rounded-[var(--radius-button-lg)]",
                     "icon": "w-6"
                 }
             }
@@ -45,17 +45,17 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
-                    "container": "h-12 gap-0.5 rounded-2 px-4 py-1",
+                    "container": "h-12 gap-0.5 rounded-[var(--radius-button-sm)] px-4 py-1",
                     "label": "text-button-sm truncate",
                     "caption": "text-button-caption truncate"
                 },
                 "md": {
-                    "container": "h-14 gap-1 rounded-4 px-6 py-1",
+                    "container": "h-14 gap-1 rounded-[var(--radius-button-md)] px-6 py-1",
                     "label": "text-button-md truncate",
                     "caption": "text-button-caption truncate"
                 },
                 "lg": {
-                    "container": "h-16 gap-1 rounded-4 px-6 py-1",
+                    "container": "h-16 gap-1 rounded-[var(--radius-button-lg)] px-6 py-1",
                     "label": "text-button-lg truncate",
                     "caption": "text-button-caption truncate"
                 }
@@ -65,17 +65,17 @@ const button = {
             "base": "flex-col items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-18 max-w-38 h-14 gap-1 rounded-2 px-4 py-1",
+                    "container": "min-w-18 max-w-38 h-14 gap-1 rounded-[var(--radius-button-md)] px-4 py-1",
                     "icon": "w-6",
                     "label": "text-button-caption truncate"
                 }
             }
         },
         "action": {
-            "base": "flex-col items-center justify-center text-center text-neutral-800 gap-1.5",
+            "base": "flex-col items-center justify-center text-center gap-1.5",
             "sizes": {
                 "sm": {
-                    "container": "flex justify-center items-center w-12 h-12 rounded-3",
+                    "container": "flex justify-center items-center w-12 h-12 rounded-[var(--radius-button-md)]",
                     "icon": "w-6",
                     "label": "text-button-caption truncate"
                 }
@@ -83,46 +83,39 @@ const button = {
         }
     },
     "variant": {
-        "filled": {
-            "base": "[border-width:0rem] border-transparent bg-primary-300 text-white",
-            "hover": "group-hover:bg-primary-200 group-hover:text-[var(--color-primary-50)]",
-            "pressed": "group-active:bg-[var(--color-primary-400)] group-active:text-white",
-            "loading": "group-aria-busy:bg-[var(--color-primary-400)] group-aria-busy:text-white",
+        "primary": {
+            "base": "bg-[74_71_234] text-white group-aria-busy:opacity-0",
+            "hover": "group-hover:bg-[80_80_254] group-hover:text-[233_234_255]",
+            "pressed": "group-active:bg-[0_0_160] group-active:text-[233_234_255]",
+            "loading": "group-aria-busy:bg-[0_0_160] group-aria-busy:text-[233_234_255]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
-        "outline": {
-            "base": "border-2 border-primary-200/40 bg-[var(--color-primary-50-40)] text-primary-300",
-            "hover": "group-hover:border-primary-200 group-hover:bg-[var(--color-primary-50-40)] group-hover:text-primary-300",
-            "pressed": "group-active:border-primary-300 group-active:bg-primary-100/40 group-active:text-primary-300",
-            "loading": "group-aria-busy:border-primary-300 group-aria-busy:bg-primary-100/40 group-aria-busy:text-primary-300",
+        "secondary": {
+            "base": "border-2 border-[rgb(80_80_254_/_0.4)] bg-[rgb(233_234_255_/_0.4)] text-[74_71_234] group-aria-busy:opacity-0",
+            "hover": "group-hover:border-[80_80_254] group-hover:bg-[rgb(233_234_255_/_0.4)] group-hover:text-[74_71_234]",
+            "pressed": "group-active:border-[74_71_234] group-active:bg-[rgb(201_201_255_/_0.4)] group-active:text-[74_71_234]",
+            "loading": "border-2 group-aria-busy:border-[74_71_234] group-aria-busy:bg-[rgb(201_201_255_/_0.4)] group-aria-busy:text-[74_71_234]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
-        "soft-primary": {
-            "base": "[border-width:0rem] border-transparent bg-[var(--color-primary-50)] text-primary-200",
-            "hover": "group-hover:bg-primary-100 group-hover:text-primary-200",
-            "pressed": "group-active:bg-primary-200 group-active:text-[var(--color-primary-50)]",
-            "loading": "group-aria-busy:bg-primary-200 group-aria-busy:text-[var(--color-primary-50)]",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
-        },
-        "soft-neutral": {
-            "base": "[border-width:0rem] border-transparent bg-[var(--color-neutral-50)] text-neutral-600",
-            "hover": "group-hover:bg-neutral-400/10 group-hover:text-neutral-700",
-            "pressed": "group-active:bg-neutral-400/40 group-active:text-neutral-700",
-            "loading": "group-aria-busy:bg-neutral-400/40 group-aria-busy:text-neutral-700",
+        "tertiary": {
+            "base": "border-transparent bg-[rgb(24_24_27_/_0.1)] text-[63_63_70] group-aria-busy:opacity-0",
+            "hover": "group-hover:bg-[rgb(212_212_216_/_0.8)] group-hover:text-[39_39_42]",
+            "pressed": "group-active:bg-[rgb(161_161_170_/_0.4)] group-active:text-[39_39_42]",
+            "loading": "group-aria-busy:bg-[rgb(161_161_170_/_0.4)] group-aria-busy:text-[39_39_42]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "ghost": {
-            "base": "[border-width:0rem] border-transparent bg-transparent text-neutral-600",
-            "hover": "group-hover:bg-neutral-200/80 group-hover:text-neutral-700",
-            "pressed": "group-active:bg-neutral-300/40 group-active:text-neutral-700",
-            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-700",
+            "base": "bg-transparent text-[63_63_70] group-aria-busy:opacity-0",
+            "hover": "group-hover:bg-[rgb(24_24_27_/_0.1)] group-hover:text-[39_39_42]",
+            "pressed": "group-active:bg-[rgb(212_212_216_/_0.8)] group-active:text-[39_39_42]",
+            "loading": "group-aria-busy:bg-[rgb(212_212_216_/_0.8)] group-aria-busy:text-[39_39_42]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {
-            "base": "[border-width:0rem] border-transparent bg-error-100 text-white",
-            "hover": "group-hover:bg-error-100/80 group-hover:text-[var(--color-neutral-50)]",
-            "pressed": "group-active:bg-error-100 group-active:text-[var(--color-neutral-50)]",
-            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-[var(--color-neutral-50)]",
+            "base": "bg-[219_47_0] text-white group-aria-busy:opacity-0",
+            "hover": "group-hover:bg-[rgb(219_47_0_/_0.8)] group-hover:text-[248_247_250]",
+            "pressed": "group-active:bg-[219_47_0] group-active:text-[248_247_250]",
+            "loading": "group-aria-busy:bg-[219_47_0] group-aria-busy:text-[248_247_250]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         }
     },
@@ -133,6 +126,9 @@ const button = {
         "leadingIcon": "shrink-0",
         "trailingIcon": "shrink-0",
         "label": "truncate"
+    },
+    "animation": {
+        "loading": "animate-spin"
     }
 } as const
 

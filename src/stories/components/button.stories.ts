@@ -17,7 +17,7 @@ type ButtonStoryArgs = {
 }
 
 const GRID_TYPES: ButtonType[] = ['standard', 'icon', 'caption', 'slab', 'action']
-const GRID_VARIANTS: ButtonVariant[] = ['filled', 'outline', 'soft-primary', 'soft-neutral', 'ghost', 'destructive']
+const GRID_VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'tertiary', 'ghost', 'destructive']
 const GRID_SIZES: ButtonSize[] = ['sm', 'md', 'lg']
 
 const TYPE_SUPPORTED_SIZES: Record<ButtonType, ButtonSize[]> = {
@@ -38,11 +38,10 @@ function getCaption(type: ButtonType, caption = 'Caption text') {
 }
 
 function getVariantNote(variant: ButtonVariant) {
-  if (variant === 'filled') return 'Filled primary'
-  if (variant === 'outline') return 'Outline primary'
-  if (variant === 'soft-primary') return 'Soft primary'
-  if (variant === 'soft-neutral') return 'Soft neutral'
-  if (variant === 'ghost') return 'Ghost neutral'
+  if (variant === 'primary') return 'Filled'
+  if (variant === 'secondary') return 'Outline'
+  if (variant === 'tertiary') return 'Tertiary'
+  if (variant === 'ghost') return 'Ghost'
   return 'Destructive'
 }
 
@@ -54,7 +53,7 @@ const meta = {
     label: 'Button',
     caption: 'Caption text',
     type: 'standard',
-    variant: 'filled',
+    variant: 'primary',
     size: 'md',
     disabled: false,
     fullWidth: false,
@@ -71,10 +70,9 @@ const meta = {
       control: {
         type: 'inline-radio',
         labels: {
-          filled: 'filled',
-          outline: 'outline',
-          'soft-primary': 'soft primary',
-          'soft-neutral': 'soft neutral',
+          primary: 'primary',
+          secondary: 'secondary',
+          tertiary: 'tertiary',
           ghost: 'ghost',
           destructive: 'destructive',
         },
@@ -258,7 +256,7 @@ export const Composition: Story = {
           <div class="text-xs uppercase tracking-[0.1em] text-black/45">Primary / Filled</div>
           <UiButton
             type="standard"
-            variant="filled"
+            variant="primary"
             size="md"
             icon-name="line_plus"
             leading-icon-name="line_plus"
@@ -272,7 +270,7 @@ export const Composition: Story = {
           <div class="text-xs uppercase tracking-[0.1em] text-black/45">Secondary / Outline</div>
           <UiButton
             type="standard"
-            variant="outline"
+            variant="secondary"
             size="md"
             icon-name="line_plus"
             leading-icon-name="line_plus"
@@ -283,10 +281,10 @@ export const Composition: Story = {
         </div>
 
         <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Tertiary / Soft Primary</div>
+          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Tertiary</div>
           <UiButton
             type="standard"
-            variant="soft-primary"
+            variant="tertiary"
             size="md"
             icon-name="line_plus"
             leading-icon-name="line_plus"
@@ -296,10 +294,10 @@ export const Composition: Story = {
         </div>
 
         <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Soft / Caption</div>
+          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Ghost / Caption</div>
           <UiButton
             type="caption"
-            variant="soft-neutral"
+            variant="ghost"
             size="md"
             caption="Available balance"
             icon-name="line_plus"

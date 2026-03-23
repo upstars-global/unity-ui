@@ -2,7 +2,7 @@
 import { computed, useAttrs } from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import UiIcon from '../icon/UiIcon.vue'
-import type { UiButtonProps } from './types'
+import type { UiButtonEmits, UiButtonProps, UiButtonSlots } from './types'
 
 defineOptions({
   name: 'UiButton',
@@ -11,7 +11,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<UiButtonProps>(), {
   size: 'md',
-  variant: 'filled',
+  variant: 'primary',
   type: 'standard',
   caption: '',
   disabled: false,
@@ -19,9 +19,8 @@ const props = withDefaults(defineProps<UiButtonProps>(), {
   loading: false
 })
 
-const emit = defineEmits<{
-  click: [event: MouseEvent]
-}>()
+const emit = defineEmits<UiButtonEmits>()
+defineSlots<UiButtonSlots>()
 
 const appConfig = useAppConfig()
 const attrs = useAttrs()
@@ -38,64 +37,53 @@ const flattenClasses = (...tokens: Array<string | undefined | false | null>) => 
 const isStandardType = props.type === 'standard'
 const isCaptionType = props.type === 'caption'
 const isActionType = props.type === 'action'
+const mainIconName = ['icon', 'slab', 'action'].includes(props.type) ? props.iconName : ''
 
-const buttonDisabled = computed(() => props.disabled || props.loading);
-const hasLeadingIcon = computed(() => Boolean(props.leadingIconName))
-const hasTrailingIcon = computed(() => Boolean(props.trailingIconName))
-const showSideSlots = computed(() => isStandardType && !props.loading)
-const showLeadingIcon = computed(() => showSideSlots.value && hasLeadingIcon.value)
-const showTrailingIcon = computed(() => showSideSlots.value && hasTrailingIcon.value)
-const showLabel = computed(() => {
-  if (props.type === 'icon') {
-    return false
-  }
-
-  if (props.loading) {
-    return props.type === 'action' || props.type === 'slab'
-  }
-
-  return true
-})
-const showCaption = computed(() => Boolean(props.caption) && isCaptionType && !props.loading)
-
+const buttonDisabled = computed(() => props.disabled || props.loading)
+const showSideSlots = computed(() => isStandardType)
+const showLeadingIcon = computed(() => showSideSlots.value && Boolean(props.leadingIconName))
+const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.trailingIconName))
+const showLabel = computed(() => props.type !== 'icon')
+const showCaption = computed(() => isCaptionType && Boolean(props.caption))
 
 const supportedSize = computed(() => {
-  const typeConfig = buttonTheme.type[props.type]
+  const sizes = buttonTheme.type[props.type].sizes
 
-  if (typeConfig.sizes[props.size]) {
+  if (sizes[props.size]) {
     return props.size
   }
 
-  return Object.keys(typeConfig.sizes)[0] ?? 'sm'
+  return Object.keys(sizes)[0] ?? 'sm'
 })
-const typeConfig = buttonTheme.type[props.type]
-const sizeConfig = computed(() => typeConfig.sizes[supportedSize.value])
+const typeConfig = computed(() => buttonTheme.type[props.type])
+const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
 const variantConfig = computed(() => buttonTheme.variant[props.variant])
-const variantClasses = computed(() => {
+const variantStateClasses = computed(() => {
   return flattenClasses(
-      variantConfig.value.base,
-      variantConfig.value.hover,
-      variantConfig.value.pressed,
-      variantConfig.value.loading,
+    variantConfig.value.base,
+    variantConfig.value.hover,
+    variantConfig.value.pressed,
   )
 })
 
 const fullWidthClasses = computed(() => {
-  return props.fullWidth && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidth : "";
+  return props.fullWidth && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidth : ''
 })
-const buttonBaseClass = computed(() => {
+const rootClasses = computed(() => {
   return flattenClasses(
-      fullWidthClasses.value,
-      variantConfig.value.disabled
+    variantConfig.value.disabled,
   )
 })
-const className = computed(() => {
-  const variant = isActionType ? '' : `${variantClasses.value} ${sizeConfig.value.container}`
+
+const contentClasses = computed(() => {
+  const variantClasses = isActionType ? '' : variantStateClasses.value
+
   return flattenClasses(
-      buttonTheme.base,
-      typeConfig.base,
-      variant,
-      fullWidthClasses.value,
+    buttonTheme.base,
+    typeConfig.value.base,
+    !isActionType && sizeConfig.value.container,
+    variantClasses,
+    fullWidthClasses.value,
   )
 })
 
@@ -104,7 +92,6 @@ const attributes = computed(() => {
   return rest
 })
 
-
 const leadingIconClasses = computed(() => {
   return flattenClasses(buttonTheme.slots.leadingIcon, sizeConfig.value.icon)
 })
@@ -112,16 +99,29 @@ const trailingIconClasses = computed(() => {
   return flattenClasses(buttonTheme.slots.trailingIcon, sizeConfig.value.icon)
 })
 const mainIconWrapperClasses = computed(() => {
-  const variant = isActionType ? `${variantClasses.value} ${sizeConfig.value.container}` : ''
-  return flattenClasses(buttonTheme.slots.leadingIcon, variant)
+  const variantClasses = isActionType ? variantStateClasses.value : ''
+
+  return flattenClasses(
+    buttonTheme.slots.leadingIcon,
+    isActionType && sizeConfig.value.container,
+    variantClasses,
+  )
 })
 const labelClasses = computed(() => {
-  return `${buttonTheme.slots.label} ${sizeConfig.value.label}`
+  return flattenClasses(buttonTheme.slots.label, sizeConfig.value.label)
 })
-
-const mainIconName = computed(() => {
-  return props.loading ? 'line_loader' :
-      ['icon', 'slab', 'action'].includes(props.type) ? props.iconName: ''
+const loadingOverlayClasses = computed(() => {
+  return flattenClasses(
+    'absolute inset-0',
+    buttonTheme.base,
+    typeConfig.value.base,
+    sizeConfig.value.container,
+    fullWidthClasses.value,
+    variantConfig.value.loading,
+  )
+})
+const loadingIconClasses = computed(() => {
+  return flattenClasses(sizeConfig.value.icon, buttonTheme.animation.loading)
 })
 
 function handleClick(event: MouseEvent) {
@@ -131,14 +131,14 @@ function handleClick(event: MouseEvent) {
 
 <template>
   <button
-      class="ui-button group"
-      :class="buttonBaseClass"
+      class="ui-button group relative transition-colors transition-opacity"
+      :class="[rootClasses, attrs.class, fullWidthClasses]"
       v-bind="attributes"
       :disabled="buttonDisabled"
       :aria-busy="loading || undefined"
       @click="handleClick"
   >
-    <span :class="className">
+    <span :class="contentClasses">
       <slot
           name="leading"
           v-if="showSideSlots"
@@ -179,6 +179,15 @@ function handleClick(event: MouseEvent) {
             :class="trailingIconClasses"
         />
       </slot>
+    </span>
+    <span
+        v-if="loading"
+        :class="loadingOverlayClasses"
+    >
+      <UiIcon
+          name="line_loader"
+          :class="loadingIconClasses"
+      />
     </span>
   </button>
 </template>

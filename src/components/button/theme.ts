@@ -41,124 +41,101 @@ const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
 const DISABLED_OPACITY_SOFT: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-45']
 const DISABLED_OPACITY_STRONG: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-25']
 
-function buildFilledVariant(tokenGroup: 'primary' | 'destructive', disabled: ButtonClassList): ButtonVariantState {
+function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive', disabled: ButtonClassList): ButtonVariantState {
   return {
     base: [
-      '[border-width:var(--component-button-borderwidth-filled)]',
-      'border-transparent',
-      tokenClass(`--component-button-filled-${tokenGroup}-default-bg`, 'bg'),
-      tokenClass(`--component-button-filled-${tokenGroup}-default-fg`, 'text'),
+      tokenClass(`--component-button-${tokenGroup}-default-bg`, 'bg'),
+      tokenClass(`--component-button-${tokenGroup}-default-fg`, 'text'),
+      'group-aria-busy:opacity-0'
+
     ],
     hover: [
-      tokenClass(`--component-button-filled-${tokenGroup}-hover-bg`, 'group-hover:bg'),
-      tokenClass(`--component-button-filled-${tokenGroup}-hover-fg`, 'group-hover:text'),
+      tokenClass(`--component-button-${tokenGroup}-hover-bg`, 'group-hover:bg'),
+      tokenClass(`--component-button-${tokenGroup}-hover-fg`, 'group-hover:text'),
     ],
     pressed: [
-      tokenClass(`--component-button-filled-${tokenGroup}-pressed-bg`, 'group-active:bg'),
-      tokenClass(`--component-button-filled-${tokenGroup}-pressed-fg`, 'group-active:text'),
+      tokenClass(`--component-button-${tokenGroup}-pressed-bg`, 'group-active:bg'),
+      tokenClass(`--component-button-${tokenGroup}-pressed-fg`, 'group-active:text'),
     ],
     loading: [
-      tokenClass(`--component-button-filled-${tokenGroup}-pressed-bg`, 'group-aria-busy:bg'),
-      tokenClass(`--component-button-filled-${tokenGroup}-pressed-fg`, 'group-aria-busy:text'),
+      tokenClass(`--component-button-${tokenGroup}-pressed-bg`, 'group-aria-busy:bg'),
+      tokenClass(`--component-button-${tokenGroup}-pressed-fg`, 'group-aria-busy:text'),
     ],
     disabled,
   }
 }
 
-function buildOutlinePrimaryVariant(): ButtonVariantState {
+function buildSecondaryVariant(): ButtonVariantState {
   return {
     base: [
-      '[border-width:var(--component-button-borderwidth-outline)]',
-      tokenClass('--component-button-outline-primary-default-bordercolor', 'border'),
-      tokenClass('--component-button-outline-primary-default-bg', 'bg'),
-      tokenClass('--component-button-outline-primary-default-fg', 'text'),
+      'border-2',
+      tokenClass('--component-button-secondary-default-bordercolor', 'border'),
+      tokenClass('--component-button-secondary-default-bg', 'bg'),
+      tokenClass('--component-button-secondary-default-fg', 'text'),
+      'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-outline-primary-hover-bordercolor', 'group-hover:border'),
-      tokenClass('--component-button-outline-primary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-outline-primary-hover-fg', 'group-hover:text'),
+      tokenClass('--component-button-secondary-hover-bordercolor', 'group-hover:border'),
+      tokenClass('--component-button-secondary-hover-bg', 'group-hover:bg'),
+      tokenClass('--component-button-secondary-hover-fg', 'group-hover:text'),
     ],
     pressed: [
-      tokenClass('--component-button-outline-primary-pressed-bordercolor', 'group-active:border'),
-      tokenClass('--component-button-outline-primary-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-outline-primary-pressed-fg', 'group-active:text'),
+      tokenClass('--component-button-secondary-pressed-bordercolor', 'group-active:border'),
+      tokenClass('--component-button-secondary-pressed-bg', 'group-active:bg'),
+      tokenClass('--component-button-secondary-pressed-fg', 'group-active:text'),
     ],
     loading: [
-      tokenClass('--component-button-outline-primary-pressed-bordercolor', 'group-aria-busy:border'),
-      tokenClass('--component-button-outline-primary-pressed-bg', 'group-aria-busy:bg'),
-      tokenClass('--component-button-outline-primary-pressed-fg', 'group-aria-busy:text'),
+      'border-2',
+      tokenClass('--component-button-secondary-pressed-bordercolor', 'group-aria-busy:border'),
+      tokenClass('--component-button-secondary-pressed-bg', 'group-aria-busy:bg'),
+      tokenClass('--component-button-secondary-default-fg', 'group-aria-busy:text'),
     ],
     disabled: DISABLED_OPACITY_SOFT,
   }
 }
 
-function buildSoftPrimaryVariant(): ButtonVariantState {
+function buildTertiaryVariant(): ButtonVariantState {
   return {
     base: [
-      '[border-width:var(--component-button-borderwidth-soft)]',
       'border-transparent',
-      tokenClass('--component-button-soft-primary-default-bg', 'bg'),
-      tokenClass('--component-button-basic-primary-default-fg', 'text'),
+      tokenClass('--component-button-tertiary-default-bg', 'bg'),
+      tokenClass('--component-button-tertiary-default-fg', 'text'),
+      'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-soft-primary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-basic-primary-hover-fg', 'group-hover:text'),
+      tokenClass('--component-button-tertiary-hover-bg', 'group-hover:bg'),
+      tokenClass('--component-button-tertiary-hover-fg', 'group-hover:text'),
     ],
     pressed: [
-      tokenClass('--component-button-soft-primary-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-basic-primary-pressed-fg', 'group-active:text'),
+      tokenClass('--component-button-tertiary-pressed-bg', 'group-active:bg'),
+      tokenClass('--component-button-tertiary-pressed-fg', 'group-active:text'),
     ],
     loading: [
-      tokenClass('--component-button-soft-primary-pressed-bg', 'group-aria-busy:bg'),
-      tokenClass('--component-button-basic-primary-pressed-fg', 'group-aria-busy:text'),
+      tokenClass('--component-button-tertiary-pressed-bg', 'group-aria-busy:bg'),
+      tokenClass('--component-button-tertiary-pressed-fg', 'group-aria-busy:text'),
     ],
     disabled: DISABLED_OPACITY_SOFT,
   }
 }
 
-function buildSoftNeutralVariant(): ButtonVariantState {
+function buildGhostVariant(): ButtonVariantState {
   return {
     base: [
-      '[border-width:var(--component-button-borderwidth-soft)]',
-      'border-transparent',
-      tokenClass('--component-button-soft-neutral-default-bg', 'bg'),
-      tokenClass('--component-button-basic-neutral-default-fg', 'text'),
+      tokenClass('--component-button-ghost-default-bg', 'bg'),
+      tokenClass('--component-button-ghost-default-fg', 'text'),
+      'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-soft-neutral-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-basic-neutral-hover-fg', 'group-hover:text'),
+      tokenClass('--component-button-ghost-hover-bg', 'group-hover:bg'),
+      tokenClass('--component-button-ghost-hover-fg', 'group-hover:text'),
     ],
     pressed: [
-      tokenClass('--component-button-soft-neutral-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-basic-neutral-pressed-fg', 'group-active:text'),
+      tokenClass('--component-button-ghost-pressed-bg', 'group-active:bg'),
+      tokenClass('--component-button-ghost-pressed-fg', 'group-active:text'),
     ],
     loading: [
-      tokenClass('--component-button-soft-neutral-pressed-bg', 'group-aria-busy:bg'),
-      tokenClass('--component-button-basic-neutral-pressed-fg', 'group-aria-busy:text'),
-    ],
-    disabled: DISABLED_OPACITY_SOFT,
-  }
-}
-
-function buildGhostNeutralVariant(): ButtonVariantState {
-  return {
-    base: [
-      '[border-width:var(--component-button-borderwidth-filled)]',
-      'border-transparent',
-      tokenClass('--component-button-ghost-neutral-default-bg', 'bg'),
-      tokenClass('--component-button-basic-neutral-default-fg', 'text'),
-    ],
-    hover: [
-      tokenClass('--component-button-ghost-neutral-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-basic-neutral-hover-fg', 'group-hover:text'),
-    ],
-    pressed: [
-      tokenClass('--component-button-ghost-neutral-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-basic-neutral-pressed-fg', 'group-active:text'),
-    ],
-    loading: [
-      tokenClass('--component-button-ghost-neutral-pressed-bg', 'group-aria-busy:bg'),
-      tokenClass('--component-button-basic-neutral-pressed-fg', 'group-aria-busy:text'),
+      tokenClass('--component-button-ghost-pressed-bg', 'group-aria-busy:bg'),
+      tokenClass('--component-button-ghost-pressed-fg', 'group-aria-busy:text'),
     ],
     disabled: DISABLED_OPACITY_SOFT,
   }
@@ -175,7 +152,7 @@ const button = {
             tokenClass('--component-button-minwidth-standard-sm', 'min-w'),
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
-            tokenClass('--component-button-radius-standard-sm', 'rounded'),
+            tokenClass('--radius-button-sm', 'rounded'),
             tokenClass('--component-button-padding-x-standard-sm', 'px'),
             tokenClass('--component-button-padding-y-standard-sm', 'py'),
           ],
@@ -187,7 +164,7 @@ const button = {
             tokenClass('--component-button-minwidth-standard-md', 'min-w'),
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
-            tokenClass('--component-button-radius-standard-md', 'rounded'),
+            tokenClass('--radius-button-md', 'rounded'),
             tokenClass('--component-button-padding-x-standard-md', 'px'),
             tokenClass('--component-button-padding-y-standard-md', 'py'),
           ],
@@ -199,7 +176,7 @@ const button = {
             tokenClass('--component-button-minwidth-standard-lg', 'min-w'),
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
-            tokenClass('--component-button-radius-standard-lg', 'rounded'),
+            tokenClass('--radius-button-lg', 'rounded'),
             tokenClass('--component-button-padding-x-standard-lg', 'px'),
             tokenClass('--component-button-padding-y-standard-lg', 'py'),
           ],
@@ -214,21 +191,21 @@ const button = {
         sm: {
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
-            tokenClass('--component-button-radius-icon-sm', 'rounded'),
+            tokenClass('--radius-button-sm', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.sm,
         },
         md: {
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
-            tokenClass('--component-button-radius-icon-md', 'rounded'),
+            tokenClass('--radius-button-md', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.md,
         },
         lg: {
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
-            tokenClass('--component-button-radius-icon-lg', 'rounded'),
+            tokenClass('--radius-button-lg', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.lg,
         },
@@ -241,7 +218,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-sm', 'h'),
             tokenClass('--component-button-gap-caption-sm', 'gap'),
-            tokenClass('--component-button-radius-caption-sm', 'rounded'),
+            tokenClass('--radius-button-sm', 'rounded'),
             tokenClass('--component-button-padding-x-caption-sm', 'px'),
             tokenClass('--component-button-padding-y-caption-sm', 'py'),
           ],
@@ -252,7 +229,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-md', 'h'),
             tokenClass('--component-button-gap-caption-md', 'gap'),
-            tokenClass('--component-button-radius-caption-md', 'rounded'),
+            tokenClass('--radius-button-md', 'rounded'),
             tokenClass('--component-button-padding-x-caption-md', 'px'),
             tokenClass('--component-button-padding-y-caption-md', 'py'),
           ],
@@ -263,7 +240,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
-            tokenClass('--component-button-radius-caption-lg', 'rounded'),
+            tokenClass('--radius-button-lg', 'rounded'),
             tokenClass('--component-button-padding-x-caption-lg', 'px'),
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
@@ -281,7 +258,7 @@ const button = {
             tokenClass('--component-button-maxwidth-slab-sm', 'max-w'),
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),
-            tokenClass('--component-button-radius-slab-sm', 'rounded'),
+            tokenClass('--radius-button-md', 'rounded'),
             tokenClass('--component-button-padding-x-slab-sm', 'px'),
             tokenClass('--component-button-padding-y-slab-sm', 'py'),
           ],
@@ -296,7 +273,6 @@ const button = {
         'items-center',
         'justify-center',
         'text-center',
-        tokenClass('--component-button-action-label-fg', 'text'),
         tokenClass('--component-button-gap-action-sm', 'gap'),
       ],
       sizes: {
@@ -305,7 +281,7 @@ const button = {
             'flex justify-center items-center',
             tokenClass('--component-button-width-action-sm', 'w'),
             tokenClass('--component-button-height-action-sm', 'h'),
-            tokenClass('--component-button-radius-action-sm', 'rounded'),
+            tokenClass('--radius-button-md', 'rounded'),
           ],
           icon: ['w-6'],
           label: ['text-button-caption', ...LABEL_BASE],
@@ -314,12 +290,11 @@ const button = {
     },
   },
   variant: {
-    filled: buildFilledVariant('primary', DISABLED_OPACITY_STRONG),
-    outline: buildOutlinePrimaryVariant(),
-    'soft-primary': buildSoftPrimaryVariant(),
-    'soft-neutral': buildSoftNeutralVariant(),
-    ghost: buildGhostNeutralVariant(),
-    destructive: buildFilledVariant('destructive', DISABLED_OPACITY_STRONG),
+    primary: buildPrimaryOrDestructiveVariant('primary', DISABLED_OPACITY_STRONG),
+    secondary: buildSecondaryVariant(),
+    tertiary: buildTertiaryVariant(),
+    ghost: buildGhostVariant(),
+    destructive: buildPrimaryOrDestructiveVariant('destructive', DISABLED_OPACITY_STRONG),
   },
   states: {
     fullWidth: ['w-full'],
@@ -329,6 +304,9 @@ const button = {
     trailingIcon: SLOT_ICON_BASE,
     label: LABEL_BASE,
   },
+  animation: {
+    loading: 'animate-spin',
+  }
 } as const
 
 export type ButtonUiOptimized = typeof button

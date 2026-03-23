@@ -27,11 +27,11 @@ const preset: Partial<Config> = {
         },
         borderRadius: {
             0: '0',
-            1: 'var(--radius-1)',
-            2: 'var(--radius-2)',
-            3: 'var(--radius-3)',
             4: 'var(--radius-4)',
-            6: 'var(--radius-6)',
+            8: 'var(--radius-8)',
+            12: 'var(--radius-12)',
+            16: 'var(--radius-16)',
+            24: 'var(--radius-24)',
         },
         borderWidth: {
             0: '0px',

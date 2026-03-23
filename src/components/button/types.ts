@@ -1,7 +1,7 @@
 import type { UiThemeIconName } from '../../themes/registry';
 
 export const BUTTON_TYPES = ['standard', 'icon', 'caption', 'slab', 'action'] as const;
-export const BUTTON_VARIANTS = ['filled', 'outline', 'soft-primary', 'soft-neutral', 'ghost', 'destructive'] as const;
+export const BUTTON_VARIANTS = ['primary', 'secondary', 'tertiary', 'ghost', 'destructive'] as const;
 export const BUTTON_SIZES = ['sm', 'md', 'lg'] as const;
 
 export type ButtonType = (typeof BUTTON_TYPES)[number];
@@ -19,4 +19,14 @@ export interface UiButtonProps {
   iconName?: UiThemeIconName;
   leadingIconName?: UiThemeIconName;
   trailingIconName?: UiThemeIconName;
+}
+
+export interface UiButtonEmits {
+  (event: 'click', value: MouseEvent): void
+}
+
+export interface UiButtonSlots {
+  default?: () => unknown
+  leading?: () => unknown
+  trailing?: () => unknown
 }
