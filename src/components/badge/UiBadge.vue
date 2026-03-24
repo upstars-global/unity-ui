@@ -23,15 +23,12 @@ defineSlots<UiBadgeSlots>()
 
 const appConfig = useAppConfig()
 const attrs = useAttrs()
-const slots = useSlots()
 const badgeTheme = appConfig.components?.badge
 
 if (!badgeTheme) {
   throw new Error('[UnityUI] Badge theme is not provided in appConfig.components.badge.')
 }
 
-const hasDefaultSlot = computed(() => Boolean(slots.default))
-const normalizedLabel = computed(() => props.label.toUpperCase())
 const normalizedVariant = computed<BadgeVariant>(() => props.variant ?? BADGE_DEFAULT_VARIANT)
 const sizeConfig = computed(() => badgeTheme.size.default)
 const rootClasses = computed(() => {
@@ -58,10 +55,9 @@ const attributes = computed(() => {
       v-bind="attributes"
   >
     <span :class="labelClasses">
-      <slot v-if="hasDefaultSlot" />
-      <template v-else>
-        {{ normalizedLabel }}
-      </template>
+      <slot>
+        {{ label }}
+      </slot>
     </span>
   </span>
 </template>
