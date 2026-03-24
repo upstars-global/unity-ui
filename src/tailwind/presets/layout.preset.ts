@@ -25,14 +25,6 @@ const preset: Partial<Config> = {
                 '3xl': '104rem',
             },
         },
-        borderRadius: {
-            0: '0',
-            4: 'var(--radius-4)',
-            8: 'var(--radius-8)',
-            12: 'var(--radius-12)',
-            16: 'var(--radius-16)',
-            24: 'var(--radius-24)',
-        },
         borderWidth: {
             0: '0px',
             DEFAULT: '1px',
@@ -77,6 +69,14 @@ const preset: Partial<Config> = {
                 84: "21rem",
                 120: "30rem",
                 auto: "auto",
+            },
+            borderRadius: {
+                0: '0',
+                4: 'var(--radius-4)',
+                8: 'var(--radius-8)',
+                12: 'var(--radius-12)',
+                16: 'var(--radius-16)',
+                24: 'var(--radius-24)',
             },
             maxWidth: {
                 layout: "var(--main-layout-width)",

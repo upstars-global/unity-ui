@@ -329,6 +329,18 @@ function buildArbitraryUtilityClass(utilityBase, resolvedValue) {
     return `${utilityBase}-[${normalizeArbitraryValue(resolvedValue.value)}]`
 }
 
+function getRadiusKey(resolvedValue, radiusValueToKey) {
+    if (resolvedValue.kind === 'var') {
+        return resolvedValue.value === '--radius-full' ? 'full' : null
+    }
+
+    if (resolvedValue.value === '100%') {
+        return 'full'
+    }
+
+    return radiusValueToKey.get(resolvedValue.value) ?? null
+}
+
 function buildColorClass(utilityBase, resolvedValue, presetVars) {
     const preferredPresetVar = resolvedValue.presetVar ?? (resolvedValue.kind === 'var' ? resolvedValue.value : null)
     const opacitySourceVar = resolvedValue.lastVar ?? preferredPresetVar
@@ -364,20 +376,15 @@ function buildColorClass(utilityBase, resolvedValue, presetVars) {
 
 function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey) {
     const normalizedUtility = getNormalizedUtility(utilityBase)
-    const value = resolvedValue.value
-
-    if (resolvedValue.kind !== 'literal') {
-        return buildArbitraryUtilityClass(utilityBase, resolvedValue)
-    }
 
     if (normalizedUtility.startsWith('rounded')) {
-        const radiusKey = radiusValueToKey.get(value)
+        const radiusKey = getRadiusKey(resolvedValue, radiusValueToKey)
 
         if (radiusKey) {
             return radiusKey === 'DEFAULT' ? utilityBase : `${utilityBase}-${radiusKey}`
         }
-    } else {
-        const spacingKey = spacingValueToKey.get(value)
+    } else if (resolvedValue.kind === 'literal') {
+        const spacingKey = spacingValueToKey.get(resolvedValue.value)
 
         if (spacingKey) {
             return `${utilityBase}-${spacingKey}`
@@ -453,11 +460,11 @@ function transformClassString(classString, definitions, presetVars, spacingValue
         .replace(/((?:[!@%\w:-]+:)*rounded(?:-[trbl]{1,2})?)-\[var\((--[a-z0-9-]+)\)\]/gi, (classToken, utilityBase, cssVarName) => {
             const resolvedValue = resolveCssValue(cssVarName, definitions, presetVars)
 
-            if (!resolvedValue?.value || resolvedValue.kind !== 'literal') {
+            if (!resolvedValue?.value) {
                 return classToken
             }
 
-            const radiusKey = radiusValueToKey.get(resolvedValue.value)
+            const radiusKey = getRadiusKey(resolvedValue, radiusValueToKey)
             return radiusKey ? `${utilityBase}-${radiusKey}` : classToken
         })
         .replace(/\s+/g, ' ')
