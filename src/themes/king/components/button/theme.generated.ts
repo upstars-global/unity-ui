@@ -86,8 +86,8 @@ const button = {
         "primary": {
             "base": "bg-primary-300 text-white group-aria-busy:opacity-0",
             "hover": "group-hover:bg-primary-200 group-hover:text-[233_234_255]",
-            "pressed": "group-active:bg-[0_0_160] group-active:text-[233_234_255]",
-            "loading": "group-aria-busy:bg-[0_0_160] group-aria-busy:text-[233_234_255]",
+            "pressed": "group-active:bg-primary-400 group-active:text-[233_234_255]",
+            "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-[233_234_255]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
@@ -113,9 +113,9 @@ const button = {
         },
         "destructive": {
             "base": "bg-error-100 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-error-100/80 group-hover:text-[248_247_250]",
-            "pressed": "group-active:bg-error-100 group-active:text-[248_247_250]",
-            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-[248_247_250]",
+            "hover": "group-hover:bg-error-100/80 group-hover:text-neutral-50",
+            "pressed": "group-active:bg-error-100 group-active:text-neutral-50",
+            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-neutral-50",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         }
     },
