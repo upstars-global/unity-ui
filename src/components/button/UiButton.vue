@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
+import { flattenClasses } from '../../helpers/flattenClasses'
 import UiIcon from '../icon/UiIcon.vue'
 import type { UiButtonEmits, UiButtonProps, UiButtonSlots } from './types'
 
@@ -28,10 +29,6 @@ const buttonTheme = appConfig.components?.button
 
 if (!buttonTheme) {
   throw new Error('[UnityUI] Button theme is not provided in appConfig.components.button.')
-}
-
-const flattenClasses = (...tokens: Array<string | undefined | false | null>) => {
-  return tokens.filter(Boolean).join(' ')
 }
 
 const isStandardType = props.type === 'standard'

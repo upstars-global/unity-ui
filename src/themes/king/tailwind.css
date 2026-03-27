@@ -1,8 +1,0 @@
-@import "style/base/spacing.css";
-@import "style/base/colors.css";
-@import "style/base/typography.css";
-@import "../../tailwind/base/typography-elements.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

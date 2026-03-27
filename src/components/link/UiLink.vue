@@ -2,6 +2,7 @@
 import { computed, resolveComponent, useAttrs } from 'vue'
 import type {UiLinkEmits, UiLinkProps, UiLinkSlots} from "./types.ts";
 import { useAppConfig } from '../../composables/useAppConfig'
+import { flattenClasses } from '../../helpers/flattenClasses'
 import { isExternalUrl } from "../../helpers/externalUrl.ts";
 
 const VUE_ROUTER_LINK_TAG = 'RouterLink'
@@ -26,10 +27,6 @@ const linkTheme = appConfig.components?.link
 
 if (!linkTheme) {
   throw new Error('[UnityUI] Link theme is not provided in appConfig.components.link.')
-}
-
-const flattenClasses = (...tokens: Array<string | undefined | false | null>) => {
-  return tokens.filter(Boolean).join(' ')
 }
 
 const isBelongsToCurrentDomain = computed(() => {

@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/vue3-vite'
 import { provide } from 'vue'
 import './css/tailwind.css'
 import '../src/themes/alpa/style/tailwind.css'
-import '../src/themes/king/tailwind.css'
+import '../src/themes/king/style/tailwind.css'
 import { AppConfigSymbol } from '../src/composables/useAppConfig'
 import { getThemeConfig } from '../src/themes/registry'
 
