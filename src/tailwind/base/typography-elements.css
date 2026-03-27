@@ -11,18 +11,17 @@
 
     a, .text-link {
         @apply underline decoration-solid;
-        @apply transition-colors;
-        color: var(--content-text-link-default);
+        @apply transition-colors text-fg-link-default;
         text-decoration-skip-ink: auto;
-        text-decoration-color: var(--content-text-link-underline);
+        text-decoration-color: var(--fg-link-underline-default);
         text-underline-position: from-font;
         text-decoration-thickness: .15em;
         text-underline-offset: .2em;
     }
 
     a:hover, .text-link:hover {
-        color: var(--content-text-link-hover);
-        text-decoration-color: var(--content-text-link-hover);
+        @apply text-fg-link-hover;
+        text-decoration-color: var(--fg-link-hover);
     }
 
     b, strong {

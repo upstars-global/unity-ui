@@ -25,10 +25,20 @@ const preset: Partial<Config> = {
                 '3xl': '104rem',
             },
         },
-        extend: {
-            spacing: {
-                '18': '4.5rem',
-            },
+        borderRadius: {
+            0: '0',
+            4: 'var(--radius-4)',
+            8: 'var(--radius-8)',
+            12: 'var(--radius-12)',
+            16: 'var(--radius-16)',
+            24: 'var(--radius-24)',
+        },
+        borderWidth: {
+            0: '0px',
+            DEFAULT: '1px',
+            2: '0.125rem',
+            4: '0.25rem',
+            8: '0.5rem',
         },
         extend: {
             content: {
@@ -60,6 +70,7 @@ const preset: Partial<Config> = {
                 inherit: "inherit",
             },
             spacing: {
+                18: '4.5rem',
                 27: "6.75rem",
                 27.5: "6.875rem",
                 30: "7.5rem",
@@ -70,6 +81,9 @@ const preset: Partial<Config> = {
             maxWidth: {
                 layout: "var(--main-layout-width)",
             },
+            opacity: {
+                '80': '.80',
+            }
         },
     },
 }
