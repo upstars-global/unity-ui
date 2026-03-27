@@ -25,18 +25,19 @@ const BUTTON_LABEL_TEXT_BY_SIZE: Record<ButtonSize, string> = {
 
 const STANDARD_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
   sm: ['!w-4', '!h-4'],
-  md: ['!w-6', '!h-6'],
-  lg: ['!w-6', '!h-6'],
+  md: [],
+  lg: [],
 }
 
 const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
-  sm: ['!w-4'],
+  sm: ['!w-4', '!h-4'],
   md: ['w-6'],
   lg: ['w-6'],
 }
 
 const BUTTON_BASE: ButtonClassList = ['flex']
 const LABEL_BASE: ButtonClassList = ['truncate']
+const CAPTION_BASE: ButtonClassList = ['text-button-caption', ...LABEL_BASE, 'opacity-85']
 const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
 const DISABLED_OPACITY_SOFT: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-45']
 const DISABLED_OPACITY_STRONG: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-25']
@@ -223,7 +224,7 @@ const button = {
             tokenClass('--component-button-padding-y-caption-sm', 'py'),
           ],
           label: [BUTTON_LABEL_TEXT_BY_SIZE.sm, ...LABEL_BASE],
-          caption: ['text-button-caption', ...LABEL_BASE],
+          caption: CAPTION_BASE,
         },
         md: {
           container: [
@@ -234,7 +235,7 @@ const button = {
             tokenClass('--component-button-padding-y-caption-md', 'py'),
           ],
           label: [BUTTON_LABEL_TEXT_BY_SIZE.md, ...LABEL_BASE],
-          caption: ['text-button-caption', ...LABEL_BASE],
+          caption: CAPTION_BASE,
         },
         lg: {
           container: [
@@ -245,7 +246,7 @@ const button = {
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
           label: [BUTTON_LABEL_TEXT_BY_SIZE.lg, ...LABEL_BASE],
-          caption: ['text-button-caption', ...LABEL_BASE],
+          caption: CAPTION_BASE,
         },
       } satisfies ButtonTypeSizeMap,
     },
