@@ -9,17 +9,17 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "min-w-16 h-8 gap-1 rounded-8 px-2 py-1",
-                    "icon": "!w-6 !h-6",
+                    "icon": "!w-4 !h-4",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
                     "container": "min-w-24 h-10 gap-1 rounded-12 px-2 py-2",
-                    "icon": "!w-6 !h-6",
+                    "icon": "",
                     "label": "text-button-md truncate"
                 },
                 "lg": {
                     "container": "min-w-24 h-12 gap-2 rounded-16 px-3.5 py-3",
-                    "icon": "!w-6 !h-6",
+                    "icon": "",
                     "label": "text-button-lg truncate"
                 }
             }
@@ -29,7 +29,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "h-8 rounded-8",
-                    "icon": "w-4"
+                    "icon": "!w-4 !h-4"
                 },
                 "md": {
                     "container": "h-10 rounded-12",
@@ -47,17 +47,17 @@ const button = {
                 "sm": {
                     "container": "h-12 gap-0.5 rounded-8 px-4 py-1",
                     "label": "text-button-sm truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 },
                 "md": {
                     "container": "h-14 gap-1 rounded-12 px-6 py-1",
                     "label": "text-button-md truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 },
                 "lg": {
                     "container": "h-16 gap-1 rounded-16 px-6 py-1",
                     "label": "text-button-lg truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 }
             }
         },
@@ -85,14 +85,14 @@ const button = {
     "variant": {
         "primary": {
             "base": "bg-primary-300 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-primary-200 group-hover:text-[233_234_255]",
-            "pressed": "group-active:bg-primary-400 group-active:text-[233_234_255]",
-            "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-[233_234_255]",
+            "hover": "group-hover:bg-primary-200 group-hover:text-primary-50",
+            "pressed": "group-active:bg-primary-400 group-active:text-primary-50",
+            "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-primary-50",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
-            "base": "border-2 border-primary-200/40 bg-[rgb(233_234_255_/_0.4)] text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:border-primary-200 group-hover:bg-[rgb(233_234_255_/_0.4)] group-hover:text-primary-300",
+            "base": "border-2 border-primary-200/40 bg-primary-50/40 text-primary-300 group-aria-busy:opacity-0",
+            "hover": "group-hover:border-primary-200 group-hover:bg-primary-50/40 group-hover:text-primary-300",
             "pressed": "group-active:border-primary-300 group-active:bg-primary-100/40 group-active:text-primary-300",
             "loading": "border-2 group-aria-busy:border-primary-300 group-aria-busy:bg-primary-100/40 group-aria-busy:text-primary-300",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
@@ -113,9 +113,9 @@ const button = {
         },
         "destructive": {
             "base": "bg-error-100 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-error-100/80 group-hover:text-neutral-50",
-            "pressed": "group-active:bg-error-100 group-active:text-neutral-50",
-            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-neutral-50",
+            "hover": "group-hover:bg-error-100/80 group-hover:text-[248_247_250]",
+            "pressed": "group-active:bg-error-100 group-active:text-[248_247_250]",
+            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-[248_247_250]",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         }
     },

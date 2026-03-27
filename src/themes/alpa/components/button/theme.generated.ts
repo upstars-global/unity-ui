@@ -9,17 +9,17 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "min-w-16 h-8 gap-1 rounded-8 px-2 py-1",
-                    "icon": "!w-6 !h-6",
+                    "icon": "!w-4 !h-4",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
                     "container": "min-w-24 h-10 gap-1 rounded-12 px-2 py-2",
-                    "icon": "!w-6 !h-6",
+                    "icon": "",
                     "label": "text-button-md truncate"
                 },
                 "lg": {
                     "container": "min-w-24 h-12 gap-2 rounded-16 px-3.5 py-3",
-                    "icon": "!w-6 !h-6",
+                    "icon": "",
                     "label": "text-button-lg truncate"
                 }
             }
@@ -29,7 +29,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "h-8 rounded-8",
-                    "icon": "w-4"
+                    "icon": "!w-4 !h-4"
                 },
                 "md": {
                     "container": "h-10 rounded-12",
@@ -47,17 +47,17 @@ const button = {
                 "sm": {
                     "container": "h-12 gap-0.5 rounded-8 px-4 py-1",
                     "label": "text-button-sm truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 },
                 "md": {
                     "container": "h-14 gap-1 rounded-12 px-6 py-1",
                     "label": "text-button-md truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 },
                 "lg": {
                     "container": "h-16 gap-1 rounded-16 px-6 py-1",
                     "label": "text-button-lg truncate",
-                    "caption": "text-button-caption truncate"
+                    "caption": "text-button-caption truncate opacity-85"
                 }
             }
         },
