@@ -61,11 +61,10 @@ export const globalTypes = {
     productTheme: {
         name: 'Theme',
         description: 'Product theme',
-        defaultValue: 'default',
+        defaultValue: 'alpa',
         toolbar: {
             icon: 'paintbrush',
             items: [
-                { value: 'default', title: 'Storybook default' },
                 { value: 'alpa', title: 'Alpa' },
                 { value: 'king', title: 'King' },
             ],
