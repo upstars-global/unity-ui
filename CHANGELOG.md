@@ -1,3 +1,30 @@
+## [1.6.0](https://github.com/upstars-global/unity-ui/compare/v1.5.0...v1.6.0) (2026-03-27)
+
+### 🚀 Features
+
+* UN-2547 Create reusable Badges component
+ ([c1f757c](https://github.com/upstars-global/unity-ui/commit/c1f757cdd338eecbbd7705a34c3f1ce9903c111d))
+
+
+* UN-2547 Create reusable Badges component
+ ([2697eaf](https://github.com/upstars-global/unity-ui/commit/2697eaf171dd4d4b57c907377c71e3e622a5533b))
+
+
+* UN-2547 Create reusable Badges component
+ ([ed073ba](https://github.com/upstars-global/unity-ui/commit/ed073ba8a14ad1c8ca7aa9a68da442e5cd2599c8))
+
+
+* UN-2547 Create reusable Badges component
+ ([54ad060](https://github.com/upstars-global/unity-ui/commit/54ad060c77de8d1e029a84effaf3e67e82c12569))
+
+
+* UN-2547 Create reusable Badges component
+ ([9cc1af7](https://github.com/upstars-global/unity-ui/commit/9cc1af7cd4efa1a3fd846fa244ef48966b7e07a8))
+
+
+* UN-2547 Create reusable Badges component
+ ([b743307](https://github.com/upstars-global/unity-ui/commit/b7433071b09027800b63e396fc663af1024aa2de))
+
 ## [1.5.0](https://github.com/upstars-global/unity-ui/compare/v1.4.0...v1.5.0) (2026-03-27)
 
 ### 🚀 Features
