@@ -30,7 +30,7 @@ const STANDARD_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
 }
 
 const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
-  sm: ['w-4'],
+  sm: ['!w-4'],
   md: ['w-6'],
   lg: ['w-6'],
 }
