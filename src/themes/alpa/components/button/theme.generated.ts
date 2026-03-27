@@ -9,7 +9,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "min-w-16 h-8 gap-1 rounded-8 px-2 py-1",
-                    "icon": "!w-6 !h-6",
+                    "icon": "!w-4 !h-4",
                     "label": "text-button-sm truncate"
                 },
                 "md": {

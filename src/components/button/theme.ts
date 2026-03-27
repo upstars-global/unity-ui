@@ -24,7 +24,7 @@ const BUTTON_LABEL_TEXT_BY_SIZE: Record<ButtonSize, string> = {
 }
 
 const STANDARD_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
-  sm: ['!w-6', '!h-6'],
+  sm: ['!w-4', '!h-4'],
   md: ['!w-6', '!h-6'],
   lg: ['!w-6', '!h-6'],
 }

@@ -9,7 +9,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "min-w-16 h-8 gap-1 rounded-8 px-2 py-1",
-                    "icon": "!w-6 !h-6",
+                    "icon": "!w-4 !h-4",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
@@ -85,14 +85,14 @@ const button = {
     "variant": {
         "primary": {
             "base": "bg-primary-300 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-primary-200 group-hover:text-[233_234_255]",
-            "pressed": "group-active:bg-[0_0_160] group-active:text-[233_234_255]",
-            "loading": "group-aria-busy:bg-[0_0_160] group-aria-busy:text-[233_234_255]",
+            "hover": "group-hover:bg-primary-200 group-hover:text-primary-50",
+            "pressed": "group-active:bg-primary-400 group-active:text-primary-50",
+            "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-primary-50",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
-            "base": "border-2 border-primary-200/40 bg-[rgb(233_234_255_/_0.4)] text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:border-primary-200 group-hover:bg-[rgb(233_234_255_/_0.4)] group-hover:text-primary-300",
+            "base": "border-2 border-primary-200/40 bg-primary-50/40 text-primary-300 group-aria-busy:opacity-0",
+            "hover": "group-hover:border-primary-200 group-hover:bg-primary-50/40 group-hover:text-primary-300",
             "pressed": "group-active:border-primary-300 group-active:bg-primary-100/40 group-active:text-primary-300",
             "loading": "border-2 group-aria-busy:border-primary-300 group-aria-busy:bg-primary-100/40 group-aria-busy:text-primary-300",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
