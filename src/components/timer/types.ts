@@ -1,7 +1,7 @@
 import type { Dayjs } from 'dayjs'
 
 export const TIMER_VARIANTS = ['filled', 'ghost'] as const
-export const TIMER_PHASES = ['start', 'finish', 'threshold', 'over'] as const
+export const TIMER_PHASES = ['start', 'finish', 'over'] as const
 
 export type TimerVariant = (typeof TIMER_VARIANTS)[number]
 export type TimerPhase = (typeof TIMER_PHASES)[number]
@@ -26,7 +26,6 @@ export interface UiTimerExpiredConfig {
 export interface UiTimerConfig {
   startAt?: UiTimerConfigValue
   finishAt: UiTimerConfigValue
-  thresholdAt?: UiTimerConfigValue
   expired: UiTimerExpiredConfig
 }
 

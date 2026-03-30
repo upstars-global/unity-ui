@@ -23,7 +23,6 @@ const button = {
     "state": {
         "start": "bg-[rgb(var(--color-primary-300))]",
         "finish": "bg-[rgb(var(--color-success-100))]",
-        "threshold": "bg-[rgb(var(--color-error-100))]",
         "over": "bg-[rgb(var(--color-error-100))]"
     },
     "slots": {

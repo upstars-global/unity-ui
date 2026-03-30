@@ -10,14 +10,11 @@ dayjs.extend(utc)
 type TimerStoryArgs = {
   startLabel: string
   finishLabel: string
-  finishThresholdLabel: string
   expiredLabel: string
   labels: UiTimerLabels
   enableStartAt: boolean
-  enableThresholdAt: boolean
   startAt?: number
   finishAt: number
-  thresholdAt?: number
 }
 
 function createTimerValue(offsetMs: number) {
@@ -35,7 +32,6 @@ const meta = {
   args: {
     startLabel: 'Starts in:',
     finishLabel: 'Finishes in:',
-    finishThresholdLabel: 'Last chance:',
     expiredLabel: 'Event is over',
     labels: {
       d: 'd',
@@ -44,10 +40,8 @@ const meta = {
       s: 's',
     },
     enableStartAt: true,
-    enableThresholdAt: true,
     startAt: toTimestamp(createTimerValue(6 * 60 * 60 * 1000)),
     finishAt: toTimestamp(createTimerValue((24 * 60 * 60 * 1000) + (23 * 60 * 60 * 1000))),
-    thresholdAt: toTimestamp(createTimerValue(2 * 60 * 60 * 1000)),
   },
   argTypes: {
     config: {
@@ -68,11 +62,6 @@ const meta = {
       description: 'Main label shown while timer counts down to finishAt.',
       table: { category: 'Labels' },
     },
-    finishThresholdLabel: {
-      control: 'text',
-      description: 'Label shown after thresholdAt is reached and until finishAt expires.',
-      table: { category: 'Labels' },
-    },
     expiredLabel: {
       control: 'text',
       description: 'Text shown after finishAt has passed.',
@@ -83,11 +72,6 @@ const meta = {
       description: 'Quickly enable or disable startAt to test cases without a start phase.',
       table: { category: 'Timeline' },
     },
-    enableThresholdAt: {
-      control: 'boolean',
-      description: 'Quickly enable or disable thresholdAt to test cases without a threshold phase.',
-      table: { category: 'Timeline' },
-    },
     startAt: {
       control: 'date',
       description: 'Optional start date. Before this moment the timer uses the start label and yellow marker.',
@@ -95,12 +79,7 @@ const meta = {
     },
     finishAt: {
       control: 'date',
-      description: 'Required finish date. Until thresholdAt it uses the finish label and green marker.',
-      table: { category: 'Timeline' },
-    },
-    thresholdAt: {
-      control: 'date',
-      description: 'Optional threshold date. From this moment until finishAt the timer switches to red marker and threshold label.',
+      description: 'Required finish date. Until this moment the timer uses the finish label and green marker.',
       table: { category: 'Timeline' },
     },
   },
@@ -124,10 +103,6 @@ export const Playground: Story = {
             label: args.finishLabel,
             value: dayjs.utc(args.finishAt),
           },
-          thresholdAt: args.enableThresholdAt && args.thresholdAt ? {
-            label: args.finishThresholdLabel,
-            value: dayjs.utc(args.thresholdAt),
-          } : undefined,
           expired: {
             label: args.expiredLabel,
           },
@@ -181,10 +156,6 @@ export const VariantsMatrix: Story = {
             label: 'Finishes in:',
             value: createTimerValue((48 * 60 * 60 * 1000) + (23 * 60 * 60 * 1000)),
           },
-          thresholdAt: {
-            label: 'Last chance:',
-            value: createTimerValue(2 * 60 * 60 * 1000),
-          },
           expired: {
             label: 'Event is over',
           },
@@ -193,23 +164,6 @@ export const VariantsMatrix: Story = {
           finishAt: {
             label: 'Finishes in:',
             value: createTimerValue((10 * 60 * 60 * 1000) + (12 * 60 * 1000)),
-          },
-          thresholdAt: {
-            label: 'Last chance:',
-            value: createTimerValue(2 * 60 * 60 * 1000),
-          },
-          expired: {
-            label: 'Event is over',
-          },
-        },
-        thresholdConfig: {
-          finishAt: {
-            label: 'Finishes in:',
-            value: createTimerValue(17 * 60 * 1000),
-          },
-          thresholdAt: {
-            label: 'Last chance:',
-            value: createTimerValue(20 * 60 * 1000),
           },
           expired: {
             label: 'Event is over',
@@ -232,7 +186,6 @@ export const VariantsMatrix: Story = {
         <section class="flex gap-2 rounded-2xl border border-white/10 bg-bg-surface-alt p-4">
           <UiTimer :config="startConfig" />
           <UiTimer :config="finishConfig" />
-          <UiTimer :config="thresholdConfig" />
           <UiTimer :config="overConfig" />
         </section>
 
@@ -240,7 +193,6 @@ export const VariantsMatrix: Story = {
         <section class="flex gap-2 rounded-2xl bg-bg-surface p-4">
           <UiTimer :config="startConfig" variant="ghost" />
           <UiTimer :config="finishConfig" variant="ghost" />
-          <UiTimer :config="thresholdConfig" variant="ghost" />
           <UiTimer :config="overConfig" variant="ghost" />
         </section>
       </div>

@@ -4,6 +4,5 @@
     --component-badge-timer-filled-fg: var(--color-white);
     --component-badge-timer-dot-start: rgb(var(--color-primary-300));
     --component-badge-timer-dot-finish: rgb(var(--color-success-100));
-    --component-badge-timer-dot-threshold: rgb(var(--color-error-100));
     --component-badge-timer-dot-over: rgb(var(--color-error-100));
 }

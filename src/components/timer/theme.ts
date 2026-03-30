@@ -46,7 +46,6 @@ const timer = {
   state: {
     start: [tokenClass('--component-badge-timer-dot-start', 'bg')],
     finish: [tokenClass('--component-badge-timer-dot-finish', 'bg')],
-    threshold: [tokenClass('--component-badge-timer-dot-threshold', 'bg')],
     over: [tokenClass('--component-badge-timer-dot-over', 'bg')],
   } satisfies Record<TimerPhase, TimerClassList>,
   slots: {

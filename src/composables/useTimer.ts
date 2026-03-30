@@ -45,25 +45,18 @@ export function useTimer(options: UseTimerOptions) {
   const timeline = computed(() => {
     const startAt = options.config.value.startAt?.value?.utc()
     const finishAt = options.config.value.finishAt.value.utc()
-    const thresholdAt = options.config.value.thresholdAt?.value?.utc()
 
     return {
       startAt: startAt?.isValid() ? startAt : null,
       finishAt: finishAt.isValid() ? finishAt : null,
-      thresholdAt: thresholdAt?.isValid() ? thresholdAt : null,
     }
   })
 
   const currentPhase = computed<ResolvedPhase>(() => {
-    const { startAt, finishAt, thresholdAt } = timeline.value
+    const { startAt, finishAt } = timeline.value
     const now = currentTime.value
     const isOver = !finishAt || now.isSame(finishAt) || now.isAfter(finishAt)
     const isBeforeStart = Boolean(startAt && now.isBefore(startAt))
-    const isThresholdReached = Boolean(
-      finishAt
-      && thresholdAt
-      && (now.isSame(thresholdAt) || now.isAfter(thresholdAt)),
-    )
 
     if (isOver) {
       return {
@@ -78,14 +71,6 @@ export function useTimer(options: UseTimerOptions) {
         label: options.config.value.startAt?.label ?? '',
         phase: 'start',
         target: startAt,
-      }
-    }
-
-    if (isThresholdReached && finishAt) {
-      return {
-        label: options.config.value.thresholdAt?.label ?? '',
-        phase: 'threshold',
-        target: finishAt,
       }
     }
 

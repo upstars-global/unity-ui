@@ -44,10 +44,6 @@ describe('useTimer', () => {
         label: 'Finishes in:',
         value: dayjs.utc(NOW).add(5, 'hour'),
       },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc(NOW).add(2, 'hour'),
-      },
       expired: {
         label: 'Event is over',
       },
@@ -60,7 +56,7 @@ describe('useTimer', () => {
     expect(timer.timerText.value).toBe('0d 01h:00m:00s')
   })
 
-  it('uses finish phase after startAt and before thresholdAt', () => {
+  it('uses finish phase after startAt', () => {
     const config = ref(createTimerConfig({
       startAt: {
         label: 'Starts in:',
@@ -69,10 +65,6 @@ describe('useTimer', () => {
       finishAt: {
         label: 'Finishes in:',
         value: dayjs.utc(NOW).add(5, 'hour'),
-      },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc(NOW).add(2, 'hour'),
       },
       expired: {
         label: 'Event is over',
@@ -86,37 +78,11 @@ describe('useTimer', () => {
     expect(timer.timerText.value).toBe('0d 05h:00m:00s')
   })
 
-  it('uses threshold phase after thresholdAt and before finishAt', () => {
-    const config = ref(createTimerConfig({
-      finishAt: {
-        label: 'Finishes in:',
-        value: dayjs.utc(NOW).add(30, 'minute'),
-      },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc(NOW).subtract(5, 'minute'),
-      },
-      expired: {
-        label: 'Event is over',
-      },
-    }))
-
-    const timer = useTimer({ config })
-
-    expect(timer.resolvedState.value).toBe('threshold')
-    expect(timer.leadingLabel.value).toBe('Last chance:')
-    expect(timer.timerText.value).toBe('0d 00h:30m:00s')
-  })
-
   it('uses finish phase when startAt is omitted', () => {
     const config = ref(createTimerConfig({
       finishAt: {
         label: 'Finishes in:',
         value: dayjs.utc(NOW).add(90, 'minute'),
-      },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc(NOW).add(30, 'minute'),
       },
       expired: {
         label: 'Event is over',
@@ -130,8 +96,12 @@ describe('useTimer', () => {
     expect(timer.timerText.value).toBe('0d 01h:30m:00s')
   })
 
-  it('uses finish phase when thresholdAt is omitted', () => {
+  it('uses finish phase when startAt is invalid', () => {
     const config = ref(createTimerConfig({
+      startAt: {
+        label: 'Starts in:',
+        value: dayjs.utc('invalid'),
+      },
       finishAt: {
         label: 'Finishes in:',
         value: dayjs.utc(NOW).add(30, 'minute'),
@@ -146,27 +116,6 @@ describe('useTimer', () => {
     expect(timer.resolvedState.value).toBe('finish')
     expect(timer.leadingLabel.value).toBe('Finishes in:')
     expect(timer.timerText.value).toBe('0d 00h:30m:00s')
-  })
-
-  it('ignores invalid thresholdAt values', () => {
-    const config = ref(createTimerConfig({
-      finishAt: {
-        label: 'Finishes in:',
-        value: dayjs.utc(NOW).add(30, 'minute'),
-      },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc('invalid'),
-      },
-      expired: {
-        label: 'Event is over',
-      },
-    }))
-
-    const timer = useTimer({ config })
-
-    expect(timer.resolvedState.value).toBe('finish')
-    expect(timer.leadingLabel.value).toBe('Finishes in:')
   })
 
   it('uses expired label after finishAt', () => {
@@ -188,15 +137,11 @@ describe('useTimer', () => {
     expect(timer.isExpired.value).toBe(true)
   })
 
-  it('updates phase as time moves from finish to threshold to over', () => {
+  it('updates phase as time moves from finish to over', () => {
     const config = ref(createTimerConfig({
       finishAt: {
         label: 'Finishes in:',
         value: dayjs.utc(NOW).add(3, 'second'),
-      },
-      thresholdAt: {
-        label: 'Last chance:',
-        value: dayjs.utc(NOW).add(2, 'second'),
       },
       expired: {
         label: 'Event is over',
@@ -208,11 +153,11 @@ describe('useTimer', () => {
     expect(timer.resolvedState.value).toBe('finish')
     expect(timer.timerText.value).toBe('0d 00h:00m:03s')
 
-    vi.advanceTimersByTime(2000)
+    vi.advanceTimersByTime(1000)
 
-    expect(timer.resolvedState.value).toBe('threshold')
-    expect(timer.leadingLabel.value).toBe('Last chance:')
-    expect(timer.timerText.value).toBe('0d 00h:00m:01s')
+    expect(timer.resolvedState.value).toBe('finish')
+    expect(timer.leadingLabel.value).toBe('Finishes in:')
+    expect(timer.timerText.value).toBe('0d 00h:00m:02s')
 
     vi.advanceTimersByTime(3000)
 
