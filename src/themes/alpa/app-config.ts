@@ -2,6 +2,7 @@ import type { AppConfig } from '../../components/types';
 import badgeTheme from './components/badge/theme.generated';
 import buttonTheme from './components/button/theme.generated';
 import linkTheme from './components/link/theme.generated';
+import tooltipTheme from './components/tooltip/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -11,6 +12,7 @@ const appConfig: AppConfig<UiIconName> = {
     badge: badgeTheme,
     button: buttonTheme,
     link: linkTheme,
+    tooltip: tooltipTheme,
   },
   store: {
     env: {
