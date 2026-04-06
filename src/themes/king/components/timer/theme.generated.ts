@@ -12,12 +12,14 @@ const button = {
     },
     "variant": {
         "filled": {
-            "container": "bg-[rgb(var(--color-neutral-100))]",
-            "text": "text-[rgb(var(--color-neutral-800))]"
+            "container": "bg-neutral-800/10",
+            "label": "text-fg-secondary",
+            "text": "text-neutral-800"
         },
         "ghost": {
             "container": "",
-            "text": "text-white"
+            "label": "text-fg-secondary",
+            "text": "text-neutral-800"
         }
     },
     "state": {

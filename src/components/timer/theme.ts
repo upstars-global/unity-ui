@@ -35,12 +35,14 @@ const timer = {
   },
   variant: {
     filled: {
-      container: [tokenClass('--component-badge-timer-filled-bg', 'bg')],
-      text: [tokenClass('--component-badge-timer-filled-fg', 'text')],
+      container: [tokenClass('--component-badge-timer-bg', 'bg')],
+      label: [tokenClass('--component-badge-timer-fg-secondary', 'text')],
+      text: [tokenClass('--component-badge-timer-fg-primary', 'text')],
     },
     ghost: {
       container: [],
-      text: [tokenClass('--component-badge-timer-fg', 'text')],
+      label: [tokenClass('--component-badge-timer-fg-secondary', 'text')],
+      text: [tokenClass('--component-badge-timer-fg-primary', 'text')],
     },
   } satisfies Record<TimerVariant, TimerVariantConfig>,
   state: {

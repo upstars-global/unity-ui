@@ -44,6 +44,13 @@ const textClasses = computed(() => {
     variantConfig.text,
   )
 })
+const labelClasses = computed(() => {
+  return flattenClasses(
+      timerTheme.slots.text,
+      timerTheme.size.default.text,
+      variantConfig.label,
+  )
+})
 const dotClasses = computed(() => {
   return flattenClasses(
       timerTheme.size.default.dot,
@@ -73,7 +80,7 @@ const showLeadingLabel = computed(() => Boolean(leadingLabel.value))
     />
     <span
       v-if="showLeadingLabel"
-      :class="textClasses"
+      :class="labelClasses"
     >
       {{ leadingLabel }}
     </span>
