@@ -1,0 +1,10 @@
+:root[data-product="alpa"] {
+    --radius-accordion: var(--radius-16);
+
+    --component-accordion-bg: var(--color-neutral-300);
+    --component-accordion-bordercolor: var(--color-transparent);
+    --component-accordion-faq-bg: var(--color-transparent);
+    --component-accordion-faq-bordercolor: var(--color-neutral-200-40);
+    --component-accordion-fg-primary: var(--fg-primary);
+    --component-accordion-fg-secondary: var(--fg-secondary);
+}
