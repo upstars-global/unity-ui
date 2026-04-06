@@ -1,1 +1,1 @@
-import './alpa/tailwind.css';
+import './alpa/style/tailwind.css';
