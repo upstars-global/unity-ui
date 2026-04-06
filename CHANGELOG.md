@@ -1,3 +1,14 @@
+## [1.8.0](https://github.com/upstars-global/unity-ui/compare/v1.7.1...v1.8.0) (2026-04-06)
+
+### 🚀 Features
+
+* UN-2291 Migrate Timer Component ([#16](https://github.com/upstars-global/unity-ui/issues/16))
+ ([a778f5c](https://github.com/upstars-global/unity-ui/commit/a778f5c2070a962c35746ce1812a11cd20e10095))
+
+
+
+    * frat: UN-2291 Migrate Timer Component
+
 ## [1.7.1](https://github.com/upstars-global/unity-ui/compare/v1.7.0...v1.7.1) (2026-04-06)
 
 ### ⏪ Reverts
