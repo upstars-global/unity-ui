@@ -1,6 +1,8 @@
 import type { ButtonUiOptimized } from './button/theme';
 import type { BadgeUiOptimized } from './badge/theme';
 import type { LinkUiOptimized } from "./link/theme.ts";
+import type { TabsUiOptimized } from './tabs/theme';
+import type { TimerUiOptimized } from './timer/theme';
 import type { TooltipUiOptimized } from './tooltip/theme';
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
@@ -13,11 +15,14 @@ export interface AppConfig<TIconName extends string = string> {
     badge?: BadgeUiOptimized
     button?: ButtonUiOptimized
     link?: LinkUiOptimized
+    tabs?: TabsUiOptimized
+    timer?: TimerUiOptimized
     tooltip?: TooltipUiOptimized
   }
   store?: {
     env?: {
       isMockerMode?: boolean
+      isMobile: boolean
     }
   }
 }
