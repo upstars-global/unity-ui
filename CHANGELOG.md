@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/upstars-global/unity-ui/compare/v1.6.0...v1.7.0) (2026-04-06)
+
+### 🚀 Features
+
+* UN-2258 Create FeAccordion component
+ ([619b3e9](https://github.com/upstars-global/unity-ui/commit/619b3e9c4487772b157acafd7db8f9691b2c6b35))
+
 ## [1.6.0](https://github.com/upstars-global/unity-ui/compare/v1.5.0...v1.6.0) (2026-03-27)
 
 ### 🚀 Features
