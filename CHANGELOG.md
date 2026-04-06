@@ -1,3 +1,14 @@
+## [1.7.1](https://github.com/upstars-global/unity-ui/compare/v1.7.0...v1.7.1) (2026-04-06)
+
+### ⏪ Reverts
+
+* Revert "feat: UN-2258 Create FeAccordion component"
+ ([f4bea93](https://github.com/upstars-global/unity-ui/commit/f4bea9351841d3bde4d06524ecd688356717a8c3))
+
+
+
+    This reverts commit 619b3e9c4487772b157acafd7db8f9691b2c6b35.
+
 ## [1.7.0](https://github.com/upstars-global/unity-ui/compare/v1.6.0...v1.7.0) (2026-04-06)
 
 ### 🚀 Features
