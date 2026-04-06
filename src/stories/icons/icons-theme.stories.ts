@@ -6,7 +6,7 @@ import { useAppConfig } from '../../composables/useAppConfig'
 type IconSize = '24' | '72' | 'full'
 
 const meta = {
-  title: 'Components/Icons',
+  title: 'Components/Icon/Theme Icons',
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',

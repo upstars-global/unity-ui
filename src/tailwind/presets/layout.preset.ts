@@ -45,9 +45,6 @@ const preset: Partial<Config> = {
             animation: {
                 "rotate-180": "rotate-180 0.2s ease-in-out forwards",
             },
-            transitionProperty: {
-                height: 'height, max-height'
-            },
             gridAutoColumns: {
                 "full": "100%",
                 "columns-auto": "minmax(0, auto)",
