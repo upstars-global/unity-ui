@@ -4,6 +4,7 @@ import buttonTheme from './components/button/theme.generated';
 import linkTheme from './components/link/theme.generated';
 import tabsTheme from './components/tabs/theme.generated';
 import timerTheme from './components/timer/theme.generated';
+import tooltipTheme from './components/tooltip/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -15,6 +16,7 @@ const appConfig: AppConfig<UiIconName> = {
     link: linkTheme,
     tabs: tabsTheme,
     timer: timerTheme,
+    tooltip: tooltipTheme,
   },
   store: {
     env: {
