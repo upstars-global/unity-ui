@@ -3,6 +3,7 @@ import badgeTheme from './components/badge/theme.generated';
 import buttonTheme from './components/button/theme.generated';
 import linkTheme from './components/link/theme.generated';
 import tabsTheme from './components/tabs/theme.generated';
+import timerTheme from './components/timer/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -13,6 +14,7 @@ const appConfig: AppConfig<UiIconName> = {
     button: buttonTheme,
     link: linkTheme,
     tabs: tabsTheme,
+    timer: timerTheme,
   },
   store: {
     env: {
