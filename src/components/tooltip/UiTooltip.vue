@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, useAttrs } from 'vue'
-import { useFloating, offset, flip, shift, autoUpdate, arrow } from '@floating-ui/vue'
-import { useAppConfig } from '../../composables/useAppConfig'
-import { flattenClasses } from '../../helpers/flattenClasses'
-import type { UiTooltipProps } from './types.ts'
+import {computed, onMounted, ref, useAttrs, watch} from 'vue'
+import {arrow, autoUpdate, flip, hide, offset, shift, useFloating} from '@floating-ui/vue'
+import {useAppConfig} from '../../composables/useAppConfig'
+import {flattenClasses} from '../../helpers/flattenClasses'
+import type {UiTooltipProps} from './types.ts'
 
 const props = withDefaults(defineProps<UiTooltipProps>(), {
   text: '',
@@ -48,6 +48,9 @@ const middleware = computed(() => {
   const baseMiddleware = [
     offset(offsetValue.value + 8),
     arrow({ element: floatingArrow, padding: 8 }),
+    hide({
+      boundary: collisionBoundary.value,
+    }),
   ]
 
   if (props.placement.includes('-')) {
@@ -58,11 +61,16 @@ const middleware = computed(() => {
 })
 
 const { floatingStyles, middlewareData, placement: currentPlacement } = useFloating(reference, floating, {
+  transform: false,
   open: tooltipVisible,
-  whileElementsMounted: autoUpdate,
   placement,
   middleware,
   strategy: computed(() => props.strategy),
+  whileElementsMounted: (referenceEl, floatingEl, update) => {
+    return autoUpdate(referenceEl, floatingEl, update, {
+      ancestorScroll: true,
+    })
+  },
 })
 
 const appConfig = useAppConfig()
@@ -103,6 +111,7 @@ const OPPOSITE_SIDE_BY_SIDE = {
 const side = computed(() => currentPlacement.value.split("-")[0]);
 const floatingArrowX = computed(() => middlewareData.value.arrow?.x ?? null);
 const floatingArrowY = computed(() => middlewareData.value.arrow?.y ?? null);
+const isReferenceHidden = computed(() => Boolean(middlewareData.value.hide?.referenceHidden))
 const floatingArrowStyles = computed(() => ({
   top: floatingArrowY.value === null ? "" : `${floatingArrowY.value}px`,
   left: floatingArrowX.value === null ? "" : `${floatingArrowX.value}px`,
@@ -129,6 +138,12 @@ const handleClick = () => {
 onMounted(() => {
   if (isTriggerAlways.value) {
     isOpen.value = true
+  }
+})
+
+watch(isReferenceHidden, (referenceHidden) => {
+  if (referenceHidden && isTriggerClick.value && isOpen.value) {
+    isOpen.value = false
   }
 })
 </script>

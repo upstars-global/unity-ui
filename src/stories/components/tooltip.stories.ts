@@ -80,7 +80,7 @@ export const Playground: Story = {
           <div
               v-for="item in gridItems"
               :key="item.id"
-              class="flex rounded-xl border border-dashed border-black/10 px-4 py-16"
+              class="flex rounded-xl border border-dashed border-black/10 px-4 py-2 h-40"
               :class="[item.justify, item.align]"
           >
             <UiTooltip
