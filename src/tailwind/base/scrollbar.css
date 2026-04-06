@@ -1,0 +1,6 @@
+@layer base {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--component-other-scroll) transparent;
+    }
+}
