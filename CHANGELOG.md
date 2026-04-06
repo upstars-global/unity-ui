@@ -1,3 +1,16 @@
+## [1.9.0](https://github.com/upstars-global/unity-ui/compare/v1.8.0...v1.9.0) (2026-04-06)
+
+### 🚀 Features
+
+* UN-2208 Reusable Tooltip Component ([#14](https://github.com/upstars-global/unity-ui/issues/14))
+ ([c6facbe](https://github.com/upstars-global/unity-ui/commit/c6facbeaba40e36c95360f5526749812035963f7))
+
+
+
+    * feat: UN-2208 Reusable Tooltip Component
+
+    * feat: UN-2208 fix colors
+
 ## [1.8.0](https://github.com/upstars-global/unity-ui/compare/v1.7.1...v1.8.0) (2026-04-06)
 
 ### 🚀 Features
