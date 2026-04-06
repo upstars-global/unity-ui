@@ -3,21 +3,17 @@
     --component-badge-padding-x: 0.5rem;
     --radius-badge: var(--radius-full);
 
-    --component-badge-brand-bg: var(--fg-brand);
-    --component-badge-brand-fg: var(--color-white);
     --component-badge-navigation-fg: var(--color-white);
     --component-badge-navigation-bg-default: var(--color-primary-300);
     --component-badge-navigation-bg-new: var(--color-error-100);
-    --component-badge-neutral-bg: var(--color-neutral-100);
+    --component-badge-neutral-bg: var(--color-neutral-800-10);
     --component-badge-neutral-fg: var(--color-neutral-800);
-    --component-badge-neutral-error-fg: var(--color-error-100);
-    --component-badge-status-fg: var(--color-neutral-800);
-    --component-badge-status-bg-error: var(--color-error-100-80);
-    --component-badge-status-bg-success: var(--color-success-100-80);
-    --component-badge-status-bg-warning: var(--color-warning-100-80);
-    --component-badge-timer-bg: var(--color-neutral-500-80);
-    --component-badge-timer-fg: var(--color-white);
-    --component-badge-timer-critical-bg: var(--color-error-100);
-    --component-badge-timer-critical-fg: var(--color-white);
-    --component-badge-timer-over-fg: var(--color-neutral-100);
+    --component-badge-personal-fg: var(--color-white);
+    --component-badge-status-fg: var(--color-white);
+    --component-badge-status-bg-error: var(--color-error-100);
+    --component-badge-status-bg-success: var(--color-success-100);
+    --component-badge-status-bg-warning: var(--color-warning-100);
+    --component-badge-timer-bg: var(--color-neutral-800-10);
+    --component-badge-timer-fg-primary: var(--color-neutral-800);
+    --component-badge-timer-fg-secondary: var(--fg-secondary);
 }

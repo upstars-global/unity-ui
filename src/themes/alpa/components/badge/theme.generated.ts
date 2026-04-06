@@ -15,8 +15,7 @@ const button = {
         "status-success": "bg-success-100 text-neutral-500",
         "navigation-default": "bg-warning-100 text-neutral-500",
         "navigation-new": "bg-error-100 text-neutral-500",
-        "neutral-default": "bg-neutral-500/80 text-white",
-        "neutral-error": "bg-neutral-500/80 text-error-100"
+        "neutral": "bg-neutral-300/80 text-white"
     },
     "slots": {
         "label": "text-caption font-bold uppercase whitespace-nowrap"
