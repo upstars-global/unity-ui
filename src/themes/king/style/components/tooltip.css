@@ -1,0 +1,6 @@
+:root[data-product="alpa"] {
+    --radius-tooltip: var(--radius-8);
+
+    --component-tooltip-bg: var(--color-secondary-300);
+    --component-tooltip-fg: var(--fg-primary);
+}

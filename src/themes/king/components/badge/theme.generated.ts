@@ -10,13 +10,12 @@ const button = {
         }
     },
     "variant": {
-        "status-error": "bg-error-100/80 text-neutral-800",
-        "status-warning": "bg-warning-100/80 text-neutral-800",
-        "status-success": "bg-success-100/80 text-neutral-800",
+        "status-error": "bg-error-100 text-white",
+        "status-warning": "bg-warning-100 text-white",
+        "status-success": "bg-success-100 text-white",
         "navigation-default": "bg-primary-300 text-white",
         "navigation-new": "bg-error-100 text-white",
-        "neutral-default": "bg-neutral-100 text-neutral-800",
-        "neutral-error": "bg-neutral-100 text-error-100"
+        "neutral": "bg-neutral-800/10 text-neutral-800"
     },
     "slots": {
         "label": "text-caption font-bold uppercase whitespace-nowrap"

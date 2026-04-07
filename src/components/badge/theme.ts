@@ -47,8 +47,7 @@ const badge = {
     'status-success': buildTone('--component-badge-status-bg-success', '--component-badge-status-fg'),
     'navigation-default': buildTone('--component-badge-navigation-bg-default', '--component-badge-navigation-fg'),
     'navigation-new': buildTone('--component-badge-navigation-bg-new', '--component-badge-navigation-fg'),
-    'neutral-default': buildTone('--component-badge-neutral-bg', '--component-badge-neutral-fg'),
-    'neutral-error': buildTone('--component-badge-neutral-bg', '--component-badge-neutral-error-fg'),
+    'neutral': buildTone('--component-badge-neutral-bg', '--component-badge-neutral-fg'),
   } satisfies Record<BadgeVariant, BadgeClassList>,
   slots: {
     label: BADGE_LABEL_BASE,

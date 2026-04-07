@@ -35,6 +35,7 @@ const preset: Partial<Config> = {
             'neutral-200': 'rgb(var(--color-neutral-200) / <alpha-value>)',
             'neutral-300': 'rgb(var(--color-neutral-300) / <alpha-value>)',
             'neutral-400': 'rgb(var(--color-neutral-400) / <alpha-value>)',
+            'neutral-50': 'rgb(var(--color-neutral-50) / <alpha-value>)',
             'neutral-500': 'rgb(var(--color-neutral-500) / <alpha-value>)',
             'neutral-600': 'rgb(var(--color-neutral-600) / <alpha-value>)',
             'neutral-700': 'rgb(var(--color-neutral-700) / <alpha-value>)',

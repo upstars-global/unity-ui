@@ -1,0 +1,9 @@
+:root[data-product="alpa"] {
+    --radius-tab: var(--radius-16);
+
+    --component-tab-default-fg: var(--color-neutral-100);
+    --component-tab-hover-bg: var(--color-neutral-200-80);
+    --component-tab-hover-fg: var(--color-white);
+    --component-tab-selected-bg: var(--color-neutral-50-10);
+    --component-tab-selected-fg: var(--color-primary-400);
+}

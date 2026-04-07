@@ -94,4 +94,5 @@
     --fg-status-error: rgb(var(--color-error-100));
     --fg-status-success: rgb(var(--color-success-100));
     --fg-status-warning: rgb(var(--color-warning-100));
+    --component-other-scroll: var(--color-neutral-300-80);
 }

@@ -1,3 +1,38 @@
+## [1.9.0](https://github.com/upstars-global/unity-ui/compare/v1.8.0...v1.9.0) (2026-04-06)
+
+### 🚀 Features
+
+* UN-2208 Reusable Tooltip Component ([#14](https://github.com/upstars-global/unity-ui/issues/14))
+ ([c6facbe](https://github.com/upstars-global/unity-ui/commit/c6facbeaba40e36c95360f5526749812035963f7))
+
+
+
+    * feat: UN-2208 Reusable Tooltip Component
+
+    * feat: UN-2208 fix colors
+
+## [1.8.0](https://github.com/upstars-global/unity-ui/compare/v1.7.1...v1.8.0) (2026-04-06)
+
+### 🚀 Features
+
+* UN-2291 Migrate Timer Component ([#16](https://github.com/upstars-global/unity-ui/issues/16))
+ ([a778f5c](https://github.com/upstars-global/unity-ui/commit/a778f5c2070a962c35746ce1812a11cd20e10095))
+
+
+
+    * frat: UN-2291 Migrate Timer Component
+
+## [1.7.1](https://github.com/upstars-global/unity-ui/compare/v1.7.0...v1.7.1) (2026-04-06)
+
+### ⏪ Reverts
+
+* Revert "feat: UN-2258 Create FeAccordion component"
+ ([f4bea93](https://github.com/upstars-global/unity-ui/commit/f4bea9351841d3bde4d06524ecd688356717a8c3))
+
+
+
+    This reverts commit 619b3e9c4487772b157acafd7db8f9691b2c6b35.
+
 ## [1.7.0](https://github.com/upstars-global/unity-ui/compare/v1.6.0...v1.7.0) (2026-04-06)
 
 ### 🚀 Features
