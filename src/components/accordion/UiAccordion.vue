@@ -35,7 +35,7 @@ const rootClasses = computed(() => {
   <UiBaseAccordion
       :title="title"
       :root-classes="rootClasses"
-      toggle-classes="flex text-center items-center justify-center w-full relative"
+      toggle-classes="flex text-center items-center justify-center w-full relative cursor-pointer"
       title-classes="text-body font-bold"
       icon-classes="absolute top-0 right-0 transition-transform"
       content-classes="pt-4 pb-2"

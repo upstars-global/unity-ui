@@ -6,7 +6,7 @@ import type {
   UiBaseAccordionProps,
   UiBaseAccordionSlots,
 } from './types.ts'
-import { computed, watch } from "vue";
+import { computed, getCurrentInstance, watch } from "vue";
 
 defineOptions({
   name: 'UiBaseAccordion',
@@ -24,8 +24,13 @@ const emit = defineEmits<{
 }>()
 
 const slots = defineSlots<UiBaseAccordionSlots>()
+const instance = getCurrentInstance()
 
 const appConfig = useAppConfig()
+const hasOpenedProp = computed(() => {
+  const vnodeProps = instance?.vnode.props
+  return vnodeProps != null && Object.prototype.hasOwnProperty.call(vnodeProps, 'opened')
+})
 
 const {
   contentWrapper,
@@ -44,6 +49,10 @@ const {
 watch(
   () => props.opened,
   (opened) => {
+    if (!hasOpenedProp.value) {
+      return
+    }
+
     if (opened !== isOpen.value) {
       setOpen(opened)
     }
@@ -60,8 +69,8 @@ const iconClassesList = computed(() => {
   ]
 })
 
-const handleToggle = () => {
-  if (typeof props.opened === 'boolean') {
+function handleToggle() {
+  if (hasOpenedProp.value) {
     emit('toggle', !props.opened)
     return
   }
