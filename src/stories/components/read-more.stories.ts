@@ -54,7 +54,7 @@ export const Playground: Story = {
             :show-less-button="args.showLessButton"
             :button-label="args.buttonLabel"
           >
-            <h2>T&C</h2>
+            <h2 class="mb-4">T&C</h2>
             <div class="space-y-4 text-body">
               <p
                 v-for="(paragraph, index) in args.content.split('\\n\\n')"

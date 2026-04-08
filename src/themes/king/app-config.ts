@@ -7,6 +7,7 @@ import tabsTheme from './components/tabs/theme.generated';
 import timerTheme from './components/timer/theme.generated';
 import tooltipTheme from './components/tooltip/theme.generated';
 import faqTheme from './components/faq/theme.generated';
+import readMoreTheme from './components/readMore/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -20,7 +21,8 @@ const appConfig: AppConfig<UiIconName> = {
     tabs: tabsTheme,
     timer: timerTheme,
     tooltip: tooltipTheme,
-    faq: faqTheme
+    faq: faqTheme,
+    readMore: readMoreTheme
   },
   store: {
     env: {

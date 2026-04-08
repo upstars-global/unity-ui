@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 import type {
   UiReadMoreProps,
   UiReadMoreSlots,
 } from './types'
 import { useExpandableContent } from '../../composables/useExpandableContent'
-import UiLink from '../link/UiLink.vue'
+import { useAppConfig } from '../../composables/useAppConfig'
+import { flattenClasses } from '../../helpers/flattenClasses'
+import UiButton from "@src/components/button/UiButton.vue";
 
 defineOptions({
   name: 'ReadMoreBlock',
+  inheritAttrs: false,
 })
 
 const props = withDefaults(defineProps<UiReadMoreProps>(), {
@@ -22,6 +25,13 @@ const props = withDefaults(defineProps<UiReadMoreProps>(), {
 })
 
 const slots = defineSlots<UiReadMoreSlots>()
+const attrs = useAttrs()
+const appConfig = useAppConfig()
+const readMoreTheme = appConfig.components?.readMore
+
+if (!readMoreTheme) {
+  throw new Error('[UnityUI] ReadMore theme is not provided in appConfig.components.readMore.')
+}
 
 const {
   contentWrapper,
@@ -41,32 +51,55 @@ const textButton = computed(() => {
 
 const showMoreButton = computed(() => Boolean(slots.default))
 
+const rootClasses = computed(() => {
+  return flattenClasses(readMoreTheme.base, attrs.class)
+})
+
+const contentWrapperClasses = computed(() => {
+  return flattenClasses(
+    readMoreTheme.slots.contentWrapper,
+    !isOpen.value && readMoreTheme.slots.collapsedOverlay,
+  )
+})
+const leadingIconClass = computed(() => {
+  return isOpen.value ? 'rotate-180': '';
+})
+const attributes = computed(() => {
+  const { class: _class, ...rest } = attrs
+
+  return rest
+})
+
 function handleClickReadMore(): void {
   toggleContent()
 }
 </script>
 
 <template>
-  <div>
+  <div
+    :class="rootClasses"
+    v-bind="attributes"
+  >
     <div
-        ref="contentWrapper"
-        :class="{
-            'after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:block after:h-full after:w-full after:content-empty': !isOpen
-        }"
-        :style="contentStyle"
-        class="relative overflow-hidden transition-height"
+      ref="contentWrapper"
+      :class="contentWrapperClasses"
+      :style="contentStyle"
     >
       <div ref="content">
         <slot />
       </div>
     </div>
 
-    <UiLink
-        v-if="showMoreButton && (!isOpen || showLessButton)"
-        class="mt-4 block cursor-pointer"
-        @click.prevent="handleClickReadMore"
+    <UiButton
+      v-if="showMoreButton && (!isOpen || showLessButton)"
+      :class="readMoreTheme.slots.toggle"
+      variant="tertiary"
+      size="sm"
+      leading-icon-name="line_dropdown_down"
+      :leading-icon-class="leadingIconClass"
+      @click.prevent="handleClickReadMore"
     >
       {{ textButton }}
-    </UiLink>
+    </UiButton>
   </div>
 </template>

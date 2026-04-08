@@ -44,7 +44,13 @@ const preset: Partial<Config> = {
             'error-100': 'rgb(var(--color-error-100) / <alpha-value>)',
             'warning-100': 'rgb(var(--color-warning-100) / <alpha-value>)',
             'success-100': 'rgb(var(--color-success-100) / <alpha-value>)',
+            'gradient-transparent': 'var(--gradient-transparent)',
         },
+        extend: {
+            backgroundImage: {
+                'gradient-transparent': 'linear-gradient(var(--gradient-transparent))',
+            },
+        }
     },
 }
 

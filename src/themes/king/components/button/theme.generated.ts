@@ -84,7 +84,7 @@ const button = {
     },
     "variant": {
         "primary": {
-            "base": "bg-primary-300 text-white group-aria-busy:opacity-0",
+            "base": "bg-primary-300 text-[255_255_255] group-aria-busy:opacity-0",
             "hover": "group-hover:bg-primary-200 group-hover:text-primary-50",
             "pressed": "group-active:bg-primary-400 group-active:text-primary-50",
             "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-primary-50",
@@ -112,7 +112,7 @@ const button = {
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {
-            "base": "bg-error-100 text-white group-aria-busy:opacity-0",
+            "base": "bg-error-100 text-[255_255_255] group-aria-busy:opacity-0",
             "hover": "group-hover:bg-error-100/80 group-hover:text-neutral-50",
             "pressed": "group-active:bg-error-100 group-active:text-neutral-50",
             "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-neutral-50",
