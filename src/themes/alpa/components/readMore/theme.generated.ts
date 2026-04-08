@@ -4,9 +4,9 @@
 const button = {
     "base": "ui-read-more",
     "slots": {
-        "contentWrapper": "relative overflow-hidden transition-height",
-        "collapsedOverlay": "after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:block after:h-full after:w-full after:content-empty after:bg-gradient-transparent",
-        "toggle": "mt-4 block cursor-pointer"
+        "contentWrapper": "relative overflow-hidden transition-height mb-2",
+        "collapsedOverlay": "after:pointer-events-none after:absolute after:bottom-0 after:left-0 after:block after:h-full after:w-full after:content-empty",
+        "toggle": "mt-2"
     }
 } as const
 

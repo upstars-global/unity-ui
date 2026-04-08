@@ -5,6 +5,7 @@ const READ_MORE_CONTENT_WRAPPER: ReadMoreClassList = [
   'relative',
   'overflow-hidden',
   'transition-height',
+  'mb-2'
 ]
 const READ_MORE_COLLAPSED_OVERLAY: ReadMoreClassList = [
   'after:pointer-events-none',
@@ -15,10 +16,9 @@ const READ_MORE_COLLAPSED_OVERLAY: ReadMoreClassList = [
   'after:h-full',
   'after:w-full',
   'after:content-empty',
-  'after:bg-gradient-transparent',
 ]
 const READ_MORE_TOGGLE: ReadMoreClassList = [
-  'mt-4',
+  'mt-2',
 ]
 
 const readMore = {

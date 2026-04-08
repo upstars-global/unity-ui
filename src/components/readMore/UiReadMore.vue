@@ -9,6 +9,7 @@ import { useExpandableContent } from '../../composables/useExpandableContent'
 import { useAppConfig } from '../../composables/useAppConfig'
 import { flattenClasses } from '../../helpers/flattenClasses'
 import UiButton from "@src/components/button/UiButton.vue";
+import UiIcon from "@src/components/icon/UiIcon.vue";
 
 defineOptions({
   name: 'ReadMoreBlock',
@@ -89,6 +90,12 @@ function handleClickReadMore(): void {
         <slot />
       </div>
     </div>
+
+    <UiIcon
+        name="fill_more"
+        class="text-fg-secondary"
+        v-show="!isOpen"
+    />
 
     <UiButton
       v-if="showMoreButton && (!isOpen || showLessButton)"
