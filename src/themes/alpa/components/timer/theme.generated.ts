@@ -14,12 +14,12 @@ const button = {
         "filled": {
             "container": "bg-neutral-300/80",
             "label": "text-fg-secondary",
-            "text": "text-white"
+            "text": "text-[255_255_255]"
         },
         "ghost": {
             "container": "",
             "label": "text-fg-secondary",
-            "text": "text-white"
+            "text": "text-[255_255_255]"
         }
     },
     "state": {

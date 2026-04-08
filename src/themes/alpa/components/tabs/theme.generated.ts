@@ -6,7 +6,7 @@ const button = {
     "item": {
         "base": "flex shrink-0 items-center justify-center h-10 gap-2 px-4 py-2 transition-colors rounded-16",
         "default": "text-neutral-100",
-        "hover": "hover:bg-neutral-200/80 hover:text-white",
+        "hover": "hover:bg-neutral-200/80 hover:text-[255_255_255]",
         "selected": "bg-neutral-50/10 text-primary-400",
         "disabled": "pointer-events-none opacity-45"
     },

@@ -1,0 +1,10 @@
+:root[data-product="king"] {
+    --radius-accordion: var(--radius-12);
+
+    --component-accordion-bg: var(--color-white);
+    --component-accordion-bordercolor: var(--color-neutral-800-10);
+    --component-accordion-faq-bg: var(--color-neutral-100);
+    --component-accordion-faq-bordercolor: var(--color-neutral-800-10);
+    --component-accordion-fg-primary: var(--fg-primary);
+    --component-accordion-fg-secondary: var(--fg-secondary);
+}

@@ -90,10 +90,10 @@ const attributes = computed(() => {
 })
 
 const leadingIconClasses = computed(() => {
-  return flattenClasses(buttonTheme.slots.leadingIcon, sizeConfig.value.icon)
+  return flattenClasses(buttonTheme.slots.leadingIcon, sizeConfig.value.icon, props.leadingIconClass)
 })
 const trailingIconClasses = computed(() => {
-  return flattenClasses(buttonTheme.slots.trailingIcon, sizeConfig.value.icon)
+  return flattenClasses(buttonTheme.slots.trailingIcon, sizeConfig.value.icon, props.trailingIconClass)
 })
 const mainIconWrapperClasses = computed(() => {
   const variantClasses = isActionType ? variantStateClasses.value : ''

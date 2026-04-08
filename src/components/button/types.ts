@@ -18,7 +18,9 @@ export interface UiButtonProps {
   caption?: string;
   iconName?: UiThemeIconName;
   leadingIconName?: UiThemeIconName;
+  leadingIconClass?: string;
   trailingIconName?: UiThemeIconName;
+  trailingIconClass?: string;
 }
 
 export interface UiButtonEmits {

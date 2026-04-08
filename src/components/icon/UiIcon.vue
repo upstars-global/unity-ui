@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from 'vue'
+import {computed, useAttrs} from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import type { UiThemeIconName } from '../../themes/registry'
 
@@ -18,6 +18,7 @@ const SIZE_CLASSES_LIST: Record<IconSize, string> = {
 
 defineOptions({
   name: 'UiIcon',
+  inheritAttrs: false
 })
 
 const props = withDefaults(defineProps<UiIconProps>(), {
@@ -25,6 +26,8 @@ const props = withDefaults(defineProps<UiIconProps>(), {
   size: '24',
   ui: undefined
 })
+
+const attrs = useAttrs()
 
 const appConfig = useAppConfig()
 const iconRaw = computed(() => {
@@ -37,6 +40,7 @@ const iconRaw = computed(() => {
 const className = computed(() => {
   return [
     SIZE_CLASSES_LIST[props.size],
+    attrs.class
   ]
 })
 </script>
