@@ -46,5 +46,5 @@ const className = computed(() => {
 </script>
 
 <template>
-  <div class="ui-icon" v-if="iconRaw" :class="className" v-html="iconRaw"  />
+  <div class="ui-icon shrink-0" v-if="iconRaw" :class="className" v-html="iconRaw"  />
 </template>

@@ -2,9 +2,10 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-accordion flex flex-col overflow-hidden rounded-12 border-neutral-800/10 bg-white text-fg-primary border px-4 py-2",
-    "slots": {
-        "iconOpened": "rotate-180"
+    "base": "p-2",
+    "type": {
+        "base": "flex items-center justify-center w-full text-center",
+        "icon": "flex items-center gap-2 justify-start w-full"
     }
 } as const
 
