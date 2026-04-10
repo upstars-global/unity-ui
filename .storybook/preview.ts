@@ -4,7 +4,45 @@ import './css/tailwind.css'
 import '../src/themes/alpa/style/tailwind.css'
 import '../src/themes/king/style/tailwind.css'
 import { AppConfigSymbol } from '../src/composables/useAppConfig'
+import { EventBusSymbol } from '../src/composables/useEventBus'
+import toast from '../src/plugins/toast'
+import type { UiToastClosePayload, UiToastEventBus, UiToastItem } from '../src/components/notifications/toast/types'
 import { getThemeConfig } from '../src/themes/registry'
+
+function createStorybookEventBus(): UiToastEventBus {
+    const toastShowHandlers = new Set<(toast: UiToastItem) => void>()
+    const toastCloseHandlers = new Set<(toast: UiToastClosePayload) => void>()
+
+    return {
+        $on(event, handler) {
+            if (event === 'toast.show') {
+                toastShowHandlers.add(handler)
+                return
+            }
+
+            toastCloseHandlers.add(handler)
+        },
+        $off(event, handler) {
+            if (event === 'toast.show') {
+                toastShowHandlers.delete(handler)
+                return
+            }
+
+            toastCloseHandlers.delete(handler)
+        },
+        $emit(event, payload) {
+            if (event === 'toast.show') {
+                toastShowHandlers.forEach((handler) => handler(payload))
+                return
+            }
+
+            toastCloseHandlers.forEach((handler) => handler(payload))
+        },
+    }
+}
+
+const storybookEventBus = createStorybookEventBus()
+toast.init(storybookEventBus)
 
 const TAILWIND_VIEWPORTS = {
     xxs: {
@@ -89,6 +127,7 @@ export const decorators = [
             components: { Story },
             setup() {
                 provide(AppConfigSymbol, getThemeConfig(activeTheme))
+                provide(EventBusSymbol, storybookEventBus)
                 return {}
             },
             template: '<Story />',

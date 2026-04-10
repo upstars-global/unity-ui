@@ -1,0 +1,12 @@
+:root[data-product="alpa"] {
+    --radius-notification-sm: var(--radius-8);
+    --radius-notification-lg: var(--radius-16);
+
+    --component-notification-bg-error: var(--color-error-100);
+    --component-notification-bg-neutral: var(--color-neutral-300);
+    --component-notification-bg-success: var(--color-secondary-300);
+    --component-notification-box-line: var(--color-secondary-200);
+    --component-notification-box-secondary: var(--color-white);
+    --component-notification-fg-default: var(--color-white);
+    --component-notification-fg-error: var(--color-neutral-500);
+}

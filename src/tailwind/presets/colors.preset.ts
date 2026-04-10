@@ -5,7 +5,7 @@ const preset: Partial<Config> = {
         colors: {
             transparent: 'var(--color-transparent)',
             black: 'var(--color-black)',
-            white: 'var(--color-white',
+            white: 'rgb(var(--color-white))',
             'bg-deep': 'var(--bg-deep)',
             'bg-surface': 'var(--bg-surface)',
             'bg-surface-alt': 'var(--bg-surface-alt)',
