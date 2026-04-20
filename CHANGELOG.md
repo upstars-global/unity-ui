@@ -1,3 +1,14 @@
+## [1.11.0](https://github.com/upstars-global/unity-ui/compare/v1.10.0...v1.11.0) (2026-04-20)
+
+### 🚀 Features
+
+* UN-2285 Migrate ProgressBarRadial Component ([#18](https://github.com/upstars-global/unity-ui/issues/18))
+ ([fcd5dca](https://github.com/upstars-global/unity-ui/commit/fcd5dca5a885d82f435291b504b4f24dc1bea105))
+
+
+
+    * feat: UN-2285 Migrate ProgressBarRadial Component
+
 ## [1.10.0](https://github.com/upstars-global/unity-ui/compare/v1.9.0...v1.10.0) (2026-04-08)
 
 ### 🚀 Features
