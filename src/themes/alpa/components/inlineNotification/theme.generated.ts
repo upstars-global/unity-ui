@@ -5,7 +5,7 @@ const button = {
     "base": "p-2",
     "type": {
         "base": "flex items-center justify-center w-full text-center",
-        "icon": "flex items-center gap-2 justify-start w-full"
+        "icon": "flex items-start gap-2 justify-start w-full"
     }
 } as const
 

@@ -35,9 +35,9 @@ const contentClasses = computed(() => {
       <UiIcon
           v-if="iconName"
           :name="iconName"
-          class="!w-4 !h-4"
+          size="16"
       />
-      <span>{{message}}</span>
+      <span class="text-caption ">{{message}}</span>
     </div>
   </UiBaseNotification>
 </template>

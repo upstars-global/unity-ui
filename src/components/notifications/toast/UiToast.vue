@@ -30,7 +30,7 @@
             >
               <p
                   v-if="item.title"
-                  class="text-subtitle"
+                  class="text-subtitle h-6"
                   v-html="item.title"
               />
               <div @click.stop="closeHandler(item)">

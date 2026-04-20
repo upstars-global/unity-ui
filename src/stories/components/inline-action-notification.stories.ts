@@ -6,7 +6,6 @@ import type { UiInlineNotificationProps } from '../../components/notifications/i
 type InlineActionNotificationStoryArgs = Required<Pick<UiInlineNotificationProps, 'title' | 'message'>> & {
   iconName?: UiInlineNotificationProps['iconName']
   primaryActionLabel: string
-  secondaryActionLabel: string
 }
 
 const meta = {
@@ -18,14 +17,12 @@ const meta = {
     message: 'Please review your account information before continuing to the next step.',
     iconName: 'fill_info',
     primaryActionLabel: 'Review now',
-    secondaryActionLabel: 'Later',
   },
   argTypes: {
     title: { control: 'text' },
     message: { control: 'text' },
     iconName: { control: 'text' },
     primaryActionLabel: { control: 'text' },
-    secondaryActionLabel: { control: 'text' },
   },
 } satisfies Meta<InlineActionNotificationStoryArgs>
 
@@ -40,19 +37,18 @@ export const Playground: Story = {
     },
     template: `
       <div class="bg-bg-deep p-6">
-        <div class="rounded-2xl border border-black/10 bg-bg-surface-alt p-4">
-          <UiInlineActionNotification
+        <div class="bg-white"></div>
+        <UiInlineActionNotification
             :title="args.title"
             :message="args.message"
             :icon-name="args.iconName"
-          >
-            <template #actions>
-              <UiButton type="standard" variant="primary" size="sm">
-                {{ args.primaryActionLabel }}
-              </UiButton>
-            </template>
-          </UiInlineActionNotification>
-        </div>
+        >
+          <template #actions>
+            <UiButton type="standard" variant="primary" size="sm">
+              {{ args.primaryActionLabel }}
+            </UiButton>
+          </template>
+        </UiInlineActionNotification>
       </div>
     `,
   }),
@@ -95,11 +91,11 @@ export const Examples: Story = {
       }
     },
     template: `
-      <div class="space-y-4 bg-bg-deep p-6">
+      <div class="bg-bg-deep p-6 text-white">
         <div
           v-for="item in items"
           :key="item.id"
-          class="rounded-2xl border border-black/10 bg-bg-surface-alt p-4"
+          class="p-4"
         >
           <UiInlineActionNotification
             :title="item.title"
@@ -128,8 +124,8 @@ export const CustomContent: Story = {
   render: () => ({
     components: { UiInlineActionNotification, UiButton },
     template: `
-      <div class="bg-bg-deep p-6">
-        <div class="rounded-2xl border border-black/10 bg-bg-surface-alt p-4">
+      <div class="bg-bg-deep p-6 text-white">
+        <div >
           <UiInlineActionNotification icon-name="fill_info">
             <div class="space-y-2">
               <div class="text-title-xs text-fg-primary">

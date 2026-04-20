@@ -3,7 +3,7 @@ import {tokenClass} from "../../theme-utils.ts";
 const inlineActionNotification = {
   base: [
     'ui-inline-action-notification',
-
+    'p-4',
     tokenClass('--component-notification-bg-neutral', 'bg'),
     tokenClass('--radius-notification-lg', 'rounded'),
     tokenClass('--component-notification-fg-default', 'text'),
@@ -25,7 +25,7 @@ const inlineActionNotification = {
       'lg:flex-row'
     ],
     message: [],
-    title: ['h3'],
+    title: ['h3', 'font-bold'],
     actions: [
       'grid',
       'grid-flow-col',
