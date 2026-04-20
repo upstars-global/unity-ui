@@ -66,8 +66,9 @@ const dashArrayProgress = computed(() => {
   return `${len} ${Math.max(0, fullCirc.value - len)}`;
 });
 
-// Общий dash offset и стартовая позиция для поворота обеих окружностей.
-const dashOffsetCommon = computed(() => gapLength.value / 2);
+// Смещаем паттерн на половину gap так, чтобы вырез распределялся
+// симметрично: половина до старта дуги и половина после её конца.
+const dashOffsetCommon = computed(() => -gapLength.value / 2);
 const adjustedStartAngle = computed(() => RADIAL_PROGRESS_START_ANGLE_MAP[props.startAngle]);
 
 // Флаг пустого прогресса для использования в шаблоне.
