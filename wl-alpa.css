@@ -345,9 +345,11 @@
   --component-button-tertiary-hover-fg: var(--color-alpa-primary-200);
   --component-button-tertiary-pressed-bg: var(--color-alpa-neutral-300-40);
   --component-button-tertiary-pressed-fg: var(--color-alpa-primary-200);
-  --component-card-stroke: var(--color-transparent);
-  --component-card-bg-alt: var(--bg-surface-alt);
-  --component-card-bg-default: var(--bg-surface);
+  --component-card-bg: var(--bg-surface);
+  --component-card-alt-bg: var(--bg-surface-alt);
+  --component-card-alt-bordercolor: var(--color-transparent);
+  --component-card-fg-primary: var(--fg-primary);
+  --component-card-fg-secondary: var(--fg-secondary);
   --component-chip-default-bg: var(--color-transparent);
   --component-chip-default-bordercolor: var(--color-alpa-neutral-300);
   --component-chip-default-fg: var(--color-white);
@@ -395,8 +397,12 @@
   --component-notification-box-secondary: rgb(255 255 255);
   --component-notification-fg-default: var(--color-white);
   --component-notification-fg-error: var(--color-alpa-neutral-500);
+  --component-other-divider: var(--color-alpa-neutral-300);
   --component-other-scroll: var(--color-alpa-neutral-200-80);
-  --component-progress-bg: var(--color-alpa-neutral-300);
+  --component-popup-bg: var(--bg-surface);
+  --component-popup-fg-primary: var(--fg-primary);
+  --component-popup-fg-secondary: var(--fg-secondary);
+  --component-progress-bg: var(--color-alpa-neutral-200-40);
   --component-progress-brand: var(--color-alpa-primary-300);
   --component-progress-default: var(--color-alpa-success-100);
   --component-progress-fg-primary: var(--fg-primary);
@@ -428,7 +434,6 @@
   --radius-chip: var(--radius-8);
   --radius-tooltip: var(--radius-8);
   --radius-accordion: var(--radius-16);
-  --radius-card: var(--radius-16);
   --radius-list: var(--radius-16);
   --radius-tab: var(--radius-16);
   --radius-modal: var(--radius-24);
@@ -440,10 +445,15 @@
   --radius-button-default-lg: var(--radius-8);
   --radius-button-default-md: var(--radius-8);
   --radius-button-default-sm: var(--radius-8);
+  --radius-card-xs: var(--radius-8);
+  --radius-card-s: var(--radius-12);
+  --radius-card-m: var(--radius-16);
+  --radius-card-l: var(--radius-24);
   --radius-input-sm: var(--radius-8);
   --radius-input-default: var(--radius-16);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
+  --radius-popup-widget: var(--radius-24);
   --radius-segment-fg: var(--radius-4);
   --radius-segment-bg: var(--radius-8);
 }
