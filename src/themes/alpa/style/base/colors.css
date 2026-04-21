@@ -82,8 +82,6 @@
 
     --gradient-transparent-color-1: var(--color-transparent);
     --gradient-transparent-color-2: rgb(var(--color-black));
-    --gradient-personal-color-1: rgb(17 153 142);
-    --gradient-personal-color-2: rgb(3 222 169);
 
     --bg-deep: rgb(var(--color-neutral-500));
     --bg-surface: rgb(var(--color-neutral-400));
@@ -101,5 +99,4 @@
     --fg-status-warning: rgb(var(--color-warning-100));
     --component-other-scroll: var(--color-neutral-200-80);
     --gradient-transparent: 180deg, var(--gradient-transparent-color-1) 25%, var(--gradient-transparent-color-2) 100%;
-    --gradient-personal: 90deg, var(--gradient-personal-color-1) 0%, var(--gradient-personal-color-2) 100%;
 }
