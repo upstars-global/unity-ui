@@ -1,3 +1,14 @@
+## [1.12.0](https://github.com/upstars-global/unity-ui/compare/v1.11.0...v1.12.0) (2026-04-21)
+
+### 🚀 Features
+
+* UN-2598 Migrate Notifications component ([#17](https://github.com/upstars-global/unity-ui/issues/17))
+ ([460ab27](https://github.com/upstars-global/unity-ui/commit/460ab27b20dd1a18abca3f90232edababd6c592c))
+
+
+
+    * feat: UN-2598 Migrate Notifications component
+
 ## [1.11.0](https://github.com/upstars-global/unity-ui/compare/v1.10.0...v1.11.0) (2026-04-20)
 
 ### 🚀 Features
