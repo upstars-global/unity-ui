@@ -1,0 +1,7 @@
+:root[data-product="alpa"] {
+    --component-progress-bg: var(--color-neutral-300);
+    --component-progress-brand: var(--color-primary-300);
+    --component-progress-default: var(--color-success-100);
+    --component-progress-fg-primary: var(--fg-primary);
+    --component-progress-fg-secondary: var(--fg-secondary);
+}

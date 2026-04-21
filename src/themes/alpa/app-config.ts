@@ -8,6 +8,7 @@ import timerTheme from './components/timer/theme.generated';
 import tooltipTheme from './components/tooltip/theme.generated';
 import faqTheme from './components/faq/theme.generated';
 import readMoreTheme from './components/readMore/theme.generated';
+import radialProgressTheme from './components/radial/theme.generated';
 import inlineActionNotificationTheme from './components/inlineActionNotification/theme.generated';
 import baseNotificationTheme from './components/baseNotification/theme.generated';
 import inlineNotificationTheme from './components/inlineNotification/theme.generated';
@@ -30,6 +31,7 @@ const appConfig: AppConfig<UiIconName> = {
     tooltip: tooltipTheme,
     faq: faqTheme,
     readMore: readMoreTheme,
+    radialProgress: radialProgressTheme,
     toast: toastTheme
   },
   store: {

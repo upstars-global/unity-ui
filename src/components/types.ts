@@ -11,6 +11,7 @@ import type { ReadMoreUiOptimized } from './readMore/theme';
 import type {BaseNotificationUiOptimized} from "./notifications/baseNotification/theme.ts";
 import type {InlineNotificationUiOptimized} from "./notifications/inlineNotification/theme.ts";
 import type { ToastUiOptimized } from './notifications/toast/theme.ts';
+import type { RadialProgressUiOptimized } from './progress/radial/theme';
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
 export type UiIconsGroups<TIconName extends string = string> = Record<string, UiIcons<TIconName>>;
@@ -31,6 +32,7 @@ export interface AppConfig<TIconName extends string = string> {
     tooltip?: TooltipUiOptimized
     faq?: FaqUiOptimized
     readMore?: ReadMoreUiOptimized
+    radialProgress?: RadialProgressUiOptimized
     toast?: ToastUiOptimized
   }
   store?: {

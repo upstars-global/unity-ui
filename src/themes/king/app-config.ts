@@ -10,6 +10,7 @@ import timerTheme from './components/timer/theme.generated';
 import tooltipTheme from './components/tooltip/theme.generated';
 import faqTheme from './components/faq/theme.generated';
 import readMoreTheme from './components/readMore/theme.generated';
+import radialProgressTheme from './components/radial/theme.generated';
 import toastTheme from './components/toast/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 import inlineNotificationTheme from "./components/inlineNotification/theme.generated.ts";
@@ -29,6 +30,7 @@ const appConfig: AppConfig<UiIconName> = {
     timer: timerTheme,
     tooltip: tooltipTheme,
     faq: faqTheme,
+    radialProgress: radialProgressTheme,
     readMore: readMoreTheme,
     toast: toastTheme
   },
