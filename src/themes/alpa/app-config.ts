@@ -9,6 +9,10 @@ import tooltipTheme from './components/tooltip/theme.generated';
 import faqTheme from './components/faq/theme.generated';
 import readMoreTheme from './components/readMore/theme.generated';
 import radialProgressTheme from './components/radial/theme.generated';
+import inlineActionNotificationTheme from './components/inlineActionNotification/theme.generated';
+import baseNotificationTheme from './components/baseNotification/theme.generated';
+import inlineNotificationTheme from './components/inlineNotification/theme.generated';
+import toastTheme from './components/toast/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -18,6 +22,9 @@ const appConfig: AppConfig<UiIconName> = {
     accordion: accordionTheme,
     badge: badgeTheme,
     button: buttonTheme,
+    inlineActionNotification: inlineActionNotificationTheme,
+    baseNotification: baseNotificationTheme,
+    inlineNotification: inlineNotificationTheme,
     link: linkTheme,
     tabs: tabsTheme,
     timer: timerTheme,
@@ -25,6 +32,7 @@ const appConfig: AppConfig<UiIconName> = {
     faq: faqTheme,
     readMore: readMoreTheme,
     radialProgress: radialProgressTheme,
+    toast: toastTheme
   },
   store: {
     env: {

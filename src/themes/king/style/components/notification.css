@@ -1,0 +1,12 @@
+:root[data-product="king"] {
+    --radius-notification-sm: var(--radius-8);
+    --radius-notification-lg: var(--radius-16);
+
+    --component-notification-bg-error: var(--color-error-100);
+    --component-notification-bg-neutral: var(--color-white);
+    --component-notification-bg-success: var(--color-secondary-300);
+    --component-notification-box-line: var(--color-white);
+    --component-notification-box-secondary: var(--fg-secondary);
+    --component-notification-fg-default: var(--color-neutral-800);
+    --component-notification-fg-error: var(--color-white);
+}

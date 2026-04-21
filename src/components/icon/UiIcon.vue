@@ -3,7 +3,7 @@ import {computed, useAttrs} from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import type { UiThemeIconName } from '../../themes/registry'
 
-type IconSize = '24' | '72' | 'full'
+type IconSize = '16' | '24' | '72' | 'full'
 
 interface UiIconProps {
   name?: UiThemeIconName
@@ -11,6 +11,7 @@ interface UiIconProps {
 }
 
 const SIZE_CLASSES_LIST: Record<IconSize, string> = {
+  '16': 'w-4 h-4',
   '24': 'w-6 h-6',
   '72': 'w-18 h-18',
   full: 'w-full h-full'
@@ -46,5 +47,5 @@ const className = computed(() => {
 </script>
 
 <template>
-  <div class="ui-icon" v-if="iconRaw" :class="className" v-html="iconRaw"  />
+  <div class="ui-icon shrink-0" v-if="iconRaw" :class="className" v-html="iconRaw"  />
 </template>

@@ -81,8 +81,12 @@ const preset: Partial<Config> = {
                 16: 'var(--radius-16)',
                 24: 'var(--radius-24)',
             },
+            width: {
+                '84': '21rem',
+            },
             maxWidth: {
                 layout: "var(--main-layout-width)",
+                'full-mob': "calc(100% - 2rem)",
             },
             opacity: {
                 '80': '.80',

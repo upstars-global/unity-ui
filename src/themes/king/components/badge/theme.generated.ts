@@ -10,11 +10,11 @@ const button = {
         }
     },
     "variant": {
-        "status-error": "bg-error-100 text-[255_255_255]",
-        "status-warning": "bg-warning-100 text-[255_255_255]",
-        "status-success": "bg-success-100 text-[255_255_255]",
-        "navigation-default": "bg-primary-300 text-[255_255_255]",
-        "navigation-new": "bg-error-100 text-[255_255_255]",
+        "status-error": "bg-error-100 text-white",
+        "status-warning": "bg-warning-100 text-white",
+        "status-success": "bg-success-100 text-white",
+        "navigation-default": "bg-primary-300 text-white",
+        "navigation-new": "bg-error-100 text-white",
         "neutral": "bg-neutral-800/10 text-neutral-800"
     },
     "slots": {

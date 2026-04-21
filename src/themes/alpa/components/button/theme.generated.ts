@@ -91,10 +91,10 @@ const button = {
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
-            "base": "border-2 border-primary-300 bg-primary-300/10 text-[255_255_255] group-aria-busy:opacity-0",
-            "hover": "group-hover:border-primary-200 group-hover:bg-primary-200/10 group-hover:text-[255_255_255]",
-            "pressed": "group-active:border-primary-100 group-active:bg-primary-100/10 group-active:text-[255_255_255]",
-            "loading": "border-2 group-aria-busy:border-primary-100 group-aria-busy:bg-primary-100/10 group-aria-busy:text-[255_255_255]",
+            "base": "border-2 border-primary-300 bg-primary-300/10 text-white group-aria-busy:opacity-0",
+            "hover": "group-hover:border-primary-200 group-hover:bg-primary-200/10 group-hover:text-white",
+            "pressed": "group-active:border-primary-100 group-active:bg-primary-100/10 group-active:text-white",
+            "loading": "border-2 group-aria-busy:border-primary-100 group-aria-busy:bg-primary-100/10 group-aria-busy:text-white",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiary": {
