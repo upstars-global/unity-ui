@@ -1,3 +1,14 @@
+## [1.13.1](https://github.com/upstars-global/unity-ui/compare/v1.13.0...v1.13.1) (2026-04-21)
+
+### ⏪ Reverts
+
+* Revert "feat: UN-2284 Migrate ProgressBar Component"
+ ([e5f14c1](https://github.com/upstars-global/unity-ui/commit/e5f14c180d7c7f1d22ba2bb8d24c53441ae2feef))
+
+
+
+    This reverts commit 61ad80bf3ff370532551054219413d679e341b27.
+
 ## [1.13.0](https://github.com/upstars-global/unity-ui/compare/v1.12.0...v1.13.0) (2026-04-21)
 
 ### 🚀 Features
