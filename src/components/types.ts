@@ -1,5 +1,6 @@
 import type { ButtonUiOptimized } from './button/theme';
 import type { BadgeUiOptimized } from './badge/theme';
+import type { CardUiOptimized } from './card/theme';
 import type { InlineActionNotificationUiOptimized } from './notifications/inlineActionNotification/theme';
 import type { LinkUiOptimized } from "./link/theme";
 import type { TabsUiOptimized } from './tabs/theme';
@@ -23,6 +24,7 @@ export interface AppConfig<TIconName extends string = string> {
     accordion?: AccordionUiOptimized
     badge?: BadgeUiOptimized
     button?: ButtonUiOptimized
+    card?: CardUiOptimized
     inlineActionNotification?: InlineActionNotificationUiOptimized
     baseNotification?: BaseNotificationUiOptimized
     inlineNotification?: InlineNotificationUiOptimized

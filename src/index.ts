@@ -3,11 +3,17 @@ export { useAppConfig } from './composables/useAppConfig';
 export { useEventBus } from './composables/useEventBus';
 export { getThemeConfig } from './themes/registry';
 export { default as toast } from './plugins/toast';
+export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
 
 export type { AppConfig } from './components/types';
 export type { UiThemeName, UiThemeIconName } from './themes/registry';
 export type { UnityUIOptions } from './plugins/vue-plugin';
+export type {
+  CardVariant,
+  UiCardProps,
+} from './components/card/types';
+
 export type {
   TimerPhase,
   TimerUnit,
