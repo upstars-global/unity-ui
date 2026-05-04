@@ -1,6 +1,6 @@
 {
   "name": "unity-ui",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "type": "module",
   "license": "ISC",
   "main": "./dist/index.cjs",

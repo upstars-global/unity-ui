@@ -468,6 +468,7 @@
   --radius-input-default: var(--radius-16);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
+  --radius-popup-widget: var(--radius-24);
   --radius-segment-fg: var(--radius-4);
   --radius-segment-bg: var(--radius-8);
 }

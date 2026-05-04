@@ -1,4 +1,6 @@
 :root[data-product="alpa"] {
+    --radius-progress: var(--radius-full);
+
     --component-progress-bg: var(--color-neutral-800-10);
     --component-progress-brand: var(--color-primary-300);
     --component-progress-default: var(--color-success-100);
