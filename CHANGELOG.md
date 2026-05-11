@@ -1,3 +1,10 @@
+## [1.15.0](https://github.com/upstars-global/unity-ui/compare/v1.14.0...v1.15.0) (2026-05-11)
+
+### 🚀 Features
+
+* UN-2308 Migrate FeCard components ([#20](https://github.com/upstars-global/unity-ui/issues/20))
+ ([e50e9cb](https://github.com/upstars-global/unity-ui/commit/e50e9cbf68d3f36fc2814bf7d54052869fc8d1ef))
+
 ## [1.14.0](https://github.com/upstars-global/unity-ui/compare/v1.13.1...v1.14.0) (2026-04-22)
 
 ### 🚀 Features
