@@ -84,6 +84,8 @@
     --gradient-transparent-color-2: rgb(var(--color-black));
     --gradient-personal-color-1: rgb(17 153 142);
     --gradient-personal-color-2: rgb(3 222 169);
+    --component-card-gradient-from: rgb(var(--color-secondary-400));
+    --component-card-gradient-to: #712df5;
 
     --bg-deep: rgb(var(--color-neutral-500));
     --bg-surface: rgb(var(--color-neutral-400));
@@ -100,6 +102,8 @@
     --fg-status-success: rgb(var(--color-success-100));
     --fg-status-warning: rgb(var(--color-warning-100));
     --component-other-scroll: var(--color-neutral-200-80);
+
     --gradient-transparent: 180deg, var(--gradient-transparent-color-1) 25%, var(--gradient-transparent-color-2) 100%;
+    --gradient-card: 90deg, var(--component-card-gradient-from) 0%, var(--component-card-gradient-to) 100%;
     --gradient-personal: 90deg, var(--gradient-personal-color-1) 0%, var(--gradient-personal-color-2) 100%;
 }

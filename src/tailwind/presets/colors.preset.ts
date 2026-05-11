@@ -49,6 +49,7 @@ const preset: Partial<Config> = {
             backgroundImage: {
                 'gradient-transparent': 'linear-gradient(var(--gradient-transparent))',
                 'gradient-personal': 'linear-gradient(var(--gradient-personal))',
+                'gradient-card': 'linear-gradient(var(--gradient-card))',
             },
         }
     },

@@ -347,7 +347,7 @@
   --component-button-tertiary-pressed-fg: var(--color-alpa-primary-200);
   --component-card-bg: var(--bg-surface);
   --component-card-alt-bg: var(--bg-surface-alt);
-  --component-card-alt-bordercolor: var(--color-transparent);
+  --component-card-alt-bordercolor: var(--color-alpa-neutral-200-80);
   --component-card-fg-primary: var(--fg-primary);
   --component-card-fg-secondary: var(--fg-secondary);
   --component-chip-default-bg: var(--color-transparent);
@@ -398,15 +398,23 @@
   --component-notification-fg-default: var(--color-white);
   --component-notification-fg-error: var(--color-alpa-neutral-500);
   --component-other-divider: var(--color-alpa-neutral-300);
+  --component-other-list-counter: var(--color-alpa-neutral-300);
   --component-other-scroll: var(--color-alpa-neutral-200-80);
+  --component-other-table-vip: var(--color-alpa-neutral-300);
   --component-popup-bg: var(--bg-surface);
   --component-popup-fg-primary: var(--fg-primary);
   --component-popup-fg-secondary: var(--fg-secondary);
+  --component-popup-floating-menu-bg-active: var(--color-alpa-primary-400-10);
+  --component-popup-floating-menu-bg-hover: var(--color-alpa-neutral-200-40);
+  --component-popup-floating-menu-fg-active: var(--fg-brand);
   --component-progress-bg: var(--color-alpa-neutral-200-40);
   --component-progress-brand: var(--color-alpa-primary-300);
   --component-progress-default: var(--color-alpa-success-100);
   --component-progress-fg-primary: var(--fg-primary);
   --component-progress-fg-secondary: var(--fg-secondary);
+  --component-sidebar-bg: var(--bg-surface);
+  --component-sidebar-fg-primary: var(--fg-primary);
+  --component-sidebar-fg-secondary: var(--fg-secondary);
   --component-tab-default-fg: var(--color-alpa-neutral-100);
   --component-tab-hover-bg: var(--color-alpa-neutral-200-80);
   --component-tab-hover-fg: var(--color-white);
@@ -418,6 +426,7 @@
   --fg-pending: var(--color-alpa-warning-100);
   --fg-primary: var(--color-white);
   --fg-secondary: var(--color-alpa-neutral-100);
+  --fg-effect-shadow-balance: var(--color-transparent);
   --fg-effect-shadow-cashboxamount: var(--color-transparent);
   --fg-effect-shadow-default: var(--color-transparent);
   --fg-effect-shadow-menu-bottom: var(--color-transparent);
@@ -428,6 +437,8 @@
   --fg-status-error: var(--color-alpa-error-100);
   --fg-status-success: var(--color-alpa-success-100);
   --fg-status-warning: var(--color-alpa-warning-100);
+  --gradient-card-color-1: rgb(46 15 108);
+  --gradient-card-color-2: rgb(113 45 245);
   --gradient-personal-color-1: rgb(17 153 142);
   --gradient-personal-color-2: rgb(3 222 169);
   /* number */
@@ -437,6 +448,8 @@
   --radius-list: var(--radius-16);
   --radius-tab: var(--radius-16);
   --radius-modal: var(--radius-24);
+  --radius-popup: var(--radius-24);
+  --radius-sidebar: var(--radius-24);
   --radius-badge: var(--radius-full);
   --radius-progress: var(--radius-full);
   --radius-button-slab: var(--radius-16);
@@ -449,6 +462,8 @@
   --radius-card-s: var(--radius-12);
   --radius-card-m: var(--radius-16);
   --radius-card-l: var(--radius-24);
+  --radius-floating-menu-menu-item: var(--radius-12);
+  --radius-floating-menu-bg: var(--radius-16);
   --radius-input-sm: var(--radius-8);
   --radius-input-default: var(--radius-16);
   --radius-notification-sm: var(--radius-8);

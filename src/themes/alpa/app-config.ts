@@ -2,6 +2,7 @@ import type { AppConfig } from '../../components/types';
 import accordionTheme from './components/accordion/theme.generated';
 import badgeTheme from './components/badge/theme.generated';
 import buttonTheme from './components/button/theme.generated';
+import cardTheme from './components/card/theme.generated';
 import linkTheme from './components/link/theme.generated';
 import tabsTheme from './components/tabs/theme.generated';
 import timerTheme from './components/timer/theme.generated';
@@ -23,6 +24,7 @@ const appConfig: AppConfig<UiIconName> = {
     accordion: accordionTheme,
     badge: badgeTheme,
     button: buttonTheme,
+    card: cardTheme,
     inlineActionNotification: inlineActionNotificationTheme,
     baseNotification: baseNotificationTheme,
     inlineNotification: inlineNotificationTheme,
