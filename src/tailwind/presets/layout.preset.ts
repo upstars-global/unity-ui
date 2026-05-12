@@ -84,10 +84,6 @@ const preset: Partial<Config> = {
             width: {
                 '84': '21rem',
             },
-            maxWidth: {
-                layout: "var(--main-layout-width)",
-                'full-mob': "calc(100% - 2rem)",
-            },
             opacity: {
                 '80': '.80',
             }
