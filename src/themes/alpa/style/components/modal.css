@@ -1,0 +1,7 @@
+:root[data-product="alpa"] {
+    --radius-modal: var(--radius-24);
+
+    --component-modal-bg: var(--bg-surface);
+    --component-modal-fg-primary: var(--fg-primary);
+    --component-modal-fg-secondary: var(--fg-secondary);
+}

@@ -286,6 +286,7 @@
 [data-theme="king"] {
   /* color */
   --bg-deep: var(--color-king-neutral-50);
+  --bg-overlay: var(--color-king-neutral-800-80);
   --bg-surface: var(--color-white);
   --bg-surface-alt: var(--color-king-neutral-100);
   --component-accordion-default-bg: var(--color-white);
@@ -437,10 +438,10 @@
   --fg-status-error: var(--color-king-error-100);
   --fg-status-success: var(--color-king-success-100);
   --fg-status-warning: var(--color-king-warning-100);
-  --gradient-card-color-1: rgb(208 255 253);
-  --gradient-card-color-2: rgb(189 245 255);
-  --gradient-personal-color-1: rgb(40 244 139);
-  --gradient-personal-color-2: rgb(115 255 112);
+  --gradient-gr-1-color-1: rgb(40 244 139);
+  --gradient-gr-1-color-2: rgb(115 255 112);
+  --gradient-gr-2-color-1: rgb(208 255 253);
+  --gradient-gr-2-color-2: rgb(189 245 255);
   /* number */
   --radius-tab: var(--radius-8);
   --radius-tooltip: var(--radius-8);
@@ -468,7 +469,6 @@
   --radius-input-default: var(--radius-12);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
-  --radius-popup-widget: var(--radius-24);
   --radius-segment-fg: var(--radius-4);
   --radius-segment-bg: var(--radius-8);
 }
