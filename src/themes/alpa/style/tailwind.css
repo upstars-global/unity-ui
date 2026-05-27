@@ -30,4 +30,14 @@
         position: absolute;
         right: 0;
     }
+
+    .ui-input :is(input)[type=number]::-webkit-inner-spin-button,
+    .ui-input :is(input)[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .ui-input :is(input)[type=number] {
+        -moz-appearance: textfield;
+    }
 }
