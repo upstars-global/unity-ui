@@ -20,7 +20,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "generate:themes": "node ./scripts/replace-component-colors.mjs --write",
+    "generate:themes": "node ./scripts/replace-component-colors.ts --write",
     "test": "vitest run --passWithNoTests",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",

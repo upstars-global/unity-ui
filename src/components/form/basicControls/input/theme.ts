@@ -48,6 +48,7 @@ const input = {
     field: FIELD_BASE,
     content: CONTENT_BASE,
     label: [
+      'pointer-events-none absolute left-0 origin-left transition-all duration-200 ease-out',
       'text-body',
       'font-medium',
       'duration-150',
@@ -60,6 +61,8 @@ const input = {
       'text-body',
       'font-medium',
       'placeholder:font-normal',
+      'absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed',
+      'px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content',
       tokenClass('--component-input-value', 'text'),
       tokenClass('--component-input-placeholder', 'placeholder:text'),
       ...TEXT_BASE

@@ -8,3 +8,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .ui-input :is(input):autofill,
+    .ui-input :is(input):autofill:active,
+    .ui-input :is(input):autofill:focus,
+    .ui-input :is(input):autofill:hover,
+    .ui-input :is(input):-webkit-autofill,
+    .ui-input :is(input):-webkit-autofill:active,
+    .ui-input :is(input):-webkit-autofill:focus,
+    .ui-input :is(input):-webkit-autofill:hover {
+        -webkit-text-fill-color: rgb(var(--color-white))!important;
+        background-color: transparent;
+        background-clip: text;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .ui-input input::-webkit-credentials-auto-fill-button {
+        visibility: hidden;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+    }
+}

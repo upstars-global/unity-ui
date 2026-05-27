@@ -30,10 +30,6 @@ const slots = useSlots()
 const inputTheme = appConfig.components.input;
 const inputRef = ref<HTMLInputElement | null>(null);
 
-const attributes = computed(() => {
-  const { class: _class, ...rest } = attrs
-  return rest
-})
 const isFocused = ref(false)
 
 const hasValue = computed(() => Boolean(props.modelValue))
@@ -55,12 +51,9 @@ const fieldClasses = computed(() => {
       inputTheme?.size.default.field
   )
 })
-const contentClasses = computed(() => {
-  return flattenClasses(inputTheme.slots.content)
-})
+
 const floatingLabelClasses = computed(() => {
   return [
-      'pointer-events-none absolute left-0 origin-left transition-all duration-200 ease-out',
       shouldFloatLabel.value
           ? 'top-0 translate-y-0 scale-100 text-caption'
           : 'top-1/2 -translate-y-1/2 text-body',
@@ -68,27 +61,14 @@ const floatingLabelClasses = computed(() => {
   ]
 })
 const controlClasses = computed(() => {
-  return flattenClasses(
-    'absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed',
-      'px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content',
-      shouldFloatLabel.value
-          ? 'bottom-0 translate-y-0 scale-100'
-          : '',
-    inputTheme.slots.value
-  )
+  return [
+    inputTheme.slots.value,
+    shouldFloatLabel.value
+        ? 'bottom-0 translate-y-0 scale-100'
+        : '',
+  ]
 })
-const messageClasses = computed(() => {
-  return flattenClasses(inputTheme.slots.message)
-})
-const leadingIconClasses = computed(() => {
-  return flattenClasses(inputTheme.slots.leadingIcon)
-})
-const trailingIconClasses = computed(() => {
-  return flattenClasses(inputTheme.slots.trailingIcon)
-})
-const actionClasses = computed(() => {
-  return flattenClasses(inputTheme.slots.action)
-})
+
 const placeholderText = computed(() => {
   if (props.label && !shouldFloatLabel.value) {
     return ''
@@ -155,10 +135,10 @@ function handleBlur(event: FocusEvent) {
         <UiIcon
             v-if="showLeadingIcon"
             :name="leadingIconName"
-            :class="leadingIconClasses"
+            :class="inputTheme.slots.leadingIcon"
         />
       </slot>
-      <div :class="contentClasses">
+      <div :class="inputTheme.slots.content">
         <label
             v-if="label"
             :class="floatingLabelClasses"
@@ -192,12 +172,12 @@ function handleBlur(event: FocusEvent) {
           v-if="showClearAction"
           name="fill_close"
           class="cursor-pointer relative z-2"
-          :class="trailingIconClasses"
+          :class="inputTheme.slots.trailingIcon"
           @mousedown.prevent="handlerClearValue"
       />
       <div
           v-else-if="showTrailingSlot"
-          :class="actionClasses"
+          :class="inputTheme.slots.action"
       >
         <slot
             name="trailing"
@@ -205,7 +185,7 @@ function handleBlur(event: FocusEvent) {
           <UiIcon
               v-if="showTrailingIcon"
               :name="trailingIconName"
-              :class="trailingIconClasses"
+              :class="inputTheme.slots.trailingIcon"
           />
         </slot>
       </div>
@@ -213,7 +193,7 @@ function handleBlur(event: FocusEvent) {
     <slot name="suggestList"/>
     <div
         v-if="hasMessage"
-        :class="messageClasses"
+        :class="inputTheme.slots.message"
     >
       <slot name="errorMessages">
         {{ errorMessages }}
