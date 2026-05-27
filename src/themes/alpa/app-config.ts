@@ -15,6 +15,8 @@ import baseNotificationTheme from './components/baseNotification/theme.generated
 import inlineNotificationTheme from './components/inlineNotification/theme.generated';
 import toastTheme from './components/toast/theme.generated';
 import linearProgressTheme from './components/linear/theme.generated';
+import inputTheme from './components/input/theme.generated';
+import suggestTheme from './components/suggest/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -37,6 +39,8 @@ const appConfig: AppConfig<UiIconName> = {
     radialProgress: radialProgressTheme,
     toast: toastTheme,
     linearProgress: linearProgressTheme,
+    input: inputTheme,
+    suggest: suggestTheme,
   },
   store: {
     env: {

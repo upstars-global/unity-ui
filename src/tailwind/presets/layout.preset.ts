@@ -65,12 +65,16 @@ const preset: Partial<Config> = {
                 inherit: "inherit",
             },
             spacing: {
-                18: '4.5rem',
-                27: "6.75rem",
-                27.5: "6.875rem",
-                30: "7.5rem",
-                84: "21rem",
-                120: "30rem",
+                "0": "var(--spacing-0)",
+                "2": "var(--spacing-2)",
+                "4": "var(--spacing-4)",
+                "8": "var(--spacing-8)",
+                "12": "var(--spacing-12)",
+                "16": "var(--spacing-16)",
+                "20": "var(--spacing-20)",
+                "24": "var(--spacing-24)",
+                "32": "var(--spacing-32)",
+                "40": "var(--spacing-40)",
                 auto: "auto",
             },
             borderRadius: {
@@ -90,6 +94,7 @@ const preset: Partial<Config> = {
             },
             opacity: {
                 '80': '.80',
+                '45': '.45',
             }
         },
     },

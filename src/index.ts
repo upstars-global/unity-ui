@@ -1,12 +1,21 @@
 export { UnityUI } from './plugins/vue-plugin';
 export { useAppConfig } from './composables/useAppConfig';
 export { useEventBus } from './composables/useEventBus';
+export { useInputSuggest } from './composables/useInputSuggest';
 export { getThemeConfig } from './themes/registry';
 export { default as toast } from './plugins/toast';
 export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
+export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
 
 export type { AppConfig } from './components/types';
+export type {
+  InputSuggestChangeEmit,
+  InputSuggestReplacer,
+  InputSuggestValue,
+  UseInputSuggestOptions,
+  UseInputSuggestResult,
+} from './composables/useInputSuggest';
 export type { UiThemeName, UiThemeIconName } from './themes/registry';
 export type { UnityUIOptions } from './plugins/vue-plugin';
 export type {
@@ -24,6 +33,13 @@ export type {
   UiTimerLabels,
   UiTimerProps,
 } from './components/timer/types';
+export type {
+  InputSize,
+  InputState,
+  UiInputProps,
+  UiInputEmits,
+  UiInputSlots,
+} from './components/form/basicControls/input/types';
 export type {
   UiToastClosePayload,
   UiToastEventBus,

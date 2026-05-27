@@ -76,6 +76,8 @@
   },
   "dependencies": {
     "dayjs": "^1.11.20",
-    "@floating-ui/vue": "^1.1.11"
+    "@floating-ui/vue": "^1.1.11",
+    "vue3-mask": "upstars-global/vue3-mask#v3.0.8",
+    "vue3-outside-events": "upstars-global/vue3-outside-events#v2.0.5"
   }
 }

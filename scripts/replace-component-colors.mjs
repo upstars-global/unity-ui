@@ -73,6 +73,10 @@ const SPACING_UTILITIES = new Set([
     'w',
 ])
 
+const OPACITY_UTILITIES = new Set([
+    'opacity',
+])
+
 const DEFAULT_SPACING_VALUE_TO_KEY = new Map([
     ['0rem', '0'],
     ['0px', '0'],
@@ -286,7 +290,7 @@ function getUtilityBase(classToken) {
     const lastSegment = utilityBase.split(':').pop() ?? utilityBase
     const normalizedUtility = lastSegment.startsWith('!') ? lastSegment.slice(1) : lastSegment
 
-    return COLOR_UTILITIES.has(normalizedUtility) || SPACING_UTILITIES.has(normalizedUtility)
+    return COLOR_UTILITIES.has(normalizedUtility) || SPACING_UTILITIES.has(normalizedUtility) || OPACITY_UTILITIES.has(normalizedUtility)
         ? utilityBase
         : null
 }
@@ -311,6 +315,16 @@ function normalizeArbitraryValue(value) {
 function getNormalizedUtility(utilityBase) {
     const lastSegment = utilityBase.split(':').pop() ?? utilityBase
     return lastSegment.startsWith('!') ? lastSegment.slice(1) : lastSegment
+}
+
+function normalizeScalarForLookup(value) {
+    const normalized = value.trim()
+
+    if (/^(?:0?\.\d+|[1-9]\d*(?:\.\d+)?)$/.test(normalized)) {
+        return String(Number(normalized))
+    }
+
+    return normalized
 }
 
 function isColorValue(resolvedValue) {
@@ -374,7 +388,7 @@ function buildColorClass(utilityBase, resolvedValue, presetVars) {
     return `${utilityBase}-[${normalizeArbitraryValue(resolvedValue.value)}]`
 }
 
-function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey) {
+function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey) {
     const normalizedUtility = getNormalizedUtility(utilityBase)
 
     if (normalizedUtility.startsWith('rounded')) {
@@ -382,6 +396,18 @@ function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusVa
 
         if (radiusKey) {
             return radiusKey === 'DEFAULT' ? utilityBase : `${utilityBase}-${radiusKey}`
+        }
+    } else if (normalizedUtility === 'border' && resolvedValue.kind === 'literal') {
+        const borderWidthKey = borderWidthValueToKey.get(resolvedValue.value)
+
+        if (borderWidthKey) {
+            return borderWidthKey === 'DEFAULT' ? utilityBase : `${utilityBase}-${borderWidthKey}`
+        }
+    } else if (normalizedUtility === 'opacity' && resolvedValue.kind === 'literal') {
+        const opacityKey = opacityValueToKey.get(normalizeScalarForLookup(resolvedValue.value))
+
+        if (opacityKey) {
+            return `${utilityBase}-${opacityKey}`
         }
     } else if (resolvedValue.kind === 'literal') {
         const spacingKey = spacingValueToKey.get(resolvedValue.value)
@@ -394,10 +420,10 @@ function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusVa
     return buildArbitraryUtilityClass(utilityBase, resolvedValue)
 }
 
-function buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey) {
+function buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey) {
     return isColorValue(resolvedValue)
         ? buildColorClass(utilityBase, resolvedValue, presetVars)
-        : buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey)
+        : buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey)
 }
 
 function buildArbitraryPropertyClass(classToken, resolvedValue, borderWidthValueToKey) {
@@ -425,7 +451,7 @@ function buildArbitraryPropertyClass(classToken, resolvedValue, borderWidthValue
     return `${prefixes}[${propertyName}:${normalizeArbitraryValue(resolvedValue.value)}]`
 }
 
-function transformClassString(classString, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta) {
+function transformClassString(classString, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey, meta) {
     const utilityTransformed = classString.replace(CLASS_TOKEN_REGEX, (classToken, componentVarName) => {
         const utilityBase = getUtilityBase(classToken)
 
@@ -441,7 +467,7 @@ function transformClassString(classString, definitions, presetVars, spacingValue
         }
 
         meta.replacements += 1
-        return buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey)
+        return buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey)
     })
 
     const arbitraryPropertyTransformed = utilityTransformed.replace(ARBITRARY_PROPERTY_REGEX, (classToken, componentVarName) => {
@@ -475,9 +501,9 @@ function isPlainObject(value) {
     return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
 }
 
-function transformRuntimeThemeValue(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta) {
+function transformRuntimeThemeValue(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey, meta) {
     if (typeof value === 'string') {
-        return transformClassString(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta)
+        return transformClassString(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey, meta)
     }
 
     if (Array.isArray(value)) {
@@ -488,6 +514,7 @@ function transformRuntimeThemeValue(value, definitions, presetVars, spacingValue
             spacingValueToKey,
             radiusValueToKey,
             borderWidthValueToKey,
+            opacityValueToKey,
             meta,
         ))
 
@@ -502,7 +529,7 @@ function transformRuntimeThemeValue(value, definitions, presetVars, spacingValue
         return Object.fromEntries(
             Object.entries(value).map(([key, item]) => [
                 key,
-                transformRuntimeThemeValue(item, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta),
+                transformRuntimeThemeValue(item, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey, meta),
             ]),
         )
     }
@@ -650,7 +677,7 @@ async function loadThemeRuntime(filePath) {
     return loadedModule.default
 }
 
-async function buildGeneratedSource(filePath, source, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey) {
+async function buildGeneratedSource(filePath, source, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey) {
     const runtimeTheme = await loadThemeRuntime(filePath)
     const meta = {
         unresolved: new Set(),
@@ -663,6 +690,7 @@ async function buildGeneratedSource(filePath, source, definitions, presetVars, s
         spacingValueToKey,
         radiusValueToKey,
         borderWidthValueToKey,
+        opacityValueToKey,
         meta,
     )
     const typeAliasName = extractTypeAliasName(source)
@@ -683,7 +711,7 @@ async function buildGeneratedSource(filePath, source, definitions, presetVars, s
     }
 }
 
-async function generateThemeFile(filePath, themeDir, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey) {
+async function generateThemeFile(filePath, themeDir, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, opacityValueToKey) {
     const source = readFileSync(filePath, 'utf8')
     const generatedFilePath = getGeneratedThemePath(filePath, themeDir)
     const previousGeneratedSource = statSyncSafe(generatedFilePath)?.isFile()
@@ -697,6 +725,7 @@ async function generateThemeFile(filePath, themeDir, definitions, presetVars, sp
         spacingValueToKey,
         radiusValueToKey,
         borderWidthValueToKey,
+        opacityValueToKey,
     )
 
     if (shouldWrite) {
@@ -742,6 +771,12 @@ async function main() {
             ...parseResolvedValuePresetMap(layoutPresetPath, new Set(['borderRadius']), definitions),
         ])
         const borderWidthValueToKey = parseValuePresetMap(layoutPresetPath, new Set(['borderWidth']))
+        const opacityValueToKey = new Map(
+            Array.from(parseValuePresetMap(layoutPresetPath, new Set(['opacity'])).entries()).map(([value, key]) => [
+                normalizeScalarForLookup(value),
+                key,
+            ]),
+        )
 
         const results = await Promise.all(themeFiles.map((filePath) => generateThemeFile(
             filePath,
@@ -751,6 +786,7 @@ async function main() {
             spacingValueToKey,
             radiusValueToKey,
             borderWidthValueToKey,
+            opacityValueToKey,
         )))
 
         perThemeResults.push({
