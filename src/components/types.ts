@@ -15,6 +15,7 @@ import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
 import type { InputUiOptimized } from './form/basicControls/input/theme';
+import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
 import type {SuggestUiOptimized} from "./form/suggest/theme.ts";
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
@@ -41,6 +42,7 @@ export interface AppConfig<TIconName extends string = string> {
     toast?: ToastUiOptimized
     linearProgress?: LinearProgressUiOptimized
     input: InputUiOptimized
+    textArea: TextAreaUiOptimized
     suggest: SuggestUiOptimized
   }
   store?: {

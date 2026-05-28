@@ -2,21 +2,22 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-input group flex flex-col relative gap-[var(--component-input-gap)] data-[disabled=true]:opacity-[var(--component-input-disabled-opacity)]",
+    "base": "ui-input group flex flex-col relative gap-[var(--spacing-4)] data-[disabled=true]:opacity-45",
     "size": {
         "default": {
-            "field": "rounded-[var(--radius-input-default)] h-[var(--component-input-height-default)] px-[var(--component-input-padding-x-default)] py-[var(--component-input-padding-y-default)]"
+            "field": "rounded-12 h-14 px-3.5 py-2.5"
         }
     },
     "slots": {
-        "field": "flex items-center w-full overflow-hidden border-solid border-[var(--component-input-borderwidth)] gap-[var(--component-input-field-gap)] bg-[var(--component-input-bg)] hover:[&:not(:focus-within)]:border-[var(--component-input-hover-bordercolor)] focus-within:border-[var(--component-input-focus-bordercolor)] data-[invalid=true]:border-[var(--component-input-error-bordercolor)]",
+        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_rgb(80_80_254_/_0.4)] gap-[var(--spacing-8)] bg-white hover:[&:not(:focus-within)]:border-primary-400/40 focus-within:border-primary-300 data-[invalid=true]:border-error-100",
         "content": "relative flex min-w-0 flex-1 flex-col justify-center h-[2.25rem]",
-        "label": "pointer-events-none absolute left-0 origin-left transition-all duration-200 ease-out text-body font-medium duration-150 text-[var(--component-input-label)] group-focus-within:text-[var(--component-input-focus-label)] group-data-[invalid=true]:text-[var(--component-input-error-label)] min-w-0 truncate",
-        "value": "text-body font-medium placeholder:font-normal absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content text-[var(--component-input-value)] placeholder:text-[var(--component-input-placeholder)] min-w-0 truncate",
-        "message": "px-[var(--component-input-message-padding-x)] text-[var(--component-input-message)] group-data-[invalid=true]:!text-[var(--component-input-error-message)] text-caption",
-        "leadingIcon": "shrink-0 size-6 text-[var(--component-input-icon)]",
-        "trailingIcon": "shrink-0 size-6 text-[var(--component-input-icon)]",
-        "action": "shrink-0"
+        "label": "absolute pointer-events-none left-0 origin-left transition-all duration-200 ease-out text-body font-medium duration-150 text-neutral-400 group-focus-within:text-primary-300 group-data-[invalid=true]:text-error-100 min-w-0 truncate",
+        "value": "text-body font-medium placeholder:font-normal absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content text-neutral-600 placeholder:text-neutral-300 min-w-0 truncate",
+        "message": "px-[var(--spacing-16)] text-neutral-400 group-data-[invalid=true]:!text-error-100 text-caption",
+        "leadingIcon": "shrink-0 size-6 text-neutral-400",
+        "trailingIcon": "shrink-0 size-6 text-neutral-400",
+        "action": "shrink-0",
+        "errorMessage": "flex gap-[var(--spacing-4)]"
     }
 } as const
 

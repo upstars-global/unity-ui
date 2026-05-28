@@ -8,17 +8,17 @@ const button = {
             "base": "flex-row items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-16 h-8 gap-1 rounded-8 px-2 py-1",
+                    "container": "min-w-16 h-32 gap-4 rounded-8 px-8 py-4",
                     "icon": "!w-4 !h-4",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
-                    "container": "min-w-24 h-10 gap-1 rounded-12 px-2 py-2",
+                    "container": "min-w-24 h-40 gap-4 rounded-12 px-8 py-8",
                     "icon": "",
                     "label": "text-button-md truncate"
                 },
                 "lg": {
-                    "container": "min-w-24 h-12 gap-2 rounded-16 px-3.5 py-3",
+                    "container": "min-w-24 h-12 gap-8 rounded-16 px-3.5 py-12",
                     "icon": "",
                     "label": "text-button-lg truncate"
                 }
@@ -28,11 +28,11 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "h-8 rounded-8",
+                    "container": "h-32 rounded-8",
                     "icon": "!w-4 !h-4"
                 },
                 "md": {
-                    "container": "h-10 rounded-12",
+                    "container": "h-40 rounded-12",
                     "icon": "w-6"
                 },
                 "lg": {
@@ -45,17 +45,17 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
-                    "container": "h-12 gap-0.5 rounded-8 px-4 py-1",
+                    "container": "h-12 gap-2 rounded-8 px-16 py-4",
                     "label": "text-button-sm truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 },
                 "md": {
-                    "container": "h-14 gap-1 rounded-12 px-6 py-1",
+                    "container": "h-14 gap-4 rounded-12 px-24 py-4",
                     "label": "text-button-md truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 },
                 "lg": {
-                    "container": "h-16 gap-1 rounded-16 px-6 py-1",
+                    "container": "h-16 gap-4 rounded-16 px-24 py-4",
                     "label": "text-button-lg truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 }
@@ -65,7 +65,7 @@ const button = {
             "base": "flex-col items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-18 max-w-38 h-14 gap-1 rounded-12 px-4 py-1",
+                    "container": "min-w-18 max-w-38 h-14 gap-4 rounded-12 px-16 py-4",
                     "icon": "w-6",
                     "label": "text-button-caption truncate"
                 }

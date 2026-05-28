@@ -1,0 +1,39 @@
+:root[data-product="alpa"] {
+    --radius-input-sm: var(--radius-8);
+    --radius-input-default: var(--radius-12);
+    --radius-list: var(--radius-12);
+
+    --component-input-gap: var(--spacing-4);
+    --component-input-field-gap: var(--spacing-8);
+    --component-input-message-padding-x: var(--spacing-16);
+    --component-input-height-sm: 2.75rem;
+    --component-input-height-default: 3.5rem;
+    --component-input-padding-sm: 0.625rem;
+    --component-input-padding-x-default: 0.875rem;
+    --component-input-padding-y-default: 0.625rem;
+    --component-input-borderwidth: 0.125rem;
+    --component-input-disabled-opacity: 0.45;
+
+    --component-input-bg: var(--color-white);
+    --component-input-bordercolor: var(--color-primary-200-40);
+    --component-input-icon: var(--color-neutral-400);
+    --component-input-label: var(--color-neutral-400);
+    --component-input-message: var(--color-neutral-400);
+    --component-input-placeholder: var(--color-neutral-300);
+    --component-input-value: var(--color-neutral-600);
+    --component-input-error-bordercolor: var(--color-error-100);
+    --component-input-error-label: var(--color-error-100);
+    --component-input-error-message: var(--color-error-100);
+    --component-input-focus-bordercolor: var(--color-primary-300);
+    --component-input-focus-label: var(--color-primary-300);
+    --component-input-hover-bordercolor: var(--color-primary-400-40);
+    --component-input-list-bg: var(--color-white);
+    --component-input-list-hover: var(--color-neutral-100);
+    --component-input-list-icon: var(--color-neutral-400);
+    --component-input-list-selected: var(--color-neutral-200-40);
+    --component-input-list-select-text-default: var(--color-neutral-500);
+    --component-input-list-select-text-secondary: var(--color-neutral-400);
+    --component-input-list-select-text-selected: var(--color-neutral-800);
+    --component-input-list-suggest-text-default: var(--color-neutral-600);
+    --component-input-list-suggest-text-secondary: var(--color-neutral-300);
+}

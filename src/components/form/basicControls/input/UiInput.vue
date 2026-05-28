@@ -4,6 +4,8 @@ import { useAppConfig } from '../../../../composables/useAppConfig'
 import { flattenClasses } from '../../../../helpers/flattenClasses'
 import UiIcon from '../../../icon/UiIcon.vue'
 import type { UiInputEmits, UiInputProps, UiInputSlots } from './types'
+import {baseFieldDefault} from "../BaseField.ts";
+import {LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS} from "@src/components/form/basicControls/input/theme.ts";
 
 defineOptions({
   name: 'UiInput',
@@ -11,13 +13,11 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<UiInputProps>(), {
+  ...baseFieldDefault,
   modelValue: '',
   type: 'text',
-  disabled: false,
   invalid: false,
   label: '',
-  message: '',
-  placeholder: '',
   showClearAction: false,
 })
 
@@ -34,7 +34,8 @@ const isFocused = ref(false)
 
 const hasValue = computed(() => Boolean(props.modelValue))
 const shouldFloatLabel = computed(() => Boolean(props.label) && (isFocused.value || hasValue.value))
-const hasMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
+const hasErrorMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
+const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
 const showLeadingIcon = computed(() => Boolean(props.leadingIconName))
 const showTrailingIcon = computed(() => Boolean(props.trailingIconName))
 const showClearAction = computed(() => Boolean(props.showClearAction && props.modelValue && isFocused.value))
@@ -55,17 +56,15 @@ const fieldClasses = computed(() => {
 const floatingLabelClasses = computed(() => {
   return [
       shouldFloatLabel.value
-          ? 'top-0 translate-y-0 scale-100 text-caption'
-          : 'top-1/2 -translate-y-1/2 text-body',
+          ? LABEL_FOCUS
+          : LABEL_BLUR,
       inputTheme.slots.label,
   ]
 })
 const controlClasses = computed(() => {
   return [
     inputTheme.slots.value,
-    shouldFloatLabel.value
-        ? 'bottom-0 translate-y-0 scale-100'
-        : '',
+    shouldFloatLabel.value ?? VALUE_FOCUS
   ]
 })
 
@@ -101,7 +100,7 @@ function handlerChange(event: Event) {
   emit('change', target.value);
 }
 
-function handlerKeyDown(event: Event) {
+function handlerKeyDown(event: KeyboardEvent) {
   emit('keydown', event)
 }
 
@@ -192,11 +191,28 @@ function handleBlur(event: FocusEvent) {
     </div>
     <slot name="suggestList"/>
     <div
-        v-if="hasMessage"
+        v-if="hasBottomMessage"
         :class="inputTheme.slots.message"
     >
-      <slot name="errorMessages">
-        {{ errorMessages }}
+      <div
+          v-if="hasErrorMessage"
+          :class="inputTheme.slots.errorMessage"
+      >
+        <slot
+            name="errorMessages"
+        >
+          <UiIcon
+              name="fill_attention_1"
+              size="16"
+          />
+          {{ errorMessages }}
+        </slot>
+      </div>
+      <slot
+          v-else
+          name="message"
+      >
+        {{ infoMessage }}
       </slot>
     </div>
   </div>

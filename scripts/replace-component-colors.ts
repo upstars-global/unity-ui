@@ -122,7 +122,7 @@ const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+)
 const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
-const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
+const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:"([^"]+)"|'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
 const RUNTIME_IMPORT_REGEX = /^\s*import\s+(?!type\b)(?:[\s\S]*?\sfrom\s+)?['"](.+?)['"]/gm
 
 type Predicate = (filePath: string) => boolean
@@ -213,8 +213,8 @@ function parseValuePresetMap(filePath: string, sectionNames: Set<string>): Value
         }
 
         for (const entryMatch of sectionBody.matchAll(PRESET_VALUE_ENTRY_REGEX)) {
-            const key = entryMatch[1] ?? entryMatch[2]
-            const value = entryMatch[3]?.trim()
+            const key = entryMatch[1] ?? entryMatch[2] ?? entryMatch[3]
+            const value = entryMatch[4]?.trim()
 
             if (!key || !value) {
                 continue
@@ -968,11 +968,15 @@ async function main() {
         const cssFiles = walkFiles(themeStylesDir, (filePath) => filePath.endsWith('.css'))
 
         const presetVars = parsePresetVars(colorsPresetPath)
+        const definitions = parseCssVariables(cssFiles)
         const spacingValueToKey = new Map([
             ...DEFAULT_SPACING_VALUE_TO_KEY,
-            ...parseValuePresetMap(layoutPresetPath, new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width'])),
+            ...parseResolvedValuePresetMap({
+                filePath: layoutPresetPath,
+                sectionNames: new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
+                definitions,
+            }),
         ])
-        const definitions = parseCssVariables(cssFiles)
         const radiusValueToKey = new Map([
             ['0', '0'],
             ['0rem', '0'],
