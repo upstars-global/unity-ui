@@ -160,6 +160,7 @@ function handleBlur(event: FocusEvent) {
             :max="max"
             :maxlength="maxlength"
             :pattern="pattern"
+            :autofocus="autofocus"
             @change="handlerChange"
             @input="handlerInput"
             @keydown.up="handlerKeyDown"

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { computed, reactive, ref } from 'vue'
+import { computed, nextTick, onMounted, reactive, ref } from 'vue'
 import UiInput from '../../components/form/basicControls/input/UiInput.vue'
 import UiSuggestList from '../../components/form/suggest/UiSuggestList.vue'
 
@@ -210,6 +210,141 @@ export const WithSuggestList: Story = {
         </UiInput>
       </div>
     `,
+  }),
+}
+
+const renderStateStory = ({
+  value = '',
+  props = {},
+  wrapperClass = '',
+  autofocus = false,
+}: {
+  value?: string
+  props?: Record<string, unknown>
+  wrapperClass?: string
+  autofocus?: boolean
+}) => ({
+  components: { UiInput },
+  setup() {
+    const inputValue = ref(value)
+    const containerRef = ref<HTMLElement | null>(null)
+
+    onMounted(async () => {
+      if (!autofocus) {
+        return
+      }
+
+      await nextTick()
+      const focusInput = containerRef.value?.querySelector<HTMLInputElement>('input')
+
+      requestAnimationFrame(() => {
+        focusInput?.focus()
+
+        requestAnimationFrame(() => {
+          focusInput?.focus()
+        })
+      })
+    })
+
+    return {
+      containerRef,
+      inputValue,
+      props,
+      wrapperClass,
+    }
+  },
+  template: `
+    <div class="bg-bg-deep p-6">
+      <div
+        ref="containerRef"
+        :class="wrapperClass"
+        class="max-w-[24rem]"
+      >
+        <UiInput
+          v-bind="props"
+          :model-value="inputValue"
+          @update:model-value="inputValue = $event"
+        />
+      </div>
+    </div>
+  `,
+})
+
+export const StateDefault: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    props: {
+      name: 'state-default',
+      label: 'Email',
+      placeholder: 'name@example.com',
+    },
+  }),
+}
+
+export const StateFocus: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    autofocus: true,
+    props: {
+      name: 'state-focus',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      autofocus: true
+    },
+  }),
+}
+
+export const StateEmptyError: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    props: {
+      name: 'state-error',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      invalid: true,
+      errorMessages: 'Email is required',
+    },
+  }),
+}
+export const StateError: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    value: 'wrong-email',
+    props: {
+      name: 'state-error',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      invalid: true,
+      errorMessages: 'Invalid email address',
+    },
+  }),
+}
+
+export const StateDisabled: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    value: 'name@example.com',
+    props: {
+      name: 'state-disabled',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      disabled: true,
+    },
   }),
 }
 
