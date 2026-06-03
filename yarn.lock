@@ -6653,6 +6653,14 @@ vue-tsc@^3.1.5:
     "@volar/typescript" "2.4.27"
     "@vue/language-core" "3.2.4"
 
+vue3-mask@upstars-global/vue3-mask#v3.0.8:
+  version "3.0.8"
+  resolved "https://codeload.github.com/upstars-global/vue3-mask/tar.gz/8db8cc9839ad1e9eb6f894a04390807000088e87"
+
+vue3-outside-events@upstars-global/vue3-outside-events#v2.0.5:
+  version "2.0.5"
+  resolved "https://codeload.github.com/upstars-global/vue3-outside-events/tar.gz/bba0b0bf3af0f64635c51e596e8755ef59853d5d"
+
 vue@^3.5.25:
   version "3.5.28"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.5.28.tgz#067ac9313d24d517c6d59ccbd9f0f6216cbdb00f"
