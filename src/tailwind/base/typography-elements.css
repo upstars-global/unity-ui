@@ -1,7 +1,7 @@
 @tailwind base;
 
 @layer base {
-    /*body {
+    body {
         @apply font-normal;
     }
 
@@ -9,9 +9,9 @@
     h2 { @apply text-title-lg; }
     h3 { @apply text-title-md; }
     h4 { @apply text-title-sm; }
-    h5 { @apply text-subtitle; }*/
+    h5 { @apply text-subtitle; }
 
-    /*a, .text-link {
+    a, .text-link {
         @apply underline decoration-solid;
         @apply transition-colors text-fg-link-default;
         text-decoration-skip-ink: auto;
@@ -28,5 +28,5 @@
 
     b, strong {
         font-weight: var(--text-fontweight-bold);
-    }*/
+    }
 }

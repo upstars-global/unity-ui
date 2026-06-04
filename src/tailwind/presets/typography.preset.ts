@@ -129,10 +129,12 @@ const preset: Partial<Config> = {
         fontFamily: {
             sans: ['var(--font-family)'],
         },
-        fontWeight: {
-            normal: 'var(--text-fontweight-normal)',
-            medium: 'var(--text-fontweight-medium)',
-            bold: 'var(--text-fontweight-bold)',
+        extend: {
+            fontWeight: {
+                normal: 'var(--text-fontweight-normal)',
+                medium: 'var(--text-fontweight-medium)',
+                bold: 'var(--text-fontweight-bold)',
+            },
         },
         fontSize: typographyFontSize,
     },
