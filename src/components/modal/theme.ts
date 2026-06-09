@@ -10,7 +10,6 @@ const MODAL_BASE = [
     'top-0 left-0 top-0 bottom-0',
     'bg-neutral-50',
     'z-index-100',
-    'cursor-pointer',
     tokenClass('--bg-overlay', 'bg'),
 ]
 
@@ -21,6 +20,7 @@ const MODAL_CONTAINER = [
     'min-w-[20rem]',
     'max-w-100dvw',
     'md:w-full',
+    'cursor-default',
     tokenClass('--spacing-16', 'p'),
     tokenClass('--radius-modal', 'rounded-t'),
     tokenClass('--radius-modal', 'md:rounded'),
@@ -54,6 +54,21 @@ const MODAL_BOTTOM_ACTIONS = [
     tokenClass('--spacing-16', 'gap'),
 ]
 
+const MODAL_TRANSITION_GROUP_ACTIVE_CLASS = 'transition-all duration-500'
+const MODAL_TRANSITION_GROUP_DESKTOP = {
+    enterActiveClass: MODAL_TRANSITION_GROUP_ACTIVE_CLASS,
+    enterFromClass: 'opacity-0',
+    leaveActiveClass: MODAL_TRANSITION_GROUP_ACTIVE_CLASS,
+    leaveToClass: 'opacity-0',
+}
+
+const MODAL_TRANSITION_GROUP_MOBILE = {
+    enterActiveClass: MODAL_TRANSITION_GROUP_ACTIVE_CLASS,
+    enterFromClass: 'opacity-0 translate-y-[450px]',
+    leaveActiveClass: MODAL_TRANSITION_GROUP_ACTIVE_CLASS,
+    leaveToClass: 'opacity-0 translate-y-[450px]',
+}
+
 const MODAL_SIZES = {
     s: ['md:w-[calc(100dvw-2rem)] md:max-w-[27rem]'],
     m: ['md:w-[calc(100dvw-2rem)] md:max-w-[40rem]'],
@@ -75,6 +90,10 @@ const modal = {
     sizes: {
         ...MODAL_SIZES,
         fullScreen: ['h-full max-w-full', '!rounded-0', '!justify-start']
+    },
+    transitionGroup: {
+        desktop: MODAL_TRANSITION_GROUP_DESKTOP,
+        mobile: MODAL_TRANSITION_GROUP_MOBILE,
     },
 } as const
 

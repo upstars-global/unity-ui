@@ -5,7 +5,6 @@ import ModalController from '../../components/modal/ModalController.vue'
 import ModalStoryContent from './ModalStoryContent.vue'
 import modalApi from '../../plugins/modal'
 import type { IModalOptions, ModalSize } from '../../components/modal/types'
-import faq from "../../components/faq/theme.ts";
 
 type ModalStoryArgs = {
   title: string
@@ -79,6 +78,7 @@ export const Playground: Story = {
           name: 'blocking-modal',
           title: 'Overlay is blocked',
           blockCloseOverlay: true,
+          showFooter: false
         }))
       }
       function openFullScreenModal() {

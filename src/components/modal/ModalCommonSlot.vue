@@ -21,6 +21,7 @@
                 name="header-right"
             >
               <UiIcon
+                  class="cursor-pointer"
                   name="line_close"
                   @click="close"
               />
