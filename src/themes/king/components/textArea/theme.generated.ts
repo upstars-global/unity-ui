@@ -2,20 +2,20 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-input group flex flex-col relative gap-[var(--spacing-4)] data-[disabled=true]:opacity-45",
+    "base": "ui-input group flex flex-col relative gap-4 data-[disabled=true]:opacity-45",
     "size": {
         "default": {
-            "field": "rounded-12 h-14 px-3.5 py-2.5 h-auto items-start"
+            "field": "rounded-12 h-14 px-8 py-12 h-auto items-start"
         }
     },
     "slots": {
-        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_rgb(80_80_254_/_0.4)] gap-[var(--spacing-8)] bg-white hover:[&:not(:focus-within)]:border-primary-400/40 focus-within:border-primary-300 data-[invalid=true]:border-error-100 items-start",
+        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_rgb(80_80_254_/_0.4)] gap-8 bg-white hover:[&:not(:focus-within):not([data-invalid=true])]:border-primary-400/40 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100 items-start",
         "content": "relative flex min-w-0 flex-1 flex-col",
-        "label": "text-caption font-medium pointer-events-none left-0 origin-left transition-all duration-200 ease-out text-body font-medium duration-150 text-neutral-400 group-focus-within:text-primary-300 group-data-[invalid=true]:text-error-100 min-w-0 truncate",
+        "label": "text-caption font-medium left-0 origin-left transition-all duration-200 ease-out cursor-text text-body font-medium duration-150 text-neutral-400 group-data-[invalid=true]:text-error-100 group-focus-within:!text-primary-300 min-w-0 truncate",
         "value": "text-body font-normal placeholder:font-normal w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed h-[5.25rem] resize-none overflow-scroll leading-[inherit] text-neutral-600 placeholder:text-neutral-300",
-        "messageRow": "px-[var(--spacing-16)] text-neutral-400 group-data-[invalid=true]:!text-error-100 text-caption flex w-full items-start gap-[var(--spacing-8)]",
+        "messageRow": "px-16 text-neutral-400 group-data-[invalid=true]:text-error-100 group-focus-within:!text-neutral-400 text-caption flex w-full items-start gap-8",
         "message": "min-w-0 flex-1",
-        "errorMessage": "flex gap-[var(--spacing-4)]",
+        "errorMessage": "flex gap-4 group-data-[invalid=true]:text-error-100 group-focus-within:text-neutral-400",
         "counter": "shrink-0 text-right whitespace-nowrap"
     }
 } as const

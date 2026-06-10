@@ -127,7 +127,7 @@ function handleBlur(event: FocusEvent) {
         :data-disabled="disabled"
         :data-invalid="invalid"
         :class="fieldClasses"
-        @focusin="handleFocus"
+        @focusin.stop="handleFocus"
         @focusout="handleBlur"
     >
       <slot name="leading">

@@ -95,6 +95,7 @@ function handleBlur(event: FocusEvent) {
       <div :class="textAreaTheme.slots.content">
         <label
           v-if="label"
+          :for="name"
           :class="textAreaTheme.slots.label"
         >
           <slot name="label">
@@ -109,6 +110,7 @@ function handleBlur(event: FocusEvent) {
           :placeholder="placeholder"
           :class="textAreaTheme.slots.value"
           :name="name"
+          :id="name"
           :maxlength="maxlength"
           :rows="rows"
           :autocomplete="autocomplete"

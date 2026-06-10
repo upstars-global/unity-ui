@@ -1,7 +1,7 @@
 import {tokenClass} from "../../theme-utils.ts";
 
 const SUGGEST_BASE = [
-  'flex flex-col max-h-[20rem] min-h-[6.75rem] overflow-scroll',
+  'flex flex-col max-h-[20rem] overflow-hidden',
   'absolute top-full left-0 right-0 mt-8',
   tokenClass('--component-input-list-bg', 'bg'),
   tokenClass('--radius-list', 'rounded'),
@@ -10,7 +10,7 @@ const SUGGEST_BASE = [
 ]
 
 const SUGGEST_ITEM = [
-  'flex shrink-0 grow-0 items-center',
+  'flex shrink-0 grow-0 items-center cursor-pointer',
   'h-[3rem]',
   tokenClass('--spacing-8', 'gap'),
   tokenClass('--spacing-8', 'py'),

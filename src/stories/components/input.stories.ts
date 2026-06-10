@@ -113,17 +113,6 @@ export const WithSuggestList: Story = {
         return suggestions.filter((item) => item.toLowerCase().includes(query))
       })
 
-      const syncActiveIndex = () => {
-        if (activeIndex.value > filteredItems.value.length - 1) {
-          activeIndex.value = 0
-        }
-      }
-
-      const openSuggest = () => {
-        visible.value = filteredItems.value.length > 0
-        syncActiveIndex()
-      }
-
       const closeSuggest = () => {
         visible.value = false
       }
@@ -177,7 +166,6 @@ export const WithSuggestList: Story = {
         activeIndex,
         filteredItems,
         isVisible,
-        openSuggest,
         closeSuggest,
         updateValue,
         selectItem,
@@ -195,7 +183,6 @@ export const WithSuggestList: Story = {
           show-clear-action
           :model-value="value"
           @update:model-value="updateValue"
-          @focus="openSuggest"
           @keydown="handleKeydown"
         >
           <template #suggestList>
@@ -203,6 +190,7 @@ export const WithSuggestList: Story = {
               :items="filteredItems"
               :visible="isVisible"
               :active-index="activeIndex"
+              leadingIconName="fill_attention_1"
               @select="selectItem"
               @close="closeSuggest"
             />

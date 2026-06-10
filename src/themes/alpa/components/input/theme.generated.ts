@@ -5,19 +5,19 @@ const button = {
     "base": "ui-input group flex flex-col relative gap-4 data-[disabled=true]:opacity-45",
     "size": {
         "default": {
-            "field": "rounded-12 h-14 px-3.5 py-2.5"
+            "field": "rounded-16 h-14 px-8 py-12"
         }
     },
     "slots": {
-        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_var(--color-transparent)] gap-8 bg-neutral-200/40 hover:[&:not(:focus-within)]:border-primary-50 focus-within:border-primary-300 data-[invalid=true]:border-error-100",
+        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_var(--color-transparent)] gap-8 bg-neutral-200/40 hover:[&:not(:focus-within):not([data-invalid=true])]:border-primary-50 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100",
         "content": "relative flex min-w-0 flex-1 flex-col justify-center h-[2.25rem]",
-        "label": "absolute pointer-events-none left-0 origin-left transition-all duration-200 ease-out text-body font-medium duration-150 text-neutral-100 group-focus-within:text-primary-300 group-data-[invalid=true]:text-error-100 min-w-0 truncate",
+        "label": "absolute left-0 origin-left transition-all duration-200 ease-out cursor-text text-body font-medium duration-150 text-neutral-100 group-data-[invalid=true]:text-error-100 group-focus-within:!text-primary-300 min-w-0 truncate",
         "value": "text-body font-medium placeholder:font-normal absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content text-white placeholder:text-neutral-100 min-w-0 truncate",
-        "message": "px-16 text-neutral-100 group-data-[invalid=true]:!text-error-100 text-caption",
+        "message": "px-16 text-neutral-100 group-data-[invalid=true]:text-error-100 group-focus-within:!text-neutral-100 text-caption",
         "leadingIcon": "shrink-0 size-6 text-neutral-100",
         "trailingIcon": "shrink-0 size-6 text-neutral-100",
         "action": "shrink-0",
-        "errorMessage": "flex gap-4"
+        "errorMessage": "flex gap-4 group-data-[invalid=true]:text-error-100 group-focus-within:text-neutral-100"
     }
 } as const
 

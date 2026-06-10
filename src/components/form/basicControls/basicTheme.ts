@@ -4,8 +4,8 @@ export const DEFAULT_SIZE = {
     field: [
         tokenClass('--radius-input-default', 'rounded'),
         tokenClass('--component-input-height-default', 'h'),
-        tokenClass('--component-input-padding-x-default', 'px'),
-        tokenClass('--component-input-padding-y-default', 'py'),
+        tokenClass('--spacing-8', 'px'),
+        tokenClass('--spacing-12', 'py'),
     ],
 };
 export const SM_SIZE = {
@@ -36,27 +36,28 @@ export const FIELD_BASE = [
     '[border:var(--component-input-borderwidth)_solid_var(--component-input-bordercolor)]',
     tokenClass('--component-input-field-gap', 'gap'),
     tokenClass('--component-input-bg', 'bg'),
-    tokenClass('--component-input-hover-bordercolor', 'hover:[&:not(:focus-within)]:border'),
+    tokenClass('--component-input-hover-bordercolor', 'hover:[&:not(:focus-within):not([data-invalid=true])]:border'),
     tokenClass('--component-input-focus-bordercolor', 'focus-within:border'),
-    tokenClass('--component-input-error-bordercolor', 'data-[invalid=true]:border'),
+    tokenClass('--component-input-error-bordercolor', 'data-[invalid=true]:[&:not(:focus-within)]:border'),
 ]
 
 export const TEXT_BASE = ['min-w-0', 'truncate']
 
 export const LABEL_BASE = [
-    'pointer-events-none left-0 origin-left transition-all duration-200 ease-out',
+    'left-0 origin-left transition-all duration-200 ease-out cursor-text',
     'text-body',
     'font-medium',
     'duration-150',
     tokenClass('--component-input-label', 'text'),
-    'group-focus-within:text-[var(--component-input-focus-label)]',
     'group-data-[invalid=true]:text-[var(--component-input-error-label)]',
+    'group-focus-within:!text-[var(--component-input-focus-label)]',
 ]
 
 export const MESSAGE_BASE = [
     tokenClass('--component-input-message-padding-x', 'px'),
     tokenClass('--component-input-message', 'text'),
-    tokenClass('--component-input-error-message', 'group-data-[invalid=true]:!text'),
+    tokenClass('--component-input-error-message', 'group-data-[invalid=true]:text'),
+    'group-focus-within:!text-[var(--component-input-message)]',
     'text-caption',
 ]
 
@@ -64,4 +65,6 @@ export const MESSAGE_BASE = [
 export const ERROR_MESSAGE_BASE = [
     'flex',
     tokenClass('--spacing-4', 'gap'),
+    tokenClass('--component-input-error-message', 'group-data-[invalid=true]:text'),
+    'group-focus-within:text-[var(--component-input-message)]',
 ]

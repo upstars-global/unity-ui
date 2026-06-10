@@ -1,9 +1,13 @@
+import type {UiThemeIconName} from "../../../themes/registry.ts";
+
 export interface UiSuggestListProps {
     items: string[]
     visible?: boolean
     activeIndex?: number
     disabled?: boolean
     emptyText?: string
+    leadingIconName?: UiThemeIconName
+    trailingIconName?: UiThemeIconName
 }
 
 export interface UiSuggestListEmits {
