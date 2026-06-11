@@ -21,10 +21,14 @@ const SUGGEST_ITEM = [
   tokenClass('--component-input-list-suggest-text-default', 'text'),
   'text-body font-medium text-nowrap ',
 ]
+const SUGGEST_ICON = [
+  tokenClass('--component-input-list-icon', 'text'),
+]
 const suggest = {
   base: SUGGEST_BASE,
   slots: {
-    item: SUGGEST_ITEM
+    item: SUGGEST_ITEM,
+    icon: SUGGEST_ICON
   },
 } as const
 

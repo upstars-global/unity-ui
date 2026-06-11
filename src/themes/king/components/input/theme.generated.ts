@@ -5,7 +5,7 @@ const button = {
     "base": "ui-input group flex flex-col relative gap-4 data-[disabled=true]:opacity-45",
     "size": {
         "default": {
-            "field": "rounded-12 h-14 px-8 py-12"
+            "field": "rounded-12 h-14 py-8 px-12"
         }
     },
     "slots": {

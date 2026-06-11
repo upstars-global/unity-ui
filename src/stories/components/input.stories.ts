@@ -190,7 +190,7 @@ export const WithSuggestList: Story = {
               :items="filteredItems"
               :visible="isVisible"
               :active-index="activeIndex"
-              leadingIconName="fill_attention_1"
+              leadingIconName="fill_lock"
               @select="selectItem"
               @close="closeSuggest"
             />

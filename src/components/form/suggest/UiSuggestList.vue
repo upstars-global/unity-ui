@@ -41,11 +41,13 @@ function selectItem(value: string, index: number) {
     >
       <UiIcon
           v-if="leadingIconName"
+          :class="suggestTheme.slots.icon"
           :name="leadingIconName"
       />
       {{ suggestItem }}
       <UiIcon
           class="ml-auto"
+          :class="suggestTheme.slots.icon"
           :name="trailingIconName"
       />
     </div>

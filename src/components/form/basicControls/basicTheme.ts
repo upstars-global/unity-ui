@@ -4,8 +4,8 @@ export const DEFAULT_SIZE = {
     field: [
         tokenClass('--radius-input-default', 'rounded'),
         tokenClass('--component-input-height-default', 'h'),
-        tokenClass('--spacing-8', 'px'),
-        tokenClass('--spacing-12', 'py'),
+        tokenClass('--spacing-8', 'py'),
+        tokenClass('--spacing-12', 'px'),
     ],
 };
 export const SM_SIZE = {

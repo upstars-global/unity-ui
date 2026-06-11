@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, nextTick, ref, useAttrs, useSlots, watch} from 'vue'
+import {computed, ref, useAttrs, useSlots} from 'vue'
 import { useAppConfig } from '../../../../composables/useAppConfig'
 import { flattenClasses } from '../../../../helpers/flattenClasses'
 import UiIcon from '../../../icon/UiIcon.vue'
@@ -31,9 +31,8 @@ const inputTheme = appConfig.components.input;
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isFocused = ref(false)
-const patternInvalid = ref(false)
 
-const invalid = computed(() => props.invalid || patternInvalid.value)
+const invalid = computed(() => props.invalid)
 const hasValue = computed(() => Boolean(props.modelValue))
 const shouldFloatLabel = computed(() => Boolean(props.label) && (isFocused.value || hasValue.value))
 const hasErrorMessage = computed(() => invalid.value && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
@@ -79,24 +78,35 @@ const placeholderText = computed(() => {
 })
 const showTrailingSlot = computed(() => !showClearAction.value || slots.trailing || showTrailingIcon.value)
 
+function moveCaretToEnd() {
+  const input = inputRef.value
+
+  if (!input) {
+    return
+  }
+
+  const caretPosition = input.value.length
+  input.setSelectionRange(caretPosition, caretPosition)
+}
+
+function focusInputToEnd() {
+  inputRef.value?.focus()
+  moveCaretToEnd()
+}
+
 function useFormatter(event: Event) {
   if (props.formatter) {
     props.formatter(event);
   }
 }
-function syncPatternInvalid() {
-  patternInvalid.value = inputRef.value?.validity.patternMismatch ?? false
-}
 function handlerInput(event: Event) {
   useFormatter(event);
   const target = event.target as HTMLInputElement
-  patternInvalid.value = target.validity.patternMismatch
   updateValue(target.value)
 }
 function handlerClearValue() {
   updateValue('');
-  patternInvalid.value = false
-  inputRef.value?.focus()
+  focusInputToEnd()
 }
 
 function updateValue(value: string) {
@@ -104,7 +114,6 @@ function updateValue(value: string) {
 }
 function handlerChange(event: Event) {
   const target = event.target as HTMLInputElement
-  patternInvalid.value = target.validity.patternMismatch
   emit('change', target.value);
 }
 
@@ -114,21 +123,13 @@ function handlerKeyDown(event: KeyboardEvent) {
 
 function handleFocus(event: FocusEvent) {
   isFocused.value = true
-  inputRef.value?.focus();
   emit('focus', event)
 }
 
 function handleBlur(event: FocusEvent) {
   isFocused.value = false
-  syncPatternInvalid()
-  inputRef.value?.blur();
   emit('blur', event)
 }
-
-watch(() => props.modelValue, async () => {
-  await nextTick()
-  syncPatternInvalid()
-}, { immediate: true })
 </script>
 
 <template>
@@ -141,8 +142,6 @@ watch(() => props.modelValue, async () => {
         :data-disabled="disabled"
         :data-invalid="invalid"
         :class="fieldClasses"
-        @focusin.stop="handleFocus"
-        @focusout="handleBlur"
     >
       <slot name="leading">
         <UiIcon
@@ -172,6 +171,8 @@ watch(() => props.modelValue, async () => {
             :maxlength="maxlength"
             :inputmode="inputMode"
             :autofocus="autofocus"
+            @focus="handleFocus"
+            @blur="handleBlur"
             @change="handlerChange"
             @input="handlerInput"
             @keydown.up="handlerKeyDown"
