@@ -36,7 +36,7 @@ export const FIELD_BASE = [
     '[border:var(--component-input-borderwidth)_solid_var(--component-input-bordercolor)]',
     tokenClass('--component-input-field-gap', 'gap'),
     tokenClass('--component-input-bg', 'bg'),
-    tokenClass('--component-input-hover-bordercolor', 'hover:[&:not(:focus-within):not([data-invalid=true])]:border'),
+    tokenClass('--component-input-hover-bordercolor', 'hover:[&:not(:focus-within):not([data-invalid=true]):not([data-disabled=true])]:border'),
     tokenClass('--component-input-focus-bordercolor', 'focus-within:border'),
     tokenClass('--component-input-error-bordercolor', 'data-[invalid=true]:[&:not(:focus-within)]:border'),
 ]

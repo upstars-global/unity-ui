@@ -14,15 +14,12 @@ export interface UiInputProps extends IBaseFieldProps {
   fullWidth?: boolean
   invalid?: boolean
   showClearAction?: boolean
-  max?: number | string
   maxlength?: number
-  min?: number | string
   pattern?: string
   leadingIconName?: UiThemeIconName
   trailingIconName?: UiThemeIconName
   inputMode?: InputMode
   mask?: string
-  step?: number
   formatter?: (event: Event) => void
 }
 

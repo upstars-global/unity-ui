@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref, useAttrs, useSlots} from 'vue'
+import {computed, nextTick, ref, useAttrs, useSlots, watch} from 'vue'
 import { useAppConfig } from '../../../../composables/useAppConfig'
 import { flattenClasses } from '../../../../helpers/flattenClasses'
 import UiIcon from '../../../icon/UiIcon.vue'
@@ -31,10 +31,12 @@ const inputTheme = appConfig.components.input;
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isFocused = ref(false)
+const patternInvalid = ref(false)
 
+const invalid = computed(() => props.invalid || patternInvalid.value)
 const hasValue = computed(() => Boolean(props.modelValue))
 const shouldFloatLabel = computed(() => Boolean(props.label) && (isFocused.value || hasValue.value))
-const hasErrorMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
+const hasErrorMessage = computed(() => invalid.value && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
 const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
 const showLeadingIcon = computed(() => Boolean(props.leadingIconName))
 const showTrailingIcon = computed(() => Boolean(props.trailingIconName))
@@ -82,13 +84,18 @@ function useFormatter(event: Event) {
     props.formatter(event);
   }
 }
+function syncPatternInvalid() {
+  patternInvalid.value = inputRef.value?.validity.patternMismatch ?? false
+}
 function handlerInput(event: Event) {
   useFormatter(event);
   const target = event.target as HTMLInputElement
+  patternInvalid.value = target.validity.patternMismatch
   updateValue(target.value)
 }
 function handlerClearValue() {
   updateValue('');
+  patternInvalid.value = false
   inputRef.value?.focus()
 }
 
@@ -97,6 +104,7 @@ function updateValue(value: string) {
 }
 function handlerChange(event: Event) {
   const target = event.target as HTMLInputElement
+  patternInvalid.value = target.validity.patternMismatch
   emit('change', target.value);
 }
 
@@ -112,9 +120,15 @@ function handleFocus(event: FocusEvent) {
 
 function handleBlur(event: FocusEvent) {
   isFocused.value = false
+  syncPatternInvalid()
   inputRef.value?.blur();
   emit('blur', event)
 }
+
+watch(() => props.modelValue, async () => {
+  await nextTick()
+  syncPatternInvalid()
+}, { immediate: true })
 </script>
 
 <template>
@@ -155,9 +169,6 @@ function handleBlur(event: FocusEvent) {
             :aria-invalid="invalid"
             :placeholder="placeholderText"
             :class="controlClasses"
-            :step="step"
-            :min="min"
-            :max="max"
             :maxlength="maxlength"
             :pattern="pattern"
             :autofocus="autofocus"

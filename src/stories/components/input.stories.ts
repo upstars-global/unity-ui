@@ -368,16 +368,6 @@ export const PropsMatrix: Story = {
                 placeholder: 'Enter password',
               },
             },
-            {
-              title: 'Number',
-              value: '',
-              props: {
-                name: 'type-number',
-                type: 'number',
-                label: 'Number input',
-                placeholder: '123',
-              },
-            },
           ],
         },
         {
@@ -401,6 +391,7 @@ export const PropsMatrix: Story = {
                 label: 'Numeric mode',
                 placeholder: 'Only digits',
                 inputmode: 'numeric',
+                mask: "###",
               },
             },
             {
@@ -411,6 +402,7 @@ export const PropsMatrix: Story = {
                 label: 'Decimal mode',
                 placeholder: '12.50',
                 inputmode: 'decimal',
+                mask: "##.##",
               },
             },
           ],
@@ -481,50 +473,6 @@ export const PropsMatrix: Story = {
                 label: 'Username',
                 placeholder: 'user_01',
                 pattern: '[a-z0-9_]{4,12}',
-              },
-            },
-          ],
-        },
-        {
-          title: '5 row: min / max / step',
-          items: [
-            {
-              title: 'Age 18-65',
-              value: '',
-              props: {
-                name: 'range-age',
-                type: 'number',
-                label: 'Age',
-                placeholder: '18',
-                min: 18,
-                max: 65,
-                step: 1,
-              },
-            },
-            {
-              title: 'Amount 0-1000 / 50',
-              value: '',
-              props: {
-                name: 'range-amount',
-                type: 'number',
-                label: 'Amount',
-                placeholder: '250',
-                min: 0,
-                max: 1000,
-                step: 50,
-              },
-            },
-            {
-              title: 'Weight 0-10 / 0.5',
-              value: '',
-              props: {
-                name: 'range-weight',
-                type: 'number',
-                label: 'Weight',
-                placeholder: '2.5',
-                min: 0,
-                max: 10,
-                step: 0.5,
               },
             },
           ],
