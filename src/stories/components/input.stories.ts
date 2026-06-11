@@ -418,6 +418,7 @@ export const PropsMatrix: Story = {
                 label: 'Date',
                 placeholder: 'DD.MM.YYYY',
                 mask: '##.##.####',
+                inputMode: 'numeric',
               },
             },
             {
@@ -428,6 +429,7 @@ export const PropsMatrix: Story = {
                 label: 'Phone',
                 placeholder: '+38 (050) 123-45-67',
                 mask: '+## (###) ###-##-##',
+                inputMode: 'tel',
               },
             },
             {
@@ -438,6 +440,7 @@ export const PropsMatrix: Story = {
                 label: 'Card tail',
                 placeholder: '1234 5678',
                 mask: '#### ####',
+                inputMode: 'numeric',
               },
             },
           ],
