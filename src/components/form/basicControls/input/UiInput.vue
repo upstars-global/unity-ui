@@ -170,7 +170,7 @@ watch(() => props.modelValue, async () => {
             :placeholder="placeholderText"
             :class="controlClasses"
             :maxlength="maxlength"
-            :pattern="pattern"
+            :inputmode="inputMode"
             :autofocus="autofocus"
             @change="handlerChange"
             @input="handlerInput"

@@ -380,7 +380,7 @@ export const PropsMatrix: Story = {
                 name: 'mode-email',
                 label: 'Email mode',
                 placeholder: 'name@example.com',
-                inputmode: 'email',
+                inputMode: 'email',
               },
             },
             {
@@ -390,7 +390,7 @@ export const PropsMatrix: Story = {
                 name: 'mode-numeric',
                 label: 'Numeric mode',
                 placeholder: 'Only digits',
-                inputmode: 'numeric',
+                inputMode: 'numeric',
                 mask: "###",
               },
             },
@@ -401,7 +401,7 @@ export const PropsMatrix: Story = {
                 name: 'mode-decimal',
                 label: 'Decimal mode',
                 placeholder: '12.50',
-                inputmode: 'decimal',
+                inputMode: 'decimal',
                 mask: "##.##",
               },
             },
@@ -438,41 +438,6 @@ export const PropsMatrix: Story = {
                 label: 'Card tail',
                 placeholder: '1234 5678',
                 mask: '#### ####',
-              },
-            },
-          ],
-        },
-        {
-          title: '4 row: pattern',
-          items: [
-            {
-              title: 'Three digits',
-              value: '',
-              props: {
-                name: 'pattern-digits',
-                label: 'Code',
-                placeholder: '123',
-                pattern: '[0-9]{3}',
-              },
-            },
-            {
-              title: 'Latin letters',
-              value: '',
-              props: {
-                name: 'pattern-latin',
-                label: 'Promo code',
-                placeholder: 'ABCDEF',
-                pattern: '[A-Za-z]{6}',
-              },
-            },
-            {
-              title: 'Username',
-              value: '',
-              props: {
-                name: 'pattern-username',
-                label: 'Username',
-                placeholder: 'user_01',
-                pattern: '[a-z0-9_]{4,12}',
               },
             },
           ],

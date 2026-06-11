@@ -15,7 +15,6 @@ export interface UiInputProps extends IBaseFieldProps {
   invalid?: boolean
   showClearAction?: boolean
   maxlength?: number
-  pattern?: string
   leadingIconName?: UiThemeIconName
   trailingIconName?: UiThemeIconName
   inputMode?: InputMode
