@@ -14,6 +14,7 @@ import type {InlineNotificationUiOptimized} from "./notifications/inlineNotifica
 import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
+import type {ModalUiOptimized} from "./modal/theme.ts";
 import type { InputUiOptimized } from './form/basicControls/input/theme';
 import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
 import type {SuggestUiOptimized} from "./form/suggest/theme.ts";
@@ -44,6 +45,7 @@ export interface AppConfig<TIconName extends string = string> {
     input: InputUiOptimized
     textArea: TextAreaUiOptimized
     suggest: SuggestUiOptimized
+    modal?: ModalUiOptimized
   }
   store?: {
     env?: {

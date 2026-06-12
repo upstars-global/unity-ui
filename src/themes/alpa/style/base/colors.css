@@ -87,6 +87,7 @@
     --component-card-gradient-from: rgb(var(--color-secondary-400));
     --component-card-gradient-to: #712df5;
 
+    --bg-overlay: var(--color-neutral-500-80);
     --bg-deep: rgb(var(--color-neutral-500));
     --bg-surface: rgb(var(--color-neutral-400));
     --bg-surface-alt: rgb(var(--color-neutral-300));

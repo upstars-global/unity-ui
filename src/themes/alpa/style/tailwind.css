@@ -5,7 +5,6 @@
 @import "../../../tailwind/base/typography-elements.css";
 @import "../../../tailwind/base/scrollbar.css";
 
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 

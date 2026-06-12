@@ -73,50 +73,6 @@ const SPACING_UTILITIES = new Set([
     'w',
 ])
 
-const OPACITY_UTILITIES = new Set([
-    'opacity',
-])
-
-const ARBITRARY_VALUE_UTILITIES = new Set([
-    ...COLOR_UTILITIES,
-    ...SPACING_UTILITIES,
-    ...OPACITY_UTILITIES,
-])
-
-const DEFAULT_SPACING_VALUE_TO_KEY = new Map([
-    ['0rem', '0'],
-    ['0px', '0'],
-    ['0.125rem', '0.5'],
-    ['0.25rem', '1'],
-    ['0.375rem', '1.5'],
-    ['0.5rem', '2'],
-    ['0.625rem', '2.5'],
-    ['0.75rem', '3'],
-    ['0.875rem', '3.5'],
-    ['1rem', '4'],
-    ['1.25rem', '5'],
-    ['1.5rem', '6'],
-    ['1.75rem', '7'],
-    ['2rem', '8'],
-    ['2.5rem', '10'],
-    ['3rem', '12'],
-    ['3.5rem', '14'],
-    ['4rem', '16'],
-    ['4.5rem', '18'],
-    ['5rem', '20'],
-    ['5.5rem', '22'],
-    ['6rem', '24'],
-    ['6.5rem', '26'],
-    ['6.75rem', '27'],
-    ['6.875rem', '27.5'],
-    ['7rem', '28'],
-    ['7.5rem', '30'],
-    ['8rem', '32'],
-    ['9rem', '36'],
-    ['9.5rem', '38'],
-    ['10rem', '40'],
-])
-
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
 const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
 const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
@@ -969,14 +925,11 @@ async function main() {
 
         const presetVars = parsePresetVars(colorsPresetPath)
         const definitions = parseCssVariables(cssFiles)
-        const spacingValueToKey = new Map([
-            ...DEFAULT_SPACING_VALUE_TO_KEY,
-            ...parseResolvedValuePresetMap({
-                filePath: layoutPresetPath,
-                sectionNames: new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
-                definitions,
-            }),
-        ])
+        const spacingValueToKey = parseResolvedValuePresetMap(
+            layoutPresetPath,
+            new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
+            definitions,
+        )
         const radiusValueToKey = new Map([
             ['0', '0'],
             ['0rem', '0'],
