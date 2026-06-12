@@ -1,3 +1,20 @@
+## [1.16.0](https://github.com/upstars-global/unity-ui/compare/v1.15.1...v1.16.0) (2026-06-12)
+
+### 🚀 Features
+
+* UN-2207 Reusable Modal Component ([#22](https://github.com/upstars-global/unity-ui/issues/22))
+ ([31203a1](https://github.com/upstars-global/unity-ui/commit/31203a1dec3760d2c82acd7b3bb5a15936d1000f))
+
+
+
+    * feat: UN-2207 Reusable Modal Component
+* UN-2223 Create FeTextarea component ([#24](https://github.com/upstars-global/unity-ui/issues/24))
+ ([067b852](https://github.com/upstars-global/unity-ui/commit/067b852ffae6d2cfd1912d8b2385271c2581bae7))
+
+
+
+    * feat: UN-2221 Create FeInput component
+
 ## [1.15.0](https://github.com/upstars-global/unity-ui/compare/v1.14.0...v1.15.0) (2026-05-11)
 
 ### 🚀 Features
