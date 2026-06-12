@@ -17,7 +17,6 @@ const VALUE_BASE = [
   'font-medium',
   'placeholder:font-normal',
   'absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed',
-  'px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content',
   tokenClass('--component-input-value', 'text'),
   tokenClass('--component-input-placeholder', 'placeholder:text'),
   ...TEXT_BASE
@@ -25,7 +24,7 @@ const VALUE_BASE = [
 
 export const LABEL_FOCUS = 'top-0 translate-y-0 scale-100 text-caption'
 export const LABEL_BLUR = 'top-1/2 -translate-y-1/2 text-body'
-export const VALUE_FOCUS = 'bottom-0 translate-y-0 scale-100'
+export const VALUE_FOCUS = 'top-auto bottom-0 translate-y-0 scale-100'
 
 const input = {
   base: INPUT_BASE,

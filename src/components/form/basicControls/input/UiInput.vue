@@ -5,7 +5,7 @@ import { flattenClasses } from '../../../../helpers/flattenClasses'
 import UiIcon from '../../../icon/UiIcon.vue'
 import type { UiInputEmits, UiInputProps, UiInputSlots } from './types'
 import {baseFieldDefault} from "../BaseField.ts";
-import {LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS} from "@src/components/form/basicControls/input/theme.ts";
+import {LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS} from "./theme.ts";
 
 defineOptions({
   name: 'UiInput',
@@ -65,7 +65,7 @@ const floatingLabelClasses = computed(() => {
 const controlClasses = computed(() => {
   return [
     inputTheme.slots.value,
-    shouldFloatLabel.value ?? VALUE_FOCUS
+    shouldFloatLabel.value && VALUE_FOCUS
   ]
 })
 
@@ -142,6 +142,8 @@ function handleBlur(event: FocusEvent) {
         :data-disabled="disabled"
         :data-invalid="invalid"
         :class="fieldClasses"
+        @focusin="handleFocus"
+        @focusout="handleBlur"
     >
       <slot name="leading">
         <UiIcon
@@ -153,6 +155,7 @@ function handleBlur(event: FocusEvent) {
       <div :class="inputTheme.slots.content">
         <label
             v-if="label"
+            :for="name"
             :class="floatingLabelClasses"
         >
           <slot name="label">
@@ -162,6 +165,8 @@ function handleBlur(event: FocusEvent) {
         <input
             ref="inputRef"
             v-mask="mask"
+            :name="name"
+            :id="name"
             :value="modelValue"
             :type="type"
             :disabled="disabled"
@@ -171,8 +176,6 @@ function handleBlur(event: FocusEvent) {
             :maxlength="maxlength"
             :inputmode="inputMode"
             :autofocus="autofocus"
-            @focus="handleFocus"
-            @blur="handleBlur"
             @change="handlerChange"
             @input="handlerInput"
             @keydown.up="handlerKeyDown"

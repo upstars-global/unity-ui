@@ -12,7 +12,7 @@ const button = {
         "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_rgb(80_80_254_/_0.4)] gap-8 bg-white hover:[&:not(:focus-within):not([data-invalid=true]):not([data-disabled=true])]:border-primary-400/40 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100",
         "content": "relative flex min-w-0 flex-1 flex-col justify-center h-[2.25rem]",
         "label": "absolute left-0 origin-left transition-all duration-200 ease-out cursor-text text-body font-medium duration-150 text-neutral-400 group-data-[invalid=true]:text-error-100 group-focus-within:!text-primary-300 min-w-0 truncate",
-        "value": "text-body font-medium placeholder:font-normal absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed px-[2.75rem] pt-[1.25rem] pb-2 left-[-2.75rem] box-content text-neutral-600 placeholder:text-neutral-300 min-w-0 truncate",
+        "value": "text-body font-medium placeholder:font-normal absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none placeholder:opacity-100 disabled:cursor-not-allowed text-neutral-600 placeholder:text-neutral-300 min-w-0 truncate",
         "message": "px-16 text-neutral-400 group-data-[invalid=true]:text-error-100 group-focus-within:!text-neutral-400 text-caption",
         "leadingIcon": "shrink-0 size-6 text-neutral-400",
         "trailingIcon": "shrink-0 size-6 text-neutral-400",
