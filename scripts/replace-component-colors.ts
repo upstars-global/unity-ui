@@ -74,13 +74,52 @@ const SPACING_UTILITIES = new Set([
 ])
 
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
-const ARBITRARY_PROPERTY_REGEX = /(?:[!@%\w:-]+:)*\[[a-z-]+:var\((--[a-z0-9-]+)\)\]/gi
+const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
 const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
 const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:"([^"]+)"|'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
 const RUNTIME_IMPORT_REGEX = /^\s*import\s+(?!type\b)(?:[\s\S]*?\sfrom\s+)?['"](.+?)['"]/gm
-function walkFiles(dirPath, predicate) {
+
+type Predicate = (filePath: string) => boolean
+type PresetVars = Map<string, string>
+type ValueToKeyMap = Map<string, string>
+type CssDefinitions = Map<string, string>
+type ResolvedCssValue = {
+    kind: 'literal' | 'var'
+    value: string
+    lastVar: string
+    presetVar: string | null
+}
+type TransformMeta = {
+    unresolved: Set<string>
+    replacements: number
+}
+type BaseTransformContext = {
+    definitions: CssDefinitions
+    presetVars: PresetVars
+    spacingValueToKey: ValueToKeyMap
+    radiusValueToKey: ValueToKeyMap
+    borderWidthValueToKey: ValueToKeyMap
+    opacityValueToKey: ValueToKeyMap
+}
+type RuntimeTransformContext = BaseTransformContext & {
+    meta: TransformMeta
+}
+type GeneratedThemeOutput = {
+    generatedSource: string
+    replacements: number
+    unresolved: string[]
+}
+type GeneratedThemeFileResult = {
+    changed: boolean
+    filePath: string
+    generatedFilePath: string
+    replacements: number
+    unresolved: string[]
+}
+
+function walkFiles(dirPath: string, predicate: Predicate): string[] {
     const result = []
 
     for (const entry of readdirSync(dirPath, { withFileTypes: true })) {
@@ -99,7 +138,7 @@ function walkFiles(dirPath, predicate) {
     return result
 }
 
-function parsePresetVars(filePath) {
+function parsePresetVars(filePath: string): PresetVars {
     const source = readFileSync(filePath, 'utf8')
     const varToTailwindColor = new Map()
 
@@ -117,7 +156,7 @@ function parsePresetVars(filePath) {
     return varToTailwindColor
 }
 
-function parseValuePresetMap(filePath, sectionNames) {
+function parseValuePresetMap(filePath: string, sectionNames: Set<string>): ValueToKeyMap {
     const source = readFileSync(filePath, 'utf8')
     const valueToKey = new Map()
 
@@ -144,18 +183,30 @@ function parseValuePresetMap(filePath, sectionNames) {
     return valueToKey
 }
 
-function resolvePresetScalarValue(value, definitions) {
+function resolvePresetScalarValue(value: string, definitions: CssDefinitions): string {
     const aliasMatch = value.match(/^var\((--[A-Za-z0-9-]+)\)$/)
 
     if (!aliasMatch) {
         return value
     }
 
-    const resolvedValue = resolveCssValue(aliasMatch[1], definitions, new Map())
+    const resolvedValue = resolveCssValue({
+        cssVarName: aliasMatch[1],
+        definitions,
+        presetVars: new Map(),
+    })
     return resolvedValue?.value ?? value
 }
 
-function parseResolvedValuePresetMap(filePath, sectionNames, definitions) {
+function parseResolvedValuePresetMap({
+    filePath,
+    sectionNames,
+    definitions,
+}: {
+    filePath: string
+    sectionNames: Set<string>
+    definitions: CssDefinitions
+}): ValueToKeyMap {
     const rawValueToKey = parseValuePresetMap(filePath, sectionNames)
     const resolvedValueToKey = new Map()
 
@@ -166,7 +217,7 @@ function parseResolvedValuePresetMap(filePath, sectionNames, definitions) {
     return resolvedValueToKey
 }
 
-function parseCssVariables(filePaths) {
+function parseCssVariables(filePaths: string[]): CssDefinitions {
     const definitions = new Map()
 
     for (const filePath of filePaths) {
@@ -187,7 +238,15 @@ function parseCssVariables(filePaths) {
     return definitions
 }
 
-function resolveCssValue(cssVarName, definitions, presetVars) {
+function resolveCssValue({
+    cssVarName,
+    definitions,
+    presetVars,
+}: {
+    cssVarName: string
+    definitions: CssDefinitions
+    presetVars: PresetVars
+}): ResolvedCssValue {
     const seen = new Set()
     let current = cssVarName
     let presetVar = null
@@ -241,7 +300,7 @@ function resolveCssValue(cssVarName, definitions, presetVars) {
     }
 }
 
-function getUtilityBase(classToken) {
+function getUtilityBase(classToken: string): string | null {
     const arbitraryValueIndex = classToken.indexOf('-[var(')
 
     if (arbitraryValueIndex === -1) {
@@ -252,12 +311,12 @@ function getUtilityBase(classToken) {
     const lastSegment = utilityBase.split(':').pop() ?? utilityBase
     const normalizedUtility = lastSegment.startsWith('!') ? lastSegment.slice(1) : lastSegment
 
-    return COLOR_UTILITIES.has(normalizedUtility) || SPACING_UTILITIES.has(normalizedUtility)
+    return ARBITRARY_VALUE_UTILITIES.has(normalizedUtility)
         ? utilityBase
         : null
 }
 
-function statSyncSafe(filePath) {
+function statSyncSafe(filePath: string) {
     try {
         return statSync(filePath)
     } catch {
@@ -265,21 +324,31 @@ function statSyncSafe(filePath) {
     }
 }
 
-function getGeneratedThemePath(filePath, themeDir) {
+function getGeneratedThemePath(filePath: string, themeDir: string): string {
     const componentName = path.basename(path.dirname(filePath))
     return path.join(themeDir, 'components', componentName, 'theme.generated.ts')
 }
 
-function normalizeArbitraryValue(value) {
+function normalizeArbitraryValue(value: string): string {
     return value.replace(/\s+/g, '_')
 }
 
-function getNormalizedUtility(utilityBase) {
+function getNormalizedUtility(utilityBase: string): string {
     const lastSegment = utilityBase.split(':').pop() ?? utilityBase
     return lastSegment.startsWith('!') ? lastSegment.slice(1) : lastSegment
 }
 
-function isColorValue(resolvedValue) {
+function normalizeScalarForLookup(value: string): string {
+    const normalized = value.trim()
+
+    if (/^(?:0?\.\d+|[1-9]\d*(?:\.\d+)?)$/.test(normalized)) {
+        return String(Number(normalized))
+    }
+
+    return normalized
+}
+
+function isColorValue(resolvedValue: ResolvedCssValue): boolean {
     if (resolvedValue.kind === 'var') {
         return /^(--(?:color|bg|fg|content)-)/.test(resolvedValue.value)
     }
@@ -287,7 +356,7 @@ function isColorValue(resolvedValue) {
     return /^(rgb|rgba|hsl|hsla|#)/.test(resolvedValue.value)
 }
 
-function buildArbitraryUtilityClass(utilityBase, resolvedValue) {
+function buildArbitraryUtilityClass(utilityBase: string, resolvedValue: ResolvedCssValue): string {
     if (resolvedValue.kind === 'var') {
         return `${utilityBase}-[var(${resolvedValue.value})]`
     }
@@ -295,7 +364,7 @@ function buildArbitraryUtilityClass(utilityBase, resolvedValue) {
     return `${utilityBase}-[${normalizeArbitraryValue(resolvedValue.value)}]`
 }
 
-function getRadiusKey(resolvedValue, radiusValueToKey) {
+function getRadiusKey(resolvedValue: ResolvedCssValue, radiusValueToKey: ValueToKeyMap): string | null {
     if (resolvedValue.kind === 'var') {
         return resolvedValue.value === '--radius-full' ? 'full' : null
     }
@@ -307,7 +376,15 @@ function getRadiusKey(resolvedValue, radiusValueToKey) {
     return radiusValueToKey.get(resolvedValue.value) ?? null
 }
 
-function buildColorClass(utilityBase, resolvedValue, presetVars) {
+function buildColorClass({
+    utilityBase,
+    resolvedValue,
+    presetVars,
+}: {
+    utilityBase: string
+    resolvedValue: ResolvedCssValue
+    presetVars: PresetVars
+}): string {
     const preferredPresetVar = resolvedValue.presetVar ?? (resolvedValue.kind === 'var' ? resolvedValue.value : null)
     const opacitySourceVar = resolvedValue.lastVar ?? preferredPresetVar
 
@@ -340,7 +417,21 @@ function buildColorClass(utilityBase, resolvedValue, presetVars) {
     return `${utilityBase}-[${normalizeArbitraryValue(resolvedValue.value)}]`
 }
 
-function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey) {
+function buildScaleClass({
+    utilityBase,
+    resolvedValue,
+    spacingValueToKey,
+    radiusValueToKey,
+    borderWidthValueToKey,
+    opacityValueToKey,
+}: {
+    utilityBase: string
+    resolvedValue: ResolvedCssValue
+    spacingValueToKey: ValueToKeyMap
+    radiusValueToKey: ValueToKeyMap
+    borderWidthValueToKey: ValueToKeyMap
+    opacityValueToKey: ValueToKeyMap
+}): string {
     const normalizedUtility = getNormalizedUtility(utilityBase)
 
     if (normalizedUtility.startsWith('rounded')) {
@@ -348,6 +439,18 @@ function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusVa
 
         if (radiusKey) {
             return radiusKey === 'DEFAULT' ? utilityBase : `${utilityBase}-${radiusKey}`
+        }
+    } else if (normalizedUtility === 'border' && resolvedValue.kind === 'literal') {
+        const borderWidthKey = borderWidthValueToKey.get(resolvedValue.value)
+
+        if (borderWidthKey) {
+            return borderWidthKey === 'DEFAULT' ? utilityBase : `${utilityBase}-${borderWidthKey}`
+        }
+    } else if (normalizedUtility === 'opacity' && resolvedValue.kind === 'literal') {
+        const opacityKey = opacityValueToKey.get(normalizeScalarForLookup(resolvedValue.value))
+
+        if (opacityKey) {
+            return `${utilityBase}-${opacityKey}`
         }
     } else if (resolvedValue.kind === 'literal') {
         const spacingKey = spacingValueToKey.get(resolvedValue.value)
@@ -360,38 +463,144 @@ function buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusVa
     return buildArbitraryUtilityClass(utilityBase, resolvedValue)
 }
 
-function buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey) {
+function buildUtilityClass({
+    utilityBase,
+    resolvedValue,
+    presetVars,
+    spacingValueToKey,
+    radiusValueToKey,
+    borderWidthValueToKey,
+    opacityValueToKey,
+}: {
+    utilityBase: string
+    resolvedValue: ResolvedCssValue
+    presetVars: PresetVars
+    spacingValueToKey: ValueToKeyMap
+    radiusValueToKey: ValueToKeyMap
+    borderWidthValueToKey: ValueToKeyMap
+    opacityValueToKey: ValueToKeyMap
+}): string {
     return isColorValue(resolvedValue)
-        ? buildColorClass(utilityBase, resolvedValue, presetVars)
-        : buildScaleClass(utilityBase, resolvedValue, spacingValueToKey, radiusValueToKey)
+        ? buildColorClass({ utilityBase, resolvedValue, presetVars })
+        : buildScaleClass({
+            utilityBase,
+            resolvedValue,
+            spacingValueToKey,
+            radiusValueToKey,
+            borderWidthValueToKey,
+            opacityValueToKey,
+        })
 }
 
-function buildArbitraryPropertyClass(classToken, resolvedValue, borderWidthValueToKey) {
-    const propertyMatch = classToken.match(/^((?:[!@%\w:-]+:)*)\[([a-z-]+):var\(--component-[a-z0-9-]+\)\]$/i)
+function resolveArbitraryPropertyValue({
+    propertyValue,
+    definitions,
+    presetVars,
+    meta,
+}: {
+    propertyValue: string
+    definitions: CssDefinitions
+    presetVars: PresetVars
+    meta: TransformMeta
+}): string {
+    return propertyValue.replace(/var\((--component-[a-z0-9-]+)\)/gi, (fullMatch, componentVarName) => {
+        const resolvedValue = resolveCssValue({
+            cssVarName: componentVarName,
+            definitions,
+            presetVars,
+        })
 
-    if (!propertyMatch) {
-        return classToken
-    }
-
-    const prefixes = propertyMatch[1] ?? ''
-    const propertyName = propertyMatch[2]
-
-    if (resolvedValue.kind === 'literal' && propertyName === 'border-width') {
-        const borderWidthKey = borderWidthValueToKey.get(resolvedValue.value)
-
-        if (borderWidthKey) {
-            return borderWidthKey === 'DEFAULT' ? `${prefixes}border` : `${prefixes}border-${borderWidthKey}`
+        if (!resolvedValue?.value) {
+            meta.unresolved.add(componentVarName)
+            return fullMatch
         }
-    }
 
-    if (resolvedValue.kind === 'var') {
-        return `${prefixes}[${propertyName}:var(${resolvedValue.value})]`
-    }
+        meta.replacements += 1
 
-    return `${prefixes}[${propertyName}:${normalizeArbitraryValue(resolvedValue.value)}]`
+        if (resolvedValue.kind === 'var') {
+            return `var(${resolvedValue.value})`
+        }
+
+        return normalizeArbitraryValue(resolvedValue.value)
+    })
 }
 
-function transformClassString(classString, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta) {
+function buildArbitraryPropertyClass({
+    prefixes,
+    propertyName,
+    propertyValue,
+    definitions,
+    presetVars,
+    borderWidthValueToKey,
+    meta,
+}: {
+    prefixes: string
+    propertyName: string
+    propertyValue: string
+    definitions: CssDefinitions
+    presetVars: PresetVars
+    borderWidthValueToKey: ValueToKeyMap
+    meta: TransformMeta
+}): string {
+    const singleVarMatch = propertyValue.match(/^var\((--component-[a-z0-9-]+)\)$/i)
+
+    if (singleVarMatch) {
+        const resolvedValue = resolveCssValue({
+            cssVarName: singleVarMatch[1],
+            definitions,
+            presetVars,
+        })
+
+        if (!resolvedValue?.value) {
+            meta.unresolved.add(singleVarMatch[1])
+            return `${prefixes}[${propertyName}:${propertyValue}]`
+        }
+
+        meta.replacements += 1
+
+        if (resolvedValue.kind === 'literal' && propertyName === 'border-width') {
+            const borderWidthKey = borderWidthValueToKey.get(resolvedValue.value)
+
+            if (borderWidthKey) {
+                return borderWidthKey === 'DEFAULT' ? `${prefixes}border` : `${prefixes}border-${borderWidthKey}`
+            }
+        }
+
+        if (resolvedValue.kind === 'var') {
+            return `${prefixes}[${propertyName}:var(${resolvedValue.value})]`
+        }
+
+        return `${prefixes}[${propertyName}:${normalizeArbitraryValue(resolvedValue.value)}]`
+    }
+
+    const resolvedPropertyValue = resolveArbitraryPropertyValue({
+        propertyValue,
+        definitions,
+        presetVars,
+        meta,
+    })
+    return `${prefixes}[${propertyName}:${resolvedPropertyValue}]`
+}
+
+function transformClassString({
+    classString,
+    definitions,
+    presetVars,
+    spacingValueToKey,
+    radiusValueToKey,
+    borderWidthValueToKey,
+    opacityValueToKey,
+    meta,
+}: {
+    classString: string
+    definitions: CssDefinitions
+    presetVars: PresetVars
+    spacingValueToKey: ValueToKeyMap
+    radiusValueToKey: ValueToKeyMap
+    borderWidthValueToKey: ValueToKeyMap
+    opacityValueToKey: ValueToKeyMap
+    meta: TransformMeta
+}): string {
     const utilityTransformed = classString.replace(CLASS_TOKEN_REGEX, (classToken, componentVarName) => {
         const utilityBase = getUtilityBase(classToken)
 
@@ -399,7 +608,11 @@ function transformClassString(classString, definitions, presetVars, spacingValue
             return classToken
         }
 
-        const resolvedValue = resolveCssValue(componentVarName, definitions, presetVars)
+        const resolvedValue = resolveCssValue({
+            cssVarName: componentVarName,
+            definitions,
+            presetVars,
+        })
 
         if (!resolvedValue?.value) {
             meta.unresolved.add(componentVarName)
@@ -407,24 +620,36 @@ function transformClassString(classString, definitions, presetVars, spacingValue
         }
 
         meta.replacements += 1
-        return buildUtilityClass(utilityBase, resolvedValue, presetVars, spacingValueToKey, radiusValueToKey)
+        return buildUtilityClass({
+            utilityBase,
+            resolvedValue,
+            presetVars,
+            spacingValueToKey,
+            radiusValueToKey,
+            borderWidthValueToKey,
+            opacityValueToKey,
+        })
     })
 
-    const arbitraryPropertyTransformed = utilityTransformed.replace(ARBITRARY_PROPERTY_REGEX, (classToken, componentVarName) => {
-        const resolvedValue = resolveCssValue(componentVarName, definitions, presetVars)
-
-        if (!resolvedValue?.value) {
-            meta.unresolved.add(componentVarName)
-            return classToken
-        }
-
-        meta.replacements += 1
-        return buildArbitraryPropertyClass(classToken, resolvedValue, borderWidthValueToKey)
+    const arbitraryPropertyTransformed = utilityTransformed.replace(ARBITRARY_PROPERTY_REGEX, (_classToken, prefixes, propertyName, propertyValue) => {
+        return buildArbitraryPropertyClass({
+            prefixes: prefixes ?? '',
+            propertyName,
+            propertyValue,
+            definitions,
+            presetVars,
+            borderWidthValueToKey,
+            meta,
+        })
     })
 
     return arbitraryPropertyTransformed
         .replace(/((?:[!@%\w:-]+:)*rounded(?:-[trbl]{1,2})?)-\[var\((--[a-z0-9-]+)\)\]/gi, (classToken, utilityBase, cssVarName) => {
-            const resolvedValue = resolveCssValue(cssVarName, definitions, presetVars)
+            const resolvedValue = resolveCssValue({
+                cssVarName,
+                definitions,
+                presetVars,
+            })
 
             if (!resolvedValue?.value) {
                 return classToken
@@ -437,25 +662,20 @@ function transformClassString(classString, definitions, presetVars, spacingValue
         .trim()
 }
 
-function isPlainObject(value) {
+function isPlainObject(value: unknown): value is Record<string, unknown> {
     return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
 }
 
-function transformRuntimeThemeValue(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta) {
+function transformRuntimeThemeValue(value: unknown, context: RuntimeTransformContext): unknown {
     if (typeof value === 'string') {
-        return transformClassString(value, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta)
+        return transformClassString({
+            classString: value,
+            ...context,
+        })
     }
 
     if (Array.isArray(value)) {
-        const transformedItems = value.map((item) => transformRuntimeThemeValue(
-            item,
-            definitions,
-            presetVars,
-            spacingValueToKey,
-            radiusValueToKey,
-            borderWidthValueToKey,
-            meta,
-        ))
+        const transformedItems = value.map((item) => transformRuntimeThemeValue(item, context))
 
         if (transformedItems.every((item) => typeof item === 'string')) {
             return transformedItems.filter(Boolean).join(' ').trim()
@@ -468,7 +688,7 @@ function transformRuntimeThemeValue(value, definitions, presetVars, spacingValue
         return Object.fromEntries(
             Object.entries(value).map(([key, item]) => [
                 key,
-                transformRuntimeThemeValue(item, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey, meta),
+                transformRuntimeThemeValue(item, context),
             ]),
         )
     }
@@ -476,7 +696,7 @@ function transformRuntimeThemeValue(value, definitions, presetVars, spacingValue
     return value
 }
 
-function serializeTsValue(value, indentLevel = 0) {
+function serializeTsValue(value: unknown, indentLevel = 0): string {
     const indent = '    '.repeat(indentLevel)
     const nextIndent = '    '.repeat(indentLevel + 1)
 
@@ -513,12 +733,12 @@ function serializeTsValue(value, indentLevel = 0) {
     return 'undefined'
 }
 
-function extractTypeAliasName(source) {
+function extractTypeAliasName(source: string): string | null {
     const match = source.match(/export\s+type\s+([A-Za-z0-9_]+)\s*=\s*typeof\s+button/)
     return match?.[1] ?? null
 }
 
-function resolveLocalImport(importerPath, specifier) {
+function resolveLocalImport(importerPath: string, specifier: string): string | null {
     const basePath = path.resolve(path.dirname(importerPath), specifier)
     const candidates = [
         basePath,
@@ -537,7 +757,7 @@ function resolveLocalImport(importerPath, specifier) {
     return null
 }
 
-function rewriteLocalImportSpecifiers(source, importerPath) {
+function rewriteLocalImportSpecifiers(source: string, importerPath: string): string {
     return source.replace(/(from\s+['"]|import\s+['"])(.+?)(['"])/g, (fullMatch, prefix, specifier, suffix) => {
         if (!specifier.startsWith('.')) {
             return fullMatch
@@ -557,7 +777,7 @@ function rewriteLocalImportSpecifiers(source, importerPath) {
     })
 }
 
-function collectRuntimeDependencies(filePath, seen = new Set()) {
+function collectRuntimeDependencies(filePath: string, seen = new Set<string>()): Set<string> {
     if (seen.has(filePath)) {
         return seen
     }
@@ -584,7 +804,7 @@ function collectRuntimeDependencies(filePath, seen = new Set()) {
     return seen
 }
 
-function transpileThemeModuleGraph(entryFilePath) {
+function transpileThemeModuleGraph(entryFilePath: string): string {
     const tempRoot = mkdtempSync(path.join(tmpdir(), 'unity-ui-theme-'))
     const runtimeFiles = collectRuntimeDependencies(entryFilePath)
 
@@ -608,7 +828,7 @@ function transpileThemeModuleGraph(entryFilePath) {
     return path.join(tempRoot, path.relative(rootDir, entryFilePath)).replace(/\.ts$/, '.mjs')
 }
 
-async function loadThemeRuntime(filePath) {
+async function loadThemeRuntime(filePath: string): Promise<unknown> {
     const transpiledEntryPath = transpileThemeModuleGraph(filePath)
     const moduleUrl = `${pathToFileURL(transpiledEntryPath).href}?t=${Date.now()}`
     const loadedModule = await import(moduleUrl)
@@ -616,24 +836,27 @@ async function loadThemeRuntime(filePath) {
     return loadedModule.default
 }
 
-async function buildGeneratedSource(filePath, source, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey) {
+async function buildGeneratedSource({
+    filePath,
+    source,
+    transformContext,
+}: {
+    filePath: string
+    source: string
+    transformContext: BaseTransformContext
+}): Promise<GeneratedThemeOutput> {
     const runtimeTheme = await loadThemeRuntime(filePath)
-    const meta = {
-        unresolved: new Set(),
+    const meta: TransformMeta = {
+        unresolved: new Set<string>(),
         replacements: 0,
     }
-    const transformedTheme = transformRuntimeThemeValue(
-        runtimeTheme,
-        definitions,
-        presetVars,
-        spacingValueToKey,
-        radiusValueToKey,
-        borderWidthValueToKey,
+    const transformedTheme = transformRuntimeThemeValue(runtimeTheme, {
+        ...transformContext,
         meta,
-    )
+    })
     const typeAliasName = extractTypeAliasName(source)
     const generatedLines = [
-        '// Auto-generated by scripts/replace-component-colors.mjs',
+        '// Auto-generated by scripts/replace-component-colors.ts',
         '// Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.',
         '',
         `const button = ${serializeTsValue(transformedTheme)} as const`,
@@ -649,21 +872,25 @@ async function buildGeneratedSource(filePath, source, definitions, presetVars, s
     }
 }
 
-async function generateThemeFile(filePath, themeDir, definitions, presetVars, spacingValueToKey, radiusValueToKey, borderWidthValueToKey) {
+async function generateThemeFile({
+    filePath,
+    themeDir,
+    transformContext,
+}: {
+    filePath: string
+    themeDir: string
+    transformContext: BaseTransformContext
+}): Promise<GeneratedThemeFileResult> {
     const source = readFileSync(filePath, 'utf8')
     const generatedFilePath = getGeneratedThemePath(filePath, themeDir)
     const previousGeneratedSource = statSyncSafe(generatedFilePath)?.isFile()
         ? readFileSync(generatedFilePath, 'utf8')
         : null
-    const nextGenerated = await buildGeneratedSource(
+    const nextGenerated = await buildGeneratedSource({
         filePath,
         source,
-        definitions,
-        presetVars,
-        spacingValueToKey,
-        radiusValueToKey,
-        borderWidthValueToKey,
-    )
+        transformContext,
+    })
 
     if (shouldWrite) {
         mkdirSync(path.dirname(generatedFilePath), { recursive: true })
@@ -706,19 +933,33 @@ async function main() {
         const radiusValueToKey = new Map([
             ['0', '0'],
             ['0rem', '0'],
-            ...parseResolvedValuePresetMap(layoutPresetPath, new Set(['borderRadius']), definitions),
+            ...parseResolvedValuePresetMap({
+                filePath: layoutPresetPath,
+                sectionNames: new Set(['borderRadius']),
+                definitions,
+            }),
         ])
         const borderWidthValueToKey = parseValuePresetMap(layoutPresetPath, new Set(['borderWidth']))
-
-        const results = await Promise.all(themeFiles.map((filePath) => generateThemeFile(
-            filePath,
-            themeDir,
+        const opacityValueToKey = new Map(
+            Array.from(parseValuePresetMap(layoutPresetPath, new Set(['opacity'])).entries()).map(([value, key]) => [
+                normalizeScalarForLookup(value),
+                key,
+            ]),
+        )
+        const transformContext: BaseTransformContext = {
             definitions,
             presetVars,
             spacingValueToKey,
             radiusValueToKey,
             borderWidthValueToKey,
-        )))
+            opacityValueToKey,
+        }
+
+        const results = await Promise.all(themeFiles.map((filePath: string) => generateThemeFile({
+            filePath,
+            themeDir,
+            transformContext,
+        })))
 
         perThemeResults.push({
             themeDir,

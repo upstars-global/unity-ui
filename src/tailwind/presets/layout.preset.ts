@@ -90,6 +90,7 @@ const preset: Partial<Config> = {
             },
             opacity: {
                 '80': '.80',
+                '45': '.45',
             }
         },
     },

@@ -17,6 +17,8 @@ import { allIcons, icons, type UiIconName } from './icons/config';
 import inlineNotificationTheme from "./components/inlineNotification/theme.generated.ts";
 import linearProgressTheme from "./components/linear/theme.generated.ts";
 import modalTheme from "./components/modal/theme.generated.ts";
+import inputTheme from "./components/input/theme.generated.ts";
+import textAreaTheme from './components/textArea/theme.generated';
 
 const appConfig: AppConfig<UiIconName> = {
   icons: icons,
@@ -39,6 +41,8 @@ const appConfig: AppConfig<UiIconName> = {
     toast: toastTheme,
     linearProgress: linearProgressTheme,
     modal: modalTheme,
+    input: inputTheme,
+    textArea: textAreaTheme,
   },
   store: {
     env: {

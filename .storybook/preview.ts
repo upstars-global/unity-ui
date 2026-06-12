@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/vue3-vite'
+import { setup } from '@storybook/vue3-vite'
 import { provide } from 'vue'
+import Vue3Mask from 'vue3-mask'
+import Vue3OutsideEvents from "vue3-outside-events"
 import './css/tailwind.css'
 import '../src/themes/alpa/style/tailwind.css'
 import '../src/themes/king/style/tailwind.css'
