@@ -44,7 +44,7 @@ export const FIELD_BASE = [
 export const TEXT_BASE = ['min-w-0', 'truncate']
 
 export const LABEL_BASE = [
-    'left-0 origin-left transition-all duration-200 ease-out cursor-text',
+    'left-0 origin-left transition-all duration-200 ease-out cursor-text w-full',
     'text-body',
     'font-medium',
     'duration-150',
