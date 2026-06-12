@@ -23,7 +23,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     modelValue: '',
-    name: 'storybook-input',
+    name: 'playground-input',
     type: 'text',
     label: 'Email',
     placeholder: 'name@example.com',
@@ -295,7 +295,7 @@ export const StateEmptyError: Story = {
   },
   render: () => renderStateStory({
     props: {
-      name: 'state-error',
+      name: 'state-empty-error',
       label: 'Email',
       placeholder: 'name@example.com',
       invalid: true,
