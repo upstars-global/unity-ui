@@ -5,7 +5,7 @@ const button = {
     "base": "inline-flex items-center justify-center overflow-hidden shrink-0 upper-case",
     "size": {
         "default": {
-            "container": "h-4 rounded-full px-2",
+            "container": "h-16 rounded-full px-8",
             "label": "text-caption font-bold uppercase whitespace-nowrap"
         }
     },

@@ -14,6 +14,7 @@ import type {InlineNotificationUiOptimized} from "./notifications/inlineNotifica
 import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
+import type {ModalUiOptimized} from "./modal/theme.ts";
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
 export type UiIconsGroups<TIconName extends string = string> = Record<string, UiIcons<TIconName>>;
@@ -38,6 +39,7 @@ export interface AppConfig<TIconName extends string = string> {
     radialProgress?: RadialProgressUiOptimized
     toast?: ToastUiOptimized
     linearProgress?: LinearProgressUiOptimized
+    modal?: ModalUiOptimized
   }
   store?: {
     env?: {

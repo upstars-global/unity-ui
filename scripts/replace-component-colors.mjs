@@ -73,46 +73,12 @@ const SPACING_UTILITIES = new Set([
     'w',
 ])
 
-const DEFAULT_SPACING_VALUE_TO_KEY = new Map([
-    ['0rem', '0'],
-    ['0px', '0'],
-    ['0.125rem', '0.5'],
-    ['0.25rem', '1'],
-    ['0.375rem', '1.5'],
-    ['0.5rem', '2'],
-    ['0.625rem', '2.5'],
-    ['0.75rem', '3'],
-    ['0.875rem', '3.5'],
-    ['1rem', '4'],
-    ['1.25rem', '5'],
-    ['1.5rem', '6'],
-    ['1.75rem', '7'],
-    ['2rem', '8'],
-    ['2.5rem', '10'],
-    ['3rem', '12'],
-    ['3.5rem', '14'],
-    ['4rem', '16'],
-    ['4.5rem', '18'],
-    ['5rem', '20'],
-    ['5.5rem', '22'],
-    ['6rem', '24'],
-    ['6.5rem', '26'],
-    ['6.75rem', '27'],
-    ['6.875rem', '27.5'],
-    ['7rem', '28'],
-    ['7.5rem', '30'],
-    ['8rem', '32'],
-    ['9rem', '36'],
-    ['9.5rem', '38'],
-    ['10rem', '40'],
-])
-
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
 const ARBITRARY_PROPERTY_REGEX = /(?:[!@%\w:-]+:)*\[[a-z-]+:var\((--[a-z0-9-]+)\)\]/gi
 const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
-const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
+const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:"([^"]+)"|'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
 const RUNTIME_IMPORT_REGEX = /^\s*import\s+(?!type\b)(?:[\s\S]*?\sfrom\s+)?['"](.+?)['"]/gm
 function walkFiles(dirPath, predicate) {
     const result = []
@@ -164,8 +130,8 @@ function parseValuePresetMap(filePath, sectionNames) {
         }
 
         for (const entryMatch of sectionBody.matchAll(PRESET_VALUE_ENTRY_REGEX)) {
-            const key = entryMatch[1] ?? entryMatch[2]
-            const value = entryMatch[3]?.trim()
+            const key = entryMatch[1] ?? entryMatch[2] ?? entryMatch[3]
+            const value = entryMatch[4]?.trim()
 
             if (!key || !value) {
                 continue
@@ -731,11 +697,12 @@ async function main() {
         const cssFiles = walkFiles(themeStylesDir, (filePath) => filePath.endsWith('.css'))
 
         const presetVars = parsePresetVars(colorsPresetPath)
-        const spacingValueToKey = new Map([
-            ...DEFAULT_SPACING_VALUE_TO_KEY,
-            ...parseValuePresetMap(layoutPresetPath, new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width'])),
-        ])
         const definitions = parseCssVariables(cssFiles)
+        const spacingValueToKey = parseResolvedValuePresetMap(
+            layoutPresetPath,
+            new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
+            definitions,
+        )
         const radiusValueToKey = new Map([
             ['0', '0'],
             ['0rem', '0'],

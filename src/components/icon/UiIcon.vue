@@ -44,8 +44,20 @@ const className = computed(() => {
     attrs.class
   ]
 })
+
+const attributes = computed(() => {
+  const { class: _class, ...rest } = attrs
+
+  return rest
+})
 </script>
 
 <template>
-  <div class="ui-icon shrink-0" v-if="iconRaw" :class="className" v-html="iconRaw"  />
+  <div
+    v-if="iconRaw"
+    class="ui-icon shrink-0"
+    :class="className"
+    v-bind="attributes"
+    v-html="iconRaw"
+  />
 </template>

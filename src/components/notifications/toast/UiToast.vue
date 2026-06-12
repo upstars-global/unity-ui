@@ -49,31 +49,27 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import UiIcon from "../../icon/UiIcon.vue";
-import UiBaseNotification from "../baseNotification/UiBaseNotification.vue";
-import { useEventBus } from "../../../composables/useEventBus.ts";
-import { useAppConfig } from "../../../composables/useAppConfig.ts";
-import { flattenClasses } from "../../../helpers/flattenClasses.ts";
-import type {
-  UiToastClosePayload,
-  UiToastItem,
-} from "./types.ts";
+import { computed } from 'vue'
+import UiIcon from '../../icon/UiIcon.vue'
+import UiBaseNotification from '../baseNotification/UiBaseNotification.vue'
+import { useAppConfig } from '../../../composables/useAppConfig.ts'
+import { flattenClasses } from '../../../helpers/flattenClasses.ts'
+import { useToastController } from './useToastController.ts'
+import type { UiToastItem } from './types.ts'
 
 defineOptions({
-  name: "UiToast",
-});
+  name: 'UiToast',
+})
 
-const bus = useEventBus();
-const appConfig = useAppConfig();
-const toastTheme = appConfig.components?.toast;
+const appConfig = useAppConfig()
+const toastTheme = appConfig.components?.toast
 
-const group = "basic";
-const styles = "";
-const list = ref<UiToastItem[]>([]);
+const group = 'basic'
+const styles = ''
+const { list, remove } = useToastController()
 
 if (!toastTheme) {
-  throw new Error("[UnityUI] Toast theme is not provided in appConfig.components.toast.");
+  throw new Error('[UnityUI] Toast theme is not provided in appConfig.components.toast.')
 }
 
 const rootClasses = computed(() => {
@@ -81,60 +77,21 @@ const rootClasses = computed(() => {
     group,
     toastTheme.base,
     toastTheme.slots.list,
-  );
-});
-
-function remove(id?: number) {
-  list.value = list.value.filter((item) => item.id !== id);
-}
-
-function setTimer(toast: UiToastItem) {
-  const timer = toast.time === 0 ? 0 : 10000;
-
-  if (timer > 0) {
-    setTimeout(() => {
-      remove(toast.id);
-    }, timer);
-  }
-}
-
-function show(toast: UiToastItem) {
-  const nextToast: UiToastItem = { ...toast };
-
-  if (!Object.prototype.hasOwnProperty.call(nextToast, "id")) {
-    nextToast.id = Math.random();
-  }
-
-  setTimer(nextToast);
-  list.value.push(nextToast);
-}
-
-function close(toast: UiToastClosePayload) {
-  remove(toast.id);
-}
+  )
+})
 
 function clickHandler(item: UiToastItem) {
   if (item.url) {
     // this.$router.push(item.url); // переходы нужно обсудить так как пути не соответсвуют текущим роутам
   } else if (item.callback) {
-    item.callback();
+    item.callback()
   }
 }
 
 function closeHandler(item: UiToastItem) {
   if (item.callback) {
-    item.callback();
+    item.callback()
   }
-  remove(item.id);
+  remove(item.id)
 }
-
-onMounted(() => {
-  bus?.$on("toast.show", show);
-  bus?.$on("toast.close", close);
-});
-
-onBeforeUnmount(() => {
-  bus?.$off("toast.show", show);
-  bus?.$off("toast.close", close);
-});
 </script>
