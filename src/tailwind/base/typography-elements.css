@@ -12,7 +12,7 @@
     h5 { @apply text-subtitle; }
 
     a, .text-link {
-        @apply underline decoration-solid;
+        @apply underline decoration-solid cursor-pointer;
         @apply transition-colors text-fg-link-default;
         text-decoration-skip-ink: auto;
         text-decoration-color: var(--fg-link-underline-default);
