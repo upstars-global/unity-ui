@@ -1,6 +1,4 @@
 :root[data-product="alpa"] {
-    --component-badge-height: 1rem;
-    --component-badge-padding-x: 0.5rem;
     --radius-badge: var(--radius-full);
 
     --component-badge-navigation-fg: var(--color-neutral-500);

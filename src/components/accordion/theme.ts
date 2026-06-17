@@ -7,13 +7,21 @@ const ACCORDION_BASE: AccordionClassList = [
   'flex',
   'flex-col',
   'overflow-hidden',
-  tokenClass('--radius-accordion', 'rounded'),
-  tokenClass('--component-accordion-bordercolor', 'border'),
-  tokenClass('--component-accordion-bg', 'bg'),
-  tokenClass('--component-accordion-fg-primary', 'text'),
   'border',
+  'transition-colors',
+  tokenClass('--radius-accordion', 'rounded'),
+  tokenClass('--component-accordion-fg-primary', 'text'),
+  tokenClass('--spacing-16', 'px'),
+  tokenClass('--spacing-12', 'py'),
+]
+const ACCORDION_BASE_OPENED = [
+  tokenClass('--component-accordion-opened-bg', 'bg'),
+  tokenClass('--component-accordion-opened-bordercolor', 'border'),
+]
 
-  'px-4 py-2'
+const ACCORDION_BASE_DEFAULT = [
+  tokenClass('--component-accordion-default-bordercolor', 'border'),
+  tokenClass('--component-accordion-default-bg', 'bg'),
 ]
 
 const accordion = {
@@ -21,6 +29,10 @@ const accordion = {
   slots: {
     iconOpened: ['rotate-180'],
   },
+  states: {
+    opened: ACCORDION_BASE_OPENED,
+    default: ACCORDION_BASE_DEFAULT
+  }
 } as const
 
 export type AccordionUiOptimized = typeof accordion

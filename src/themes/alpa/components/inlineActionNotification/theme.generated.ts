@@ -2,14 +2,14 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-inline-action-notification p-4 bg-neutral-300 rounded-16 text-white",
+    "base": "ui-inline-action-notification p-16 bg-neutral-300 rounded-16 text-white shadow-fg-default",
     "slots": {
-        "container": "flex gap-2 lg:gap-4",
-        "icon": "h-8 w-8",
-        "content": "flex flex-col justify-between w-full gap-3 lg:gap-4 lg:flex-row",
+        "container": "flex gap-8 lg:gap-16",
+        "icon": "h-32 w-32",
+        "content": "flex flex-col justify-between w-full gap-3 gap-12 lg:gap-16 lg:flex-row",
         "message": "",
         "title": "h3 font-bold",
-        "actions": "grid grid-flow-col gap-x-2 lg:gap-x-4"
+        "actions": "flex gap-4 lg:gap-8"
     }
 } as const
 

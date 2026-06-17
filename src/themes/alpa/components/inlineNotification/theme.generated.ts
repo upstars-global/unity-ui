@@ -2,10 +2,10 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "p-2",
+    "base": "p-8 rounded-8",
     "type": {
         "base": "flex items-center justify-center w-full text-center",
-        "icon": "flex items-start gap-2 justify-start w-full"
+        "icon": "flex items-start justify-start w-full gap-8"
     }
 } as const
 

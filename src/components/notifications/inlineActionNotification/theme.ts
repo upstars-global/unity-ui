@@ -3,34 +3,35 @@ import {tokenClass} from "../../theme-utils.ts";
 const inlineActionNotification = {
   base: [
     'ui-inline-action-notification',
-    'p-4',
+    tokenClass('--spacing-16', 'p'),
     tokenClass('--component-notification-bg-neutral', 'bg'),
     tokenClass('--radius-notification-lg', 'rounded'),
     tokenClass('--component-notification-fg-default', 'text'),
+    'shadow-fg-default'
   ],
   slots: {
     container: [
       'flex',
-      'gap-2',
-      'lg:gap-4',
+      tokenClass('--spacing-8', 'gap'),
+      tokenClass('--spacing-16', 'lg:gap'),
     ],
-    icon: ['h-8 w-8'],
+    icon: ['h-32 w-32'],
     content: [
       'flex',
       'flex-col',
       'justify-between',
       'w-full',
       'gap-3',
-      'lg:gap-4',
+      tokenClass('--spacing-12', 'gap'),
+      tokenClass('--spacing-16', 'lg:gap'),
       'lg:flex-row'
     ],
     message: [],
     title: ['h3', 'font-bold'],
     actions: [
-      'grid',
-      'grid-flow-col',
-      'gap-x-2',
-      'lg:gap-x-4',
+      'flex',
+      tokenClass('--spacing-4', 'gap'),
+      tokenClass('--spacing-8', 'lg:gap'),
     ],
   },
 } as const

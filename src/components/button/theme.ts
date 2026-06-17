@@ -24,15 +24,15 @@ const BUTTON_LABEL_TEXT_BY_SIZE: Record<ButtonSize, string> = {
 }
 
 const STANDARD_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
-  sm: ['!w-4', '!h-4'],
+  sm: ['!w-16', '!h-16'],
   md: [],
   lg: [],
 }
 
 const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
-  sm: ['!w-4', '!h-4'],
-  md: ['w-6'],
-  lg: ['w-6'],
+  sm: ['!w-16', '!h-16'],
+  md: ['w-24'],
+  lg: ['w-24'],
 }
 
 const BUTTON_BASE: ButtonClassList = ['flex']
@@ -150,10 +150,10 @@ const button = {
       sizes: {
         sm: {
           container: [
-            tokenClass('--component-button-minwidth-standard-sm', 'min-w'),
+            // tokenClass('--component-button-minwidth-standard-sm', 'min-w'),
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
-            tokenClass('--radius-button-sm', 'rounded'),
+            tokenClass('--radius-button-default-sm', 'rounded'),
             tokenClass('--component-button-padding-x-standard-sm', 'px'),
             tokenClass('--component-button-padding-y-standard-sm', 'py'),
           ],
@@ -162,10 +162,10 @@ const button = {
         },
         md: {
           container: [
-            tokenClass('--component-button-minwidth-standard-md', 'min-w'),
+            // tokenClass('--component-button-minwidth-standard-md', 'min-w'),
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
-            tokenClass('--radius-button-md', 'rounded'),
+            tokenClass('--radius-button-default-md', 'rounded'),
             tokenClass('--component-button-padding-x-standard-md', 'px'),
             tokenClass('--component-button-padding-y-standard-md', 'py'),
           ],
@@ -174,10 +174,10 @@ const button = {
         },
         lg: {
           container: [
-            tokenClass('--component-button-minwidth-standard-lg', 'min-w'),
+            // tokenClass('--component-button-minwidth-standard-lg', 'min-w'),
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
-            tokenClass('--radius-button-lg', 'rounded'),
+            tokenClass('--radius-button-default-lg', 'rounded'),
             tokenClass('--component-button-padding-x-standard-lg', 'px'),
             tokenClass('--component-button-padding-y-standard-lg', 'py'),
           ],
@@ -192,21 +192,21 @@ const button = {
         sm: {
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
-            tokenClass('--radius-button-sm', 'rounded'),
+            tokenClass('--radius-button-icon', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.sm,
         },
         md: {
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
-            tokenClass('--radius-button-md', 'rounded'),
+            tokenClass('--radius-button-icon', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.md,
         },
         lg: {
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
-            tokenClass('--radius-button-lg', 'rounded'),
+            tokenClass('--radius-button-icon', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.lg,
         },
@@ -230,7 +230,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-md', 'h'),
             tokenClass('--component-button-gap-caption-md', 'gap'),
-            tokenClass('--radius-button-md', 'rounded'),
+            tokenClass('--radius-button-default-md', 'rounded'),
             tokenClass('--component-button-padding-x-caption-md', 'px'),
             tokenClass('--component-button-padding-y-caption-md', 'py'),
           ],
@@ -241,7 +241,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
-            tokenClass('--radius-button-lg', 'rounded'),
+            tokenClass('--radius-button-default-lg,', 'rounded'),
             tokenClass('--component-button-padding-x-caption-lg', 'px'),
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
@@ -255,11 +255,11 @@ const button = {
       sizes: {
         sm: {
           container: [
-            tokenClass('--component-button-minwidth-slab-sm', 'min-w'),
-            tokenClass('--component-button-maxwidth-slab-sm', 'max-w'),
+            // tokenClass('--component-button-minwidth-slab-sm', 'min-w'),
+            // tokenClass('--component-button-maxwidth-slab-sm', 'max-w'),
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),
-            tokenClass('--radius-button-md', 'rounded'),
+            tokenClass('--radius-button-slab', 'rounded'),
             tokenClass('--component-button-padding-x-slab-sm', 'px'),
             tokenClass('--component-button-padding-y-slab-sm', 'py'),
           ],
@@ -275,17 +275,22 @@ const button = {
         'justify-center',
         'text-center',
         tokenClass('--component-button-gap-action-sm', 'gap'),
+        tokenClass('--component-button-gap-action-sm', 'gap'),
       ],
       sizes: {
         sm: {
           container: [
             'flex justify-center items-center',
-            tokenClass('--component-button-width-action-sm', 'w'),
+            tokenClass('--component-button-height-action-sm', 'w'),
             tokenClass('--component-button-height-action-sm', 'h'),
-            tokenClass('--radius-button-md', 'rounded'),
+            tokenClass('--radius-button-action', 'rounded'),
           ],
           icon: ['w-6'],
-          label: ['text-button-caption', ...LABEL_BASE],
+          label: [
+            'text-button-caption',
+            tokenClass('--component-button-label', 'text'),
+            ...LABEL_BASE
+          ],
         },
       } satisfies ButtonTypeSizeMap,
     },

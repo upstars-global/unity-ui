@@ -6,10 +6,10 @@ const linearProgress = {
       'flex',
       'flex-col',
       'text-caption',
-      'gap-2'
+      tokenClass('--spacing-4', 'gap'),
   ],
   full: [
-    'h-2',
+    'h-8',
     'w-full',
     tokenClass('--component-progress-bg', 'bg'),
     tokenClass('--radius-progress', 'rounded'),
@@ -17,7 +17,7 @@ const linearProgress = {
   ],
   progress: [
     'bg-gradient-personal',
-    'h-2',
+    'h-8',
     tokenClass('--radius-progress', 'rounded'),
   ]
 } as const
