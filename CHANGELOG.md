@@ -1,3 +1,14 @@
+## [1.16.1](https://github.com/upstars-global/unity-ui/compare/v1.16.0...v1.16.1) (2026-06-18)
+
+### 🐛 Bug Fixes
+
+* UN-2857 Fix Ui/Ux bugs after review by design ([#26](https://github.com/upstars-global/unity-ui/issues/26))
+ ([7004b4f](https://github.com/upstars-global/unity-ui/commit/7004b4f26c70185b050488d6b772f7efa4a3d41a))
+
+
+
+    * fix: UN-2857 Fix Ui/Ux bugs after review by design
+
 ## [1.16.0](https://github.com/upstars-global/unity-ui/compare/v1.15.1...v1.16.0) (2026-06-12)
 
 ### 🚀 Features
