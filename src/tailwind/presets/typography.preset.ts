@@ -71,7 +71,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-tiny-lineheight)',
             letterSpacing: 'var(--text-tiny-letterspacing)',
-            fontWeight: 'var(--text-fontweight-normal)',
+            fontWeight: 'var(--text-fontweight-medium)',
         },
     ],
     'button-xl': [
