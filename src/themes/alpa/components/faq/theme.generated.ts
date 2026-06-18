@@ -2,7 +2,7 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-faq-item flex flex-col overflow-hidden border transition-colors rounded-16 border-neutral-200/40 bg-transparent text-fg-primary px-16 py-12 py-8",
+    "base": "ui-faq-item flex flex-col overflow-hidden border transition-colors rounded-16 text-fg-primary px-16 py-12 py-8",
     "slots": {
         "iconOpened": "rotate-180"
     },

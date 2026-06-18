@@ -9,7 +9,7 @@ const button = {
         "content": "flex flex-col justify-between w-full gap-3 gap-12 lg:gap-16 lg:flex-row",
         "message": "",
         "title": "h3 font-bold",
-        "actions": "flex gap-4 lg:gap-8"
+        "actions": "flex flex-col lg:flex-row gap-4 lg:gap-8"
     }
 } as const
 

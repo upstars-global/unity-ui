@@ -8,8 +8,6 @@ const FAQ_BASE: string[] = [
   'border',
   'transition-colors',
   tokenClass('--radius-accordion', 'rounded'),
-  tokenClass('--component-accordion-faq-default-bordercolor', 'border'),
-  tokenClass('--component-accordion-faq-default-bg', 'bg'),
   tokenClass('--component-accordion-fg-primary', 'text'),
   tokenClass('--spacing-16', 'px'),
   tokenClass('--spacing-12', 'py'),

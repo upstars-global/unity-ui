@@ -150,7 +150,6 @@ const button = {
       sizes: {
         sm: {
           container: [
-            // tokenClass('--component-button-minwidth-standard-sm', 'min-w'),
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
             tokenClass('--radius-button-default-sm', 'rounded'),
@@ -162,7 +161,6 @@ const button = {
         },
         md: {
           container: [
-            // tokenClass('--component-button-minwidth-standard-md', 'min-w'),
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
             tokenClass('--radius-button-default-md', 'rounded'),
@@ -174,7 +172,6 @@ const button = {
         },
         lg: {
           container: [
-            // tokenClass('--component-button-minwidth-standard-lg', 'min-w'),
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
             tokenClass('--radius-button-default-lg', 'rounded'),
@@ -219,7 +216,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-sm', 'h'),
             tokenClass('--component-button-gap-caption-sm', 'gap'),
-            tokenClass('--radius-button-sm', 'rounded'),
+            tokenClass('--radius-button-default-sm', 'rounded'),
             tokenClass('--component-button-padding-x-caption-sm', 'px'),
             tokenClass('--component-button-padding-y-caption-sm', 'py'),
           ],
@@ -241,7 +238,7 @@ const button = {
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
-            tokenClass('--radius-button-default-lg,', 'rounded'),
+            tokenClass('--radius-button-default-lg', 'rounded'),
             tokenClass('--component-button-padding-x-caption-lg', 'px'),
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
@@ -255,8 +252,6 @@ const button = {
       sizes: {
         sm: {
           container: [
-            // tokenClass('--component-button-minwidth-slab-sm', 'min-w'),
-            // tokenClass('--component-button-maxwidth-slab-sm', 'max-w'),
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),
             tokenClass('--radius-button-slab', 'rounded'),

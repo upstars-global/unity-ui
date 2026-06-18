@@ -45,7 +45,7 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
-                    "container": "h-[3rem] gap-2 rounded-[var(--radius-button-sm)] px-16 py-4",
+                    "container": "h-[3rem] gap-2 rounded-8 px-16 py-4",
                     "label": "text-button-sm truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 },
@@ -55,7 +55,7 @@ const button = {
                     "caption": "text-button-caption truncate opacity-85"
                 },
                 "lg": {
-                    "container": "h-[4rem] gap-4 rounded-[var(--radius-button-default-lg,)] px-24 py-4",
+                    "container": "h-[4rem] gap-4 rounded-8 px-24 py-4",
                     "label": "text-button-lg truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 }

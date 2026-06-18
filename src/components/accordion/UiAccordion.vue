@@ -40,14 +40,14 @@ const rootClasses = computed(() => {
       toggle-classes="flex text-center items-center justify-center w-full relative cursor-pointer"
       title-classes="text-body font-bold"
       icon-classes="absolute top-0 right-0 transition-transform"
-      content-classes="pt-4 pb-2"
+      content-classes="pt-16 pb-8"
       :default-opened="defaultOpened"
   >
     <template #default>
       <slot />
       <div
         v-if="slots.action"
-        class="flex items-center justify-center w-full mt-4"
+        class="flex items-center justify-center w-full mt-16"
       >
         <slot name="action" />
       </div>

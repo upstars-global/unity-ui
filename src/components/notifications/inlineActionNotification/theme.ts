@@ -30,6 +30,8 @@ const inlineActionNotification = {
     title: ['h3', 'font-bold'],
     actions: [
       'flex',
+      'flex-col',
+      'lg:flex-row',
       tokenClass('--spacing-4', 'gap'),
       tokenClass('--spacing-8', 'lg:gap'),
     ],

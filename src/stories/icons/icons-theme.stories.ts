@@ -122,7 +122,7 @@ export const Grid: Story = {
                   <div
                     class="flex items-center justify-center rounded-md bg-layer-alt-2"
                   >
-                    <div :class="group.type === 'flat' ? 'h-24 w-24' : iconWrapperClass">
+                    <div :class="group.type === 'flat' ? 'size-18' : iconWrapperClass">
                       <UiIcon :name="name" :size="group.type === 'flat' ? '72' : iconSize" />
                     </div>
                   </div>
