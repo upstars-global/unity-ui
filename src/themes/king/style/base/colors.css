@@ -80,11 +80,12 @@
     --color-warning-100-80: rgb(255 112 73 / 0.8);
 
     --gradient-transparent-color-1: var(--color-transparent);
-    --gradient-transparent-color-2: rgb(var(--color-white)/ 0.5);
+    --gradient-transparent-color-2: rgb(var(--color-white) / 0.5);
     --gradient-personal-color-1: rgb(40 244 139);
     --gradient-personal-color-2: rgb(115 255 112);
     --component-card-gradient-from: rgb(208, 255, 253);
     --component-card-gradient-to: rgba(189 245 255);
+    --fg-effect-shadow-default: rgb(var(--color-neutral-600) / 0.1);
 
     --bg-deep: rgb(var(--color-neutral-50));
     --bg-surface: rgb(var(--color-white));
@@ -106,4 +107,5 @@
     --gradient-personal: 90deg, var(--gradient-personal-color-1) 0%, var(--gradient-personal-color-2) 100%;
     --gradient-card: 90deg, var(--component-card-gradient-from) 0%, var(--component-card-gradient-to) 100%;
 
+    --shadow-fg-default: 0 0 16px 0 var(--fg-effect-shadow-default), 0 0 4px 2px var(--fg-effect-shadow-default);
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, onMounted, ref, useAttrs, watch} from 'vue'
-import {arrow, autoUpdate, flip, hide, offset, shift, useFloating} from '@floating-ui/vue'
+import {autoUpdate, flip, hide, offset, shift, useFloating} from '@floating-ui/vue'
 import {useAppConfig} from '../../composables/useAppConfig'
 import {flattenClasses} from '../../helpers/flattenClasses'
 import type {UiTooltipProps} from './types.ts'
@@ -24,11 +24,8 @@ const isOpen = ref(false)
 const root = ref<HTMLElement | null>(null)
 const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
-const floatingArrow = ref<HTMLElement | null>(null)
 const attrs = useAttrs()
 
-const placement = computed(() => props.placement)
-const offsetValue = computed(() => props.offsetValue)
 const tooltipVisible = computed(() => !props.disabled && isOpen.value)
 const collisionBoundary = computed(() => root.value?.parentElement ?? 'clippingAncestors')
 const VIEWPORT_PADDING = 8
@@ -46,8 +43,7 @@ const middleware = computed(() => {
     fallbackPlacements: props.fallbackPlacements,
   })
   const baseMiddleware = [
-    offset(offsetValue.value + 8),
-    arrow({ element: floatingArrow, padding: 8 }),
+    offset(props.offsetValue + 8),
     hide({
       boundary: collisionBoundary.value,
     }),
@@ -60,10 +56,10 @@ const middleware = computed(() => {
   }
 })
 
-const { floatingStyles, middlewareData, placement: currentPlacement } = useFloating(reference, floating, {
+const { floatingStyles, middlewareData } = useFloating(reference, floating, {
   transform: false,
   open: tooltipVisible,
-  placement,
+  placement: props.placement,
   middleware,
   strategy: computed(() => props.strategy),
   whileElementsMounted: (referenceEl, floatingEl, update) => {
@@ -97,26 +93,8 @@ const triggerClasses = computed(() => {
 const contentClasses = computed(() => {
   return flattenClasses(tooltipTheme.slots.content)
 })
-const arrowClasses = computed(() => {
-  return flattenClasses(tooltipTheme.slots.arrow)
-});
 
-const OPPOSITE_SIDE_BY_SIDE = {
-  top: "bottom",
-  right: "left",
-  bottom: "top",
-  left: "right",
-};
-
-const side = computed(() => currentPlacement.value.split("-")[0]);
-const floatingArrowX = computed(() => middlewareData.value.arrow?.x ?? null);
-const floatingArrowY = computed(() => middlewareData.value.arrow?.y ?? null);
 const isReferenceHidden = computed(() => Boolean(middlewareData.value.hide?.referenceHidden))
-const floatingArrowStyles = computed(() => ({
-  top: floatingArrowY.value === null ? "" : `${floatingArrowY.value}px`,
-  left: floatingArrowX.value === null ? "" : `${floatingArrowX.value}px`,
-  [OPPOSITE_SIDE_BY_SIDE[side.value]]: "-4px",
-}));
 const handleMouseEnter = () => {
   if (isTriggerHover.value && !props.disabled) {
     isOpen.value = true
@@ -171,11 +149,6 @@ watch(isReferenceHidden, (referenceHidden) => {
       :style="floatingStyles"
     >
       <slot>{{ text }}</slot>
-      <div
-          ref="floatingArrow"
-          :class="arrowClasses"
-          :style="floatingArrowStyles"
-      />
     </div>
   </div>
 </template>

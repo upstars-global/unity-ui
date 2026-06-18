@@ -94,8 +94,8 @@ function createRouteNavigationStory(initialPath: string, hint: string): Story {
         }
       },
       template: `
-        <div class="space-y-4 bg-bg-deep p-6">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+        <div class="space-y-4 bg-bg-deep p-16">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
             <div class="mb-3 text-caption uppercase tracking-[0.1em] text-fg-secondary">
               {{ hint }}
             </div>
@@ -103,13 +103,13 @@ function createRouteNavigationStory(initialPath: string, hint: string): Story {
             <UiTabs :menu="args.menu" />
           </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-4 text-fg-primary">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-8 text-fg-primary">
             <div class="mb-2 text-caption uppercase tracking-[0.1em] text-fg-secondary">
               Current route
             </div>
 
             <div class="text-body">{{ currentPath }}</div>
-            <div class="mt-4 rounded-2xl border border-white/10 bg-black/10 p-4 text-body">
+            <div class="mt-4 rounded-2xl border border-white/10 bg-black/10 p-8 text-body">
               {{ currentSection }}
             </div>
           </div>

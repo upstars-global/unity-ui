@@ -1,10 +1,14 @@
 :root[data-product="alpa"] {
     --radius-accordion: var(--radius-16);
 
-    --component-accordion-bg: var(--color-neutral-300);
-    --component-accordion-bordercolor: var(--color-transparent);
-    --component-accordion-faq-bg: var(--color-transparent);
-    --component-accordion-faq-bordercolor: var(--color-neutral-200-40);
+    --component-accordion-default-bg: var(--color-neutral-300);
+    --component-accordion-default-bordercolor: var(--color-neutral-50-10);
+    --component-accordion-faq-default-bg: var(--color-transparent);
+    --component-accordion-faq-default-bordercolor: var(--color-neutral-200-40);
+    --component-accordion-faq-opened-bg: var(--color-primary-50-10);
+    --component-accordion-faq-opened-bordercolor: var(--color-primary-50-10);
     --component-accordion-fg-primary: var(--fg-primary);
     --component-accordion-fg-secondary: var(--fg-secondary);
+    --component-accordion-opened-bg: var(--color-primary-50-10);
+    --component-accordion-opened-bordercolor: var(--color-primary-50-10);
 }

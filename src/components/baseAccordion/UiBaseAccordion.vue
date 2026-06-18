@@ -78,6 +78,10 @@ function handleToggle() {
   toggleContent()
   emit('toggle', isOpen.value)
 }
+
+defineExpose({
+  isOpen,
+})
 </script>
 
 <template>

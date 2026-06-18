@@ -2,10 +2,10 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "fixed z-9999 w-84 max-w-full-mob top-4 right-4",
+    "base": "fixed z-9999 w-84 max-w-full-mob top-16 right-16",
     "slots": {
-        "list": "flex flex-col gap-3",
-        "item": "flex p-4 gap-2"
+        "list": "flex flex-col gap-12",
+        "item": "flex p-16 gap-8"
     },
     "transitionGroup": {
         "enterActiveClass": "transition-opacity duration-500",

@@ -51,6 +51,9 @@ const preset: Partial<Config> = {
                 'gradient-personal': 'linear-gradient(var(--gradient-personal))',
                 'gradient-card': 'linear-gradient(var(--gradient-card))',
             },
+            boxShadow: {
+                'fg-default': 'var(--shadow-fg-default)',
+            }
         }
     },
 }

@@ -5,7 +5,7 @@ const button = {
     "base": "inline-flex items-center justify-center overflow-hidden shrink-0 upper-case",
     "size": {
         "default": {
-            "container": "h-16 rounded-full px-8",
+            "container": "h-24 rounded-full p-8",
             "label": "text-caption font-bold uppercase whitespace-nowrap"
         }
     },
@@ -15,7 +15,8 @@ const button = {
         "status-success": "bg-success-100 text-neutral-500",
         "navigation-default": "bg-warning-100 text-neutral-500",
         "navigation-new": "bg-error-100 text-neutral-500",
-        "neutral": "bg-neutral-300/80 text-white"
+        "neutral": "bg-neutral-300/80 text-white",
+        "personal": "bg-gradient-personal text-neutral-500"
     },
     "slots": {
         "label": "text-caption font-bold uppercase whitespace-nowrap"

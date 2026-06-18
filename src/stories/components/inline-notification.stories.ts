@@ -35,7 +35,7 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-2 flex gap-2">
+      <div class="bg-bg-deep p-16 flex gap-2">
         <div class="max-w-[520px] rounded-2xl py-4 px-2">
           <UiInlineNotification
             :variant="args.variant"
@@ -91,8 +91,8 @@ export const Variants: Story = {
       }
     },
     template: `
-      <div class="bg-bg-deep flex gap-2 p-2">
-        <div class="p-2 flex flex-col gap-2">
+      <div class="bg-bg-deep flex gap-4 p-8">
+        <div class="p-2 flex flex-col gap-4">
           <section
               v-for="item in items"
               :key="item.variant"
@@ -110,7 +110,7 @@ export const Variants: Story = {
           </section>
           
         </div>
-        <div class="p-2 flex flex-col gap-2">
+        <div class="p-2 flex flex-col gap-4">
           <section
               v-for="item in items"
               :key="item.variant"
@@ -125,7 +125,6 @@ export const Variants: Story = {
                 :message="item.message"
             />
           </section>
-          
         </div>
       </div>
     `,

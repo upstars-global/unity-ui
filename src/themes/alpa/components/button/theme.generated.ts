@@ -8,17 +8,17 @@ const button = {
             "base": "flex-row items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-16 h-32 gap-4 rounded-8 px-8 py-4",
-                    "icon": "!w-4 !h-4",
+                    "container": "h-32 gap-4 rounded-8 px-12 py-4",
+                    "icon": "!w-16 !h-16",
                     "label": "text-button-sm truncate"
                 },
                 "md": {
-                    "container": "min-w-24 h-40 gap-4 rounded-12 px-8 py-8",
+                    "container": "h-40 gap-4 rounded-8 px-12 py-8",
                     "icon": "",
                     "label": "text-button-md truncate"
                 },
                 "lg": {
-                    "container": "min-w-24 h-12 gap-8 rounded-16 px-3.5 py-12",
+                    "container": "h-[3rem] gap-8 rounded-8 px-16 py-12",
                     "icon": "",
                     "label": "text-button-lg truncate"
                 }
@@ -28,16 +28,16 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "h-32 rounded-8",
-                    "icon": "!w-4 !h-4"
+                    "container": "h-32 rounded-full",
+                    "icon": "!w-16 !h-16"
                 },
                 "md": {
-                    "container": "h-40 rounded-12",
-                    "icon": "w-6"
+                    "container": "h-40 rounded-full",
+                    "icon": "w-24"
                 },
                 "lg": {
-                    "container": "h-12 rounded-16",
-                    "icon": "w-6"
+                    "container": "h-[3rem] rounded-full",
+                    "icon": "w-24"
                 }
             }
         },
@@ -45,17 +45,17 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
-                    "container": "h-12 gap-2 rounded-8 px-16 py-4",
+                    "container": "h-[3rem] gap-2 rounded-8 px-16 py-4",
                     "label": "text-button-sm truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 },
                 "md": {
-                    "container": "h-14 gap-4 rounded-12 px-24 py-4",
+                    "container": "h-[3.5rem] gap-4 rounded-8 px-24 py-4",
                     "label": "text-button-md truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 },
                 "lg": {
-                    "container": "h-16 gap-4 rounded-16 px-24 py-4",
+                    "container": "h-[4rem] gap-4 rounded-8 px-24 py-4",
                     "label": "text-button-lg truncate",
                     "caption": "text-button-caption truncate opacity-85"
                 }
@@ -65,19 +65,19 @@ const button = {
             "base": "flex-col items-center justify-center",
             "sizes": {
                 "sm": {
-                    "container": "min-w-18 max-w-38 h-14 gap-4 rounded-12 px-16 py-4",
+                    "container": "h-[3.5rem] gap-4 rounded-16 px-16 py-4",
                     "icon": "w-6",
                     "label": "text-button-caption truncate"
                 }
             }
         },
         "action": {
-            "base": "flex-col items-center justify-center text-center gap-1.5",
+            "base": "flex-col items-center justify-center text-center gap-[0.375rem] gap-[0.375rem]",
             "sizes": {
                 "sm": {
-                    "container": "flex justify-center items-center w-12 h-12 rounded-12",
+                    "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
                     "icon": "w-6",
-                    "label": "text-button-caption truncate"
+                    "label": "text-button-caption text-white truncate"
                 }
             }
         }
@@ -98,17 +98,17 @@ const button = {
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiary": {
-            "base": "border-transparent bg-neutral-400/80 text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-300/80 group-hover:text-primary-200",
-            "pressed": "group-active:bg-neutral-400/80 group-active:text-primary-200",
-            "loading": "group-aria-busy:bg-neutral-400/80 group-aria-busy:text-primary-200",
+            "base": "border-transparent bg-neutral-200/40 text-primary-300 group-aria-busy:opacity-0",
+            "hover": "group-hover:bg-neutral-300 group-hover:text-primary-200",
+            "pressed": "group-active:bg-neutral-300/40 group-active:text-primary-200",
+            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-300/80 group-hover:text-primary-200",
-            "pressed": "group-active:bg-neutral-400/80 group-active:text-primary-200",
-            "loading": "group-aria-busy:bg-neutral-400/80 group-aria-busy:text-primary-200",
+            "hover": "group-hover:bg-neutral-200/40 group-hover:text-primary-200",
+            "pressed": "group-active:bg-neutral-300 group-active:text-primary-200",
+            "loading": "group-aria-busy:bg-neutral-300 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {

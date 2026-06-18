@@ -2,11 +2,11 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "inline-flex items-center justify-center gap-1 overflow-hidden shrink-0 whitespace-nowrap",
+    "base": "inline-flex items-center justify-center overflow-hidden shrink-0 whitespace-nowrap gap-4 p-8",
     "size": {
         "default": {
-            "container": "h-5 px-2 rounded-full",
-            "dot": "h-2 w-2 rounded-full shrink-0",
+            "container": "rounded-full",
+            "dot": "size-8 rounded-full shrink-0",
             "text": "text-caption font-medium tabular-nums"
         }
     },

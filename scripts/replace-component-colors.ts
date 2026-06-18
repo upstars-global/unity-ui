@@ -157,6 +157,10 @@ function parsePresetVars(filePath: string): PresetVars {
 }
 
 function parseValuePresetMap(filePath: string, sectionNames: Set<string>): ValueToKeyMap {
+    if (!filePath) {
+        throw new Error('parseValuePresetMap expected a preset file path, but received an empty value')
+    }
+
     const source = readFileSync(filePath, 'utf8')
     const valueToKey = new Map()
 
@@ -311,7 +315,13 @@ function getUtilityBase(classToken: string): string | null {
     const lastSegment = utilityBase.split(':').pop() ?? utilityBase
     const normalizedUtility = lastSegment.startsWith('!') ? lastSegment.slice(1) : lastSegment
 
-    return ARBITRARY_VALUE_UTILITIES.has(normalizedUtility)
+    const supportsPresetLookup = COLOR_UTILITIES.has(normalizedUtility)
+        || SPACING_UTILITIES.has(normalizedUtility)
+        || normalizedUtility.startsWith('rounded')
+        || normalizedUtility === 'border'
+        || normalizedUtility === 'opacity'
+
+    return supportsPresetLookup
         ? utilityBase
         : null
 }
@@ -925,11 +935,11 @@ async function main() {
 
         const presetVars = parsePresetVars(colorsPresetPath)
         const definitions = parseCssVariables(cssFiles)
-        const spacingValueToKey = parseResolvedValuePresetMap(
-            layoutPresetPath,
-            new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
+        const spacingValueToKey = parseResolvedValuePresetMap({
+            filePath: layoutPresetPath,
+            sectionNames: new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
             definitions,
-        )
+        })
         const radiusValueToKey = new Map([
             ['0', '0'],
             ['0rem', '0'],

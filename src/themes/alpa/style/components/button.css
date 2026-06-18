@@ -15,19 +15,13 @@
     --component-button-height-standard-sm: 2rem;
     --component-button-height-standard-md: 2.5rem;
     --component-button-height-standard-lg: 3rem;
-    --component-button-width-action-sm: 3rem;
-    --component-button-maxwidth-slab-sm: 9.5rem;
-    --component-button-minwidth-slab-sm: 4.5rem;
-    --component-button-minwidth-standard-sm: 4rem;
-    --component-button-minwidth-standard-lg: 6rem;
-    --component-button-minwidth-standard-md: 6rem;
     --component-button-padding-x-caption-sm: 1rem;
     --component-button-padding-x-caption-lg: 1.5rem;
     --component-button-padding-x-caption-md: 1.5rem;
     --component-button-padding-x-slab-sm: 1rem;
-    --component-button-padding-x-standard-md: 0.5rem;
-    --component-button-padding-x-standard-sm: 0.5rem;
-    --component-button-padding-x-standard-lg: 0.875rem;
+    --component-button-padding-x-standard-md: 0.75rem;
+    --component-button-padding-x-standard-sm: 0.75rem;
+    --component-button-padding-x-standard-lg: 1rem;
     --component-button-padding-y-caption-lg: 0.25rem;
     --component-button-padding-y-caption-md: 0.25rem;
     --component-button-padding-y-caption-sm: 0.25rem;
@@ -35,9 +29,12 @@
     --component-button-padding-y-standard-sm: 0.25rem;
     --component-button-padding-y-standard-md: 0.5rem;
     --component-button-padding-y-standard-lg: 0.75rem;
-    --radius-button-sm: var(--radius-8);
-    --radius-button-md: var(--radius-12);
-    --radius-button-lg: var(--radius-16);
+    --radius-button-slab: var(--radius-16);
+    --radius-button-action: var(--radius-full);
+    --radius-button-icon: var(--radius-full);
+    --radius-button-default-lg: var(--radius-8);
+    --radius-button-default-md: var(--radius-8);
+    --radius-button-default-sm: var(--radius-8);
 
     --component-button-label: var(--color-white);
     --component-button-destructive-default-bg: var(--color-error-100);
@@ -48,9 +45,9 @@
     --component-button-destructive-pressed-fg: var(--color-black);
     --component-button-ghost-default-bg: var(--color-transparent);
     --component-button-ghost-default-fg: var(--color-primary-300);
-    --component-button-ghost-hover-bg: var(--color-neutral-300-80);
+    --component-button-ghost-hover-bg: var(--color-neutral-200-40);
     --component-button-ghost-hover-fg: var(--color-primary-200);
-    --component-button-ghost-pressed-bg: var(--color-neutral-400-80);
+    --component-button-ghost-pressed-bg: var(--color-neutral-300);
     --component-button-ghost-pressed-fg: var(--color-primary-200);
     --component-button-primary-default-bg: var(--color-primary-300);
     --component-button-primary-default-fg: var(--color-neutral-500);
@@ -67,10 +64,10 @@
     --component-button-secondary-pressed-bg: var(--color-primary-100-10);
     --component-button-secondary-pressed-bordercolor: var(--color-primary-100);
     --component-button-secondary-pressed-fg: var(--color-white);
-    --component-button-tertiary-default-bg: var(--color-neutral-400-80);
+    --component-button-tertiary-default-bg: var(--color-neutral-200-40);
     --component-button-tertiary-default-fg: var(--color-primary-300);
-    --component-button-tertiary-hover-bg: var(--color-neutral-300-80);
+    --component-button-tertiary-hover-bg: var(--color-neutral-300);
     --component-button-tertiary-hover-fg: var(--color-primary-200);
-    --component-button-tertiary-pressed-bg: var(--color-neutral-400-80);
+    --component-button-tertiary-pressed-bg: var(--color-neutral-300-40);
     --component-button-tertiary-pressed-fg: var(--color-primary-200);
 }
