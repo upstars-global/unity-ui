@@ -16,7 +16,7 @@ const button = {
         "navigation-default": "bg-primary-300 text-white",
         "navigation-new": "bg-error-100 text-white",
         "neutral": "bg-neutral-800/10 text-neutral-800",
-        "personal": "bg-gradient-personal text-white"
+        "personal": "bg-gradient-personal text-neutral-800"
     },
     "slots": {
         "label": "text-caption font-bold uppercase whitespace-nowrap"

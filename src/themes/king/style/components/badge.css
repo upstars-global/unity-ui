@@ -8,7 +8,7 @@
     --component-badge-navigation-bg-new: var(--color-error-100);
     --component-badge-neutral-bg: var(--color-neutral-800-10);
     --component-badge-neutral-fg: var(--color-neutral-800);
-    --component-badge-personal-fg: var(--color-white);
+    --component-badge-personal-fg: var(--color-neutral-800);
     --component-badge-status-fg: var(--color-white);
     --component-badge-status-bg-error: var(--color-error-100);
     --component-badge-status-bg-success: var(--color-success-100);
