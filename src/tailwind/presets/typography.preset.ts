@@ -50,6 +50,25 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
             fontWeight: 'var(--text-fontweight-normal)',
         },
     ],
+    'link': [
+        'var(--text-body-fontsize)',
+        {
+            lineHeight: 'var(--text-body-lineheight)',
+            letterSpacing: 'var(--text-body-letterspacing)',
+            fontWeight: 'var(--text-fontweight-normal)',
+            color: 'var(--fg-link-default)',
+            cursor: 'pointer',
+            textDecoration: 'underline solid',
+            textDecorationSkipInk: 'auto',
+            textDecorationColor: 'var(--fg-link-underline-default)',
+            textUnderlinePosition: 'from-font',
+            textDecorationThickness: '.15em',
+            textUnderlineOffset: '.2em',
+            transitionProperty: 'color, text-decoration-color',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            transitionDuration: '150ms',
+        },
+    ],
     'body-sm': [
         'var(--text-body-sm-fontsize)',
         {
