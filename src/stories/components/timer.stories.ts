@@ -110,11 +110,11 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="bg-bg-deep p-6">
-        <div class="flex gap-4">
+      <div class="bg-bg-deep p-16">
+        <div class="flex gap-8">
           <div class="space-y-2">
             <div class="text-xs font-medium uppercase text-fg-primary">filled</div>
-            <div class="inline-flex rounded-2xl border border-white/10 bg-white p-4">
+            <div class="inline-flex rounded-2xl border border-white/10 bg-white p-8">
               <UiTimer
                 variant="filled"
                 :config="timerConfig"
@@ -125,7 +125,7 @@ export const Playground: Story = {
 
           <div class="space-y-2">
             <div class="text-xs font-medium uppercase text-fg-primary">ghost</div>
-            <div class="inline-flex rounded-2xl bg-bg-surface p-4">
+            <div class="inline-flex rounded-2xl bg-bg-surface p-8">
               <UiTimer
                 variant="ghost"
                 :config="timerConfig"

@@ -12,10 +12,11 @@ const TIMER_BASE: TimerClassList = [
   'inline-flex',
   'items-center',
   'justify-center',
-  'gap-1',
   'overflow-hidden',
   'shrink-0',
   'whitespace-nowrap',
+  tokenClass('--spacing-4', 'gap'),
+  tokenClass('--spacing-8', 'p')
 ]
 
 const TIMER_TEXT_BASE: TimerClassList = [
@@ -28,8 +29,10 @@ const timer = {
   base: TIMER_BASE,
   size: {
     default: {
-      container: ['h-5', 'px-2', 'rounded-full'],
-      dot: ['h-2', 'w-2', 'rounded-full', 'shrink-0'],
+      container: [
+        tokenClass('--radius-badge', 'rounded')
+      ],
+      dot: ['size-8', 'rounded-full', 'shrink-0'],
       text: TIMER_TEXT_BASE,
     },
   },

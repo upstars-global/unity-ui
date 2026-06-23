@@ -3,6 +3,7 @@ import type { UiFAQProps } from "./types.ts";
 import UiBaseAccordion from "../baseAccordion/UiBaseAccordion.vue";
 import { ref } from "vue";
 import { useAppConfig } from '../../composables/useAppConfig'
+import { flattenClasses } from '../../helpers/flattenClasses.ts'
 
 defineProps<UiFAQProps>();
 
@@ -14,6 +15,13 @@ const openedIndex = ref<number | null>(null)
 const handleAccordionToggle = (index: number, value: boolean) => {
   openedIndex.value = value ? index : null
 }
+
+const getRootClasses = (index: number) => {
+  return flattenClasses(
+    theme?.base,
+    openedIndex.value === index ? theme?.states.opened : theme?.states.default
+  )
+}
 </script>
 
 <template>
@@ -21,13 +29,13 @@ const handleAccordionToggle = (index: number, value: boolean) => {
   <slot name="title">
     <p class="text-center text-title-md mx-auto mb-4">{{ title }}</p>
   </slot>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-8">
     <UiBaseAccordion
         v-for="(question, index) in questions"
         :key="index"
         :title="question.question"
         :opened="openedIndex === index"
-        :root-classes="theme?.base"
+        :root-classes="getRootClasses(index)"
         toggle-classes="flex items-center justify-between w-full cursor-pointer"
         title-classes="text-body font-bold"
         icon-classes="transition-transform"

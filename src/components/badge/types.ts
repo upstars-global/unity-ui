@@ -5,6 +5,7 @@ export const BADGE_VARIANTS = [
   'navigation-default',
   'navigation-new',
   'neutral',
+  'personal'
 ] as const
 
 export type BadgeVariant = (typeof BADGE_VARIANTS)[number]

@@ -86,7 +86,9 @@
     --gradient-personal-color-2: rgb(3 222 169);
     --component-card-gradient-from: rgb(var(--color-secondary-400));
     --component-card-gradient-to: #712df5;
+    --fg-effect-shadow-default: var(--color-transparent);
 
+    --bg-overlay: var(--color-neutral-500-80);
     --bg-deep: rgb(var(--color-neutral-500));
     --bg-surface: rgb(var(--color-neutral-400));
     --bg-surface-alt: rgb(var(--color-neutral-300));
@@ -106,4 +108,6 @@
     --gradient-transparent: 180deg, var(--gradient-transparent-color-1) 25%, var(--gradient-transparent-color-2) 100%;
     --gradient-card: 90deg, var(--component-card-gradient-from) 0%, var(--component-card-gradient-to) 100%;
     --gradient-personal: 90deg, var(--gradient-personal-color-1) 0%, var(--gradient-personal-color-2) 100%;
+
+    --shadow-default: 0 0 16px 0 var(--fg-effect-shadow-default), 0 0 4px 2px var(--fg-effect-shadow-default);
 }

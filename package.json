@@ -1,13 +1,13 @@
 {
-  "name": "unity-ui",
-  "version": "1.15.0",
+  "name": "@upstars-global/unity-ui",
+  "version": "1.16.1",
   "type": "module",
   "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "generate:themes": "node ./scripts/replace-component-colors.mjs --write",
+    "generate:themes": "node ./scripts/replace-component-colors.ts --write",
     "test": "vitest run --passWithNoTests",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
@@ -63,6 +63,8 @@
   },
   "dependencies": {
     "dayjs": "^1.11.20",
-    "@floating-ui/vue": "^1.1.11"
+    "@floating-ui/vue": "^1.1.11",
+    "vue3-mask": "upstars-global/vue3-mask#v3.0.8",
+    "vue3-outside-events": "upstars-global/vue3-outside-events#v2.0.5"
   }
 }

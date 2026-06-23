@@ -14,10 +14,10 @@ const tabs = {
   base: [
     'flex',
     'items-center',
-    'gap-1',
     'overflow-x-auto',
     'min-h-px',
     'min-w-px',
+    tokenClass('--spacing-4', 'gap'),
   ] as TabsClassList,
   item: {
     base: [
@@ -25,12 +25,11 @@ const tabs = {
       'shrink-0',
       'items-center',
       'justify-center',
-      'h-10',
-      'gap-2',
-      'px-4',
-      'py-2',
       'transition-colors',
       tokenClass('--radius-tab', 'rounded'),
+      tokenClass('--spacing-16', 'px'),
+      tokenClass('--spacing-8', 'py'),
+      tokenClass('--spacing-8', 'gap'),
     ] as TabsClassList,
     default: [
       tokenClass('--component-tab-default-fg', 'text'),
@@ -51,7 +50,7 @@ const tabs = {
   slots: {
     label: TAB_LABEL_BASE,
     accent: [
-      'size-2',
+      'size-8',
       'shrink-0',
       'rounded-full',
       tokenClass('--fg-status-error', 'bg'),

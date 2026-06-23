@@ -37,7 +37,7 @@ export const Playground: Story = {
     },
     template: `
       <div class="bg-bg-deep p-6">
-        <div class="inline-flex rounded-2xl border border-white/10 bg-black/10 p-4">
+        <div class="inline-flex rounded-2xl bg-black/10 p-4">
           <UiBadge :variant="args.variant">
             {{ args.label }}
           </UiBadge>
@@ -61,12 +61,12 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-8 bg-bg-deep p-6">
-        <section class="inline-flex rounded-2xl border border-white/10 bg-black/10 p-4">
+      <div class="flex gap-8 bg-bg-deep p-6">
+        <section class="inline-flex rounded-2xlbg-black/10 p-4">
           <div class="space-y-4">
             <div class="text-xs uppercase tracking-[0.1em] text-white/50">badge-status</div>
 
-            <div class="space-y-4 rounded-xl border border-white/10 bg-black/10 p-4">
+            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-bg-surface">
               <UiBadge
                 v-for="variant in statusVariants"
                 :key="variant"
@@ -78,11 +78,11 @@ export const VariantsMatrix: Story = {
           </div>
         </section>
 
-        <section class="inline-flex rounded-2xl border border-white/10 bg-black/10 p-4">
+        <section class="inline-flex rounded-2xl bg-black/10 p-4">
           <div class="space-y-4">
             <div class="text-xs uppercase tracking-[0.1em] text-white/50">badge-navigation</div>
 
-            <div class="space-y-4 rounded-xl border border-white/10 bg-black/10 p-4">
+            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-bg-surface">
               <UiBadge
                 v-for="variant in navigationVariants"
                 :key="variant"
@@ -98,11 +98,25 @@ export const VariantsMatrix: Story = {
           <div class="space-y-4">
             <div class="text-xs uppercase tracking-[0.1em] text-black/45">badge-neutral</div>
 
-            <div class="space-y-4 rounded-xl bg-neutral-50 p-4">
+            <div class="flex gap-4 rounded-xl bg-neutral-50 p-4">
               <UiBadge
                 v-for="variant in neutralVariants"
                 :key="variant"
                 :variant="variant"
+              >
+                Status
+              </UiBadge>
+            </div>
+          </div>
+        </section>
+
+        <section class="inline-flex rounded-2xl bg-white p-4">
+          <div class="space-y-4">
+            <div class="text-xs uppercase tracking-[0.1em] text-black/45">badge-personal</div>
+
+            <div class="flex gap-4 rounded-xl bg-neutral-50 p-4">
+              <UiBadge
+                  variant="personal"
               >
                 Status
               </UiBadge>

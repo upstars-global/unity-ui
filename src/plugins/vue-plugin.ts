@@ -1,13 +1,12 @@
 import type { Plugin } from 'vue'
 import type { AppConfig } from '../components/types'
-import { EventBusSymbol } from '../composables/useEventBus'
+import { EventBusSymbol, type UiEventBus } from '../composables/useEventBus'
 import { AppConfigSymbol } from '../composables/useAppConfig'
-import type { UiToastEventBus } from '../components/notifications/toast/types'
 import { getThemeConfig, type UiThemeName } from '../themes/registry'
 
 export interface UnityUIOptions {
   themeName?: UiThemeName
-  bus?: UiToastEventBus
+  bus?: UiEventBus
 }
 
 function resolveOptions(options?: UiThemeName | UnityUIOptions): Required<Pick<UnityUIOptions, 'themeName'>> & Pick<UnityUIOptions, 'bus'> {
@@ -41,8 +40,8 @@ export const UnityUI: Plugin<UiThemeName | UnityUIOptions> = {
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $appConfig: AppConfig;
-    $bus?: UiToastEventBus;
+    $appConfig: AppConfig
+    $bus?: UiEventBus
   }
 }
 

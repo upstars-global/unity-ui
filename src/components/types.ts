@@ -14,6 +14,10 @@ import type {InlineNotificationUiOptimized} from "./notifications/inlineNotifica
 import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
+import type {ModalUiOptimized} from "./modal/theme.ts";
+import type { InputUiOptimized } from './form/basicControls/input/theme';
+import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
+import type {SuggestUiOptimized} from "./form/suggest/theme.ts";
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
 export type UiIconsGroups<TIconName extends string = string> = Record<string, UiIcons<TIconName>>;
@@ -21,7 +25,7 @@ export type UiIconsGroups<TIconName extends string = string> = Record<string, Ui
 export interface AppConfig<TIconName extends string = string> {
   icons?: UiIcons<TIconName>
   allIcons?: UiIconsGroups<TIconName>
-  components?: {
+  components: {
     accordion?: AccordionUiOptimized
     badge?: BadgeUiOptimized
     button?: ButtonUiOptimized
@@ -38,6 +42,10 @@ export interface AppConfig<TIconName extends string = string> {
     radialProgress?: RadialProgressUiOptimized
     toast?: ToastUiOptimized
     linearProgress?: LinearProgressUiOptimized
+    input: InputUiOptimized
+    textArea: TextAreaUiOptimized
+    suggest: SuggestUiOptimized
+    modal?: ModalUiOptimized
   }
   store?: {
     env?: {

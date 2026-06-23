@@ -11,8 +11,8 @@ interface UiIconProps {
 }
 
 const SIZE_CLASSES_LIST: Record<IconSize, string> = {
-  '16': 'w-4 h-4',
-  '24': 'w-6 h-6',
+  '16': 'w-16 h-16',
+  '24': 'w-24 h-24',
   '72': 'w-18 h-18',
   full: 'w-full h-full'
 }
@@ -44,8 +44,20 @@ const className = computed(() => {
     attrs.class
   ]
 })
+
+const attributes = computed(() => {
+  const { class: _class, ...rest } = attrs
+
+  return rest
+})
 </script>
 
 <template>
-  <div class="ui-icon shrink-0" v-if="iconRaw" :class="className" v-html="iconRaw"  />
+  <div
+      v-if="iconRaw"
+      class="ui-icon shrink-0"
+      :class="className"
+      v-html="iconRaw"
+      v-bind="attributes"
+  />
 </template>

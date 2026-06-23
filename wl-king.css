@@ -220,6 +220,44 @@
   /* string */
   --text-fontfamily: Poppins;
 }
+[data-theme="alpa"] {
+  /* number */
+  --text-body-letterspacing: 0.0125rem;
+  --text-body-fontsize: 1rem;
+  --text-body-lineheight: 1.5rem;
+  --text-body-sm-letterspacing: 0.0313rem;
+  --text-body-sm-fontsize: 0.875rem;
+  --text-body-sm-lineheight: 1.25rem;
+  --text-button-caption-letterspacing: 0.0125rem;
+  --text-button-caption-fontsize: 0.75rem;
+  --text-button-caption-fontweight: 500;
+  --text-button-label-letterspacing: -0.0125rem;
+  --text-button-label-fontweight: 700;
+  --text-button-label-lg-fontsize: 1.125rem;
+  --text-button-label-md-fontsize: 1rem;
+  --text-button-label-sm-fontsize: 0.875rem;
+  --text-button-label-xl-fontsize: 1.25rem;
+  --text-button-label-xs-fontsize: 0.75rem;
+  --text-button-label-xs-lineheight: 0.875rem;
+  --text-caption-letterspacing: 0.0125rem;
+  --text-caption-fontsize: 0.75rem;
+  --text-caption-lineheight: 1rem;
+  --text-fontweight-normal: 400;
+  --text-fontweight-medium: 600;
+  --text-fontweight-bold: 700;
+  --text-letterspacing-caps: 0.0313rem;
+  --text-paragraphspacing-body: 0.75rem;
+  --text-subtitle-letterspacing: 0rem;
+  --text-subtitle-fontsize: 1rem;
+  --text-subtitle-lineheight: 1.25rem;
+  --text-subtitle-fontweight: 700;
+  --text-tiny-letterspacing: 0.025rem;
+  --text-tiny-fontsize: 0.625rem;
+  --text-tiny-lineheight: 0.625rem;
+  --text-title-fontweight: 800;
+  /* string */
+  --text-fontfamily: Rubik;
+}
 [data-theme="king-mob"] {
   /* number */
   --text-title-display-letterspacing: -0.0313rem;
@@ -249,6 +287,36 @@
   --text-title-sm-letterspacing: 0rem;
   --text-title-sm-fontsize: 1.1875rem;
   --text-title-sm-lineheight: 1.375rem;
+}
+[data-theme="alpa-mob"] {
+  /* number */
+  --text-title-display-letterspacing: -0.025rem;
+  --text-title-display-fontsize: 2rem;
+  --text-title-display-lineheight: 2.125rem;
+  --text-title-lg-letterspacing: -0.0375rem;
+  --text-title-lg-fontsize: 1.5rem;
+  --text-title-lg-lineheight: 1.75rem;
+  --text-title-md-letterspacing: -0.025rem;
+  --text-title-md-fontsize: 1.25rem;
+  --text-title-md-lineheight: 1.5rem;
+  --text-title-sm-letterspacing: -0.0113rem;
+  --text-title-sm-fontsize: 1.125rem;
+  --text-title-sm-lineheight: 1.375rem;
+}
+[data-theme="alpa-desk"] {
+  /* number */
+  --text-title-display-letterspacing: -0.0375rem;
+  --text-title-display-fontsize: 3rem;
+  --text-title-display-lineheight: 3.25rem;
+  --text-title-lg-letterspacing: -0.05rem;
+  --text-title-lg-fontsize: 2rem;
+  --text-title-lg-lineheight: 2.125rem;
+  --text-title-md-letterspacing: -0.0313rem;
+  --text-title-md-fontsize: 1.5rem;
+  --text-title-md-lineheight: 1.75rem;
+  --text-title-sm-letterspacing: -0.0125rem;
+  --text-title-sm-fontsize: 1.25rem;
+  --text-title-sm-lineheight: 1.5rem;
 }
 [data-theme="king"] {
   /* number */
@@ -286,6 +354,7 @@
 [data-theme="king"] {
   /* color */
   --bg-deep: var(--color-king-neutral-50);
+  --bg-overlay: var(--color-king-neutral-800-80);
   --bg-surface: var(--color-white);
   --bg-surface-alt: var(--color-king-neutral-100);
   --component-accordion-default-bg: var(--color-white);
@@ -437,10 +506,10 @@
   --fg-status-error: var(--color-king-error-100);
   --fg-status-success: var(--color-king-success-100);
   --fg-status-warning: var(--color-king-warning-100);
-  --gradient-card-color-1: rgb(208 255 253);
-  --gradient-card-color-2: rgb(189 245 255);
-  --gradient-personal-color-1: rgb(40 244 139);
-  --gradient-personal-color-2: rgb(115 255 112);
+  --gradient-gr-1-color-1: rgb(40 244 139);
+  --gradient-gr-1-color-2: rgb(115 255 112);
+  --gradient-gr-2-color-1: rgb(208 255 253);
+  --gradient-gr-2-color-2: rgb(189 245 255);
   /* number */
   --radius-tab: var(--radius-8);
   --radius-tooltip: var(--radius-8);
@@ -468,7 +537,6 @@
   --radius-input-default: var(--radius-12);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
-  --radius-popup-widget: var(--radius-24);
   --radius-segment-fg: var(--radius-4);
   --radius-segment-bg: var(--radius-8);
 }

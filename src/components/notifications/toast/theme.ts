@@ -1,8 +1,21 @@
+import {tokenClass} from "../../theme-utils.ts";
+
 const toast = {
-  base: 'fixed z-9999 w-84 max-w-full-mob top-4 right-4',
+  base: [
+    'fixed z-9999 w-84 max-w-full-mob',
+    tokenClass('--spacing-16', 'top'),
+    tokenClass('--spacing-16', 'right')
+  ],
   slots: {
-    list: 'flex flex-col gap-3',
-    item: 'flex p-4 gap-2',
+    list: [
+      'flex flex-col',
+      tokenClass('--spacing-12', 'gap')
+    ],
+    item: [
+      'flex',
+      tokenClass('--spacing-16', 'p'),
+      tokenClass('--spacing-8', 'gap'),
+    ],
   },
   transitionGroup: {
     enterActiveClass: 'transition-opacity duration-500',
