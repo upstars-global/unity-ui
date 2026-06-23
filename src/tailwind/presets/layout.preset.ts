@@ -64,7 +64,7 @@ const preset: Partial<Config> = {
             height: {
                 inherit: "inherit",
             },
-            spacing: {
+            /*spacing: {
                 "0": "var(--spacing-0)",
                 "2": "var(--spacing-2)",
                 "4": "var(--spacing-4)",
@@ -76,7 +76,7 @@ const preset: Partial<Config> = {
                 "32": "var(--spacing-32)",
                 "40": "var(--spacing-40)",
                 auto: "auto",
-            },
+            },*/
             borderRadius: {
                 0: '0',
                 4: 'var(--radius-4)',
