@@ -1,3 +1,26 @@
+## [1.17.0](https://github.com/upstars-global/unity-ui/compare/v1.16.1...v1.17.0) (2026-06-26)
+
+### 🚀 Features
+
+* UN-2190 update tailwind config for implement colors and typography ([#25](https://github.com/upstars-global/unity-ui/issues/25))
+ ([e64d43a](https://github.com/upstars-global/unity-ui/commit/e64d43a8f717e3d706fba723800ea05c77a0d25f))
+
+
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
+    * fix: UN-2857 Fix Ui/Ux bugs after review by design
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
+    * feat: UN-2190 update tailwind config for implement colors and typography
+
 ## [1.16.1](https://github.com/upstars-global/unity-ui/compare/v1.16.0...v1.16.1) (2026-06-18)
 
 ### 🐛 Bug Fixes
