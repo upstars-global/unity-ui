@@ -71,7 +71,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
         {
             lineHeight: 'var(--text-tiny-lineheight)',
             letterSpacing: 'var(--text-tiny-letterspacing)',
-            fontWeight: 'var(--text-fontweight-normal)',
+            fontWeight: 'var(--text-fontweight-medium)',
         },
     ],
     'button-xl': [
@@ -129,10 +129,12 @@ const preset: Partial<Config> = {
         fontFamily: {
             sans: ['var(--font-family)'],
         },
-        fontWeight: {
-            normal: 'var(--text-fontweight-normal)',
-            medium: 'var(--text-fontweight-medium)',
-            bold: 'var(--text-fontweight-bold)',
+        extend: {
+            fontWeight: {
+                normal: 'var(--text-fontweight-normal)',
+                medium: 'var(--text-fontweight-medium)',
+                bold: 'var(--text-fontweight-bold)',
+            },
         },
         fontSize: typographyFontSize,
     },
