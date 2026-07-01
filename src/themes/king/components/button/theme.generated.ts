@@ -2,7 +2,7 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "flex",
+    "base": "flex cursor-pointer",
     "type": {
         "standard": {
             "base": "flex-row items-center justify-center",
@@ -120,7 +120,8 @@ const button = {
         }
     },
     "states": {
-        "fullWidth": "w-full"
+        "fullWidth": "w-full",
+        "fullWidthMobile": "w-full md:w-auto"
     },
     "slots": {
         "leadingIcon": "shrink-0",

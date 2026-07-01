@@ -44,7 +44,7 @@ export const Playground: Story = {
             :icon-name="args.iconName"
         >
           <template #actions>
-            <UiButton type="standard" variant="primary" size="sm">
+            <UiButton layout="standard" variant="primary" size="sm">
               {{ args.primaryActionLabel }}
             </UiButton>
           </template>
@@ -103,10 +103,10 @@ export const Examples: Story = {
             :icon-name="item.iconName"
           >
             <template #actions>
-              <UiButton type="standard" variant="primary" size="sm">
+              <UiButton layout="standard" variant="primary" size="sm">
                 {{ item.primaryActionLabel }}
               </UiButton>
-              <UiButton type="standard" variant="ghost" size="sm">
+              <UiButton layout="standard" variant="ghost" size="sm">
                 {{ item.secondaryActionLabel }}
               </UiButton>
             </template>
@@ -137,7 +137,7 @@ export const CustomContent: Story = {
             </div>
 
             <template #actions>
-              <UiButton type="standard" variant="secondary" size="sm">
+              <UiButton layout="standard" variant="secondary" size="sm">
                 Learn more
               </UiButton>
             </template>
