@@ -128,7 +128,7 @@ function handleClick(event: MouseEvent) {
 
 <template>
   <button
-      class="ui-button group relative transition-colors transition-opacity"
+      class="ui-button group bg-transparent p-0 relative transition-colors"
       :class="[rootClasses, attrs.class, fullWidthClasses]"
       v-bind="attributes"
       :disabled="buttonDisabled"

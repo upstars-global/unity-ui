@@ -35,7 +35,7 @@ const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
   lg: ['w-24'],
 }
 
-const BUTTON_BASE: ButtonClassList = ['flex']
+const BUTTON_BASE: ButtonClassList = ['flex cursor-pointer']
 const LABEL_BASE: ButtonClassList = ['truncate']
 const CAPTION_BASE: ButtonClassList = ['text-button-caption', ...LABEL_BASE, 'opacity-85']
 const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
