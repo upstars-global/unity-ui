@@ -100,6 +100,7 @@ function handleClickReadMore(): void {
     <UiButton
       v-if="showMoreButton && (!isOpen || showLessButton)"
       :class="readMoreTheme.slots.toggle"
+      layout="standard"
       variant="tertiary"
       size="sm"
       leading-icon-name="line_dropdown_down"

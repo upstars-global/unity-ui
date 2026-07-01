@@ -120,7 +120,8 @@ const button = {
         }
     },
     "states": {
-        "fullWidth": "w-full"
+        "fullWidth": "w-full",
+        "fullWidthMobile": "w-full md:w-auto"
     },
     "slots": {
         "leadingIcon": "shrink-0",

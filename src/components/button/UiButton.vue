@@ -13,10 +13,12 @@ defineOptions({
 const props = withDefaults(defineProps<UiButtonProps>(), {
   size: 'md',
   variant: 'primary',
-  type: 'standard',
+  layout: 'standard',
+  type: 'button',
   caption: '',
   disabled: false,
   fullWidth: false,
+  fullWidthMobile: false,
   loading: false
 })
 
@@ -31,20 +33,20 @@ if (!buttonTheme) {
   throw new Error('[UnityUI] Button theme is not provided in appConfig.components.button.')
 }
 
-const isStandardType = props.type === 'standard'
-const isCaptionType = props.type === 'caption'
-const isActionType = props.type === 'action'
-const mainIconName = ['icon', 'slab', 'action'].includes(props.type) ? props.iconName : ''
+const isStandardType = props.layout === 'standard'
+const isCaptionType = props.layout === 'caption'
+const isActionType = props.layout === 'action'
+const mainIconName = ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
 
 const buttonDisabled = computed(() => props.disabled || props.loading)
 const showSideSlots = computed(() => isStandardType)
 const showLeadingIcon = computed(() => showSideSlots.value && Boolean(props.leadingIconName))
 const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.trailingIconName))
-const showLabel = computed(() => props.type !== 'icon')
+const showLabel = computed(() => props.layout !== 'icon')
 const showCaption = computed(() => isCaptionType && Boolean(props.caption))
 
 const supportedSize = computed(() => {
-  const sizes = buttonTheme.type[props.type].sizes
+  const sizes = buttonTheme.type[props.layout].sizes
 
   if (sizes[props.size]) {
     return props.size
@@ -52,7 +54,7 @@ const supportedSize = computed(() => {
 
   return Object.keys(sizes)[0] ?? 'sm'
 })
-const typeConfig = computed(() => buttonTheme.type[props.type])
+const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
 const variantConfig = computed(() => buttonTheme.variant[props.variant])
 const variantStateClasses = computed(() => {
@@ -65,6 +67,9 @@ const variantStateClasses = computed(() => {
 
 const fullWidthClasses = computed(() => {
   return props.fullWidth && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidth : ''
+})
+const fullWidthMobileClasses = computed(() => {
+  return props.fullWidthMobile && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidthMobile : ''
 })
 const rootClasses = computed(() => {
   return flattenClasses(
@@ -81,6 +86,7 @@ const contentClasses = computed(() => {
     !isActionType && sizeConfig.value.container,
     variantClasses,
     fullWidthClasses.value,
+    fullWidthMobileClasses.value,
   )
 })
 
@@ -114,6 +120,7 @@ const loadingOverlayClasses = computed(() => {
     typeConfig.value.base,
     sizeConfig.value.container,
     fullWidthClasses.value,
+    fullWidthMobileClasses.value,
     variantConfig.value.loading,
   )
 })
@@ -129,8 +136,9 @@ function handleClick(event: MouseEvent) {
 <template>
   <button
       class="ui-button group bg-transparent p-0 relative transition-colors"
-      :class="[rootClasses, attrs.class, fullWidthClasses]"
+      :class="[rootClasses, attrs.class, fullWidthClasses, fullWidthMobileClasses]"
       v-bind="attributes"
+      :type="type"
       :disabled="buttonDisabled"
       :aria-busy="loading || undefined"
       @click="handleClick"

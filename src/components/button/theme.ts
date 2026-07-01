@@ -299,6 +299,7 @@ const button = {
   },
   states: {
     fullWidth: ['w-full'],
+    fullWidthMobile: ['w-full', 'md:w-auto'],
   },
   slots: {
     leadingIcon: SLOT_ICON_BASE,
