@@ -35,8 +35,11 @@ if (!buttonTheme) {
 
 const isStandardType = props.layout === 'standard'
 const isCaptionType = props.layout === 'caption'
+const isSlabType = props.layout === 'slab'
 const isActionType = props.layout === 'action'
-const mainIconName = ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
+const mainIconName = computed(() => {
+  return ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
+});
 
 const buttonDisabled = computed(() => props.disabled || props.loading)
 const showSideSlots = computed(() => isStandardType)
@@ -66,7 +69,7 @@ const variantStateClasses = computed(() => {
 })
 
 const fullWidthClasses = computed(() => {
-  return props.fullWidth && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidth : ''
+  return props.fullWidth && (isStandardType || isCaptionType || isSlabType) ? buttonTheme.states.fullWidth : ''
 })
 const fullWidthMobileClasses = computed(() => {
   return props.fullWidthMobile && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidthMobile : ''
