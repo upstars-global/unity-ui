@@ -84,12 +84,13 @@ const contentClasses = computed(() => {
   const variantClasses = isActionType ? '' : variantStateClasses.value
 
   return flattenClasses(
-    buttonTheme.base,
-    typeConfig.value.base,
-    !isActionType && sizeConfig.value.container,
-    variantClasses,
-    fullWidthClasses.value,
-    fullWidthMobileClasses.value,
+      'ui-button__content',
+      buttonTheme.base,
+      typeConfig.value.base,
+      !isActionType && sizeConfig.value.container,
+      variantClasses,
+      fullWidthClasses.value,
+      fullWidthMobileClasses.value,
   )
 })
 
