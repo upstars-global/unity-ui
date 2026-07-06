@@ -16,6 +16,7 @@ import inlineNotificationTheme from './components/inlineNotification/theme.gener
 import toastTheme from './components/toast/theme.generated';
 import linearProgressTheme from './components/linear/theme.generated';
 import modalTheme from './components/modal/theme.generated';
+import checkboxTheme from './components/checkbox/theme.generated';
 import inputTheme from './components/input/theme.generated';
 import suggestTheme from './components/suggest/theme.generated';
 import textAreaTheme from './components/textArea/theme.generated';
@@ -42,6 +43,7 @@ const appConfig: AppConfig<UiIconName> = {
     toast: toastTheme,
     linearProgress: linearProgressTheme,
     modal: modalTheme,
+    checkbox: checkboxTheme,
     input: inputTheme,
     textArea: textAreaTheme,
     suggest: suggestTheme,

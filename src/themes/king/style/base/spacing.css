@@ -1,5 +1,6 @@
 :root[data-product="king"] {
     --radius-0: 0rem;
+    --radius-2: 0.125rem;
     --radius-4: 0.25rem;
     --radius-8: 0.5rem;
     --radius-12: 0.75rem;

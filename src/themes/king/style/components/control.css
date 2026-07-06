@@ -1,0 +1,11 @@
+:root[data-product="king"] {
+    --component-control-default: var(--color-neutral-400);
+    --component-control-error: var(--fg-status-error);
+    --component-control-selected: var(--color-primary-300);
+    --component-control-segment-bg: var(--color-neutral-100);
+    --component-control-segment-bordercolor: var(--color-neutral-200-40);
+    --component-control-segment-default-fg: var(--color-neutral-400);
+    --component-control-segment-selected-bg: var(--color-white);
+    --component-control-segment-selected-fg: var(--color-neutral-800);
+    --component-control-check: var(--color-white);
+}

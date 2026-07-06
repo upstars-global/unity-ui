@@ -9,6 +9,7 @@ export { default as modal } from './plugins/modal';
 export { default as toast } from './plugins/toast';
 export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
+export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
 
 export type { AppConfig } from './components/types';
@@ -36,6 +37,12 @@ export type {
   UiTimerLabels,
   UiTimerProps,
 } from './components/timer/types';
+export type {
+  CheckboxState,
+  UiCheckboxProps,
+  UiCheckboxEmits,
+  UiCheckboxSlots,
+} from './components/form/basicControls/checkbox/types';
 export type {
   InputSize,
   InputState,

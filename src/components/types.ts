@@ -16,6 +16,7 @@ import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
 import type {ModalUiOptimized} from "./modal/theme.ts";
 import type { InputUiOptimized } from './form/basicControls/input/theme';
+import type { CheckboxUiOptimized } from './form/basicControls/checkbox/theme';
 import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
 import type {SuggestUiOptimized} from "./form/suggest/theme.ts";
 
@@ -42,6 +43,7 @@ export interface AppConfig<TIconName extends string = string> {
     radialProgress?: RadialProgressUiOptimized
     toast?: ToastUiOptimized
     linearProgress?: LinearProgressUiOptimized
+    checkbox: CheckboxUiOptimized
     input: InputUiOptimized
     textArea: TextAreaUiOptimized
     suggest: SuggestUiOptimized

@@ -79,6 +79,7 @@ const preset: Partial<Config> = {
             },*/
             borderRadius: {
                 0: '0',
+                2: 'var(--radius-2)',
                 4: 'var(--radius-4)',
                 8: 'var(--radius-8)',
                 12: 'var(--radius-12)',
