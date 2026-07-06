@@ -111,8 +111,8 @@ export const Playground: Story = {
     },
     template: `
       <div class="p-6 bg-bg-deep">
-        <div class="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
-          <div class="mb-4 text-xs uppercase tracking-[0.1em] text-black/45">
+        <div class="rounded-2xl border border-black/10 bg-bg-surface p-6 shadow-sm">
+          <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-fg-brand">
             layout: {{ args.layout }}, type: {{ args.type }}
           </div>
 

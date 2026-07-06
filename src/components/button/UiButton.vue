@@ -139,7 +139,7 @@ function handleClick(event: MouseEvent) {
 
 <template>
   <button
-      class="ui-button group bg-transparent p-0 relative transition-colors"
+      class="ui-button group bg-transparent p-0 relative transition-colors cursor-pointer disabled:cursor-not-allowed"
       :class="[rootClasses, attrs.class, fullWidthClasses, fullWidthMobileClasses]"
       v-bind="attributes"
       :type="type"

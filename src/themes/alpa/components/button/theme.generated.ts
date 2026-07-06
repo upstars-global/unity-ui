@@ -2,7 +2,7 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "flex cursor-pointer",
+    "base": "flex",
     "type": {
         "standard": {
             "base": "flex-row items-center justify-center",
@@ -85,35 +85,35 @@ const button = {
     "variant": {
         "primary": {
             "base": "bg-primary-300 text-neutral-500 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-primary-200 group-hover:text-neutral-500",
+            "hover": "[.group:not(:disabled):hover_&]:bg-primary-200 [.group:not(:disabled):hover_&]:text-neutral-500",
             "pressed": "group-active:bg-primary-100 group-active:text-neutral-500",
             "loading": "group-aria-busy:bg-primary-100 group-aria-busy:text-neutral-500",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
             "base": "border-2 border-primary-300 bg-primary-300/10 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:border-primary-200 group-hover:bg-primary-200/10 group-hover:text-white",
+            "hover": "[.group:not(:disabled):hover_&]:border-primary-200 [.group:not(:disabled):hover_&]:bg-primary-200/10 [.group:not(:disabled):hover_&]:text-white",
             "pressed": "group-active:border-primary-100 group-active:bg-primary-100/10 group-active:text-white",
             "loading": "border-2 group-aria-busy:border-primary-100 group-aria-busy:bg-primary-100/10 group-aria-busy:text-white",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiary": {
             "base": "border-transparent bg-neutral-200/40 text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-300 group-hover:text-primary-200",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-primary-200",
             "pressed": "group-active:bg-neutral-300/40 group-active:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-200/40 group-hover:text-primary-200",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/40 [.group:not(:disabled):hover_&]:text-primary-200",
             "pressed": "group-active:bg-neutral-300 group-active:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {
             "base": "bg-error-100 text-black group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-error-100/80 group-hover:text-black",
+            "hover": "[.group:not(:disabled):hover_&]:bg-error-100/80 [.group:not(:disabled):hover_&]:text-black",
             "pressed": "group-active:bg-error-100 group-active:text-black",
             "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-black",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"

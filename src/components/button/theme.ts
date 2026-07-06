@@ -35,12 +35,16 @@ const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
   lg: ['w-24'],
 }
 
-const BUTTON_BASE: ButtonClassList = ['flex cursor-pointer']
+const BUTTON_BASE: ButtonClassList = ['flex']
 const LABEL_BASE: ButtonClassList = ['truncate']
 const CAPTION_BASE: ButtonClassList = ['text-button-caption', ...LABEL_BASE, 'opacity-85']
 const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
 const DISABLED_OPACITY_SOFT: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-45']
 const DISABLED_OPACITY_STRONG: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-25']
+
+function tokenGroupEnabledHoverClass(token: string, utility: string) {
+  return `[.group:not(:disabled):hover_&]:${utility}-[var(${token})]`
+}
 
 function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive', disabled: ButtonClassList): ButtonVariantState {
   return {
@@ -51,8 +55,8 @@ function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive',
 
     ],
     hover: [
-      tokenClass(`--component-button-${tokenGroup}-hover-bg`, 'group-hover:bg'),
-      tokenClass(`--component-button-${tokenGroup}-hover-fg`, 'group-hover:text'),
+      tokenGroupEnabledHoverClass(`--component-button-${tokenGroup}-hover-bg`, 'bg'),
+      tokenGroupEnabledHoverClass(`--component-button-${tokenGroup}-hover-fg`, 'text'),
     ],
     pressed: [
       tokenClass(`--component-button-${tokenGroup}-pressed-bg`, 'group-active:bg'),
@@ -76,9 +80,9 @@ function buildSecondaryVariant(): ButtonVariantState {
       'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-secondary-hover-bordercolor', 'group-hover:border'),
-      tokenClass('--component-button-secondary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-secondary-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-bordercolor', 'border'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-fg', 'text'),
     ],
     pressed: [
       tokenClass('--component-button-secondary-pressed-bordercolor', 'group-active:border'),
@@ -104,8 +108,8 @@ function buildTertiaryVariant(): ButtonVariantState {
       'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-tertiary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-tertiary-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-fg', 'text'),
     ],
     pressed: [
       tokenClass('--component-button-tertiary-pressed-bg', 'group-active:bg'),
@@ -127,8 +131,8 @@ function buildGhostVariant(): ButtonVariantState {
       'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-ghost-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-ghost-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-fg', 'text'),
     ],
     pressed: [
       tokenClass('--component-button-ghost-pressed-bg', 'group-active:bg'),
