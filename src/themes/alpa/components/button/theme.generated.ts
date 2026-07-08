@@ -8,16 +8,19 @@ const button = {
             "base": "flex-row items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-8",
                     "container": "h-32 gap-4 rounded-8 px-12 py-4",
                     "icon": "!w-16 !h-16",
                     "label": "text-button-sm truncate lowercase first-letter:uppercase"
                 },
                 "md": {
+                    "base": "rounded-8",
                     "container": "h-40 gap-4 rounded-8 px-12 py-8",
                     "icon": "",
                     "label": "text-button-md truncate lowercase first-letter:uppercase"
                 },
                 "lg": {
+                    "base": "rounded-8",
                     "container": "h-[3rem] gap-8 rounded-8 px-16 py-12",
                     "icon": "",
                     "label": "text-button-lg truncate lowercase first-letter:uppercase"
@@ -28,14 +31,17 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-full",
                     "container": "h-32 rounded-full",
                     "icon": "!w-16 !h-16"
                 },
                 "md": {
+                    "base": "rounded-full",
                     "container": "h-40 rounded-full",
                     "icon": "w-24"
                 },
                 "lg": {
+                    "base": "rounded-full",
                     "container": "h-[3rem] rounded-full",
                     "icon": "w-24"
                 }
@@ -45,16 +51,19 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-8",
                     "container": "h-[3rem] gap-2 rounded-8 px-16 py-4",
                     "label": "text-button-sm truncate lowercase first-letter:uppercase",
                     "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "md": {
+                    "base": "rounded-8",
                     "container": "h-[3.5rem] gap-4 rounded-8 px-24 py-4",
                     "label": "text-button-md truncate lowercase first-letter:uppercase",
                     "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "lg": {
+                    "base": "rounded-8",
                     "container": "h-[4rem] gap-4 rounded-8 px-24 py-4",
                     "label": "text-button-lg truncate lowercase first-letter:uppercase",
                     "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
@@ -65,6 +74,7 @@ const button = {
             "base": "flex-col items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-16",
                     "container": "h-[3.5rem] gap-4 rounded-16 px-16 py-4",
                     "icon": "w-6",
                     "label": "text-button-caption truncate lowercase first-letter:uppercase"

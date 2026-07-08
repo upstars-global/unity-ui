@@ -3,6 +3,7 @@ import { tokenClass } from '../theme-utils'
 
 type ButtonClassList = readonly string[]
 type ButtonTypeSizeConfig = {
+  base?: ButtonClassList
   container: ButtonClassList
   icon?: ButtonClassList
   label?: ButtonClassList
@@ -157,6 +158,7 @@ const button = {
       base: ['flex-row', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
@@ -168,6 +170,7 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.sm, ...LABEL_BASE],
         },
         md: {
+          base: [tokenClass('--radius-button-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
@@ -179,6 +182,7 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.md, ...LABEL_BASE],
         },
         lg: {
+          base: [tokenClass('--radius-button-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
@@ -195,6 +199,7 @@ const button = {
       base: ['aspect-square', 'p-0', 'flex', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -202,6 +207,7 @@ const button = {
           icon: ICON_ONLY_ICON_BY_SIZE.sm,
         },
         md: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -209,6 +215,7 @@ const button = {
           icon: ICON_ONLY_ICON_BY_SIZE.md,
         },
         lg: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -221,6 +228,7 @@ const button = {
       base: ['flex-col', 'text-center', 'justify-center', 'items-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-sm', 'h'),
             tokenClass('--component-button-gap-caption-sm', 'gap'),
@@ -232,6 +240,7 @@ const button = {
           caption: CAPTION_BASE,
         },
         md: {
+          base: [tokenClass('--radius-button-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-md', 'h'),
             tokenClass('--component-button-gap-caption-md', 'gap'),
@@ -243,6 +252,7 @@ const button = {
           caption: CAPTION_BASE,
         },
         lg: {
+          base: [tokenClass('--radius-button-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
@@ -259,6 +269,7 @@ const button = {
       base: ['flex-col', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-slab', 'rounded')],
           container: [
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),

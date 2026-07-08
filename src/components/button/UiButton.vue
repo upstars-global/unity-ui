@@ -76,6 +76,7 @@ const fullWidthMobileClasses = computed(() => {
 })
 const rootClasses = computed(() => {
   return flattenClasses(
+    sizeConfig.value.base,
     variantConfig.value.disabled,
   )
 })
