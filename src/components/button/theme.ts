@@ -36,7 +36,7 @@ const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
 }
 
 const BUTTON_BASE: ButtonClassList = ['flex']
-const LABEL_BASE: ButtonClassList = ['truncate']
+const LABEL_BASE: ButtonClassList = ['truncate lowercase first-letter:uppercase']
 const CAPTION_BASE: ButtonClassList = ['text-button-caption', ...LABEL_BASE, 'opacity-85']
 const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
 const DISABLED_OPACITY_SOFT: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-45']

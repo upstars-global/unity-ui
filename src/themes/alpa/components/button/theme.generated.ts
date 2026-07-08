@@ -10,17 +10,17 @@ const button = {
                 "sm": {
                     "container": "h-32 gap-4 rounded-8 px-12 py-4",
                     "icon": "!w-16 !h-16",
-                    "label": "text-button-sm truncate"
+                    "label": "text-button-sm truncate lowercase first-letter:uppercase"
                 },
                 "md": {
                     "container": "h-40 gap-4 rounded-8 px-12 py-8",
                     "icon": "",
-                    "label": "text-button-md truncate"
+                    "label": "text-button-md truncate lowercase first-letter:uppercase"
                 },
                 "lg": {
                     "container": "h-[3rem] gap-8 rounded-8 px-16 py-12",
                     "icon": "",
-                    "label": "text-button-lg truncate"
+                    "label": "text-button-lg truncate lowercase first-letter:uppercase"
                 }
             }
         },
@@ -46,18 +46,18 @@ const button = {
             "sizes": {
                 "sm": {
                     "container": "h-[3rem] gap-2 rounded-8 px-16 py-4",
-                    "label": "text-button-sm truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-sm truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "md": {
                     "container": "h-[3.5rem] gap-4 rounded-8 px-24 py-4",
-                    "label": "text-button-md truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-md truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "lg": {
                     "container": "h-[4rem] gap-4 rounded-8 px-24 py-4",
-                    "label": "text-button-lg truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-lg truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 }
             }
         },
@@ -67,7 +67,7 @@ const button = {
                 "sm": {
                     "container": "h-[3.5rem] gap-4 rounded-16 px-16 py-4",
                     "icon": "w-6",
-                    "label": "text-button-caption truncate"
+                    "label": "text-button-caption truncate lowercase first-letter:uppercase"
                 }
             }
         },
@@ -77,7 +77,7 @@ const button = {
                 "sm": {
                     "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
                     "icon": "w-6",
-                    "label": "text-button-caption text-white truncate"
+                    "label": "text-button-caption text-white truncate lowercase first-letter:uppercase"
                 }
             }
         }
@@ -126,7 +126,7 @@ const button = {
     "slots": {
         "leadingIcon": "shrink-0",
         "trailingIcon": "shrink-0",
-        "label": "truncate"
+        "label": "truncate lowercase first-letter:uppercase"
     },
     "animation": {
         "loading": "animate-spin"
