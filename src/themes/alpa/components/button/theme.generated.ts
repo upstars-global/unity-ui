@@ -8,19 +8,22 @@ const button = {
             "base": "flex-row items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-8",
                     "container": "h-32 gap-4 rounded-8 px-12 py-4",
                     "icon": "!w-16 !h-16",
-                    "label": "text-button-sm truncate"
+                    "label": "text-button-sm truncate lowercase first-letter:uppercase"
                 },
                 "md": {
+                    "base": "rounded-8",
                     "container": "h-40 gap-4 rounded-8 px-12 py-8",
                     "icon": "",
-                    "label": "text-button-md truncate"
+                    "label": "text-button-md truncate lowercase first-letter:uppercase"
                 },
                 "lg": {
+                    "base": "rounded-8",
                     "container": "h-[3rem] gap-8 rounded-8 px-16 py-12",
                     "icon": "",
-                    "label": "text-button-lg truncate"
+                    "label": "text-button-lg truncate lowercase first-letter:uppercase"
                 }
             }
         },
@@ -28,14 +31,17 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-full",
                     "container": "h-32 rounded-full",
                     "icon": "!w-16 !h-16"
                 },
                 "md": {
+                    "base": "rounded-full",
                     "container": "h-40 rounded-full",
                     "icon": "w-24"
                 },
                 "lg": {
+                    "base": "rounded-full",
                     "container": "h-[3rem] rounded-full",
                     "icon": "w-24"
                 }
@@ -45,19 +51,22 @@ const button = {
             "base": "flex-col text-center justify-center items-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-8",
                     "container": "h-[3rem] gap-2 rounded-8 px-16 py-4",
-                    "label": "text-button-sm truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-sm truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "md": {
+                    "base": "rounded-8",
                     "container": "h-[3.5rem] gap-4 rounded-8 px-24 py-4",
-                    "label": "text-button-md truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-md truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 },
                 "lg": {
+                    "base": "rounded-8",
                     "container": "h-[4rem] gap-4 rounded-8 px-24 py-4",
-                    "label": "text-button-lg truncate",
-                    "caption": "text-button-caption truncate opacity-85"
+                    "label": "text-button-lg truncate lowercase first-letter:uppercase",
+                    "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 }
             }
         },
@@ -65,9 +74,10 @@ const button = {
             "base": "flex-col items-center justify-center",
             "sizes": {
                 "sm": {
+                    "base": "rounded-16",
                     "container": "h-[3.5rem] gap-4 rounded-16 px-16 py-4",
                     "icon": "w-6",
-                    "label": "text-button-caption truncate"
+                    "label": "text-button-caption truncate lowercase first-letter:uppercase"
                 }
             }
         },
@@ -77,7 +87,7 @@ const button = {
                 "sm": {
                     "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
                     "icon": "w-6",
-                    "label": "text-button-caption text-white truncate"
+                    "label": "text-button-caption text-white truncate lowercase first-letter:uppercase"
                 }
             }
         }
@@ -85,47 +95,50 @@ const button = {
     "variant": {
         "primary": {
             "base": "bg-primary-300 text-neutral-500 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-primary-200 group-hover:text-neutral-500",
-            "pressed": "group-active:bg-primary-100 group-active:text-neutral-500",
+            "hover": "[.group:not(:disabled):hover_&]:bg-primary-200 [.group:not(:disabled):hover_&]:text-neutral-500",
+            "pressed": "[.group:not(:disabled):active_&]:bg-primary-100 [.group:not(:disabled):active_&]:text-neutral-500",
             "loading": "group-aria-busy:bg-primary-100 group-aria-busy:text-neutral-500",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         },
         "secondary": {
             "base": "border-2 border-primary-300 bg-primary-300/10 text-white group-aria-busy:opacity-0",
-            "hover": "group-hover:border-primary-200 group-hover:bg-primary-200/10 group-hover:text-white",
-            "pressed": "group-active:border-primary-100 group-active:bg-primary-100/10 group-active:text-white",
+            "hover": "[.group:not(:disabled):hover_&]:border-primary-200 [.group:not(:disabled):hover_&]:bg-primary-200/10 [.group:not(:disabled):hover_&]:text-white",
+            "pressed": "[.group:not(:disabled):active_&]:border-primary-100 [.group:not(:disabled):active_&]:bg-primary-100/10 [.group:not(:disabled):active_&]:text-white",
             "loading": "border-2 group-aria-busy:border-primary-100 group-aria-busy:bg-primary-100/10 group-aria-busy:text-white",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiary": {
             "base": "border-transparent bg-neutral-200/40 text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-300 group-hover:text-primary-200",
-            "pressed": "group-active:bg-neutral-300/40 group-active:text-primary-200",
+            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-primary-200",
+            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-neutral-200/40 group-hover:text-primary-200",
-            "pressed": "group-active:bg-neutral-300 group-active:text-primary-200",
+            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/40 [.group:not(:disabled):hover_&]:text-primary-200",
+            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300 [.group:not(:disabled):active_&]:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {
             "base": "bg-error-100 text-black group-aria-busy:opacity-0",
-            "hover": "group-hover:bg-error-100/80 group-hover:text-black",
-            "pressed": "group-active:bg-error-100 group-active:text-black",
+            "hover": "[.group:not(:disabled):hover_&]:bg-error-100/80 [.group:not(:disabled):hover_&]:text-black",
+            "pressed": "[.group:not(:disabled):active_&]:bg-error-100 [.group:not(:disabled):active_&]:text-black",
             "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-black",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         }
     },
     "states": {
-        "fullWidth": "w-full"
+        "fullWidth": "w-full",
+        "fullWidthMobile": "w-full md:w-auto"
     },
     "slots": {
         "leadingIcon": "shrink-0",
         "trailingIcon": "shrink-0",
-        "label": "truncate"
+        "label": "truncate lowercase first-letter:uppercase"
     },
     "animation": {
         "loading": "animate-spin"

@@ -3,6 +3,7 @@ import { tokenClass } from '../theme-utils'
 
 type ButtonClassList = readonly string[]
 type ButtonTypeSizeConfig = {
+  base?: ButtonClassList
   container: ButtonClassList
   icon?: ButtonClassList
   label?: ButtonClassList
@@ -11,6 +12,7 @@ type ButtonTypeSizeConfig = {
 type ButtonTypeSizeMap = Partial<Record<ButtonSize, ButtonTypeSizeConfig>>
 type ButtonVariantState = {
   base: ButtonClassList
+  iconContent?: ButtonClassList
   hover: ButtonClassList
   pressed: ButtonClassList
   loading: ButtonClassList
@@ -36,11 +38,32 @@ const ICON_ONLY_ICON_BY_SIZE: Record<ButtonSize, ButtonClassList> = {
 }
 
 const BUTTON_BASE: ButtonClassList = ['flex']
-const LABEL_BASE: ButtonClassList = ['truncate']
+const LABEL_BASE: ButtonClassList = ['truncate lowercase first-letter:uppercase']
 const CAPTION_BASE: ButtonClassList = ['text-button-caption', ...LABEL_BASE, 'opacity-85']
 const SLOT_ICON_BASE: ButtonClassList = ['shrink-0']
 const DISABLED_OPACITY_SOFT: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-45']
 const DISABLED_OPACITY_STRONG: ButtonClassList = ['[&:disabled:not([aria-busy=true])]:opacity-25']
+
+function tokenGroupEnabledHoverClass(token: string, utility: string) {
+  return `[.group:not(:disabled):hover_&]:${utility}-[var(${token})]`
+}
+
+function tokenGroupEnabledActiveClass(token: string, utility: string) {
+  return `[.group:not(:disabled):active_&]:${utility}-[var(${token})]`
+}
+
+function buildIconAltContentClasses(tokens: {
+  default: string
+  hover: string
+  pressed: string
+}): ButtonClassList {
+  return [
+    `!text-[var(${tokens.default})]`,
+    `[.group:not(:disabled):hover_&]:!text-[var(${tokens.hover})]`,
+    `[.group:not(:disabled):active_&]:!text-[var(${tokens.pressed})]`,
+    `group-aria-busy:!text-[var(${tokens.pressed})]`,
+  ]
+}
 
 function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive', disabled: ButtonClassList): ButtonVariantState {
   return {
@@ -51,12 +74,12 @@ function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive',
 
     ],
     hover: [
-      tokenClass(`--component-button-${tokenGroup}-hover-bg`, 'group-hover:bg'),
-      tokenClass(`--component-button-${tokenGroup}-hover-fg`, 'group-hover:text'),
+      tokenGroupEnabledHoverClass(`--component-button-${tokenGroup}-hover-bg`, 'bg'),
+      tokenGroupEnabledHoverClass(`--component-button-${tokenGroup}-hover-fg`, 'text'),
     ],
     pressed: [
-      tokenClass(`--component-button-${tokenGroup}-pressed-bg`, 'group-active:bg'),
-      tokenClass(`--component-button-${tokenGroup}-pressed-fg`, 'group-active:text'),
+      tokenGroupEnabledActiveClass(`--component-button-${tokenGroup}-pressed-bg`, 'bg'),
+      tokenGroupEnabledActiveClass(`--component-button-${tokenGroup}-pressed-fg`, 'text'),
     ],
     loading: [
       tokenClass(`--component-button-${tokenGroup}-pressed-bg`, 'group-aria-busy:bg'),
@@ -76,14 +99,14 @@ function buildSecondaryVariant(): ButtonVariantState {
       'group-aria-busy:opacity-0'
     ],
     hover: [
-      tokenClass('--component-button-secondary-hover-bordercolor', 'group-hover:border'),
-      tokenClass('--component-button-secondary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-secondary-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-bordercolor', 'border'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-secondary-hover-fg', 'text'),
     ],
     pressed: [
-      tokenClass('--component-button-secondary-pressed-bordercolor', 'group-active:border'),
-      tokenClass('--component-button-secondary-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-secondary-pressed-fg', 'group-active:text'),
+      tokenGroupEnabledActiveClass('--component-button-secondary-pressed-bordercolor', 'border'),
+      tokenGroupEnabledActiveClass('--component-button-secondary-pressed-bg', 'bg'),
+      tokenGroupEnabledActiveClass('--component-button-secondary-pressed-fg', 'text'),
     ],
     loading: [
       'border-2',
@@ -103,13 +126,18 @@ function buildTertiaryVariant(): ButtonVariantState {
       tokenClass('--component-button-tertiary-default-fg', 'text'),
       'group-aria-busy:opacity-0'
     ],
+    iconContent: buildIconAltContentClasses({
+      default: '--component-button-tertiary-default-alt-fg',
+      hover: '--component-button-tertiary-hover-alt-fg',
+      pressed: '--component-button-tertiary-pressed-alt-fg',
+    }),
     hover: [
-      tokenClass('--component-button-tertiary-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-tertiary-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-fg', 'text'),
     ],
     pressed: [
-      tokenClass('--component-button-tertiary-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-tertiary-pressed-fg', 'group-active:text'),
+      tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-bg', 'bg'),
+      tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-fg', 'text'),
     ],
     loading: [
       tokenClass('--component-button-tertiary-pressed-bg', 'group-aria-busy:bg'),
@@ -126,13 +154,18 @@ function buildGhostVariant(): ButtonVariantState {
       tokenClass('--component-button-ghost-default-fg', 'text'),
       'group-aria-busy:opacity-0'
     ],
+    iconContent: buildIconAltContentClasses({
+      default: '--component-button-ghost-default-alt-fg',
+      hover: '--component-button-ghost-hover-alt-fg',
+      pressed: '--component-button-ghost-pressed-alt-fg',
+    }),
     hover: [
-      tokenClass('--component-button-ghost-hover-bg', 'group-hover:bg'),
-      tokenClass('--component-button-ghost-hover-fg', 'group-hover:text'),
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-fg', 'text'),
     ],
     pressed: [
-      tokenClass('--component-button-ghost-pressed-bg', 'group-active:bg'),
-      tokenClass('--component-button-ghost-pressed-fg', 'group-active:text'),
+      tokenGroupEnabledActiveClass('--component-button-ghost-pressed-bg', 'bg'),
+      tokenGroupEnabledActiveClass('--component-button-ghost-pressed-fg', 'text'),
     ],
     loading: [
       tokenClass('--component-button-ghost-pressed-bg', 'group-aria-busy:bg'),
@@ -149,6 +182,7 @@ const button = {
       base: ['flex-row', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
@@ -160,6 +194,7 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.sm, ...LABEL_BASE],
         },
         md: {
+          base: [tokenClass('--radius-button-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
@@ -171,6 +206,7 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.md, ...LABEL_BASE],
         },
         lg: {
+          base: [tokenClass('--radius-button-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
@@ -187,6 +223,7 @@ const button = {
       base: ['aspect-square', 'p-0', 'flex', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -194,6 +231,7 @@ const button = {
           icon: ICON_ONLY_ICON_BY_SIZE.sm,
         },
         md: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -201,6 +239,7 @@ const button = {
           icon: ICON_ONLY_ICON_BY_SIZE.md,
         },
         lg: {
+          base: [tokenClass('--radius-button-icon', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--radius-button-icon', 'rounded'),
@@ -213,6 +252,7 @@ const button = {
       base: ['flex-col', 'text-center', 'justify-center', 'items-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-sm', 'h'),
             tokenClass('--component-button-gap-caption-sm', 'gap'),
@@ -224,6 +264,7 @@ const button = {
           caption: CAPTION_BASE,
         },
         md: {
+          base: [tokenClass('--radius-button-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-md', 'h'),
             tokenClass('--component-button-gap-caption-md', 'gap'),
@@ -235,6 +276,7 @@ const button = {
           caption: CAPTION_BASE,
         },
         lg: {
+          base: [tokenClass('--radius-button-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
@@ -251,6 +293,7 @@ const button = {
       base: ['flex-col', 'items-center', 'justify-center'],
       sizes: {
         sm: {
+          base: [tokenClass('--radius-button-slab', 'rounded')],
           container: [
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),
@@ -299,6 +342,7 @@ const button = {
   },
   states: {
     fullWidth: ['w-full'],
+    fullWidthMobile: ['w-full', 'md:w-auto'],
   },
   slots: {
     leadingIcon: SLOT_ICON_BASE,

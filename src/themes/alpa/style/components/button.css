@@ -70,4 +70,10 @@
     --component-button-tertiary-hover-fg: var(--color-primary-200);
     --component-button-tertiary-pressed-bg: var(--color-neutral-300-40);
     --component-button-tertiary-pressed-fg: var(--color-primary-200);
+    --component-button-ghost-default-alt-fg: var(--color-neutral-50);
+    --component-button-ghost-hover-alt-fg: var(--color-neutral-50);
+    --component-button-ghost-pressed-alt-fg: var(--color-neutral-50);
+    --component-button-tertiary-default-alt-fg: var(--color-neutral-50);
+    --component-button-tertiary-hover-alt-fg: var(--color-neutral-50);
+    --component-button-tertiary-pressed-alt-fg: var(--color-neutral-50);
 }

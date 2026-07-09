@@ -92,7 +92,7 @@ export const Playground: Story = {
             >
               <template #activator>
                 <UiButton
-                    type="icon"
+                    layout="icon"
                     variant="secondary"
                     size="md"
                     icon-name="line_plus"
@@ -138,7 +138,7 @@ export const TriggerModes: Story = {
               >
                 <template #activator>
                   <UiButton
-                    type="icon"
+                    layout="icon"
                     variant="secondary"
                     size="md"
                     icon-name="line_plus"
@@ -153,4 +153,3 @@ export const TriggerModes: Story = {
     `,
   }),
 }
-
