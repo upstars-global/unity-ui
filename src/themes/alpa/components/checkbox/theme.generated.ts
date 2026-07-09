@@ -6,7 +6,7 @@ const button = {
     "slots": {
         "field": "flex w-full items-start gap-8 cursor-pointer select-none data-[disabled=true]:cursor-not-allowed",
         "input": "peer sr-only",
-        "control": "relative flex size-6 shrink-0 items-center justify-center overflow-hidden transition-all duration-150 border-2 border-neutral-100 peer-checked:border-primary-300 peer-checked:bg-primary-300 rounded-2 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary-300",
+        "control": "relative flex size-6 shrink-0 items-center justify-center overflow-hidden transition-all duration-150 border-2 border-neutral-100 peer-checked:border-primary-300 peer-checked:bg-primary-300 m-2 rounded-2 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary-300",
         "controlInvalid": "[border-color:var(--fg-status-error)]",
         "icon": "pointer-events-none opacity-0 transition-all duration-150 text-black",
         "iconChecked": "opacity-100",

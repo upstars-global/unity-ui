@@ -38,6 +38,7 @@ const checkbox = {
       tokenClass('--component-control-default','border'),
       tokenClass('--component-control-selected','peer-checked:border'),
       tokenClass('--component-control-selected','peer-checked:bg'),
+      tokenClass('--spacing-2','m'),
       "rounded-2",
       'peer-focus-visible:outline-2',
       'peer-focus-visible:outline-offset-2',
