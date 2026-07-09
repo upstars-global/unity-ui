@@ -83,12 +83,14 @@ const rootClasses = computed(() => {
 
 const contentClasses = computed(() => {
   const variantClasses = isActionType ? '' : variantStateClasses.value
+  const iconContentClasses = props.layout === 'icon' ? variantConfig.value.iconContent : ''
 
   return flattenClasses(
       'ui-button__content',
       buttonTheme.base,
       typeConfig.value.base,
       !isActionType && sizeConfig.value.container,
+      iconContentClasses,
       variantClasses,
       fullWidthClasses.value,
       fullWidthMobileClasses.value,

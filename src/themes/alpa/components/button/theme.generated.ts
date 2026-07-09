@@ -109,6 +109,7 @@ const button = {
         },
         "tertiary": {
             "base": "border-transparent bg-neutral-200/40 text-primary-300 group-aria-busy:opacity-0",
+            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
             "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-primary-200",
             "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
@@ -116,6 +117,7 @@ const button = {
         },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",
+            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
             "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/40 [.group:not(:disabled):hover_&]:text-primary-200",
             "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300 [.group:not(:disabled):active_&]:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300 group-aria-busy:text-primary-200",
