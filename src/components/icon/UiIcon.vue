@@ -55,7 +55,7 @@ const attributes = computed(() => {
 <template>
   <div
       v-if="iconRaw"
-      class="ui-icon shrink-0"
+      class="ui-icon shrink-0 flex"
       :class="className"
       v-html="iconRaw"
       v-bind="attributes"

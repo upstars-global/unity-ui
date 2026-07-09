@@ -87,21 +87,6 @@ export const Grid: Story = {
             Кликни по карточке иконки, чтобы скопировать её имя.
           </p>
 
-          <div class="mt-4 flex items-center gap-2">
-            <button
-              v-for="size in sizeOptions"
-              :key="size"
-              type="button"
-              class="rounded-md border px-3 py-1 text-caption transition"
-              :class="iconSize === size
-                ? 'border-content-text-primary text-content-text-primary'
-                : 'border-bg-surface text-content-text-secondary hover:border-primary-brand-active'"
-              @click="iconSize = size"
-            >
-              {{ size }}
-            </button>
-          </div>
-
           <div class="mt-6 space-y-8">
             <section
               v-for="group in iconGroups"
@@ -123,15 +108,15 @@ export const Grid: Story = {
                     class="flex items-center justify-center rounded-md bg-layer-alt-2"
                   >
                     <div :class="group.type === 'flat' ? 'size-18' : iconWrapperClass">
-                      <UiIcon :name="name" :size="group.type === 'flat' ? '72' : iconSize" />
+                      <UiIcon :name="name" :size="group.type === 'flat' ? '72' : iconSize" class="text-fg-primary"/>
                     </div>
                   </div>
-                  <p class="mt-2 break-words text-center text-caption text-content-text">
+                  <p class="mt-2 break-words text-center text-caption text-content-text text-fg-primary">
                     {{ name }}
                   </p>
                   <p
                     v-if="copiedIconName === name"
-                    class="mt-1 text-center text-caption text-primary-brand-default"
+                    class="mt-1 text-center text-caption text-fg-brand"
                   >
                     Copied
                   </p>
