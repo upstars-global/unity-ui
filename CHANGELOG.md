@@ -1,3 +1,18 @@
+## [1.19.0](https://github.com/upstars-global/unity-ui/compare/v1.18.0...v1.19.0) (2026-07-10)
+
+### 🚀 Features
+
+* UN-2225 Create FeCheckbox component ([#28](https://github.com/upstars-global/unity-ui/issues/28))
+ ([4441daf](https://github.com/upstars-global/unity-ui/commit/4441daf1e4b0eb7a134578a9ccf3bf266c76f8e1))
+
+
+
+    * feat: UN-2225 Create FeCheckbox component
+
+    * feat: UN-2225 Create FeCheckbox component
+
+    * feat: UN-2225 Create FeCheckbox component
+
 ## [1.17.0](https://github.com/upstars-global/unity-ui/compare/v1.16.1...v1.17.0) (2026-06-26)
 
 ### 🚀 Features
