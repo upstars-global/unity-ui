@@ -27,7 +27,8 @@ const checkbox = {
     control: [
       'relative',
       'flex',
-      'size-6',
+      'w-20',
+      'h-20',
       'shrink-0',
       'items-center',
       'justify-center',
