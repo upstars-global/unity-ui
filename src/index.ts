@@ -10,6 +10,7 @@ export { default as toast } from './plugins/toast';
 export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
+export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
 
 export type { AppConfig } from './components/types';
@@ -43,6 +44,13 @@ export type {
   UiCheckboxEmits,
   UiCheckboxSlots,
 } from './components/form/basicControls/checkbox/types';
+export type {
+  RadioButtonState,
+  RadioButtonValue,
+  UiRadioButtonProps,
+  UiRadioButtonEmits,
+  UiRadioButtonSlots,
+} from './components/form/basicControls/radioButton/types';
 export type {
   InputSize,
   InputState,

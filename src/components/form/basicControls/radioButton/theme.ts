@@ -1,0 +1,93 @@
+import { tokenClass } from "../../../theme-utils.ts";
+
+const radioButton = {
+  base: [
+    'ui-radio-button',
+    'group',
+    'relative',
+    'flex',
+    'flex-col',
+    'gap-4',
+    'data-[disabled=true]:opacity-45',
+  ],
+  slots: {
+    field: [
+      'flex',
+      'w-full',
+      'items-start',
+      'gap-8',
+      'cursor-pointer',
+      'select-none',
+      'data-[disabled=true]:cursor-not-allowed',
+    ],
+    input: [
+      'peer',
+      'sr-only',
+    ],
+    control: [
+      'relative',
+      'flex',
+      'h-24',
+      'w-24',
+      'shrink-0',
+      'items-center',
+      'justify-center',
+      'overflow-hidden',
+      'transition-all',
+      'duration-150',
+      'border-2',
+      tokenClass('--component-control-default', 'border'),
+      tokenClass('--component-control-selected', 'peer-checked:border'),
+      tokenClass('--spacing-2', 'm'),
+      'rounded-full',
+      'peer-focus-visible:outline-2',
+      'peer-focus-visible:outline-offset-2',
+      'peer-focus-visible:outline-[var(--component-control-selected)]',
+    ],
+    controlInvalid: [
+      '[border-color:var(--component-control-error)]',
+    ],
+    indicator: [
+      'pointer-events-none',
+      'block',
+      'h-12',
+      'w-12',
+      'shrink-0',
+      'opacity-0',
+      'rounded-full',
+      'transition-all',
+      'duration-150',
+      tokenClass('--component-control-selected', 'bg'),
+    ],
+    indicatorChecked: [
+      'opacity-100',
+      'scale-100',
+    ],
+    content: [
+      'flex',
+      'min-w-0',
+      'flex-1',
+      'flex-col',
+      'gap-4',
+    ],
+    label: [
+      'min-w-0',
+      'break-words',
+      'text-body',
+      'font-normal',
+      'text-fg-primary',
+    ],
+    message: [
+      'text-caption',
+      'text-fg-secondary',
+    ],
+    errorMessage: [
+      'text-caption',
+      'text-fg-status-error',
+    ],
+  },
+} as const
+
+export type RadioButtonUiOptimized = typeof radioButton
+
+export default radioButton

@@ -17,6 +17,7 @@ import toastTheme from './components/toast/theme.generated';
 import linearProgressTheme from './components/linear/theme.generated';
 import modalTheme from './components/modal/theme.generated';
 import checkboxTheme from './components/checkbox/theme.generated';
+import radioButtonTheme from './components/radioButton/theme.generated';
 import inputTheme from './components/input/theme.generated';
 import suggestTheme from './components/suggest/theme.generated';
 import textAreaTheme from './components/textArea/theme.generated';
@@ -44,6 +45,7 @@ const appConfig: AppConfig<UiIconName> = {
     linearProgress: linearProgressTheme,
     modal: modalTheme,
     checkbox: checkboxTheme,
+    radioButton: radioButtonTheme,
     input: inputTheme,
     textArea: textAreaTheme,
     suggest: suggestTheme,
