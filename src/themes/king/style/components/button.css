@@ -70,6 +70,7 @@
     --component-button-tertiary-default-bg: var(--color-neutral-800-10);
     --component-button-tertiary-default-fg: var(--color-neutral-600);
     --component-button-tertiary-default-alt-bg: var(--color-neutral-800-10);
+    --component-button-tertiary-default-alt-bordercolor: var(--color-transparent);
     --component-button-tertiary-default-alt-fg: var(--color-neutral-600);
     --component-button-tertiary-hover-bg: var(--color-neutral-200-80);
     --component-button-tertiary-hover-fg: var(--color-neutral-700);

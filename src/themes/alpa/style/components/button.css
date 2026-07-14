@@ -46,10 +46,10 @@
     --component-button-ghost-default-bg: var(--color-transparent);
     --component-button-ghost-default-fg: var(--color-primary-300);
     --component-button-ghost-default-alt-fg: var(--color-neutral-50);
-    --component-button-ghost-hover-bg: var(--color-neutral-300);
+    --component-button-ghost-hover-bg: var(--color-neutral-100-40);
     --component-button-ghost-hover-fg: var(--color-primary-200);
     --component-button-ghost-hover-alt-fg: var(--color-neutral-50);
-    --component-button-ghost-pressed-bg: var(--color-neutral-300-40);
+    --component-button-ghost-pressed-bg: var(--color-neutral-50-10);
     --component-button-ghost-pressed-fg: var(--color-primary-200);
     --component-button-ghost-pressed-alt-fg: var(--color-neutral-50);
     --component-button-primary-default-bg: var(--color-primary-300);
@@ -69,14 +69,15 @@
     --component-button-secondary-pressed-fg: var(--color-white);
     --component-button-tertiary-default-bg: var(--color-neutral-200-40);
     --component-button-tertiary-default-fg: var(--color-primary-300);
-    --component-button-tertiary-default-alt-bg: var(--color-neutral-400);
+    --component-button-tertiary-default-alt-bg: var(--color-neutral-100-10);
+    --component-button-tertiary-default-alt-bordercolor: var(--color-neutral-50-10);
     --component-button-tertiary-default-alt-fg: var(--color-neutral-50);
-    --component-button-tertiary-hover-bg: var(--color-neutral-300);
+    --component-button-tertiary-hover-bg: var(--color-neutral-100-40);
     --component-button-tertiary-hover-fg: var(--color-primary-200);
-    --component-button-tertiary-hover-alt-bg: var(--color-neutral-200-80);
+    --component-button-tertiary-hover-alt-bg: var(--color-neutral-50-10);
     --component-button-tertiary-hover-alt-fg: var(--color-neutral-50);
-    --component-button-tertiary-pressed-bg: var(--color-neutral-300-40);
+    --component-button-tertiary-pressed-bg: var(--color-neutral-50-10);
     --component-button-tertiary-pressed-fg: var(--color-primary-200);
-    --component-button-tertiary-pressed-alt-bg: var(--color-neutral-200-40);
+    --component-button-tertiary-pressed-alt-bg: var(--color-neutral-100-40);
     --component-button-tertiary-pressed-alt-fg: var(--color-neutral-50);
 }
