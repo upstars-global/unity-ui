@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import UiButton from '../../components/button/UiButton.vue'
-import { BUTTON_HTML_TYPES, BUTTON_LAYOUTS, BUTTON_SIZES, BUTTON_VARIANTS, type ButtonHtmlType, type ButtonLayout, type ButtonSize, type ButtonVariant } from '../../components/button/types'
+import { BUTTON_HTML_TYPES, BUTTON_SIZES, BUTTON_VARIANTS, type ButtonHtmlType, type ButtonLayout, type ButtonSize, type ButtonVariant } from '../../components/button/types'
 
 type ButtonStoryArgs = {
   label: string
   caption: string
-  layout: ButtonLayout
   type: ButtonHtmlType
   variant: ButtonVariant
   size: ButtonSize
@@ -54,7 +53,6 @@ const meta = {
   args: {
     label: 'Button',
     caption: 'Caption text',
-    layout: 'standard',
     type: 'button',
     variant: 'primary',
     size: 'md',
@@ -69,7 +67,6 @@ const meta = {
   argTypes: {
     label: { control: 'text' },
     caption: { control: 'text' },
-    layout: { control: 'inline-radio', options: BUTTON_LAYOUTS },
     type: { control: 'inline-radio', options: BUTTON_HTML_TYPES },
     variant: {
       control: {
@@ -99,11 +96,15 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Playground: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
   render: (args) => ({
     components: { UiButton },
     setup() {
       return {
         args,
+        layouts: GRID_LAYOUTS,
         layoutSupportedSizes: LAYOUT_SUPPORTED_SIZES,
         getLabel,
         getCaption,
@@ -112,18 +113,31 @@ export const Playground: Story = {
     template: `
       <div class="p-6 bg-bg-deep">
         <div class="rounded-2xl border border-black/10 bg-bg-surface p-6 shadow-sm">
-          <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-fg-brand">
-            layout: {{ args.layout }}, type: {{ args.type }}
+          <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-fg-primary">
+            type: {{ args.type }}, variant: {{ args.variant }}
           </div>
 
-          <div class="flex min-h-32 items-center">
-            <UiButton
-              v-bind="args"
-              :size="layoutSupportedSizes[args.layout].includes(args.size) ? args.size : layoutSupportedSizes[args.layout][0]"
-              :caption="getCaption(args.layout, args.caption)"
+          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div
+              v-for="layout in layouts"
+              :key="layout"
+              class="rounded-xl border border-black/5 bg-neutral-100 p-16"
             >
-              <template v-if="args.layout !== 'icon'">{{ getLabel(args.layout, args.label) }}</template>
-            </UiButton>
+              <div class="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-fg-primary">
+                {{ layout }}
+              </div>
+
+              <div class="flex min-h-32 items-center">
+                <UiButton
+                  v-bind="args"
+                  :layout="layout"
+                  :size="layoutSupportedSizes[layout].includes(args.size) ? args.size : layoutSupportedSizes[layout][0]"
+                  :caption="getCaption(layout, args.caption)"
+                >
+                  <template v-if="layout !== 'icon'">{{ getLabel(layout, args.label) }}</template>
+                </UiButton>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -134,6 +148,7 @@ export const Playground: Story = {
 export const VariantsMatrix: Story = {
   parameters: {
     controls: { disable: true },
+    layout: 'fullscreen',
   },
   render: () => ({
     components: { UiButton },
@@ -149,15 +164,15 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-8 p-6">
+      <div class="space-y-8 p-6 bg-bg-deep">
         <section
           v-for="layout in gridLayouts"
           :key="layout"
-          class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm"
+          class="rounded-2xl border border-black/10 bg-bg-surface p-5 shadow-sm"
         >
-          <div class="mb-4">
-            <div class="text-sm font-semibold uppercase tracking-[0.12em] text-black/45">{{ layout }}</div>
-            <div class="text-xs text-black/55">
+          <div class="mb-4 text-fg-primary">
+            <div class="text-sm font-semibold uppercase tracking-[0.12em]">{{ layout }}</div>
+            <div class="text-xs ">
               Supported sizes: {{ layoutSupportedSizes[layout].join(', ') }}
             </div>
           </div>
@@ -166,9 +181,9 @@ export const VariantsMatrix: Story = {
             <div
               v-for="variant in gridVariants"
               :key="variant"
-              class="grid gap-3 rounded-xl border border-black/5 bg-black/[0.02] p-4 md:grid-cols-[140px_repeat(3,minmax(0,1fr))]"
+              class="grid gap-3 rounded-xl border border-black/5 bg-bg-surface-alt p-4 md:grid-cols-[140px_repeat(3,minmax(0,1fr))]"
             >
-              <div class="flex items-center text-sm font-medium text-black/70">
+              <div class="flex items-center text-sm font-medium text-fg-primary">
                 <div>
                   <div class="capitalize">{{ variant }}</div>
                   <div class="text-xs font-normal text-black/45">{{ getVariantNote(variant) }}</div>
@@ -178,7 +193,7 @@ export const VariantsMatrix: Story = {
               <div
                 v-for="size in gridSizes"
                 :key="size"
-                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-white px-3 py-3"
+                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-neutral-100 px-3 py-3"
               >
                 <div class="text-[11px] uppercase tracking-[0.1em] text-black/40">{{ size }}</div>
 
@@ -208,6 +223,7 @@ export const VariantsMatrix: Story = {
 export const States: Story = {
   parameters: {
     controls: { disable: true },
+    layout: 'fullscreen',
   },
   render: () => ({
     components: { UiButton },
@@ -217,11 +233,11 @@ export const States: Story = {
       }
     },
     template: `
-      <div class="space-y-4 p-6">
+      <div class="space-y-4 p-6 bg-bg-deep">
         <div
           v-for="variant in variants"
           :key="variant"
-          class="grid gap-3 rounded-2xl border border-black/10 bg-white p-4 md:grid-cols-5"
+          class="grid gap-3 rounded-2xl border border-black/10 bg-neutral-100 p-4 md:grid-cols-5"
         >
           <div class="flex items-center text-sm font-medium capitalize text-black/70">{{ variant }}</div>
           <UiButton :variant="variant" layout="standard" size="md" icon-name="line_plus" leading-icon-name="line_plus">
@@ -235,170 +251,6 @@ export const States: Story = {
           </UiButton>
           <UiButton :variant="variant" layout="standard" size="md" icon-name="line_plus" full-width>
             Full width
-          </UiButton>
-        </div>
-      </div>
-    `,
-  }),
-}
-
-export const NativeTypes: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: () => ({
-    components: { UiButton },
-    setup() {
-      return {
-        types: BUTTON_HTML_TYPES,
-      }
-    },
-    template: `
-      <div class="space-y-4 p-6">
-        <div class="rounded-2xl border border-black/10 bg-white p-4">
-          <div class="mb-4 text-sm font-medium text-black/70">
-            Native button types
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <UiButton
-              v-for="buttonType in types"
-              :key="buttonType"
-              layout="standard"
-              variant="secondary"
-              size="md"
-              :type="buttonType"
-            >
-              {{ buttonType }}
-            </UiButton>
-          </div>
-        </div>
-      </div>
-    `,
-  }),
-}
-
-export const ResponsiveWidth: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: () => ({
-    components: { UiButton },
-    template: `
-      <div class="space-y-4 p-6">
-        <div class="grid gap-4 rounded-2xl border border-black/10 bg-white p-4 md:grid-cols-2">
-          <div class="space-y-3">
-            <div class="text-sm font-medium text-black/70">fullWidth</div>
-            <UiButton
-              layout="standard"
-              variant="primary"
-              size="md"
-              full-width
-            >
-              Always full width
-            </UiButton>
-          </div>
-
-          <div class="space-y-3">
-            <div class="text-sm font-medium text-black/70">fullWidthMobile</div>
-            <UiButton
-              layout="standard"
-              variant="primary"
-              size="md"
-              full-width-mobile
-            >
-              Full width below md
-            </UiButton>
-          </div>
-        </div>
-      </div>
-    `,
-  }),
-}
-
-export const Composition: Story = {
-  parameters: {
-    controls: { disable: true },
-  },
-  render: () => ({
-    components: { UiButton },
-    template: `
-      <div class="grid gap-4 p-6 md:grid-cols-2 xl:grid-cols-3">
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Primary / Filled</div>
-          <UiButton
-            layout="standard"
-            variant="primary"
-            size="md"
-            icon-name="line_plus"
-            leading-icon-name="line_plus"
-            trailing-icon-name="line_arrow_next"
-          >
-            Continue
-          </UiButton>
-        </div>
-
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Secondary / Outline</div>
-          <UiButton
-            layout="standard"
-            variant="secondary"
-            size="md"
-            icon-name="line_plus"
-            leading-icon-name="line_plus"
-            trailing-icon-name="line_arrow_next"
-          >
-            Cashier
-          </UiButton>
-        </div>
-
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Tertiary</div>
-          <UiButton
-            layout="standard"
-            variant="tertiary"
-            size="md"
-            icon-name="line_plus"
-            leading-icon-name="line_plus"
-          >
-            Promo
-          </UiButton>
-        </div>
-
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Ghost / Caption</div>
-          <UiButton
-            layout="caption"
-            variant="ghost"
-            size="md"
-            caption="Available balance"
-            icon-name="line_plus"
-          >
-            1 250 UAH
-          </UiButton>
-        </div>
-
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Ghost / Slab</div>
-          <UiButton
-            layout="slab"
-            variant="ghost"
-            size="sm"
-            icon-name="line_plus"
-          >
-            Deposit
-          </UiButton>
-        </div>
-
-        <div class="space-y-3 rounded-2xl border border-black/10 bg-white p-4">
-          <div class="text-xs uppercase tracking-[0.1em] text-black/45">Destructive / Action</div>
-          <UiButton
-            layout="action"
-            variant="destructive"
-            size="sm"
-            icon-name="line_plus"
-          >
-            Delete
           </UiButton>
         </div>
       </div>

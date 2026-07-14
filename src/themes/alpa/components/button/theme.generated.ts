@@ -75,7 +75,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "base": "rounded-16",
-                    "container": "h-[3.5rem] gap-4 rounded-16 px-16 py-4",
+                    "container": "h-[3.75rem] gap-4 rounded-16 px-16 py-4",
                     "icon": "w-6",
                     "label": "text-button-caption truncate lowercase first-letter:uppercase"
                 }
@@ -109,18 +109,30 @@ const button = {
         },
         "tertiary": {
             "base": "border-transparent bg-neutral-200/40 text-primary-300 group-aria-busy:opacity-0",
-            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
             "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-primary-200",
             "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-primary-200",
             "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
+        "tertiaryAlt": {
+            "base": "border-transparent bg-neutral-400 text-neutral-50 group-aria-busy:opacity-0",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/80 [.group:not(:disabled):hover_&]:text-neutral-50",
+            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-200/40 [.group:not(:disabled):active_&]:text-neutral-50",
+            "loading": "group-aria-busy:bg-neutral-200/40 group-aria-busy:text-neutral-50",
+            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
+        },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",
-            "iconContent": "!text-neutral-50 [.group:not(:disabled):hover_&]:!text-neutral-50 [.group:not(:disabled):active_&]:!text-neutral-50 group-aria-busy:!text-neutral-50",
-            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/40 [.group:not(:disabled):hover_&]:text-primary-200",
-            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300 [.group:not(:disabled):active_&]:text-primary-200",
-            "loading": "group-aria-busy:bg-neutral-300 group-aria-busy:text-primary-200",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-primary-200",
+            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-primary-200",
+            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-primary-200",
+            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
+        },
+        "ghostAlt": {
+            "base": "bg-transparent text-neutral-50 group-aria-busy:opacity-0",
+            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-300 [.group:not(:disabled):hover_&]:text-neutral-50",
+            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-neutral-50",
+            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-50",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "destructive": {

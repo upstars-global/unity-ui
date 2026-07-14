@@ -170,6 +170,7 @@
   --radius-12: 0.75rem;
   --radius-16: 1rem;
   --radius-24: 1.5rem;
+  --radius-32: 2rem;
   --radius-full: 624.9375rem;
   --spacing-0: 0rem;
   --spacing-2: 0.125rem;
@@ -216,47 +217,9 @@
   --text-tiny-letterspacing: -0.0125rem;
   --text-tiny-fontsize: 0.625rem;
   --text-tiny-lineheight: 0.625rem;
-  --text-title-fontweight: 800;
+  --text-title-fontweight: 700;
   /* string */
   --text-fontfamily: Poppins;
-}
-[data-theme="alpa"] {
-  /* number */
-  --text-body-letterspacing: 0.0125rem;
-  --text-body-fontsize: 1rem;
-  --text-body-lineheight: 1.5rem;
-  --text-body-sm-letterspacing: 0.0313rem;
-  --text-body-sm-fontsize: 0.875rem;
-  --text-body-sm-lineheight: 1.25rem;
-  --text-button-caption-letterspacing: 0.0125rem;
-  --text-button-caption-fontsize: 0.75rem;
-  --text-button-caption-fontweight: 500;
-  --text-button-label-letterspacing: -0.0125rem;
-  --text-button-label-fontweight: 700;
-  --text-button-label-lg-fontsize: 1.125rem;
-  --text-button-label-md-fontsize: 1rem;
-  --text-button-label-sm-fontsize: 0.875rem;
-  --text-button-label-xl-fontsize: 1.25rem;
-  --text-button-label-xs-fontsize: 0.75rem;
-  --text-button-label-xs-lineheight: 0.875rem;
-  --text-caption-letterspacing: 0.0125rem;
-  --text-caption-fontsize: 0.75rem;
-  --text-caption-lineheight: 1rem;
-  --text-fontweight-normal: 400;
-  --text-fontweight-medium: 600;
-  --text-fontweight-bold: 700;
-  --text-letterspacing-caps: 0.0313rem;
-  --text-paragraphspacing-body: 0.75rem;
-  --text-subtitle-letterspacing: 0rem;
-  --text-subtitle-fontsize: 1rem;
-  --text-subtitle-lineheight: 1.25rem;
-  --text-subtitle-fontweight: 700;
-  --text-tiny-letterspacing: 0.025rem;
-  --text-tiny-fontsize: 0.625rem;
-  --text-tiny-lineheight: 0.625rem;
-  --text-title-fontweight: 800;
-  /* string */
-  --text-fontfamily: Rubik;
 }
 [data-theme="king-mob"] {
   /* number */
@@ -288,36 +251,6 @@
   --text-title-sm-fontsize: 1.1875rem;
   --text-title-sm-lineheight: 1.375rem;
 }
-[data-theme="alpa-mob"] {
-  /* number */
-  --text-title-display-letterspacing: -0.025rem;
-  --text-title-display-fontsize: 2rem;
-  --text-title-display-lineheight: 2.125rem;
-  --text-title-lg-letterspacing: -0.0375rem;
-  --text-title-lg-fontsize: 1.5rem;
-  --text-title-lg-lineheight: 1.75rem;
-  --text-title-md-letterspacing: -0.025rem;
-  --text-title-md-fontsize: 1.25rem;
-  --text-title-md-lineheight: 1.5rem;
-  --text-title-sm-letterspacing: -0.0113rem;
-  --text-title-sm-fontsize: 1.125rem;
-  --text-title-sm-lineheight: 1.375rem;
-}
-[data-theme="alpa-desk"] {
-  /* number */
-  --text-title-display-letterspacing: -0.0375rem;
-  --text-title-display-fontsize: 3rem;
-  --text-title-display-lineheight: 3.25rem;
-  --text-title-lg-letterspacing: -0.05rem;
-  --text-title-lg-fontsize: 2rem;
-  --text-title-lg-lineheight: 2.125rem;
-  --text-title-md-letterspacing: -0.0313rem;
-  --text-title-md-fontsize: 1.5rem;
-  --text-title-md-lineheight: 1.75rem;
-  --text-title-sm-letterspacing: -0.0125rem;
-  --text-title-sm-fontsize: 1.25rem;
-  --text-title-sm-lineheight: 1.5rem;
-}
 [data-theme="king"] {
   /* number */
   --component-button-gap-action-sm: 0.375rem;
@@ -332,7 +265,7 @@
   --component-button-height-caption-sm: 3rem;
   --component-button-height-caption-md: 3.5rem;
   --component-button-height-caption-lg: 4rem;
-  --component-button-height-slab-sm: 3.5rem;
+  --component-button-height-slab-sm: 3.75rem;
   --component-button-height-standard-sm: 2rem;
   --component-button-height-standard-md: 2.5rem;
   --component-button-height-standard-lg: 3rem;
@@ -354,7 +287,7 @@
 [data-theme="king"] {
   /* color */
   --bg-deep: var(--color-king-neutral-50);
-  --bg-overlay: var(--color-king-neutral-800-80);
+  --bg-overlay: var(--color-king-neutral-200-80);
   --bg-surface: var(--color-white);
   --bg-surface-alt: var(--color-king-neutral-100);
   --component-accordion-default-bg: var(--color-white);
@@ -367,12 +300,14 @@
   --component-accordion-fg-secondary: var(--fg-secondary);
   --component-accordion-opened-bg: var(--color-king-primary-50-80);
   --component-accordion-opened-bordercolor: var(--color-king-primary-100);
+  --component-badge-banner-bg: var(--color-king-neutral-800-80);
+  --component-badge-banner-fg: var(--color-white);
   --component-badge-navigation-fg: var(--color-white);
   --component-badge-navigation-bg-default: var(--color-king-primary-300);
   --component-badge-navigation-bg-new: var(--color-king-error-100);
   --component-badge-neutral-bg: var(--color-king-neutral-800-10);
   --component-badge-neutral-fg: var(--color-king-neutral-800);
-  --component-badge-personal-fg: var(--color-white);
+  --component-badge-personal-fg: var(--color-king-neutral-800);
   --component-badge-status-fg: var(--color-white);
   --component-badge-status-bg-error: var(--color-king-error-100);
   --component-badge-status-bg-success: var(--color-king-success-100);
@@ -389,10 +324,13 @@
   --component-button-destructive-pressed-fg: var(--color-king-neutral-50);
   --component-button-ghost-default-bg: var(--color-transparent);
   --component-button-ghost-default-fg: var(--color-king-neutral-600);
-  --component-button-ghost-hover-bg: var(--color-king-neutral-800-10);
+  --component-button-ghost-default-alt-fg: var(--color-king-neutral-600);
+  --component-button-ghost-hover-bg: var(--color-king-neutral-200-80);
   --component-button-ghost-hover-fg: var(--color-king-neutral-700);
-  --component-button-ghost-pressed-bg: var(--color-king-neutral-200-80);
+  --component-button-ghost-hover-alt-fg: var(--color-king-neutral-700);
+  --component-button-ghost-pressed-bg: var(--color-king-neutral-300-40);
   --component-button-ghost-pressed-fg: var(--color-king-neutral-700);
+  --component-button-ghost-pressed-alt-fg: var(--color-king-neutral-700);
   --component-button-primary-default-bg: var(--color-king-primary-300);
   --component-button-primary-default-fg: var(--color-white);
   --component-button-primary-hover-bg: var(--color-king-primary-200);
@@ -410,15 +348,35 @@
   --component-button-secondary-pressed-fg: var(--color-king-primary-300);
   --component-button-tertiary-default-bg: var(--color-king-neutral-800-10);
   --component-button-tertiary-default-fg: var(--color-king-neutral-600);
+  --component-button-tertiary-default-alt-bg: var(--color-king-neutral-800-10);
+  --component-button-tertiary-default-alt-fg: var(--color-king-neutral-600);
   --component-button-tertiary-hover-bg: var(--color-king-neutral-200-80);
   --component-button-tertiary-hover-fg: var(--color-king-neutral-700);
+  --component-button-tertiary-hover-alt-bg: var(--color-king-neutral-200-80);
+  --component-button-tertiary-hover-alt-fg: var(--color-king-neutral-700);
   --component-button-tertiary-pressed-bg: var(--color-king-neutral-300-40);
   --component-button-tertiary-pressed-fg: var(--color-king-neutral-700);
+  --component-button-tertiary-pressed-alt-bg: var(--color-king-neutral-300-40);
+  --component-button-tertiary-pressed-alt-fg: var(--color-king-neutral-700);
   --component-card-bg: var(--bg-surface);
   --component-card-alt-bg: var(--bg-surface-alt);
   --component-card-alt-bordercolor: var(--color-king-neutral-200-80);
+  --component-card-fg-brand: var(--fg-brand);
   --component-card-fg-primary: var(--fg-primary);
+  --component-card-fg-promo: var(--fg-status-warning);
   --component-card-fg-secondary: var(--fg-secondary);
+  --component-card-fg-white: var(--color-white);
+  --component-card-game-badge-bg-default: var(--color-king-neutral-100);
+  --component-card-game-badge-bg-exclusive: var(--fg-brand);
+  --component-card-game-badge-bg-favorites: var(--color-king-primary-50-80);
+  --component-card-game-badge-bg-identifier: var(--color-king-secondary-200);
+  --component-card-game-badge-bg-label: var(--bg-surface);
+  --component-card-game-bg-bordercolor: var(--component-card-alt-bordercolor);
+  --component-card-game-bg-card: var(--component-card-alt-bg);
+  --component-card-game-bg-overlay: var(--color-king-neutral-200-80);
+  --component-card-game-fg-exclusive: var(--color-white);
+  --component-card-withdrawal-bg: var(--color-king-neutral-100);
+  --component-card-withdrawal-bordercolor: var(--color-king-neutral-200-40);
   --component-chip-default-bg: var(--color-king-neutral-500-10);
   --component-chip-default-bordercolor: var(--color-transparent);
   --component-chip-default-fg: var(--color-king-neutral-500);
@@ -426,6 +384,7 @@
   --component-chip-hover-fg: var(--color-king-neutral-500);
   --component-chip-selected-bg: var(--color-king-secondary-300);
   --component-chip-selected-fg: var(--color-king-neutral-600);
+  --component-control-check: var(--color-white);
   --component-control-default: var(--color-king-neutral-400);
   --component-control-error: var(--fg-status-error);
   --component-control-selected: var(--color-king-primary-300);
@@ -434,6 +393,11 @@
   --component-control-segment-default-fg: var(--color-king-neutral-400);
   --component-control-segment-selected-bg: var(--color-white);
   --component-control-segment-selected-fg: var(--color-king-neutral-800);
+  --component-footer-bg-1: var(--bg-deep);
+  --component-footer-bg-2: var(--bg-surface);
+  --component-footer-bg-3: var(--color-king-neutral-200-40);
+  --component-footer-fg-primary: var(--fg-primary);
+  --component-footer-fg-secondary: var(--fg-secondary);
   --component-input-bg: var(--color-white);
   --component-input-bordercolor: var(--color-king-primary-200-40);
   --component-input-icon: var(--color-king-neutral-400);
@@ -459,6 +423,18 @@
   --component-modal-bg: var(--bg-surface);
   --component-modal-fg-primary: var(--fg-primary);
   --component-modal-fg-secondary: var(--fg-secondary);
+  --component-navigation-active: var(--color-king-primary-300);
+  --component-navigation-bg: var(--bg-surface);
+  --component-navigation-default: var(--fg-secondary);
+  --component-navigation-bottom-line: var(--color-king-primary-300);
+  --component-navigation-nav-roll-bordercolor: var(--color-king-neutral-200-80);
+  --component-navigation-nav-roll-bg-active: var(--color-king-primary-100-40);
+  --component-navigation-nav-roll-bg-hover: var(--color-king-neutral-100);
+  --component-navigation-nav-roll-fg-active: var(--color-king-primary-300);
+  --component-navigation-nav-roll-fg-primary: var(--fg-primary);
+  --component-navigation-nav-roll-fg-secondary: var(--fg-secondary);
+  --component-navigation-user-fg-primary: var(--fg-primary);
+  --component-navigation-user-fg-secondary: var(--fg-secondary);
   --component-notification-bg-error: var(--color-king-error-100);
   --component-notification-bg-neutral: var(--color-white);
   --component-notification-bg-success: var(--color-king-secondary-300);
@@ -470,7 +446,10 @@
   --component-other-list-counter: var(--color-king-neutral-200-40);
   --component-other-scroll: var(--color-king-neutral-300-80);
   --component-other-table-vip: var(--color-king-neutral-200-80);
-  --component-popup-bg: var(--bg-deep);
+  --component-popover-bg: var(--color-king-secondary-300);
+  --component-popover-fg-primary: var(--fg-primary);
+  --component-popover-fg-secondary: var(--fg-secondary);
+  --component-popup-bg: var(--bg-surface);
   --component-popup-fg-primary: var(--fg-primary);
   --component-popup-fg-secondary: var(--fg-secondary);
   --component-popup-floating-menu-bg-active: var(--color-king-primary-100-40);
@@ -506,16 +485,20 @@
   --fg-status-error: var(--color-king-error-100);
   --fg-status-success: var(--color-king-success-100);
   --fg-status-warning: var(--color-king-warning-100);
+  --gradient-banner-color-1: rgb(34 38 77);
+  --gradient-banner-color-2: rgb(20 28 51);
   --gradient-gr-1-color-1: rgb(40 244 139);
   --gradient-gr-1-color-2: rgb(115 255 112);
   --gradient-gr-2-color-1: rgb(208 255 253);
   --gradient-gr-2-color-2: rgb(189 245 255);
   /* number */
+  --radius-popover: var(--radius-8);
   --radius-tab: var(--radius-8);
   --radius-tooltip: var(--radius-8);
   --radius-accordion: var(--radius-12);
   --radius-chip: var(--radius-12);
   --radius-list: var(--radius-12);
+  --radius-bottom-menu: var(--radius-16);
   --radius-sidebar: var(--radius-16);
   --radius-modal: var(--radius-24);
   --radius-popup: var(--radius-24);
@@ -527,14 +510,20 @@
   --radius-button-default-sm: var(--radius-8);
   --radius-button-default-lg: var(--radius-12);
   --radius-button-default-md: var(--radius-12);
-  --radius-card-xs: var(--radius-8);
-  --radius-card-s: var(--radius-12);
-  --radius-card-m: var(--radius-16);
-  --radius-card-l: var(--radius-24);
+  --radius-card-withdrawal: var(--radius-12);
+  --radius-card-game: var(--radius-16);
+  --radius-card-badge-favorites: var(--radius-32);
+  --radius-card-badge-game: var(--radius-32);
+  --radius-card-default-xs: var(--radius-8);
+  --radius-card-default-s: var(--radius-12);
+  --radius-card-default-m: var(--radius-16);
+  --radius-card-default-l: var(--radius-24);
   --radius-floating-menu-menu-item: var(--radius-12);
   --radius-floating-menu-bg: var(--radius-16);
   --radius-input-sm: var(--radius-8);
   --radius-input-default: var(--radius-12);
+  --radius-nav-roll-part: var(--radius-12);
+  --radius-nav-roll-bg: var(--radius-16);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
   --radius-segment-fg: var(--radius-4);

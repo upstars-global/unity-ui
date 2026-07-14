@@ -37,6 +37,7 @@ const isStandardType = props.layout === 'standard'
 const isCaptionType = props.layout === 'caption'
 const isSlabType = props.layout === 'slab'
 const isActionType = props.layout === 'action'
+const isIconType = props.layout === 'icon'
 const mainIconName = computed(() => {
   return ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
 });
@@ -59,7 +60,17 @@ const supportedSize = computed(() => {
 })
 const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
-const variantConfig = computed(() => buttonTheme.variant[props.variant])
+const variantConfig = computed(() => {
+  const usesAltVariant = (isIconType || isSlabType || isActionType) &&
+      (props.variant === 'tertiary' || props.variant === 'ghost')
+
+  if (usesAltVariant) {
+    return buttonTheme.variant[`${props.variant}Alt`]
+  }
+
+  return buttonTheme.variant[props.variant]
+})
+
 const variantStateClasses = computed(() => {
   return flattenClasses(
     variantConfig.value.base,
@@ -83,14 +94,12 @@ const rootClasses = computed(() => {
 
 const contentClasses = computed(() => {
   const variantClasses = isActionType ? '' : variantStateClasses.value
-  const iconContentClasses = props.layout === 'icon' ? variantConfig.value.iconContent : ''
 
   return flattenClasses(
       'ui-button__content',
       buttonTheme.base,
       typeConfig.value.base,
       !isActionType && sizeConfig.value.container,
-      iconContentClasses,
       variantClasses,
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
@@ -121,6 +130,7 @@ const labelClasses = computed(() => {
   return flattenClasses(buttonTheme.slots.label, sizeConfig.value.label)
 })
 const loadingOverlayClasses = computed(() => {
+  console.log(variantConfig.value.loading);
   return flattenClasses(
     'absolute inset-0',
     buttonTheme.base,

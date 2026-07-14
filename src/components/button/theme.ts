@@ -12,7 +12,6 @@ type ButtonTypeSizeConfig = {
 type ButtonTypeSizeMap = Partial<Record<ButtonSize, ButtonTypeSizeConfig>>
 type ButtonVariantState = {
   base: ButtonClassList
-  iconContent?: ButtonClassList
   hover: ButtonClassList
   pressed: ButtonClassList
   loading: ButtonClassList
@@ -50,19 +49,6 @@ function tokenGroupEnabledHoverClass(token: string, utility: string) {
 
 function tokenGroupEnabledActiveClass(token: string, utility: string) {
   return `[.group:not(:disabled):active_&]:${utility}-[var(${token})]`
-}
-
-function buildIconAltContentClasses(tokens: {
-  default: string
-  hover: string
-  pressed: string
-}): ButtonClassList {
-  return [
-    `!text-[var(${tokens.default})]`,
-    `[.group:not(:disabled):hover_&]:!text-[var(${tokens.hover})]`,
-    `[.group:not(:disabled):active_&]:!text-[var(${tokens.pressed})]`,
-    `group-aria-busy:!text-[var(${tokens.pressed})]`,
-  ]
 }
 
 function buildPrimaryOrDestructiveVariant(tokenGroup: 'primary' | 'destructive', disabled: ButtonClassList): ButtonVariantState {
@@ -126,11 +112,6 @@ function buildTertiaryVariant(): ButtonVariantState {
       tokenClass('--component-button-tertiary-default-fg', 'text'),
       'group-aria-busy:opacity-0'
     ],
-    iconContent: buildIconAltContentClasses({
-      default: '--component-button-tertiary-default-alt-fg',
-      hover: '--component-button-tertiary-hover-alt-fg',
-      pressed: '--component-button-tertiary-pressed-alt-fg',
-    }),
     hover: [
       tokenGroupEnabledHoverClass('--component-button-tertiary-hover-bg', 'bg'),
       tokenGroupEnabledHoverClass('--component-button-tertiary-hover-fg', 'text'),
@@ -147,6 +128,30 @@ function buildTertiaryVariant(): ButtonVariantState {
   }
 }
 
+function buildTertiaryAltVariant(): ButtonVariantState {
+  return {
+    base: [
+      'border-transparent',
+      tokenClass('--component-button-tertiary-default-alt-bg', 'bg'),
+      tokenClass('--component-button-tertiary-default-alt-fg', 'text'),
+      'group-aria-busy:opacity-0'
+    ],
+    hover: [
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-alt-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-tertiary-hover-alt-fg', 'text'),
+    ],
+    pressed: [
+      tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-alt-bg', 'bg'),
+      tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-alt-fg', 'text'),
+    ],
+    loading: [
+      tokenClass('--component-button-tertiary-pressed-alt-bg', 'group-aria-busy:bg'),
+      tokenClass('--component-button-tertiary-pressed-alt-fg', 'group-aria-busy:text'),
+    ],
+    disabled: DISABLED_OPACITY_SOFT,
+  }
+}
+
 function buildGhostVariant(): ButtonVariantState {
   return {
     base: [
@@ -154,11 +159,6 @@ function buildGhostVariant(): ButtonVariantState {
       tokenClass('--component-button-ghost-default-fg', 'text'),
       'group-aria-busy:opacity-0'
     ],
-    iconContent: buildIconAltContentClasses({
-      default: '--component-button-ghost-default-alt-fg',
-      hover: '--component-button-ghost-hover-alt-fg',
-      pressed: '--component-button-ghost-pressed-alt-fg',
-    }),
     hover: [
       tokenGroupEnabledHoverClass('--component-button-ghost-hover-bg', 'bg'),
       tokenGroupEnabledHoverClass('--component-button-ghost-hover-fg', 'text'),
@@ -170,6 +170,29 @@ function buildGhostVariant(): ButtonVariantState {
     loading: [
       tokenClass('--component-button-ghost-pressed-bg', 'group-aria-busy:bg'),
       tokenClass('--component-button-ghost-pressed-fg', 'group-aria-busy:text'),
+    ],
+    disabled: DISABLED_OPACITY_SOFT,
+  }
+}
+
+function buildGhostAltVariant(): ButtonVariantState {
+  return {
+    base: [
+      tokenClass('--component-button-ghost-default-bg', 'bg'),
+      tokenClass('--component-button-ghost-default-alt-fg', 'text'),
+      'group-aria-busy:opacity-0'
+    ],
+    hover: [
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-bg', 'bg'),
+      tokenGroupEnabledHoverClass('--component-button-ghost-hover-alt-fg', 'text'),
+    ],
+    pressed: [
+      tokenGroupEnabledActiveClass('--component-button-ghost-pressed-bg', 'bg'),
+      tokenGroupEnabledActiveClass('--component-button-ghost-pressed-alt-fg', 'text'),
+    ],
+    loading: [
+      tokenClass('--component-button-ghost-pressed-bg', 'group-aria-busy:bg'),
+      tokenClass('--component-button-ghost-pressed-alt-fg', 'group-aria-busy:text'),
     ],
     disabled: DISABLED_OPACITY_SOFT,
   }
@@ -337,7 +360,9 @@ const button = {
     primary: buildPrimaryOrDestructiveVariant('primary', DISABLED_OPACITY_STRONG),
     secondary: buildSecondaryVariant(),
     tertiary: buildTertiaryVariant(),
+    tertiaryAlt: buildTertiaryAltVariant(),
     ghost: buildGhostVariant(),
+    ghostAlt: buildGhostAltVariant(),
     destructive: buildPrimaryOrDestructiveVariant('destructive', DISABLED_OPACITY_STRONG),
   },
   states: {

@@ -170,6 +170,7 @@
   --radius-12: 0.75rem;
   --radius-16: 1rem;
   --radius-24: 1.5rem;
+  --radius-32: 2rem;
   --radius-full: 624.9375rem;
   --spacing-0: 0rem;
   --spacing-2: 0.125rem;
@@ -181,44 +182,6 @@
   --spacing-24: 1.5rem;
   --spacing-32: 2rem;
   --spacing-40: 2.5rem;
-}
-[data-theme="king"] {
-  /* number */
-  --text-body-letterspacing: -0.0125rem;
-  --text-body-fontsize: 1rem;
-  --text-body-lineheight: 1.375rem;
-  --text-body-sm-letterspacing: -0.0125rem;
-  --text-body-sm-fontsize: 0.875rem;
-  --text-body-sm-lineheight: 1.25rem;
-  --text-button-caption-letterspacing: -0.025rem;
-  --text-button-caption-fontsize: 0.875rem;
-  --text-button-caption-fontweight: 400;
-  --text-button-label-letterspacing: -0.0063rem;
-  --text-button-label-fontweight: 600;
-  --text-button-label-lg-fontsize: 1.125rem;
-  --text-button-label-md-fontsize: 1rem;
-  --text-button-label-sm-fontsize: 0.875rem;
-  --text-button-label-xl-fontsize: 1.25rem;
-  --text-button-label-xs-fontsize: 0.75rem;
-  --text-button-label-xs-lineheight: 0.875rem;
-  --text-caption-letterspacing: -0.0125rem;
-  --text-caption-fontsize: 0.75rem;
-  --text-caption-lineheight: 1rem;
-  --text-fontweight-normal: 400;
-  --text-fontweight-medium: 600;
-  --text-fontweight-bold: 700;
-  --text-letterspacing-caps: 0.0562rem;
-  --text-paragraphspacing-body: 0.5rem;
-  --text-subtitle-letterspacing: -0.0125rem;
-  --text-subtitle-fontsize: 1rem;
-  --text-subtitle-lineheight: 1.25rem;
-  --text-subtitle-fontweight: 700;
-  --text-tiny-letterspacing: -0.0125rem;
-  --text-tiny-fontsize: 0.625rem;
-  --text-tiny-lineheight: 0.625rem;
-  --text-title-fontweight: 800;
-  /* string */
-  --text-fontfamily: Poppins;
 }
 [data-theme="alpa"] {
   /* number */
@@ -254,39 +217,9 @@
   --text-tiny-letterspacing: 0.025rem;
   --text-tiny-fontsize: 0.625rem;
   --text-tiny-lineheight: 0.625rem;
-  --text-title-fontweight: 800;
+  --text-title-fontweight: 700;
   /* string */
   --text-fontfamily: Rubik;
-}
-[data-theme="king-mob"] {
-  /* number */
-  --text-title-display-letterspacing: -0.0313rem;
-  --text-title-display-fontsize: 1.875rem;
-  --text-title-display-lineheight: 2.125rem;
-  --text-title-lg-letterspacing: -0.0094rem;
-  --text-title-lg-fontsize: 1.5rem;
-  --text-title-lg-lineheight: 1.75rem;
-  --text-title-md-letterspacing: -0.0031rem;
-  --text-title-md-fontsize: 1.25rem;
-  --text-title-md-lineheight: 1.5rem;
-  --text-title-sm-letterspacing: 0rem;
-  --text-title-sm-fontsize: 1.125rem;
-  --text-title-sm-lineheight: 1.375rem;
-}
-[data-theme="king-desk"] {
-  /* number */
-  --text-title-display-letterspacing: -0.0425rem;
-  --text-title-display-fontsize: 2.25rem;
-  --text-title-display-lineheight: 2.5rem;
-  --text-title-lg-letterspacing: -0.012rem;
-  --text-title-lg-fontsize: 1.6875rem;
-  --text-title-lg-lineheight: 2rem;
-  --text-title-md-letterspacing: -0.0052rem;
-  --text-title-md-fontsize: 1.375rem;
-  --text-title-md-lineheight: 1.75rem;
-  --text-title-sm-letterspacing: 0rem;
-  --text-title-sm-fontsize: 1.1875rem;
-  --text-title-sm-lineheight: 1.375rem;
 }
 [data-theme="alpa-mob"] {
   /* number */
@@ -332,7 +265,7 @@
   --component-button-height-caption-sm: 3rem;
   --component-button-height-caption-md: 3.5rem;
   --component-button-height-caption-lg: 4rem;
-  --component-button-height-slab-sm: 3.5rem;
+  --component-button-height-slab-sm: 3.75rem;
   --component-button-height-standard-sm: 2rem;
   --component-button-height-standard-md: 2.5rem;
   --component-button-height-standard-lg: 3rem;
@@ -367,6 +300,8 @@
   --component-accordion-fg-secondary: var(--fg-secondary);
   --component-accordion-opened-bg: var(--color-alpa-primary-50-10);
   --component-accordion-opened-bordercolor: var(--color-alpa-primary-50-10);
+  --component-badge-banner-bg: var(--color-alpa-neutral-500-80);
+  --component-badge-banner-fg: var(--color-white);
   --component-badge-navigation-fg: var(--color-alpa-neutral-500);
   --component-badge-navigation-bg-default: var(--color-alpa-warning-100);
   --component-badge-navigation-bg-new: var(--color-alpa-error-100);
@@ -389,10 +324,13 @@
   --component-button-destructive-pressed-fg: var(--color-black);
   --component-button-ghost-default-bg: var(--color-transparent);
   --component-button-ghost-default-fg: var(--color-alpa-primary-300);
-  --component-button-ghost-hover-bg: var(--color-alpa-neutral-200-40);
+  --component-button-ghost-default-alt-fg: var(--color-alpa-neutral-50);
+  --component-button-ghost-hover-bg: var(--color-alpa-neutral-300);
   --component-button-ghost-hover-fg: var(--color-alpa-primary-200);
-  --component-button-ghost-pressed-bg: var(--color-alpa-neutral-300);
+  --component-button-ghost-hover-alt-fg: var(--color-alpa-neutral-50);
+  --component-button-ghost-pressed-bg: var(--color-alpa-neutral-300-40);
   --component-button-ghost-pressed-fg: var(--color-alpa-primary-200);
+  --component-button-ghost-pressed-alt-fg: var(--color-alpa-neutral-50);
   --component-button-primary-default-bg: var(--color-alpa-primary-300);
   --component-button-primary-default-fg: var(--color-alpa-neutral-500);
   --component-button-primary-hover-bg: var(--color-alpa-primary-200);
@@ -410,15 +348,35 @@
   --component-button-secondary-pressed-fg: var(--color-white);
   --component-button-tertiary-default-bg: var(--color-alpa-neutral-200-40);
   --component-button-tertiary-default-fg: var(--color-alpa-primary-300);
+  --component-button-tertiary-default-alt-bg: var(--color-alpa-neutral-400);
+  --component-button-tertiary-default-alt-fg: var(--color-alpa-neutral-50);
   --component-button-tertiary-hover-bg: var(--color-alpa-neutral-300);
   --component-button-tertiary-hover-fg: var(--color-alpa-primary-200);
+  --component-button-tertiary-hover-alt-bg: var(--color-alpa-neutral-200-80);
+  --component-button-tertiary-hover-alt-fg: var(--color-alpa-neutral-50);
   --component-button-tertiary-pressed-bg: var(--color-alpa-neutral-300-40);
   --component-button-tertiary-pressed-fg: var(--color-alpa-primary-200);
+  --component-button-tertiary-pressed-alt-bg: var(--color-alpa-neutral-200-40);
+  --component-button-tertiary-pressed-alt-fg: var(--color-alpa-neutral-50);
   --component-card-bg: var(--bg-surface);
   --component-card-alt-bg: var(--bg-surface-alt);
   --component-card-alt-bordercolor: var(--color-alpa-neutral-200-80);
+  --component-card-fg-brand: var(--fg-brand);
   --component-card-fg-primary: var(--fg-primary);
+  --component-card-fg-promo: var(--fg-status-warning);
   --component-card-fg-secondary: var(--fg-secondary);
+  --component-card-fg-white: var(--color-white);
+  --component-card-game-badge-bg-default: var(--color-alpa-neutral-500);
+  --component-card-game-badge-bg-exclusive: var(--fg-brand);
+  --component-card-game-badge-bg-favorites: var(--color-alpa-neutral-100-10);
+  --component-card-game-badge-bg-identifier: var(--color-alpa-secondary-200);
+  --component-card-game-badge-bg-label: var(--bg-deep);
+  --component-card-game-bg-bordercolor: var(--color-transparent);
+  --component-card-game-bg-card: var(--component-card-bg);
+  --component-card-game-bg-overlay: var(--color-alpa-neutral-400-80);
+  --component-card-game-fg-exclusive: var(--color-black);
+  --component-card-withdrawal-bg: var(--color-alpa-neutral-100-10);
+  --component-card-withdrawal-bordercolor: var(--color-alpa-primary-300);
   --component-chip-default-bg: var(--color-transparent);
   --component-chip-default-bordercolor: var(--color-alpa-neutral-300);
   --component-chip-default-fg: var(--color-white);
@@ -426,6 +384,7 @@
   --component-chip-hover-fg: var(--color-white);
   --component-chip-selected-bg: var(--color-alpa-neutral-200-80);
   --component-chip-selected-fg: var(--color-white);
+  --component-control-check: var(--color-black);
   --component-control-default: var(--color-alpa-neutral-100);
   --component-control-error: var(--fg-status-error);
   --component-control-selected: var(--color-alpa-primary-300);
@@ -434,6 +393,11 @@
   --component-control-segment-default-fg: var(--color-alpa-neutral-100);
   --component-control-segment-selected-bg: var(--color-alpa-neutral-200-80);
   --component-control-segment-selected-fg: var(--color-alpa-primary-400);
+  --component-footer-bg-1: var(--bg-deep);
+  --component-footer-bg-2: var(--bg-surface);
+  --component-footer-bg-3: var(--color-alpa-neutral-200-40);
+  --component-footer-fg-primary: var(--fg-primary);
+  --component-footer-fg-secondary: var(--fg-secondary);
   --component-input-bg: var(--color-alpa-neutral-200-40);
   --component-input-bordercolor: var(--color-transparent);
   --component-input-icon: var(--color-alpa-neutral-100);
@@ -459,6 +423,18 @@
   --component-modal-bg: var(--bg-surface);
   --component-modal-fg-primary: var(--fg-primary);
   --component-modal-fg-secondary: var(--fg-secondary);
+  --component-navigation-active: var(--color-alpa-primary-300);
+  --component-navigation-bg: var(--bg-surface);
+  --component-navigation-default: var(--fg-secondary);
+  --component-navigation-bottom-line: var(--color-transparent);
+  --component-navigation-nav-roll-bordercolor: var(--color-transparent);
+  --component-navigation-nav-roll-bg-active: var(--color-alpa-primary-100-10);
+  --component-navigation-nav-roll-bg-hover: var(--color-alpa-neutral-200-40);
+  --component-navigation-nav-roll-fg-active: var(--color-alpa-primary-300);
+  --component-navigation-nav-roll-fg-primary: var(--fg-primary);
+  --component-navigation-nav-roll-fg-secondary: var(--fg-secondary);
+  --component-navigation-user-fg-primary: var(--fg-primary);
+  --component-navigation-user-fg-secondary: var(--fg-secondary);
   --component-notification-bg-error: var(--color-alpa-error-100);
   --component-notification-bg-neutral: var(--color-alpa-neutral-300);
   --component-notification-bg-success: var(--color-alpa-secondary-300);
@@ -470,10 +446,13 @@
   --component-other-list-counter: var(--color-alpa-neutral-300);
   --component-other-scroll: var(--color-alpa-neutral-200-80);
   --component-other-table-vip: var(--color-alpa-neutral-300);
+  --component-popover-bg: var(--color-alpa-secondary-300);
+  --component-popover-fg-primary: var(--fg-primary);
+  --component-popover-fg-secondary: var(--fg-secondary);
   --component-popup-bg: var(--bg-surface);
   --component-popup-fg-primary: var(--fg-primary);
   --component-popup-fg-secondary: var(--fg-secondary);
-  --component-popup-floating-menu-bg-active: var(--color-alpa-primary-400-10);
+  --component-popup-floating-menu-bg-active: var(--color-alpa-primary-100-10);
   --component-popup-floating-menu-bg-hover: var(--color-alpa-neutral-200-40);
   --component-popup-floating-menu-fg-active: var(--fg-brand);
   --component-progress-bg: var(--color-alpa-neutral-200-40);
@@ -506,14 +485,18 @@
   --fg-status-error: var(--color-alpa-error-100);
   --fg-status-success: var(--color-alpa-success-100);
   --fg-status-warning: var(--color-alpa-warning-100);
+  --gradient-banner-color-1: rgb(34 38 77);
+  --gradient-banner-color-2: rgb(20 28 51);
   --gradient-gr-1-color-1: rgb(17 153 142);
   --gradient-gr-1-color-2: rgb(3 222 169);
   --gradient-gr-2-color-1: rgb(46 15 108);
   --gradient-gr-2-color-2: rgb(113 45 245);
   /* number */
   --radius-chip: var(--radius-8);
+  --radius-popover: var(--radius-8);
   --radius-tooltip: var(--radius-8);
   --radius-accordion: var(--radius-16);
+  --radius-bottom-menu: var(--radius-16);
   --radius-list: var(--radius-16);
   --radius-tab: var(--radius-16);
   --radius-modal: var(--radius-24);
@@ -527,14 +510,20 @@
   --radius-button-default-lg: var(--radius-8);
   --radius-button-default-md: var(--radius-8);
   --radius-button-default-sm: var(--radius-8);
-  --radius-card-xs: var(--radius-8);
-  --radius-card-s: var(--radius-12);
-  --radius-card-m: var(--radius-16);
-  --radius-card-l: var(--radius-24);
+  --radius-card-game: var(--radius-16);
+  --radius-card-withdrawal: var(--radius-16);
+  --radius-card-badge-favorites: var(--radius-32);
+  --radius-card-badge-game: var(--radius-32);
+  --radius-card-default-xs: var(--radius-8);
+  --radius-card-default-s: var(--radius-12);
+  --radius-card-default-m: var(--radius-16);
+  --radius-card-default-l: var(--radius-24);
   --radius-floating-menu-menu-item: var(--radius-12);
   --radius-floating-menu-bg: var(--radius-16);
   --radius-input-sm: var(--radius-8);
   --radius-input-default: var(--radius-16);
+  --radius-nav-roll-bg: var(--radius-24);
+  --radius-nav-roll-part: var(--radius-24);
   --radius-notification-sm: var(--radius-8);
   --radius-notification-lg: var(--radius-16);
   --radius-segment-fg: var(--radius-4);
