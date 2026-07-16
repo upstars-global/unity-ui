@@ -18,6 +18,7 @@ import inlineNotificationTheme from "./components/inlineNotification/theme.gener
 import linearProgressTheme from "./components/linear/theme.generated.ts";
 import modalTheme from "./components/modal/theme.generated.ts";
 import checkboxTheme from './components/checkbox/theme.generated';
+import radioButtonTheme from './components/radioButton/theme.generated';
 import inputTheme from "./components/input/theme.generated.ts";
 import textAreaTheme from './components/textArea/theme.generated';
 
@@ -43,6 +44,7 @@ const appConfig: AppConfig<UiIconName> = {
     linearProgress: linearProgressTheme,
     modal: modalTheme,
     checkbox: checkboxTheme,
+    radioButton: radioButtonTheme,
     input: inputTheme,
     textArea: textAreaTheme,
   },
