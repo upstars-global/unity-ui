@@ -11,7 +11,7 @@ import fill_close from './fill/close.svg?raw';
 import fill_copy from './fill/copy.svg?raw';
 import fill_deposit from './fill/deposit.svg?raw';
 import fill_deposit_preset from './fill/deposit_preset.svg?raw';
-import fill_favorits from './fill/favorits.svg?raw';
+import fill_favorites from './fill/favorites.svg?raw';
 import fill_in_progress from './fill/in_progress.svg?raw';
 import fill_info from './fill/info.svg?raw';
 import fill_key from './fill/key.svg?raw';
@@ -70,7 +70,7 @@ import line_dropdown_left from './line/dropdown_left.svg?raw';
 import line_dropdown_right from './line/dropdown_right.svg?raw';
 import line_dropdown_up from './line/dropdown_up.svg?raw';
 import line_exchange from './line/exchange.svg?raw';
-import line_favorits_outline from './line/favorits_outline.svg?raw';
+import line_favorites_outline from './line/favorites_outline.svg?raw';
 import line_freespins from './line/freespins.svg?raw';
 import line_fullscreen from './line/fullscreen.svg?raw';
 import line_how_to_win from './line/how_to_win.svg?raw';
@@ -159,7 +159,7 @@ export const fillIcons = {
   fill_copy: fill_copy,
   fill_deposit: fill_deposit,
   fill_deposit_preset: fill_deposit_preset,
-  fill_favorits: fill_favorits,
+  fill_favorites: fill_favorites,
   fill_in_progress: fill_in_progress,
   fill_info: fill_info,
   fill_key: fill_key,
@@ -221,7 +221,7 @@ export const lineIcons = {
   line_dropdown_right: line_dropdown_right,
   line_dropdown_up: line_dropdown_up,
   line_exchange: line_exchange,
-  line_favorits_outline: line_favorits_outline,
+  line_favorites_outline: line_favorites_outline,
   line_freespins: line_freespins,
   line_fullscreen: line_fullscreen,
   line_how_to_win: line_how_to_win,
