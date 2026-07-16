@@ -60,11 +60,19 @@ const supportedSize = computed(() => {
 })
 const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
-const variantConfig = computed(() => {
-  const usesAltVariant = (isIconType || isSlabType || isActionType) &&
-      (props.variant === 'tertiary' || props.variant === 'ghost')
+const isAltVariant = computed(() => {
+  return ['tertiary', 'ghost'].includes(props.variant) && (isIconType || isSlabType || isActionType)
+})
+const slabDefaultBorderVariantConfig = computed(() => {
+  if (props.variant !== 'tertiary' || !isSlabType) {
+    return null
+  }
 
-  if (usesAltVariant) {
+  return buttonTheme.variant.tertiaryAltSlabDefaultBorder
+})
+
+const variantConfig = computed(() => {
+  if (isAltVariant.value) {
     return buttonTheme.variant[`${props.variant}Alt`]
   }
 
@@ -76,6 +84,7 @@ const variantStateClasses = computed(() => {
     variantConfig.value.base,
     variantConfig.value.hover,
     variantConfig.value.pressed,
+    slabDefaultBorderVariantConfig.value?.base,
   )
 })
 
@@ -130,7 +139,6 @@ const labelClasses = computed(() => {
   return flattenClasses(buttonTheme.slots.label, sizeConfig.value.label)
 })
 const loadingOverlayClasses = computed(() => {
-  console.log(variantConfig.value.loading);
   return flattenClasses(
     'absolute inset-0',
     buttonTheme.base,

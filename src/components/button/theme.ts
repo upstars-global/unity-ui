@@ -17,6 +17,9 @@ type ButtonVariantState = {
   loading: ButtonClassList
   disabled: ButtonClassList
 }
+type ButtonVariantBorderState = {
+  base: ButtonClassList
+}
 
 const BUTTON_LABEL_TEXT_BY_SIZE: Record<ButtonSize, string> = {
   sm: 'text-button-sm',
@@ -131,20 +134,22 @@ function buildTertiaryVariant(): ButtonVariantState {
 function buildTertiaryAltVariant(): ButtonVariantState {
   return {
     base: [
-      'border-transparent',
       tokenClass('--component-button-tertiary-default-alt-bg', 'bg'),
       tokenClass('--component-button-tertiary-default-alt-fg', 'text'),
       'group-aria-busy:opacity-0'
     ],
     hover: [
+      '[.group:not(:disabled):hover_&]:border-transparent',
       tokenGroupEnabledHoverClass('--component-button-tertiary-hover-alt-bg', 'bg'),
       tokenGroupEnabledHoverClass('--component-button-tertiary-hover-alt-fg', 'text'),
     ],
     pressed: [
+      '[.group:not(:disabled):active_&]:border-transparent',
       tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-alt-bg', 'bg'),
       tokenGroupEnabledActiveClass('--component-button-tertiary-pressed-alt-fg', 'text'),
     ],
     loading: [
+      'group-aria-busy:border-transparent',
       tokenClass('--component-button-tertiary-pressed-alt-bg', 'group-aria-busy:bg'),
       tokenClass('--component-button-tertiary-pressed-alt-fg', 'group-aria-busy:text'),
     ],
@@ -195,6 +200,15 @@ function buildGhostAltVariant(): ButtonVariantState {
       tokenClass('--component-button-ghost-pressed-alt-fg', 'group-aria-busy:text'),
     ],
     disabled: DISABLED_OPACITY_SOFT,
+  }
+}
+
+function buildDefaultBorderVariant(): ButtonVariantBorderState {
+  return {
+    base: [
+      'border-2',
+      tokenClass('--component-button-tertiary-default-alt-bordercolor', 'border'),
+    ],
   }
 }
 
@@ -361,6 +375,7 @@ const button = {
     secondary: buildSecondaryVariant(),
     tertiary: buildTertiaryVariant(),
     tertiaryAlt: buildTertiaryAltVariant(),
+    tertiaryAltSlabDefaultBorder: buildDefaultBorderVariant(),
     ghost: buildGhostVariant(),
     ghostAlt: buildGhostAltVariant(),
     destructive: buildPrimaryOrDestructiveVariant('destructive', DISABLED_OPACITY_STRONG),

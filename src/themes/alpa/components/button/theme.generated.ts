@@ -115,11 +115,14 @@ const button = {
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiaryAlt": {
-            "base": "border-transparent bg-neutral-100/10 text-neutral-50 group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-50/10 [.group:not(:disabled):hover_&]:text-neutral-50",
-            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-100/40 [.group:not(:disabled):active_&]:text-neutral-50",
-            "loading": "group-aria-busy:bg-neutral-100/40 group-aria-busy:text-neutral-50",
+            "base": "bg-neutral-100/10 text-neutral-50 group-aria-busy:opacity-0",
+            "hover": "[.group:not(:disabled):hover_&]:border-transparent [.group:not(:disabled):hover_&]:bg-neutral-50/10 [.group:not(:disabled):hover_&]:text-neutral-50",
+            "pressed": "[.group:not(:disabled):active_&]:border-transparent [.group:not(:disabled):active_&]:bg-neutral-100/40 [.group:not(:disabled):active_&]:text-neutral-50",
+            "loading": "group-aria-busy:border-transparent group-aria-busy:bg-neutral-100/40 group-aria-busy:text-neutral-50",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
+        },
+        "tertiaryAltSlabDefaultBorder": {
+            "base": "border-2 border-neutral-50/10"
         },
         "ghost": {
             "base": "bg-transparent text-primary-300 group-aria-busy:opacity-0",

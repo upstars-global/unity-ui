@@ -115,11 +115,14 @@ const button = {
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
         },
         "tertiaryAlt": {
-            "base": "border-transparent bg-neutral-800/10 text-neutral-600 group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/80 [.group:not(:disabled):hover_&]:text-neutral-700",
-            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-neutral-700",
-            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-700",
+            "base": "bg-neutral-800/10 text-neutral-600 group-aria-busy:opacity-0",
+            "hover": "[.group:not(:disabled):hover_&]:border-transparent [.group:not(:disabled):hover_&]:bg-neutral-200/80 [.group:not(:disabled):hover_&]:text-neutral-700",
+            "pressed": "[.group:not(:disabled):active_&]:border-transparent [.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-neutral-700",
+            "loading": "group-aria-busy:border-transparent group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-700",
             "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
+        },
+        "tertiaryAltSlabDefaultBorder": {
+            "base": "border-2 border-transparent"
         },
         "ghost": {
             "base": "bg-transparent text-neutral-600 group-aria-busy:opacity-0",
