@@ -1,3 +1,10 @@
+## [1.20.0](https://github.com/upstars-global/unity-ui/compare/v1.19.0...v1.20.0) (2026-07-16)
+
+### 🚀 Features
+
+* UN-2227 Create FeRadioBox component ([#29](https://github.com/upstars-global/unity-ui/issues/29))
+ ([6e3702a](https://github.com/upstars-global/unity-ui/commit/6e3702ac968d771d99806fea3dde21e422d9d7e0))
+
 ## [1.19.0](https://github.com/upstars-global/unity-ui/compare/v1.18.0...v1.19.0) (2026-07-10)
 
 ### 🚀 Features
