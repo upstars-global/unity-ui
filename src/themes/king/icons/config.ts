@@ -141,8 +141,11 @@ import navigation_vip_club from './navigation/vip_club.svg?raw';
 import navigation_vip_club_dupe from './navigation/vip_club_dupe.svg?raw';
 import navigation_win_mart from './navigation/win_mart.svg?raw';
 import social_facebook from './social/facebook.svg?raw';
+import social_google from './social/google.svg?raw';
 import social_instagram from './social/instagram.svg?raw';
-import social_whatsapp from './social/whatsapp.svg?raw';
+import social_telegram from './social/telegram.svg?raw';
+import social_whatsapp_color from './social/whatsapp_color.svg?raw';
+import social_whatsapp_outline from './social/whatsapp_outline.svg?raw';
 import social_x from './social/x.svg?raw';
 
 export const fillIcons = {
@@ -301,8 +304,11 @@ export const navigationIcons = {
 
 export const socialIcons = {
   social_facebook: social_facebook,
+  social_google: social_google,
   social_instagram: social_instagram,
-  social_whatsapp: social_whatsapp,
+  social_telegram: social_telegram,
+  social_whatsapp_color: social_whatsapp_color,
+  social_whatsapp_outline: social_whatsapp_outline,
   social_x: social_x,
 } as const;
 
