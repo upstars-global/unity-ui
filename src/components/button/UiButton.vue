@@ -183,10 +183,12 @@ function handleClick(event: MouseEvent) {
           v-if="mainIconName"
           :class="mainIconWrapperClasses"
       >
-        <UiIcon
-            :name="mainIconName"
-            :class="sizeConfig.icon"
-        />
+        <slot name="mainIcon" >
+          <UiIcon
+              :name="mainIconName"
+              :class="sizeConfig.icon"
+          />
+        </slot>
       </span>
       <span
           v-if="showLabel"
