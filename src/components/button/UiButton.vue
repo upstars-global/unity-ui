@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue'
+import {computed, useAttrs, useSlots} from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import { flattenClasses } from '../../helpers/flattenClasses'
 import UiIcon from '../icon/UiIcon.vue'
@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<UiButtonProps>(), {
 
 const emit = defineEmits<UiButtonEmits>()
 defineSlots<UiButtonSlots>()
+const slots = useSlots()
 
 const appConfig = useAppConfig()
 const attrs = useAttrs()
@@ -48,6 +49,7 @@ const showLeadingIcon = computed(() => showSideSlots.value && Boolean(props.lead
 const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.trailingIconName))
 const showLabel = computed(() => props.layout !== 'icon')
 const showCaption = computed(() => isCaptionType && Boolean(props.caption))
+const hasMainIcon = computed(() => Boolean(mainIconName.value || slots.mainIcon))
 
 const supportedSize = computed(() => {
   const sizes = buttonTheme.type[props.layout].sizes
@@ -180,10 +182,10 @@ function handleClick(event: MouseEvent) {
         />
       </slot>
       <span
-          v-if="mainIconName"
+          v-if="hasMainIcon"
           :class="mainIconWrapperClasses"
       >
-        <slot name="mainIcon" >
+        <slot name="mainIcon">
           <UiIcon
               :name="mainIconName"
               :class="sizeConfig.icon"
