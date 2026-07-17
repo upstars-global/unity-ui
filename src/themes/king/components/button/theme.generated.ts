@@ -77,7 +77,7 @@ const button = {
                     "base": "rounded-12",
                     "container": "h-[3.75rem] gap-4 rounded-12 px-16 py-4",
                     "icon": "w-6",
-                    "label": "text-button-caption truncate lowercase first-letter:uppercase"
+                    "label": "text-button-xs truncate lowercase first-letter:uppercase"
                 }
             }
         },

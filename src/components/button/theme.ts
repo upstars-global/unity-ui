@@ -339,7 +339,7 @@ const button = {
             tokenClass('--component-button-padding-y-slab-sm', 'py'),
           ],
           icon: ['w-6'],
-          label: ['text-button-caption', ...LABEL_BASE],
+          label: ['text-button-xs', ...LABEL_BASE],
         },
       } satisfies ButtonTypeSizeMap,
     },
