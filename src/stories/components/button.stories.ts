@@ -112,7 +112,7 @@ export const Playground: Story = {
     },
     template: `
       <div class="p-6 bg-bg-deep">
-        <div class="rounded-2xl border border-black/10 bg-bg-surface p-6 shadow-sm">
+        <div class="rounded-2xl border border-neutral-100 bg-bg-surface p-6 shadow-sm">
           <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-fg-primary">
             type: {{ args.type }}, variant: {{ args.variant }}
           </div>
@@ -121,7 +121,7 @@ export const Playground: Story = {
             <div
               v-for="layout in layouts"
               :key="layout"
-              class="rounded-xl border border-black/5 bg-neutral-100 p-16"
+              class="rounded-xl border border-neutral-100 bg-bg-surface p-16"
             >
               <div class="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-fg-primary">
                 {{ layout }}

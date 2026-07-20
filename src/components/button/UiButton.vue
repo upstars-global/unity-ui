@@ -74,10 +74,6 @@ const slabDefaultBorderVariantConfig = computed(() => {
 })
 
 const variantConfig = computed(() => {
-  if (isAltVariant.value) {
-    return buttonTheme.variant[`${props.variant}Alt`]
-  }
-
   return buttonTheme.variant[props.variant]
 })
 
@@ -96,8 +92,17 @@ const fullWidthClasses = computed(() => {
 const fullWidthMobileClasses = computed(() => {
   return props.fullWidthMobile && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidthMobile : ''
 })
+const rootModifierClasses = computed(() => {
+  return [
+    props.variant,
+    isAltVariant.value ? `${props.variant}-alt` : '',
+    supportedSize.value,
+    props.layout
+  ]
+})
 const rootClasses = computed(() => {
   return flattenClasses(
+    rootModifierClasses.value,
     sizeConfig.value.base,
     variantConfig.value.disabled,
   )
@@ -132,9 +137,10 @@ const mainIconWrapperClasses = computed(() => {
   const variantClasses = isActionType ? variantStateClasses.value : ''
 
   return flattenClasses(
-    buttonTheme.slots.leadingIcon,
-    isActionType && sizeConfig.value.container,
-    variantClasses,
+      'ui-button__main-icon',
+      buttonTheme.slots.leadingIcon,
+      isActionType && sizeConfig.value.container,
+      variantClasses,
   )
 })
 const labelClasses = computed(() => {

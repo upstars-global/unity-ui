@@ -1,11 +1,8 @@
 import type { Preview } from '@storybook/vue3-vite'
-import { setup } from '@storybook/vue3-vite'
 import { provide } from 'vue'
-import Vue3Mask from 'vue3-mask'
-import Vue3OutsideEvents from "vue3-outside-events"
 import './css/tailwind.css'
-import '../src/themes/alpa/style/tailwind.css'
-import '../src/themes/king/style/tailwind.css'
+import alpaThemeCssUrl from '../src/themes/alpa/style/tailwind.css?url'
+import kingThemeCssUrl from '../src/themes/king/style/tailwind.css?url'
 import { createStorybookEventBus } from './createStorybookEventBus'
 import { AppConfigSymbol } from '../src/composables/useAppConfig'
 import { EventBusSymbol } from '../src/composables/useEventBus'
@@ -68,6 +65,26 @@ const TAILWIND_VIEWPORTS = {
 type ThemeKey = 'alpa' | 'king'
 type ThemeChoice = 'default' | ThemeKey
 
+const THEME_LINK_ELEMENT_ID = 'storybook-active-theme'
+const THEME_CSS_URLS: Record<ThemeKey, string> = {
+    alpa: alpaThemeCssUrl,
+    king: kingThemeCssUrl,
+}
+
+function applyThemeStyles(theme: ThemeKey) {
+    const target = document.head ?? document.documentElement
+    let linkElement = document.getElementById(THEME_LINK_ELEMENT_ID) as HTMLLinkElement | null
+
+    if (!linkElement) {
+        linkElement = document.createElement('link')
+        linkElement.id = THEME_LINK_ELEMENT_ID
+        linkElement.rel = 'stylesheet'
+        target.appendChild(linkElement)
+    }
+
+    linkElement.href = THEME_CSS_URLS[theme]
+}
+
 export const globalTypes = {
     productTheme: {
         name: 'Theme',
@@ -89,11 +106,8 @@ export const decorators = [
         const choice = (context.globals.productTheme || 'default') as ThemeChoice
         const activeTheme = choice === 'default' ? 'alpa' : choice
 
-        if (choice === 'default') {
-            document.documentElement.removeAttribute('data-product')
-        } else {
-            document.documentElement.setAttribute('data-product', choice)
-        }
+        document.documentElement.setAttribute('data-product', activeTheme)
+        applyThemeStyles(activeTheme)
 
         const Story = story()
         return {

@@ -126,17 +126,17 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
 
 const preset: Partial<Config> = {
     theme: {
-        fontFamily: {
-            sans: ['var(--font-family)'],
-        },
         extend: {
+            fontFamily: {
+                sans: ['var(--font-family)', 'system-ui', 'sans-serif'],
+            },
+            fontSize: typographyFontSize,
             fontWeight: {
                 normal: 'var(--text-fontweight-normal)',
                 medium: 'var(--text-fontweight-medium)',
                 bold: 'var(--text-fontweight-bold)',
             },
         },
-        fontSize: typographyFontSize,
     },
     plugins: [
         plugin(({ addUtilities }) => {

@@ -54,7 +54,11 @@ export default defineConfig({
         index: join(rootDir, 'src/index.ts'),
         ...componentEntries,
         'tailwind/presets': join(rootDir, 'src/tailwind/presets/index.ts'),
+        'themes/alpa/tailwind-preset': join(rootDir, 'src/themes/alpa/tailwind.preset.ts'),
+        'themes/alpa/tailwind': join(rootDir, 'src/themes/alpa/tailwind.config.ts'),
         'themes/alpa': join(rootDir, 'src/themes/alpa.ts'),
+        'themes/king/tailwind-preset': join(rootDir, 'src/themes/king/tailwind.preset.ts'),
+        'themes/king/tailwind': join(rootDir, 'src/themes/king/tailwind.config.ts'),
         'themes/king': join(rootDir, 'src/themes/king.ts')
       },
       formats: ['es', 'cjs'],
