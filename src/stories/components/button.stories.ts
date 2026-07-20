@@ -193,9 +193,9 @@ export const VariantsMatrix: Story = {
               <div
                 v-for="size in gridSizes"
                 :key="size"
-                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-neutral-100 px-3 py-3"
+                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-bg-surface px-3 py-3"
               >
-                <div class="text-[11px] uppercase tracking-[0.1em] text-black/40">{{ size }}</div>
+                <div class="text-[11px] uppercase tracking-[0.1em] text-fg-primary">{{ size }}</div>
 
                 <UiButton
                   v-if="layoutSupportedSizes[layout].includes(size)"
@@ -237,9 +237,9 @@ export const States: Story = {
         <div
           v-for="variant in variants"
           :key="variant"
-          class="grid gap-3 rounded-2xl border border-black/10 bg-neutral-100 p-4 md:grid-cols-5"
+          class="grid gap-3 rounded-2xl border border-black/10 bg-bg-surface p-4 md:grid-cols-5"
         >
-          <div class="flex items-center text-sm font-medium capitalize text-black/70">{{ variant }}</div>
+          <div class="flex items-center text-sm font-medium capitalize text-fg-primary">{{ variant }}</div>
           <UiButton :variant="variant" layout="standard" size="md" icon-name="line_plus" leading-icon-name="line_plus">
             Default
           </UiButton>
