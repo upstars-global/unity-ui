@@ -6,7 +6,6 @@
 @import "../../../tailwind/base/scrollbar.css";
 
 
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
