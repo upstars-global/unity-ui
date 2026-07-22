@@ -1,3 +1,14 @@
+## [1.21.0](https://github.com/upstars-global/unity-ui/compare/v1.20.0...v1.21.0) (2026-07-22)
+
+### 🚀 Features
+
+* UN-2952 button updates ([#30](https://github.com/upstars-global/unity-ui/issues/30))
+ ([055d211](https://github.com/upstars-global/unity-ui/commit/055d211c25f83842436417456129a0f8c4396c70))
+
+
+
+    * feat: UN-2952 button updates
+
 ## [1.20.0](https://github.com/upstars-global/unity-ui/compare/v1.19.0...v1.20.0) (2026-07-16)
 
 ### 🚀 Features
