@@ -1,5 +1,3 @@
-@tailwind base;
-
 @layer base {
     :root[data-product="alpa"] {
         --font-family: 'Rubik', system-ui, sans-serif;

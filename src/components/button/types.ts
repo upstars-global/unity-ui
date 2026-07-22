@@ -35,4 +35,5 @@ export interface UiButtonSlots {
   default?: () => unknown
   leading?: () => unknown
   trailing?: () => unknown
+  mainIcon?: () => unknown
 }

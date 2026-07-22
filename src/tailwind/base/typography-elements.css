@@ -2,27 +2,61 @@
 
 @layer base {
     body {
-        @apply font-normal;
+        font-weight: var(--text-fontweight-normal);
     }
 
-    h1 { @apply text-title-display; }
-    h2 { @apply text-title-lg; }
-    h3 { @apply text-title-md; }
-    h4 { @apply text-title-sm; }
-    h5 { @apply text-subtitle; }
+    h1 {
+        font-size: var(--text-title-display-fontsize);
+        line-height: var(--text-title-display-lineheight);
+        letter-spacing: var(--text-title-display-letterspacing);
+        font-weight: var(--text-title-fontweight);
+    }
+
+    h2 {
+        font-size: var(--text-title-lg-fontsize);
+        line-height: var(--text-title-lg-lineheight);
+        letter-spacing: var(--text-title-lg-letterspacing);
+        font-weight: var(--text-title-fontweight);
+    }
+
+    h3 {
+        font-size: var(--text-title-md-fontsize);
+        line-height: var(--text-title-md-lineheight);
+        letter-spacing: var(--text-title-md-letterspacing);
+        font-weight: var(--text-title-fontweight);
+    }
+
+    h4 {
+        font-size: var(--text-title-sm-fontsize);
+        line-height: var(--text-title-sm-lineheight);
+        letter-spacing: var(--text-title-sm-letterspacing);
+        font-weight: var(--text-title-fontweight);
+    }
+
+    h5 {
+        font-size: var(--text-subtitle-fontsize);
+        line-height: var(--text-subtitle-lineheight);
+        letter-spacing: var(--text-subtitle-letterspacing);
+        font-weight: var(--text-subtitle-fontweight);
+    }
 
     a, .text-link {
-        @apply underline decoration-solid cursor-pointer;
-        @apply transition-colors text-fg-link-default;
+        cursor: pointer;
+        color: var(--fg-link-default);
+        text-decoration-line: underline;
+        text-decoration-style: solid;
         text-decoration-skip-ink: auto;
         text-decoration-color: var(--fg-link-underline-default);
         text-underline-position: from-font;
         text-decoration-thickness: .15em;
         text-underline-offset: .2em;
+        transition-property: color, text-decoration-color;
+        transition-duration: 150ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     a:hover, .text-link:hover {
-        @apply text-fg-link-hover;
+        color: var(--fg-link-hover);
         text-decoration-color: var(--fg-link-hover);
     }
 

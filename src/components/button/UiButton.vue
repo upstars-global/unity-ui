@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue'
+import {computed, useAttrs, useSlots} from 'vue'
 import { useAppConfig } from '../../composables/useAppConfig'
 import { flattenClasses } from '../../helpers/flattenClasses'
 import UiIcon from '../icon/UiIcon.vue'
@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<UiButtonProps>(), {
 
 const emit = defineEmits<UiButtonEmits>()
 defineSlots<UiButtonSlots>()
+const slots = useSlots()
 
 const appConfig = useAppConfig()
 const attrs = useAttrs()
@@ -37,6 +38,7 @@ const isStandardType = props.layout === 'standard'
 const isCaptionType = props.layout === 'caption'
 const isSlabType = props.layout === 'slab'
 const isActionType = props.layout === 'action'
+const isIconType = props.layout === 'icon'
 const mainIconName = computed(() => {
   return ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
 });
@@ -47,6 +49,7 @@ const showLeadingIcon = computed(() => showSideSlots.value && Boolean(props.lead
 const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.trailingIconName))
 const showLabel = computed(() => props.layout !== 'icon')
 const showCaption = computed(() => isCaptionType && Boolean(props.caption))
+const hasMainIcon = computed(() => Boolean(mainIconName.value || slots.mainIcon))
 
 const supportedSize = computed(() => {
   const sizes = buttonTheme.type[props.layout].sizes
@@ -59,12 +62,27 @@ const supportedSize = computed(() => {
 })
 const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
-const variantConfig = computed(() => buttonTheme.variant[props.variant])
+const isAltVariant = computed(() => {
+  return ['tertiary', 'ghost'].includes(props.variant) && (isIconType || isSlabType || isActionType)
+})
+const slabDefaultBorderVariantConfig = computed(() => {
+  if (props.variant !== 'tertiary' || !isSlabType) {
+    return null
+  }
+
+  return buttonTheme.variant.tertiaryAltSlabDefaultBorder
+})
+
+const variantConfig = computed(() => {
+  return buttonTheme.variant[props.variant]
+})
+
 const variantStateClasses = computed(() => {
   return flattenClasses(
     variantConfig.value.base,
     variantConfig.value.hover,
     variantConfig.value.pressed,
+    slabDefaultBorderVariantConfig.value?.base,
   )
 })
 
@@ -74,8 +92,17 @@ const fullWidthClasses = computed(() => {
 const fullWidthMobileClasses = computed(() => {
   return props.fullWidthMobile && (isStandardType || isCaptionType) ? buttonTheme.states.fullWidthMobile : ''
 })
+const rootModifierClasses = computed(() => {
+  return [
+    props.variant,
+    isAltVariant.value ? `${props.variant}-alt` : '',
+    supportedSize.value,
+    props.layout
+  ]
+})
 const rootClasses = computed(() => {
   return flattenClasses(
+    rootModifierClasses.value,
     sizeConfig.value.base,
     variantConfig.value.disabled,
   )
@@ -83,14 +110,12 @@ const rootClasses = computed(() => {
 
 const contentClasses = computed(() => {
   const variantClasses = isActionType ? '' : variantStateClasses.value
-  const iconContentClasses = props.layout === 'icon' ? variantConfig.value.iconContent : ''
 
   return flattenClasses(
       'ui-button__content',
       buttonTheme.base,
       typeConfig.value.base,
       !isActionType && sizeConfig.value.container,
-      iconContentClasses,
       variantClasses,
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
@@ -112,9 +137,10 @@ const mainIconWrapperClasses = computed(() => {
   const variantClasses = isActionType ? variantStateClasses.value : ''
 
   return flattenClasses(
-    buttonTheme.slots.leadingIcon,
-    isActionType && sizeConfig.value.container,
-    variantClasses,
+      'ui-button__main-icon',
+      buttonTheme.slots.leadingIcon,
+      isActionType && sizeConfig.value.container,
+      variantClasses,
   )
 })
 const labelClasses = computed(() => {
@@ -162,13 +188,15 @@ function handleClick(event: MouseEvent) {
         />
       </slot>
       <span
-          v-if="mainIconName"
+          v-if="hasMainIcon"
           :class="mainIconWrapperClasses"
       >
-        <UiIcon
-            :name="mainIconName"
-            :class="sizeConfig.icon"
-        />
+        <slot name="mainIcon">
+          <UiIcon
+              :name="mainIconName"
+              :class="sizeConfig.icon"
+          />
+        </slot>
       </span>
       <span
           v-if="showLabel"

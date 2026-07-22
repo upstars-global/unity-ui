@@ -11,7 +11,7 @@ import fill_close from './fill/close.svg?raw';
 import fill_copy from './fill/copy.svg?raw';
 import fill_deposit from './fill/deposit.svg?raw';
 import fill_deposit_preset from './fill/deposit_preset.svg?raw';
-import fill_favorits from './fill/favorits.svg?raw';
+import fill_favorites from './fill/favorites.svg?raw';
 import fill_in_progress from './fill/in_progress.svg?raw';
 import fill_info from './fill/info.svg?raw';
 import fill_key from './fill/key.svg?raw';
@@ -70,7 +70,7 @@ import line_dropdown_left from './line/dropdown_left.svg?raw';
 import line_dropdown_right from './line/dropdown_right.svg?raw';
 import line_dropdown_up from './line/dropdown_up.svg?raw';
 import line_exchange from './line/exchange.svg?raw';
-import line_favorits_outline from './line/favorits_outline.svg?raw';
+import line_favorites_outline from './line/favorites_outline.svg?raw';
 import line_freespins from './line/freespins.svg?raw';
 import line_fullscreen from './line/fullscreen.svg?raw';
 import line_how_to_win from './line/how_to_win.svg?raw';
@@ -141,8 +141,11 @@ import navigation_vip_club from './navigation/vip_club.svg?raw';
 import navigation_vip_club_dupe from './navigation/vip_club_dupe.svg?raw';
 import navigation_win_mart from './navigation/win_mart.svg?raw';
 import social_facebook from './social/facebook.svg?raw';
+import social_google from './social/google.svg?raw';
 import social_instagram from './social/instagram.svg?raw';
-import social_whatsapp from './social/whatsapp.svg?raw';
+import social_telegram from './social/telegram.svg?raw';
+import social_whatsapp_color from './social/whatsapp_color.svg?raw';
+import social_whatsapp_outline from './social/whatsapp_outline.svg?raw';
 import social_x from './social/x.svg?raw';
 
 export const fillIcons = {
@@ -159,7 +162,7 @@ export const fillIcons = {
   fill_copy: fill_copy,
   fill_deposit: fill_deposit,
   fill_deposit_preset: fill_deposit_preset,
-  fill_favorits: fill_favorits,
+  fill_favorites: fill_favorites,
   fill_in_progress: fill_in_progress,
   fill_info: fill_info,
   fill_key: fill_key,
@@ -221,7 +224,7 @@ export const lineIcons = {
   line_dropdown_right: line_dropdown_right,
   line_dropdown_up: line_dropdown_up,
   line_exchange: line_exchange,
-  line_favorits_outline: line_favorits_outline,
+  line_favorites_outline: line_favorites_outline,
   line_freespins: line_freespins,
   line_fullscreen: line_fullscreen,
   line_how_to_win: line_how_to_win,
@@ -301,8 +304,11 @@ export const navigationIcons = {
 
 export const socialIcons = {
   social_facebook: social_facebook,
+  social_google: social_google,
   social_instagram: social_instagram,
-  social_whatsapp: social_whatsapp,
+  social_telegram: social_telegram,
+  social_whatsapp_color: social_whatsapp_color,
+  social_whatsapp_outline: social_whatsapp_outline,
   social_x: social_x,
 } as const;
 
