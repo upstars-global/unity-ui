@@ -1,0 +1,47 @@
+const switcher = {
+  slots: {
+    field: [
+      'flex',
+      'w-full',
+      'items-center',
+      'gap-8',
+      'p-8',
+      'cursor-pointer',
+      'select-none',
+      'data-[disabled=true]:cursor-not-allowed',
+    ],
+    control: [
+      'relative',
+      'flex',
+      'h-24',
+      'w-36',
+      'shrink-0',
+      'items-center',
+    ],
+    track: [
+      'pointer-events-none',
+      'absolute',
+      'left-0',
+      'top-1/2',
+      'h-14',
+      'w-36',
+      '-translate-y-1/2',
+      'rounded-full',
+      'opacity-45',
+    ],
+    thumb: [
+      'pointer-events-none',
+      'absolute',
+      'top-1/2',
+      'size-20',
+      '-translate-y-1/2',
+      'rounded-full',
+      'transition-all',
+      'duration-150',
+    ],
+  },
+} as const
+
+export type SwitcherUiOptimized = typeof switcher
+
+export default switcher
