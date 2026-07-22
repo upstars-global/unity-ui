@@ -75,7 +75,6 @@ const SPACING_UTILITIES = new Set([
 
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
 const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
-const PRESET_ENTRY_REGEX = /^\s*(?:'([^']+)'|([A-Za-z0-9_-]+)):\s*'[^']*var\((--[A-Za-z0-9-]+)\)[^']*'/gm
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
 const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:"([^"]+)"|'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
@@ -138,20 +137,136 @@ function walkFiles(dirPath: string, predicate: Predicate): string[] {
     return result
 }
 
-function parsePresetVars(filePath: string): PresetVars {
-    const source = readFileSync(filePath, 'utf8')
-    const varToTailwindColor = new Map()
+function unwrapExpression(expression: ts.Expression): ts.Expression {
+    let current = expression
 
-    for (const match of source.matchAll(PRESET_ENTRY_REGEX)) {
-        const colorKey = match[1] ?? match[2]
-        const cssVarName = match[3]
+    while (
+        ts.isParenthesizedExpression(current)
+        || ts.isAsExpression(current)
+        || ts.isSatisfiesExpression(current)
+        || ts.isTypeAssertionExpression(current)
+    ) {
+        current = current.expression
+    }
 
-        if (!colorKey || !cssVarName) {
+    return current
+}
+
+function getPropertyNameText(name: ts.PropertyName): string | null {
+    if (ts.isIdentifier(name) || ts.isStringLiteral(name) || ts.isNumericLiteral(name)) {
+        return name.text
+    }
+
+    return null
+}
+
+function getObjectPropertyValue(objectLiteral: ts.ObjectLiteralExpression, propertyName: string): ts.Expression | null {
+    for (const property of objectLiteral.properties) {
+        if (!ts.isPropertyAssignment(property)) {
             continue
         }
 
-        varToTailwindColor.set(cssVarName, colorKey)
+        if (getPropertyNameText(property.name) !== propertyName) {
+            continue
+        }
+
+        return unwrapExpression(property.initializer)
     }
+
+    return null
+}
+
+function getObjectLiteralProperty(objectLiteral: ts.ObjectLiteralExpression, propertyName: string): ts.ObjectLiteralExpression | null {
+    const propertyValue = getObjectPropertyValue(objectLiteral, propertyName)
+    return propertyValue && ts.isObjectLiteralExpression(propertyValue) ? propertyValue : null
+}
+
+function collectPresetColorVars({
+    objectLiteral,
+    keyPrefix = '',
+    result,
+}: {
+    objectLiteral: ts.ObjectLiteralExpression
+    keyPrefix?: string
+    result: PresetVars
+}): void {
+    for (const property of objectLiteral.properties) {
+        if (!ts.isPropertyAssignment(property)) {
+            continue
+        }
+
+        const propertyName = getPropertyNameText(property.name)
+
+        if (!propertyName) {
+            continue
+        }
+
+        const propertyValue = unwrapExpression(property.initializer)
+        const colorKey = keyPrefix ? `${keyPrefix}-${propertyName}` : propertyName
+
+        if (ts.isObjectLiteralExpression(propertyValue)) {
+            collectPresetColorVars({
+                objectLiteral: propertyValue,
+                keyPrefix: colorKey,
+                result,
+            })
+            continue
+        }
+
+        if (!ts.isStringLiteralLike(propertyValue) && !ts.isNoSubstitutionTemplateLiteral(propertyValue)) {
+            continue
+        }
+
+        const cssVarMatch = propertyValue.text.match(/var\((--[A-Za-z0-9-]+)\)/)
+
+        if (!cssVarMatch) {
+            continue
+        }
+
+        result.set(cssVarMatch[1], colorKey)
+    }
+}
+
+function findColorsObjectLiteral(sourceFile: ts.SourceFile): ts.ObjectLiteralExpression | null {
+    let colorsObject: ts.ObjectLiteralExpression | null = null
+
+    const visit = (node: ts.Node) => {
+        if (colorsObject) {
+            return
+        }
+
+        if (ts.isObjectLiteralExpression(node)) {
+            const themeObject = getObjectLiteralProperty(node, 'theme')
+            const extendObject = themeObject ? getObjectLiteralProperty(themeObject, 'extend') : null
+            const nestedColorsObject = extendObject ? getObjectLiteralProperty(extendObject, 'colors') : null
+
+            if (nestedColorsObject) {
+                colorsObject = nestedColorsObject
+                return
+            }
+        }
+
+        ts.forEachChild(node, visit)
+    }
+
+    visit(sourceFile)
+    return colorsObject
+}
+
+function parsePresetVars(filePath: string): PresetVars {
+    const source = readFileSync(filePath, 'utf8')
+    const varToTailwindColor: PresetVars = new Map()
+    const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
+    const colorsObject = findColorsObjectLiteral(sourceFile)
+
+    if (!colorsObject) {
+        return varToTailwindColor
+    }
+
+    collectPresetColorVars({
+        objectLiteral: colorsObject,
+        result: varToTailwindColor,
+    })
 
     return varToTailwindColor
 }
@@ -950,7 +1065,7 @@ async function main() {
             }),
         ])
         const borderWidthValueToKey = parseValuePresetMap(layoutPresetPath, new Set(['borderWidth']))
-        const opacityValueToKey = new Map(
+        const opacityValueToKey: ValueToKeyMap = new Map(
             Array.from(parseValuePresetMap(layoutPresetPath, new Set(['opacity'])).entries()).map(([value, key]) => [
                 normalizeScalarForLookup(value),
                 key,
