@@ -1,3 +1,10 @@
+## [1.22.0](https://github.com/upstars-global/unity-ui/compare/v1.21.0...v1.22.0) (2026-07-24)
+
+### 🚀 Features
+
+* UN-2226 Create FeSwitch component ([#31](https://github.com/upstars-global/unity-ui/issues/31))
+ ([9f13b1f](https://github.com/upstars-global/unity-ui/commit/9f13b1f303159625007d6ef1742550d3dabca500))
+
 ## [1.21.0](https://github.com/upstars-global/unity-ui/compare/v1.20.0...v1.21.0) (2026-07-22)
 
 ### 🚀 Features
