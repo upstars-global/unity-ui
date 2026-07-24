@@ -12,6 +12,7 @@ export { default as UiTimer } from './components/timer/UiTimer.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
+export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
 
 export type { AppConfig } from './components/types';
 export type {
@@ -44,6 +45,12 @@ export type {
   UiCheckboxEmits,
   UiCheckboxSlots,
 } from './components/form/basicControls/checkbox/types';
+export type {
+  SwitcherState,
+  UiSwitcherProps,
+  UiSwitcherEmits,
+  UiSwitcherSlots,
+} from './components/form/basicControls/switcher/types';
 export type {
   RadioButtonState,
   RadioButtonValue,
