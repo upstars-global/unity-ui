@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { computed, nextTick, onMounted, reactive, ref } from 'vue'
 import UiInput from '../../components/form/basicControls/input/UiInput.vue'
 import UiSuggestList from '../../components/form/suggest/UiSuggestList.vue'
+import type { UiSuggestListExposed, UiSuggestListSelectPayload } from '../../components/form/suggest/types'
 
 type InputStoryArgs = {
   modelValue: string
@@ -88,7 +89,7 @@ export const WithSuggestList: Story = {
     setup() {
       const value = ref('')
       const visible = ref(false)
-      const activeIndex = ref(0)
+      const suggestListRef = ref<UiSuggestListExposed | null>(null)
       const suggestions = [
         'Amsterdam',
         'Athens',
@@ -120,12 +121,10 @@ export const WithSuggestList: Story = {
       const updateValue = (nextValue: string) => {
         value.value = nextValue
         visible.value = true
-        activeIndex.value = 0
       }
 
-      const selectItem = ({ value: selectedValue, index }: { value: string; index: number }) => {
+      const selectItem = ({ value: selectedValue }: UiSuggestListSelectPayload<string>) => {
         value.value = selectedValue
-        activeIndex.value = index
         closeSuggest()
       }
 
@@ -134,23 +133,21 @@ export const WithSuggestList: Story = {
           return
         }
 
-        if (event.key === 'ArrowDown') {
-          event.preventDefault()
+        if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && !visible.value) {
           visible.value = true
-          activeIndex.value = (activeIndex.value + 1) % filteredItems.value.length
+          return
         }
 
-        if (event.key === 'ArrowUp') {
-          event.preventDefault()
-          visible.value = true
-          activeIndex.value = (activeIndex.value - 1 + filteredItems.value.length) % filteredItems.value.length
-        }
-
-        if (event.key === 'Enter' && visible.value) {
-          event.preventDefault()
-          value.value = filteredItems.value[activeIndex.value]
+        if (event.key === 'Escape') {
           closeSuggest()
+          return
         }
+
+        if (!visible.value) {
+          return
+        }
+
+        suggestListRef.value?.handleKeydown(event)
       }
 
       const isVisible = computed(() => {
@@ -163,7 +160,7 @@ export const WithSuggestList: Story = {
       return {
         value,
         visible,
-        activeIndex,
+        suggestListRef,
         filteredItems,
         isVisible,
         closeSuggest,
@@ -187,9 +184,9 @@ export const WithSuggestList: Story = {
         >
           <template #suggestList>
             <UiSuggestList
+              ref="suggestListRef"
               :items="filteredItems"
               :visible="isVisible"
-              :active-index="activeIndex"
               leadingIconName="fill_lock"
               @select="selectItem"
               @close="closeSuggest"

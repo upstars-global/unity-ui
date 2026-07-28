@@ -82,7 +82,7 @@ const button = {
             }
         },
         "action": {
-            "base": "flex-col items-center justify-center text-center gap-[0.375rem] gap-[0.375rem]",
+            "base": "flex-col items-center justify-center text-center gap-6 gap-6",
             "sizes": {
                 "sm": {
                     "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",

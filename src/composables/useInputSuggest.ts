@@ -1,4 +1,5 @@
-import { computed, ref, watch, type Ref } from 'vue'
+import {computed, ref, type Ref, watch} from 'vue'
+import type {UiSuggestListExposed} from '../components/form/suggest/types'
 
 export type InputSuggestValue = string | number
 export type InputSuggestReplacer = (value: string, replacement?: string) => string
@@ -8,7 +9,7 @@ export interface UseInputSuggestOptions {
   modelValue: Ref<InputSuggestValue>
   suggestList: Ref<string[] | undefined>
   suggestListReplacer: Ref<InputSuggestReplacer | undefined>
-  suggestListRef: Ref<HTMLElement | null>
+  suggestListRef: Ref<UiSuggestListExposed | null>
 }
 
 export interface UseInputSuggestResult {
@@ -23,6 +24,7 @@ export function useInputSuggest({
   modelValue,
   suggestList,
   suggestListReplacer,
+  suggestListRef,
 }: UseInputSuggestOptions): UseInputSuggestResult {
   const suggestItemPosition = ref(-1)
   const suggestListVisible = ref(true)
@@ -30,6 +32,10 @@ export function useInputSuggest({
   const suggestListRendered = computed(() => {
     return Boolean(suggestList.value?.length) && suggestListVisible.value
   })
+
+  function syncSuggestPosition() {
+    suggestItemPosition.value = suggestListRef.value?.activeIndex ?? -1
+  }
 
   function suggestListDisable() {
     suggestListVisible.value = false
@@ -44,35 +50,44 @@ export function useInputSuggest({
   })
 
   function selectSuggestItem(payload: { selectValue?: string } = {}) {
-    if (!suggestListRendered.value) {
+    if (!suggestListRendered.value || !suggestListRef.value) {
       return
     }
 
-    const suggestItemValue = payload.selectValue || suggestList.value?.[suggestItemPosition.value]
-    const nextValue = suggestListReplacer.value?.(String(modelValue.value), suggestItemValue) || modelValue.value
+    if (payload.selectValue) {
+      const index = suggestList.value?.findIndex((item) => item === payload.selectValue) ?? -1
 
+      if (index >= 0) {
+        suggestListRef.value.setActiveIndex(index)
+      }
+    }
+
+    const selectedItem = suggestListRef.value.selectActiveItem()
+
+    if (!selectedItem) {
+      return
+    }
+
+    modelValue.value = suggestListReplacer.value?.(String(modelValue.value), String(selectedItem.value)) ?? selectedItem.value
+    syncSuggestPosition()
     suggestListDisable()
   }
 
   function keydownSuggestHandler(event: KeyboardEvent) {
-
-    if (!suggestListRendered.value) {
+    if (!suggestListRendered.value || !suggestListRef.value) {
       return
     }
 
-    event.preventDefault()
+    const handled = suggestListRef.value.handleKeydown(event)
 
-    if (
-      event.key === 'ArrowDown' &&
-      suggestItemPosition.value >= -1 &&
-      suggestItemPosition.value < (suggestList.value?.length ?? 0) - 1
-    ) {
-      suggestItemPosition.value += 1
-    } else if (event.key === 'ArrowUp' && suggestItemPosition.value >= 0) {
-      suggestItemPosition.value -= 1
+    if (handled) {
+      syncSuggestPosition()
+      return
     }
 
-    /*scrollToSuggestItem()*/
+    if (event.key === 'Escape') {
+      suggestListDisable()
+    }
   }
 
   return {

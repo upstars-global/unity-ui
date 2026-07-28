@@ -2,10 +2,14 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "flex flex-col max-h-[20rem] overflow-hidden absolute top-full left-0 right-0 mt-8 bg-white rounded-12 gap-4 p-4",
+    "base": "flex flex-col max-h-[20rem] overflow-y-auto overflow-x-hidden",
     "slots": {
-        "item": "flex shrink-0 grow-0 items-center cursor-pointer h-[3rem] gap-8 py-8 px-12 rounded-12 hover:bg-neutral-100 aria-selected:bg-neutral-100 text-neutral-600 text-body font-medium text-nowrap",
-        "icon": "text-neutral-400"
+        "floating": "absolute top-full left-0 right-0 mt-8",
+        "panel": "bg-white rounded-12 gap-4 p-4",
+        "embedded": "gap-4 p-4",
+        "item": "flex shrink-0 grow-0 items-center cursor-pointer h-[3rem] gap-8 py-8 px-12 rounded-12 hover:bg-neutral-100 aria-selected:bg-neutral-100 data-[active=true]:bg-neutral-100 text-neutral-600 text-body font-medium text-nowrap",
+        "icon": "text-neutral-400",
+        "empty": "text-neutral-600 text-body font-medium"
     }
 } as const
 

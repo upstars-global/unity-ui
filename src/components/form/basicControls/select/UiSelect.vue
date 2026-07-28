@@ -1,0 +1,428 @@
+<script setup lang="ts">
+import { autoUpdate, flip, offset, shift, size as sizeMiddleware, useFloating } from '@floating-ui/vue'
+import { computed, nextTick, ref, useAttrs, useSlots, watch } from 'vue'
+import { useAppConfig } from '../../../../composables/useAppConfig'
+import { flattenClasses } from '../../../../helpers/flattenClasses'
+import UiSuggestList from '../../suggest/UiSuggestList.vue'
+import type { UiSuggestListExposed, UiSuggestListSelectPayload } from '../../suggest/types'
+import UiIcon from '../../../icon/UiIcon.vue'
+import { baseFieldDefault } from '../BaseField.ts'
+import type {
+  SelectValue,
+  UiSelectEmits,
+  UiSelectOption,
+  UiSelectProps,
+  UiSelectSlots,
+} from './types'
+
+defineOptions({
+  name: 'UiSelect',
+  inheritAttrs: false,
+})
+
+const props = withDefaults(defineProps<UiSelectProps>(), {
+  ...baseFieldDefault,
+  modelValue: null,
+  invalid: false,
+  label: '',
+  list: () => [],
+  size: 'default',
+  trailingIconName: 'line_dropdown_down',
+  optionTrailingIconName: undefined,
+})
+
+const emit = defineEmits<UiSelectEmits>()
+defineSlots<UiSelectSlots>()
+
+const appConfig = useAppConfig()
+const attrs = useAttrs()
+const slots = useSlots()
+const selectTheme = appConfig.components.select
+
+const rootRef = ref<HTMLElement | null>(null)
+const reference = ref<HTMLElement | null>(null)
+const floating = ref<HTMLElement | null>(null)
+const suggestListRef = ref<UiSuggestListExposed | null>(null)
+const isOpen = ref(false)
+const activeIndex = ref(-1)
+
+const hasErrorMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
+const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
+const selectedIndex = computed(() => props.list.findIndex((item) => item.value === props.modelValue))
+const selectedOption = computed<UiSelectOption | null>(() => props.list[selectedIndex.value] ?? null)
+const hasValue = computed(() => selectedOption.value !== null)
+const currentLeadingIconName = computed(() => selectedOption.value?.leadingIconName ?? props.leadingIconName)
+
+const listboxId = computed(() => `${props.name}-listbox`)
+const activeDescendant = computed(() => {
+  if (!isOpen.value || activeIndex.value < 0) {
+    return undefined
+  }
+
+  return `${props.name}-option-${activeIndex.value}`
+})
+const displayedValue = computed(() => {
+  return selectedOption.value?.label || props.placeholder
+})
+const rootClasses = computed(() => {
+  return flattenClasses(
+    selectTheme.base,
+    `ui-select--${props.size}`,
+    isOpen.value && 'ui-select--open',
+    props.disabled && 'ui-select--disabled',
+    props.invalid && 'ui-select--error',
+    attrs.class as string | undefined,
+  )
+})
+const fieldClasses = computed(() => {
+  return flattenClasses(
+    selectTheme.slots.field,
+    selectTheme.size[props.size].field,
+  )
+})
+const contentClasses = computed(() => {
+  return flattenClasses(
+    selectTheme.slots.content,
+    selectTheme.size[props.size].content,
+  )
+})
+const attributes = computed(() => {
+  const { class: _class, ...rest } = attrs
+
+  return rest
+})
+
+const { floatingStyles } = useFloating(reference, floating, {
+  transform: false,
+  open: isOpen,
+  placement: 'bottom-start',
+  middleware: [
+    offset(8),
+    flip({
+      fallbackPlacements: ['top-start'],
+      padding: 8,
+    }),
+    shift({
+      padding: 8,
+    }),
+    sizeMiddleware({
+      padding: 8,
+      apply({ rects, availableHeight, elements }) {
+        Object.assign(elements.floating.style, {
+          minWidth: `${rects.reference.width}px`,
+          maxHeight: `${Math.min(320, Math.max(0, availableHeight))}px`,
+        })
+      },
+    }),
+  ],
+  whileElementsMounted(referenceEl, floatingEl, update) {
+    return autoUpdate(referenceEl, floatingEl, update, {
+      ancestorScroll: true,
+    })
+  },
+})
+
+function openList() {
+  if (props.disabled || !props.list.length || isOpen.value) {
+    return
+  }
+
+  isOpen.value = true
+  emit('open')
+}
+
+function openListAndRun(callback?: () => void) {
+  openList()
+
+  if (callback) {
+    nextTick(() => {
+      callback()
+    })
+  }
+}
+
+function closeList() {
+  if (!isOpen.value) {
+    return
+  }
+
+  isOpen.value = false
+  activeIndex.value = -1
+  emit('close')
+}
+
+function toggleList() {
+  if (isOpen.value) {
+    closeList()
+    return
+  }
+
+  openList()
+}
+
+function emitValue(value: SelectValue | null) {
+  emit('update:modelValue', value)
+  emit('change', value)
+}
+
+function selectOption(payload: UiSuggestListSelectPayload<SelectValue>) {
+  emitValue(payload.value)
+  closeList()
+}
+
+const OPEN_KEY_HANDLERS: Partial<Record<string, () => void>> = {
+  Home: () => suggestListRef.value?.focusFirst(),
+  End: () => suggestListRef.value?.focusLast(),
+  ArrowDown: () => suggestListRef.value?.focusFirst(),
+  ArrowUp: () => suggestListRef.value?.focusLast(),
+}
+
+function handleListNavigation(event: KeyboardEvent) {
+  if (event.key === ' ') {
+    event.preventDefault()
+    suggestListRef.value?.selectActiveItem()
+    return
+  }
+
+  suggestListRef.value?.handleKeydown(event)
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  if (props.disabled) {
+    return
+  }
+
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    closeList()
+    return
+  }
+
+  if (event.key === 'Home' || event.key === 'End') {
+    event.preventDefault()
+    openListAndRun(OPEN_KEY_HANDLERS[event.key])
+    return
+  }
+
+  if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') {
+    if (!isOpen.value) {
+      event.preventDefault()
+      openListAndRun(OPEN_KEY_HANDLERS[event.key])
+      return
+    }
+
+    handleListNavigation(event)
+  }
+}
+
+function handleFocus(event: FocusEvent) {
+  emit('focus', event)
+}
+
+function handleBlur(event: FocusEvent) {
+  requestAnimationFrame(() => {
+    if (!rootRef.value?.contains(document.activeElement)) {
+      closeList()
+    }
+  })
+
+  emit('blur', event)
+}
+
+function handleClickOutside() {
+  closeList()
+}
+
+function handleActiveChange(payload: { index: number }) {
+  activeIndex.value = payload.index
+}
+
+watch(() => props.modelValue, () => {
+  if (!isOpen.value) {
+    return
+  }
+
+  suggestListRef.value?.syncActiveIndex(selectedIndex.value)
+})
+</script>
+
+<template>
+  <div
+    ref="rootRef"
+    v-click-outside="handleClickOutside"
+    :data-disabled="disabled"
+    :data-invalid="invalid"
+    :data-open="isOpen"
+    :class="rootClasses"
+    v-bind="attributes"
+    class="ui-select"
+  >
+    <button
+      :id="name"
+      ref="reference"
+      type="button"
+      :name="name"
+      :disabled="disabled"
+      :aria-invalid="invalid"
+      :aria-expanded="isOpen"
+      aria-haspopup="listbox"
+      role="combobox"
+      :aria-controls="listboxId"
+      :aria-activedescendant="activeDescendant"
+      :data-test="dataTest"
+      :data-disabled="disabled"
+      :data-invalid="invalid"
+      :data-open="isOpen"
+      :class="fieldClasses"
+      @click="toggleList"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @keydown="handleKeydown"
+      class="ui-select__field"
+    >
+      <slot
+        name="leading"
+        :selected-option="selectedOption"
+      >
+        <UiIcon
+          v-if="currentLeadingIconName"
+          :name="currentLeadingIconName"
+          class="ui-select__icon"
+          :class="selectTheme.slots.leadingIcon"
+        />
+      </slot>
+      <div :class="contentClasses">
+        <span
+          v-if="size === 'default' && label"
+          :class="selectTheme.slots.label"
+          class="ui-select__label ui-select__text"
+        >
+          <slot name="label">
+            {{ label }}
+          </slot>
+        </span>
+        <span
+          v-if="displayedValue"
+          :class="hasValue ? selectTheme.slots.value : selectTheme.slots.placeholder"
+          class="ui-select__text ui-select__displayed-value"
+        >
+          {{ displayedValue }}
+        </span>
+      </div>
+      <div
+        :class="selectTheme.slots.action"
+        @mousedown.prevent
+      >
+        <slot
+          name="trailing"
+          :selected-option="selectedOption"
+          :is-open="isOpen"
+        >
+          <UiIcon
+            :name="trailingIconName"
+            class="ui-select__icon ui-select__dropdown-icon"
+            :class="selectTheme.slots.trailingIcon"
+          />
+        </slot>
+      </div>
+    </button>
+
+    <div
+      v-if="isOpen"
+      :id="listboxId"
+      ref="floating"
+      role="presentation"
+      :class="selectTheme.slots.list"
+      :style="floatingStyles"
+      class="ui-select__list"
+    >
+      <UiSuggestList
+        ref="suggestListRef"
+        :items="list"
+        :visible="isOpen"
+        :selected-value="modelValue"
+        :id-prefix="name"
+        variant="embedded"
+        :close-on-click-outside="false"
+        @select="selectOption"
+        @active-change="handleActiveChange"
+      >
+        <template #leading="{ item, selected, active }">
+          <slot
+            name="optionLeading"
+            :option="item"
+            :selected="selected"
+            :active="active"
+          >
+            <UiIcon
+              v-if="item.leadingIconName"
+              :name="item.leadingIconName"
+              class="ui-select__icon"
+            />
+          </slot>
+        </template>
+
+        <template #default="{ item, selected, active }">
+          <span :class="selectTheme.slots.optionLabel">
+            <slot
+              name="option"
+              :option="item"
+              :selected="selected"
+              :active="active"
+            >
+              {{ item.label }}
+            </slot>
+          </span>
+        </template>
+
+        <template #trailing="{ item, selected, active }">
+          <slot
+            name="optionTrailing"
+            :option="item"
+            :selected="selected"
+            :active="active"
+          >
+            <UiIcon
+              v-if="item.trailingIconName || optionTrailingIconName"
+              :name="item.trailingIconName || optionTrailingIconName"
+              class="ui-select__icon"
+              :class="selectTheme.slots.optionTrailingIcon"
+            />
+          </slot>
+        </template>
+
+        <template #empty>
+          <slot name="empty">
+            <span :class="selectTheme.slots.placeholder">
+              No options
+            </span>
+          </slot>
+        </template>
+      </UiSuggestList>
+    </div>
+
+    <div
+      v-if="hasBottomMessage"
+      :class="selectTheme.slots.message"
+    >
+      <div
+        v-if="hasErrorMessage"
+        :class="selectTheme.slots.errorMessage"
+      >
+        <slot name="errorMessages">
+          <UiIcon
+            name="fill_attention_1"
+            size="16"
+          />
+          {{ errorMessages }}
+        </slot>
+      </div>
+      <slot
+        v-else
+        name="message"
+      >
+        {{ infoMessage }}
+      </slot>
+    </div>
+  </div>
+</template>

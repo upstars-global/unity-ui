@@ -4,6 +4,7 @@ export { useEventBus } from './composables/useEventBus';
 export { useModalController } from './components/modal/useModalController';
 export { useToastController } from './components/notifications/toast/useToastController';
 export { useInputSuggest } from './composables/useInputSuggest';
+export { useSuggestListNavigation } from './composables/useSuggestListNavigation';
 export { getThemeConfig } from './themes/registry';
 export { default as modal } from './plugins/modal';
 export { default as toast } from './plugins/toast';
@@ -12,6 +13,7 @@ export { default as UiTimer } from './components/timer/UiTimer.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
+export { default as UiSelect } from './components/form/basicControls/select/UiSelect.vue';
 export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
 
 export type { AppConfig } from './components/types';
@@ -22,6 +24,11 @@ export type {
   UseInputSuggestOptions,
   UseInputSuggestResult,
 } from './composables/useInputSuggest';
+export type {
+  SuggestNavigationItem,
+  UseSuggestListNavigationOptions,
+  UseSuggestListNavigationResult,
+} from './composables/useSuggestListNavigation';
 export type { UiThemeName, UiThemeIconName } from './themes/registry';
 export type { UnityUIOptions } from './plugins/vue-plugin';
 export type {
@@ -65,6 +72,15 @@ export type {
   UiInputEmits,
   UiInputSlots,
 } from './components/form/basicControls/input/types';
+export type {
+  SelectSize,
+  SelectState,
+  SelectValue,
+  UiSelectOption,
+  UiSelectProps,
+  UiSelectEmits,
+  UiSelectSlots,
+} from './components/form/basicControls/select/types';
 export type {
   IModalOptions,
   ModalCloseOptions,
