@@ -1,6 +1,7 @@
 @import "base/spacing.css";
 @import "base/colors.css";
 @import "base/typography.css";
+@import "fonts.css";
 @import "components/card.css";
 @import "components/control.css";
 @import "components/tab.css";
