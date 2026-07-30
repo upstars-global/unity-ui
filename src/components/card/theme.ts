@@ -11,7 +11,6 @@ const CARD_BASE: CardClassList = [
   'overflow-hidden',
   tokenClass('--radius-card-m', 'rounded'),
 ]
-const CARD_CONTENT_BASE: CardClassList = ['w-full']
 const CARD_BORDER_BASE: CardClassList = ['border']
 
 function buildSurfaceVariant(backgroundToken: string, hasBorder = false): CardClassList {
@@ -30,9 +29,6 @@ const card = {
     alt: buildSurfaceVariant('--component-card-alt-bg', true),
     gradient: ['bg-gradient-card'],
   } satisfies Record<CardVariant, CardClassList>,
-  slots: {
-    content: CARD_CONTENT_BASE,
-  },
 } as const
 
 export type CardUiOptimized = typeof card
