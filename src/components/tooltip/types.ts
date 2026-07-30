@@ -1,4 +1,5 @@
 import type { Placement, Strategy } from '@floating-ui/vue'
+import type { UiThemeIconName } from "../../themes/registry.ts";
 
 export type UiTooltipPlacement =
   | 'top-left'
@@ -24,5 +25,6 @@ export interface UiTooltipProps {
   fallbackPlacements?: UiTooltipPlacement[]
   offsetValue?: number
   disabled?: boolean
+  iconName?: UiThemeIconName
   trigger?: 'hover' | 'click' | 'always'
 }

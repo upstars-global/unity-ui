@@ -3,6 +3,7 @@ import UiTooltip from '../../components/tooltip/UiTooltip.vue'
 import UiButton from '../../components/button/UiButton.vue'
 import UiCard from '../../components/card/UiCard.vue'
 import type { UiTooltipProps } from '../../components/tooltip/types'
+import type { UiThemeIconName } from '../../themes/registry'
 
 type TooltipStoryArgs = {
   text: string
@@ -10,9 +11,18 @@ type TooltipStoryArgs = {
   trigger: NonNullable<UiTooltipProps['trigger']>
   disabled: boolean
   offsetValue: number
+  iconName: UiThemeIconName
 }
 
 const TRIGGERS: TooltipStoryArgs['trigger'][] = ['hover', 'click', 'always']
+const ICON_OPTIONS: TooltipStoryArgs['iconName'][] = [
+  'line_plus',
+  'line_close',
+  'line_check',
+  'line_dropdown_down',
+  'line_arrow_next',
+  'fill_info',
+]
 const GRID_ITEMS = [
   { id: 'bottom-left', label: 'Top Left', justify: 'justify-start', align: 'items-start' },
   { id: 'bottom-center', label: 'Top Center', justify: 'justify-center', align: 'items-start' },
@@ -31,12 +41,14 @@ const meta = {
     trigger: 'hover',
     disabled: false,
     offsetValue: 8,
+    iconName: 'line_plus',
   },
   argTypes: {
     text: { control: 'text' },
     trigger: { control: 'inline-radio', options: TRIGGERS },
     disabled: { control: 'boolean' },
     offsetValue: { control: { type: 'number', min: 0, step: 1 } },
+    iconName: { control: 'select', options: ICON_OPTIONS },
   },
 } satisfies Meta<TooltipStoryArgs>
 
@@ -67,6 +79,7 @@ export const Playground: Story = {
           >
               <UiTooltip
                   :text="args.text"
+                  :icon-name="args.iconName"
                   :placement="item.id"
                   :trigger="args.trigger"
                   :disabled="args.disabled"

@@ -3,6 +3,7 @@ import {computed, onMounted, ref, useAttrs, watch} from 'vue'
 import {arrow, autoUpdate, flip, hide, offset, shift, useFloating} from '@floating-ui/vue'
 import {useAppConfig} from '../../composables/useAppConfig'
 import {TOOLTIP_PLACEMENT_MAP, type UiTooltipPlacement, type UiTooltipProps} from './types.ts'
+import UiIcon from "../icon/UiIcon.vue";
 
 const props = withDefaults(defineProps<UiTooltipProps>(), {
   text: '',
@@ -159,13 +160,18 @@ watch(isReferenceHidden, (referenceHidden) => {
       ref="floating"
       :class="tooltipTheme.slots.content"
       :style="floatingStyles"
-      class="ui-tooltip__content relative"
+      class="ui-tooltip__content relative flex gap-4"
     >
       <div
           ref="floatingArrow"
           class="size-8 absolute rotate-45"
           :class="tooltipTheme.slots.content_arrow"
           :style="floatingArrowStyles"
+      />
+      <UiIcon
+          v-if="iconName"
+          :name="iconName"
+          size="16"
       />
       <slot>{{ text }}</slot>
     </div>
