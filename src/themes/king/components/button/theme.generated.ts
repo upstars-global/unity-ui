@@ -93,43 +93,8 @@ const button = {
         }
     },
     "variant": {
-        "primary": {
-            "base": "bg-primary-300 text-white group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-primary-200 [.group:not(:disabled):hover_&]:text-primary-50",
-            "pressed": "[.group:not(:disabled):active_&]:bg-primary-400 [.group:not(:disabled):active_&]:text-primary-50",
-            "loading": "group-aria-busy:bg-primary-400 group-aria-busy:text-primary-50",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
-        },
-        "secondary": {
-            "base": "border-2 border-primary-200/40 bg-primary-50/40 text-primary-300 group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:border-primary-200 [.group:not(:disabled):hover_&]:bg-primary-50/40 [.group:not(:disabled):hover_&]:text-primary-300",
-            "pressed": "[.group:not(:disabled):active_&]:border-primary-300 [.group:not(:disabled):active_&]:bg-primary-100/40 [.group:not(:disabled):active_&]:text-primary-300",
-            "loading": "border-2 group-aria-busy:border-primary-300 group-aria-busy:bg-primary-100/40 group-aria-busy:text-primary-300",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
-        },
-        "tertiary": {
-            "base": "border-transparent bg-neutral-800/10 text-neutral-600 group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/80 [.group:not(:disabled):hover_&]:text-neutral-700",
-            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-neutral-700",
-            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-700",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
-        },
         "tertiaryAltSlabDefaultBorder": {
             "base": "border-2 border-transparent"
-        },
-        "ghost": {
-            "base": "bg-transparent text-neutral-600 group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-neutral-200/80 [.group:not(:disabled):hover_&]:text-neutral-700",
-            "pressed": "[.group:not(:disabled):active_&]:bg-neutral-300/40 [.group:not(:disabled):active_&]:text-neutral-700",
-            "loading": "group-aria-busy:bg-neutral-300/40 group-aria-busy:text-neutral-700",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-45"
-        },
-        "destructive": {
-            "base": "bg-error-100 text-white group-aria-busy:opacity-0",
-            "hover": "[.group:not(:disabled):hover_&]:bg-error-100/80 [.group:not(:disabled):hover_&]:text-neutral-50",
-            "pressed": "[.group:not(:disabled):active_&]:bg-error-100 [.group:not(:disabled):active_&]:text-neutral-50",
-            "loading": "group-aria-busy:bg-error-100 group-aria-busy:text-neutral-50",
-            "disabled": "[&:disabled:not([aria-busy=true])]:opacity-25"
         }
     },
     "states": {
