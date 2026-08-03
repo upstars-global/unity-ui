@@ -1,3 +1,10 @@
+## [1.23.0](https://github.com/upstars-global/unity-ui/compare/v1.22.0...v1.23.0) (2026-08-03)
+
+### 🚀 Features
+
+* UN-3002 add font-family load ([#33](https://github.com/upstars-global/unity-ui/issues/33))
+ ([6a77c82](https://github.com/upstars-global/unity-ui/commit/6a77c8298b2bf011eda4d65494affb9fdb0fa46b))
+
 ## [1.22.0](https://github.com/upstars-global/unity-ui/compare/v1.21.0...v1.22.0) (2026-07-24)
 
 ### 🚀 Features
