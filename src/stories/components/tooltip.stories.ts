@@ -69,7 +69,7 @@ export const Playground: Story = {
     },
     template: `
       <div class="min-h-56 bg-bg-deep p-6">
-        <div class="grid grid-cols-1 gap-6 rounded-2xl md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 rounded-2xl md:grid-cols-3" :key="args.trigger">
           <UiCard
               v-for="item in gridItems"
               :key="item.id"
