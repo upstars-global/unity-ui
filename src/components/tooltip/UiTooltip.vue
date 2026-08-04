@@ -8,7 +8,6 @@ import UiIcon from "../icon/UiIcon.vue";
 const props = withDefaults(defineProps<UiTooltipProps>(), {
   text: '',
   placement: 'top-center',
-  strategy: 'absolute',
   offsetValue: 8,
   disabled: false,
   trigger: 'hover',
@@ -76,7 +75,7 @@ const { floatingStyles, middlewareData, placement: currentPlacement } = useFloat
   open: tooltipVisible,
   placement: resolvedPlacement,
   middleware,
-  strategy: computed(() => props.strategy),
+  strategy: 'absolute',
   whileElementsMounted: (referenceEl, floatingEl, update) => {
     return autoUpdate(referenceEl, floatingEl, update, {
       ancestorScroll: true,

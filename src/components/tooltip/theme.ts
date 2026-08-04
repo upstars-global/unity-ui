@@ -7,7 +7,6 @@ const TOOLTIP_TRIGGER_BASE: TooltipClassList = ['inline-flex']
 const TOOLTIP_CONTENT_BG: string = tokenClass('--component-tooltip-bg', 'bg');
 const TOOLTIP_CONTENT_BASE: TooltipClassList = [
   'text-caption',
-  'font-medium',
   'min-w-52',
   tokenClass('--spacing-8', 'p'),
   tokenClass('--radius-tooltip', 'rounded'),

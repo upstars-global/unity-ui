@@ -1,4 +1,4 @@
-import type { Placement, Strategy } from '@floating-ui/vue'
+import type { Placement } from '@floating-ui/vue'
 import type { UiThemeIconName } from "../../themes/registry.ts";
 
 export type UiTooltipPlacement =
@@ -21,7 +21,6 @@ export const TOOLTIP_PLACEMENT_MAP = {
 export interface UiTooltipProps {
   text?: string
   placement?: UiTooltipPlacement
-  strategy?: Strategy
   fallbackPlacements?: UiTooltipPlacement[]
   offsetValue?: number
   disabled?: boolean
