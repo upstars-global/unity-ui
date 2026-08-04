@@ -1,6 +1,7 @@
 @import "base/spacing.css";
 @import "base/colors.css";
 @import "base/typography.css";
+@import "fonts.css";
 @import "components/tabs.css";
 @import "../../../tailwind/base/typography-elements.css";
 @import "../../../tailwind/base/scrollbar.css";

@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/vue3-vite'
 import { provide } from 'vue'
-import './css/tailwind.css'
 import alpaThemeCssUrl from '../src/themes/alpa/style/tailwind.storybook.css?url'
 import kingThemeCssUrl from '../src/themes/king/style/tailwind.storybook.css?url'
 import { createStorybookEventBus } from './createStorybookEventBus'
