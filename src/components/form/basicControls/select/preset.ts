@@ -6,13 +6,16 @@ const select: Partial<Config> = {
     plugin(({ addComponents }) => {
       addComponents({
         '.ui-select': {
-          '.ui-select__icon': {
+          '&__icon': {
             flexShrink: '0',
             width: '1.5rem',
             height: '1.5rem',
             color: 'var(--component-input-icon)',
+            '&--selected': {
+              color: 'var(--fg-status-success)'
+            }
           },
-          '.ui-select__text': {
+          '&__text': {
             minWidth: '0',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -40,9 +43,6 @@ const select: Partial<Config> = {
             '.ui-select__dropdown-icon': {
               transform: 'rotate(180deg)',
             },
-          },
-          '.ui-input-suggest__item:hover, .ui-input-suggest__item[aria-selected="true"], .ui-input-suggest__item[data-active="true"]': {
-            backgroundColor: 'var(--component-input-list-hover)',
           },
         },
       })

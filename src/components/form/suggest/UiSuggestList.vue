@@ -134,9 +134,16 @@ function handleMouseEnter(item: UiSuggestListItem, index: number) {
 }
 
 watch([() => props.visible, selectedIndex], ([visible, index]) => {
-  if (visible) {
-    syncActiveIndex(index)
+  if (!visible) {
+    return
   }
+
+  if (index >= 0) {
+    syncActiveIndex(index)
+    return
+  }
+
+  setActiveIndex(-1)
 })
 
 defineExpose<UiSuggestListExposed>({
@@ -170,11 +177,10 @@ defineExpose<UiSuggestListExposed>({
         :data-suggest-index="index"
         type="button"
         role="option"
-        class="ui-input-suggest__item text-left"
+        class="ui-input-suggest__item flex shrink-0 grow-0 items-center cursor-pointer text-body font-medium text-nowrap text-left"
         :disabled="disabled || suggestItem.disabled"
         :aria-selected="selectedIndex === index"
         :data-active="activeIndex === index"
-        :class="suggestTheme.slots.item"
         @mouseenter="handleMouseEnter(suggestItem, index)"
         @click="selectItem(suggestItem, index)"
       >
@@ -188,6 +194,7 @@ defineExpose<UiSuggestListExposed>({
             v-if="suggestItem.leadingIconName || leadingIconName"
             :class="suggestTheme.slots.icon"
             :name="suggestItem.leadingIconName || leadingIconName"
+            class="ui-input-suggest__leading-icon"
           />
         </slot>
         <slot
@@ -195,23 +202,30 @@ defineExpose<UiSuggestListExposed>({
           :active="activeIndex === index"
           :selected="selectedIndex === index"
         >
-          <span class="min-w-0 flex-1 truncate">
+          <span class="min-w-0 flex-1 truncate ui-input-suggest__label">
             {{ suggestItem.label }}
           </span>
         </slot>
-        <slot
-          name="trailing"
-          :item="suggestItem"
-          :active="activeIndex === index"
-          :selected="selectedIndex === index"
-        >
-          <UiIcon
-            v-if="suggestItem.trailingIconName || trailingIconName"
-            class="ml-auto"
-            :class="suggestTheme.slots.icon"
-            :name="suggestItem.trailingIconName || trailingIconName"
-          />
-        </slot>
+        <UiIcon
+            v-if="selectedIndex === index"
+            name="line_check"
+            class="text-fg-status-success"
+        />
+        <template v-else>
+          <slot
+              name="trailing"
+              :item="suggestItem"
+              :active="activeIndex === index"
+              :selected="selectedIndex === index"
+          >
+            <UiIcon
+                v-if="suggestItem.trailingIconName || trailingIconName"
+                class="ml-auto"
+                :class="suggestTheme.slots.icon"
+                :name="suggestItem.trailingIconName || trailingIconName"
+            />
+          </slot>
+        </template>
       </button>
     </template>
     <template v-else>

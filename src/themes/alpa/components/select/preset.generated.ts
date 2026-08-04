@@ -9,13 +9,16 @@ const select: Partial<Config> = {
     plugin(({ addComponents }) => {
       addComponents({
         '.ui-select': {
-          '.ui-select__icon': {
+          '&__icon': {
             flexShrink: '0',
             width: '1.5rem',
             height: '1.5rem',
             color: "rgb(var(--color-neutral-100) / 1)",
+            '&--selected': {
+              color: "var(--fg-status-success)"
+            }
           },
-          '.ui-select__text': {
+          '&__text': {
             minWidth: '0',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -31,7 +34,7 @@ const select: Partial<Config> = {
             color: "rgb(var(--color-error-100) / 1)",
           },
           '.ui-select__list': {
-            boxShadow: '0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)',
+            boxShadow: "0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)",
           },
           '&--open': {
             '.ui-select__field': {
@@ -43,9 +46,6 @@ const select: Partial<Config> = {
             '.ui-select__dropdown-icon': {
               transform: 'rotate(180deg)',
             },
-          },
-          '.ui-input-suggest__item:hover, .ui-input-suggest__item[aria-selected="true"], .ui-input-suggest__item[data-active="true"]': {
-            backgroundColor: "rgb(var(--color-neutral-200) / 0.4)",
           },
         },
       })

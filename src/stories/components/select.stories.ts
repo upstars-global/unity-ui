@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import UiSelect from '../../components/form/basicControls/select/UiSelect.vue'
+import UiCard from '../../components/card/UiCard.vue'
 import type { UiSelectOption } from '../../components/form/basicControls/select/types'
 import type { UiThemeIconName } from '../../themes/registry'
 import { icons as alpaIcons } from '../../themes/alpa/icons/config'
@@ -93,7 +94,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const renderSelectStory = (args: SelectStoryArgs) => ({
-  components: { UiSelect },
+  components: { UiSelect, UiCard },
   setup() {
     const value = ref<string | number | boolean | null>(args.modelValue)
 
@@ -106,12 +107,22 @@ const renderSelectStory = (args: SelectStoryArgs) => ({
   template: `
     <div class=" max-h-[32rem]">
       <div class="bg-bg-deep p-12 h-[132rem] flex flex-col">
-        <UiSelect
-            v-bind="args"
-            v-model="value"
-            :list="options"
-            class="max-w-[19.5rem] justify-self-start"
-        />
+        <div class="flex gap-16">
+          <UiSelect
+              v-bind="args"
+              v-model="value"
+              :list="options"
+              class="w-[19rem] justify-self-start"
+          />
+          <UiSelect
+              v-bind="args"
+              v-model="value"
+              :list="options"
+              leading-icon-name="fill_lock"
+              class="w-[19rem] justify-self-start"
+          />
+        </div>
+        
         <UiSelect
             v-bind="args"
             v-model="value"

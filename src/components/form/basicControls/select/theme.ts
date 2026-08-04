@@ -3,7 +3,9 @@ import {
   DEFAULT_SIZE,
   ERROR_MESSAGE_BASE,
   FIELD_BASE,
+  LABEL_BASE,
   MESSAGE_BASE,
+  TEXT_BASE,
 } from '../basicTheme.ts'
 
 type SelectThemeSize = {
@@ -32,7 +34,6 @@ export interface SelectUiOptimized {
     listContent: string
     option: string
     optionLabel: string
-    optionTrailingIcon: string
     errorMessage: string
   }
 }
@@ -67,15 +68,33 @@ const select: SelectUiOptimized = {
       'text-left',
       'cursor-pointer',
       'focus-visible:outline-none',
+      'disabled:cursor-not-allowed',
     ].join(' '),
-    content: ['flex', 'min-w-0', 'flex-1', 'flex-col', 'justify-center', 'overflow-hidden'].join(' '),
+    content: ['relative', 'flex', 'min-w-0', 'flex-1', 'flex-col', 'justify-center', 'overflow-hidden'].join(' '),
     label: [
-      'text-caption',
-      'font-medium',
-      tokenClass('--component-input-label', 'text'),
+      'absolute',
+      ...LABEL_BASE,
+      ...TEXT_BASE,
     ].join(' '),
-    value: ['text-body', 'font-medium', tokenClass('--component-input-value', 'text')].join(' '),
-    placeholder: ['text-body', 'font-medium', tokenClass('--component-input-placeholder', 'text')].join(' '),
+    value: [
+      'absolute',
+      'z-1',
+      'w-full',
+      'min-w-0',
+      'text-body',
+      'font-medium',
+      tokenClass('--component-input-value', 'text'),
+      ...TEXT_BASE,
+    ].join(' '),
+    placeholder: [
+      'absolute',
+      'z-1',
+      'w-full',
+      'min-w-0',
+      'text-body',
+      tokenClass('--component-input-placeholder', 'text'),
+      ...TEXT_BASE,
+    ].join(' '),
     message: MESSAGE_BASE.join(' '),
     leadingIcon: '',
     trailingIcon: ['transition-transform'].join(' '),
@@ -105,7 +124,6 @@ const select: SelectUiOptimized = {
       'disabled:opacity-45',
     ].join(' '),
     optionLabel: ['min-w-0', 'flex-1', 'truncate'].join(' '),
-    optionTrailingIcon: ['ml-auto'].join(' '),
     errorMessage: ERROR_MESSAGE_BASE.join(' '),
   },
 }

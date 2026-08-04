@@ -5,7 +5,7 @@ const button = {
     "base": "group relative flex flex-col gap-4",
     "size": {
         "sm": {
-            "field": "rounded-8 h-[2.75rem] p-[0.625rem]",
+            "field": "rounded-8 h-[2.75rem] p-8",
             "content": "h-24",
             "option": "text-body"
         },
@@ -16,11 +16,11 @@ const button = {
         }
     },
     "slots": {
-        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_var(--color-transparent)] gap-8 bg-neutral-200/40 hover:[&:not(:focus-within):not([data-invalid=true]):not([data-disabled=true])]:border-primary-50 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100 text-left cursor-pointer focus-visible:outline-none",
-        "content": "flex min-w-0 flex-1 flex-col justify-center overflow-hidden",
-        "label": "text-caption font-medium text-neutral-100",
-        "value": "text-body font-medium text-white",
-        "placeholder": "text-body font-medium text-neutral-100",
+        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_var(--color-transparent)] gap-8 bg-neutral-200/40 hover:[&:not(:focus-within):not([data-invalid=true]):not([data-disabled=true])]:border-primary-50 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100 text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed",
+        "content": "relative flex min-w-0 flex-1 flex-col justify-center overflow-hidden",
+        "label": "absolute left-0 origin-left transition-all duration-200 ease-out w-full text-body duration-150 text-neutral-100 group-data-[invalid=true]:text-error-100 group-focus-within:!text-primary-300 min-w-0 truncate",
+        "value": "absolute z-1 w-full min-w-0 text-body font-medium text-white min-w-0 truncate",
+        "placeholder": "absolute z-1 w-full min-w-0 text-body text-neutral-100 min-w-0 truncate",
         "message": "px-16 text-neutral-100 group-data-[invalid=true]:text-error-100 group-focus-within:!text-neutral-100 text-caption",
         "leadingIcon": "",
         "trailingIcon": "transition-transform",
@@ -29,7 +29,6 @@ const button = {
         "listContent": "flex flex-col gap-4 p-4",
         "option": "flex w-full items-center text-left transition-colors min-h-[3rem] gap-8 py-8 px-12 rounded-16 text-white text-body font-medium disabled:cursor-not-allowed disabled:opacity-45",
         "optionLabel": "min-w-0 flex-1 truncate",
-        "optionTrailingIcon": "ml-auto",
         "errorMessage": "flex gap-4 group-data-[invalid=true]:text-error-100 group-focus-within:text-neutral-100"
     }
 } as const

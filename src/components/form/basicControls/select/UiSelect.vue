@@ -7,6 +7,7 @@ import UiSuggestList from '../../suggest/UiSuggestList.vue'
 import type { UiSuggestListExposed, UiSuggestListSelectPayload } from '../../suggest/types'
 import UiIcon from '../../../icon/UiIcon.vue'
 import { baseFieldDefault } from '../BaseField.ts'
+import { LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS } from '../input/theme.ts'
 import type {
   SelectValue,
   UiSelectEmits,
@@ -44,13 +45,20 @@ const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
 const suggestListRef = ref<UiSuggestListExposed | null>(null)
 const isOpen = ref(false)
+const isFocused = ref(false)
 const activeIndex = ref(-1)
 
-const hasErrorMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
+const hasErrorMessage = computed(() =>
+    props.invalid &&
+    (Boolean(props.errorMessages) || Boolean(slots.errorMessages)) &&
+    !isFocused.value
+)
 const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
 const selectedIndex = computed(() => props.list.findIndex((item) => item.value === props.modelValue))
 const selectedOption = computed<UiSelectOption | null>(() => props.list[selectedIndex.value] ?? null)
 const hasValue = computed(() => selectedOption.value !== null)
+const hasFloatingLabel = computed(() => props.size === 'default' && Boolean(props.label))
+const shouldFloatLabel = computed(() => hasFloatingLabel.value && (isFocused.value || isOpen.value || hasValue.value))
 const currentLeadingIconName = computed(() => selectedOption.value?.leadingIconName ?? props.leadingIconName)
 
 const listboxId = computed(() => `${props.name}-listbox`)
@@ -62,7 +70,19 @@ const activeDescendant = computed(() => {
   return `${props.name}-option-${activeIndex.value}`
 })
 const displayedValue = computed(() => {
-  return selectedOption.value?.label || props.placeholder
+  if (hasFloatingLabel.value && !shouldFloatLabel.value) {
+    return ''
+  }
+
+  if (selectedOption.value?.label) {
+    return selectedOption.value.label
+  }
+
+  if (props.size === 'sm') {
+    return props.label || props.placeholder
+  }
+
+  return props.placeholder
 })
 const rootClasses = computed(() => {
   return flattenClasses(
@@ -84,6 +104,18 @@ const contentClasses = computed(() => {
   return flattenClasses(
     selectTheme.slots.content,
     selectTheme.size[props.size].content,
+  )
+})
+const floatingLabelClasses = computed(() => {
+  return flattenClasses(
+    selectTheme.slots.label,
+    shouldFloatLabel.value ? LABEL_FOCUS : LABEL_BLUR,
+  )
+})
+const displayedValueClasses = computed(() => {
+  return flattenClasses(
+    hasValue.value ? selectTheme.slots.value : selectTheme.slots.placeholder,
+    shouldFloatLabel.value && VALUE_FOCUS,
   )
 })
 const attributes = computed(() => {
@@ -216,10 +248,13 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 function handleFocus(event: FocusEvent) {
+  isFocused.value = true
   emit('focus', event)
 }
 
 function handleBlur(event: FocusEvent) {
+  isFocused.value = false
+
   requestAnimationFrame(() => {
     if (!rootRef.value?.contains(document.activeElement)) {
       closeList()
@@ -294,7 +329,7 @@ watch(() => props.modelValue, () => {
       <div :class="contentClasses">
         <span
           v-if="size === 'default' && label"
-          :class="selectTheme.slots.label"
+          :class="floatingLabelClasses"
           class="ui-select__label ui-select__text"
         >
           <slot name="label">
@@ -303,7 +338,7 @@ watch(() => props.modelValue, () => {
         </span>
         <span
           v-if="displayedValue"
-          :class="hasValue ? selectTheme.slots.value : selectTheme.slots.placeholder"
+          :class="displayedValueClasses"
           class="ui-select__text ui-select__displayed-value"
         >
           {{ displayedValue }}
@@ -311,7 +346,6 @@ watch(() => props.modelValue, () => {
       </div>
       <div
         :class="selectTheme.slots.action"
-        @mousedown.prevent
       >
         <slot
           name="trailing"
@@ -346,59 +380,7 @@ watch(() => props.modelValue, () => {
         :close-on-click-outside="false"
         @select="selectOption"
         @active-change="handleActiveChange"
-      >
-        <template #leading="{ item, selected, active }">
-          <slot
-            name="optionLeading"
-            :option="item"
-            :selected="selected"
-            :active="active"
-          >
-            <UiIcon
-              v-if="item.leadingIconName"
-              :name="item.leadingIconName"
-              class="ui-select__icon"
-            />
-          </slot>
-        </template>
-
-        <template #default="{ item, selected, active }">
-          <span :class="selectTheme.slots.optionLabel">
-            <slot
-              name="option"
-              :option="item"
-              :selected="selected"
-              :active="active"
-            >
-              {{ item.label }}
-            </slot>
-          </span>
-        </template>
-
-        <template #trailing="{ item, selected, active }">
-          <slot
-            name="optionTrailing"
-            :option="item"
-            :selected="selected"
-            :active="active"
-          >
-            <UiIcon
-              v-if="item.trailingIconName || optionTrailingIconName"
-              :name="item.trailingIconName || optionTrailingIconName"
-              class="ui-select__icon"
-              :class="selectTheme.slots.optionTrailingIcon"
-            />
-          </slot>
-        </template>
-
-        <template #empty>
-          <slot name="empty">
-            <span :class="selectTheme.slots.placeholder">
-              No options
-            </span>
-          </slot>
-        </template>
-      </UiSuggestList>
+      />
     </div>
 
     <div
