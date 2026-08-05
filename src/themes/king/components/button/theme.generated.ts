@@ -92,11 +92,6 @@ const button = {
             }
         }
     },
-    "variant": {
-        "tertiaryAltSlabDefaultBorder": {
-            "base": "border-2 border-transparent"
-        }
-    },
     "states": {
         "fullWidth": "w-full",
         "fullWidthMobile": "w-full md:w-auto"

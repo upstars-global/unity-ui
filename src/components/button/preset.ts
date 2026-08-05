@@ -97,7 +97,7 @@ const button: Partial<Config> = {
 
                     '&:disabled:not([aria-busy="true"])': {
                         '&.primary, &.destructive': {
-                            opacity: '0.45'
+                            opacity: '0.25'
                         },
                         '&.secondary, &.tertiary, &.ghost': {
                             opacity: '0.45'
