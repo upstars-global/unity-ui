@@ -25,5 +25,5 @@ export interface UiTooltipProps {
   offsetValue?: number
   disabled?: boolean
   iconName?: UiThemeIconName
-  trigger?: 'hover' | 'click' | 'always'
+  trigger?: 'hover' | 'click'
 }

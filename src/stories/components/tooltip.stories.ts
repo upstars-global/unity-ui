@@ -14,7 +14,7 @@ type TooltipStoryArgs = {
   iconName: UiThemeIconName
 }
 
-const TRIGGERS: TooltipStoryArgs['trigger'][] = ['hover', 'click', 'always']
+const TRIGGERS: TooltipStoryArgs['trigger'][] = ['hover', 'click']
 const ICON_OPTIONS: TooltipStoryArgs['iconName'][] = [
   'line_plus',
   'line_close',
