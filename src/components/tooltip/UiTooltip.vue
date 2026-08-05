@@ -19,7 +19,6 @@ defineOptions({
 })
 
 const isOpen = ref(false)
-const root = ref<HTMLElement | null>(null)
 const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
 const floatingArrow = ref<HTMLElement | null>(null);
@@ -34,7 +33,6 @@ const OPPOSITE_SIDE_BY_SIDE = {
 };
 
 const tooltipVisible = computed(() => !props.disabled && isOpen.value)
-const collisionBoundary = computed(() => root.value?.parentElement ?? 'clippingAncestors')
 const floatingArrowX = computed(() => middlewareData.value.arrow?.x ?? null);
 const floatingArrowY = computed(() => middlewareData.value.arrow?.y ?? null);
 const resolvedPlacement = computed(() => TOOLTIP_PLACEMENT_MAP[props.placement])
@@ -47,26 +45,33 @@ const resolvedFallbackPlacements = computed(() => {
 const VIEWPORT_PADDING = 8
 
 const middleware = computed(() => {
-  const shiftConfig = shift({
-    padding: VIEWPORT_PADDING,
-    boundary: collisionBoundary.value,
-    mainAxis: false,
-    crossAxis: true,
-  })
-  const flipConfig = flip({
-    padding: VIEWPORT_PADDING,
-    boundary: collisionBoundary.value,
-    fallbackPlacements: resolvedFallbackPlacements.value,
-  })
-  const baseMiddleware = [
+  return [
     offset(props.offsetValue + 8),
-    shift(),
-    flip(),
+    flip({
+      padding: VIEWPORT_PADDING,
+      boundary: 'clippingAncestors',
+      rootBoundary: 'viewport',
+      fallbackPlacements: resolvedFallbackPlacements.value,
+    }),
+    shift({
+      padding: VIEWPORT_PADDING,
+      boundary: 'clippingAncestors',
+      rootBoundary: 'viewport',
+      crossAxis: true,
+    }),
+    arrow({ element: floatingArrow, padding: 16 }),
+    hide({
+      padding: VIEWPORT_PADDING,
+      boundary: 'clippingAncestors',
+      rootBoundary: 'viewport',
+    }),
+    hide({
+      strategy: 'escaped',
+      padding: VIEWPORT_PADDING,
+      boundary: 'clippingAncestors',
+      rootBoundary: 'viewport',
+    }),
   ]
-
-  const arrowConfig = arrow({ element: floatingArrow, padding: 16 });
-
-  return [flipConfig, shiftConfig, arrowConfig, ...baseMiddleware]
 })
 
 const { floatingStyles, middlewareData, placement: currentPlacement } = useFloating(reference, floating, {
@@ -75,6 +80,11 @@ const { floatingStyles, middlewareData, placement: currentPlacement } = useFloat
   placement: resolvedPlacement,
   middleware,
   strategy: 'absolute',
+  whileElementsMounted: (referenceEl, floatingEl, update) => {
+    return autoUpdate(referenceEl, floatingEl, update, {
+      ancestorScroll: true,
+    })
+  },
 })
 
 const appConfig = useAppConfig()
@@ -100,7 +110,14 @@ const attributes = computed(() => {
   return rest
 })
 
-const isReferenceHidden = computed(() => Boolean(middlewareData.value.hide?.referenceHidden))
+const isTooltipHidden = computed(() => (
+  Boolean(middlewareData.value.hide?.referenceHidden) ||
+  Boolean(middlewareData.value.hide?.escaped)
+))
+const floatingVisibilityStyles = computed(() => ({
+  visibility: isTooltipHidden.value ? 'hidden' : 'visible',
+  pointerEvents: isTooltipHidden.value ? 'none' : 'auto',
+}))
 const handleMouseEnter = () => {
   if (isTriggerHover && !props.disabled) {
     isOpen.value = true
@@ -125,8 +142,8 @@ onMounted(() => {
   }
 })
 
-watch(isReferenceHidden, (referenceHidden) => {
-  if (referenceHidden && isTriggerClick && isOpen.value) {
+watch(isTooltipHidden, (tooltipHidden) => {
+  if (tooltipHidden && isTriggerClick && isOpen.value) {
     isOpen.value = false
   }
 })
@@ -134,7 +151,6 @@ watch(isReferenceHidden, (referenceHidden) => {
 
 <template>
   <div
-    ref="root"
     class="ui-tooltip"
     :class="[tooltipTheme.base, attrs.class]"
     v-bind="attributes"
@@ -152,7 +168,7 @@ watch(isReferenceHidden, (referenceHidden) => {
       v-if="tooltipVisible"
       ref="floating"
       :class="tooltipTheme.slots.content"
-      :style="floatingStyles"
+      :style="[floatingStyles, floatingVisibilityStyles]"
       class="ui-tooltip__content relative flex gap-4"
     >
       <div
