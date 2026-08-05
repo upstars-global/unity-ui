@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, onMounted, ref, useAttrs, watch} from 'vue'
-import {arrow, autoUpdate, flip, hide, offset, shift, useFloating} from '@floating-ui/vue'
+import {arrow, flip, offset, shift, useFloating} from '@floating-ui/vue'
 import {useAppConfig} from '../../composables/useAppConfig'
 import {TOOLTIP_PLACEMENT_MAP, type UiTooltipPlacement, type UiTooltipProps} from './types.ts'
 import UiIcon from "../icon/UiIcon.vue";
@@ -60,17 +60,6 @@ const middleware = computed(() => {
       crossAxis: true,
     }),
     arrow({ element: floatingArrow, padding: 16 }),
-    hide({
-      padding: VIEWPORT_PADDING,
-      boundary: 'clippingAncestors',
-      rootBoundary: 'viewport',
-    }),
-    hide({
-      strategy: 'escaped',
-      padding: VIEWPORT_PADDING,
-      boundary: 'clippingAncestors',
-      rootBoundary: 'viewport',
-    }),
   ]
 })
 
@@ -80,11 +69,6 @@ const { floatingStyles, middlewareData, placement: currentPlacement } = useFloat
   placement: resolvedPlacement,
   middleware,
   strategy: 'absolute',
-  whileElementsMounted: (referenceEl, floatingEl, update) => {
-    return autoUpdate(referenceEl, floatingEl, update, {
-      ancestorScroll: true,
-    })
-  },
 })
 
 const appConfig = useAppConfig()
@@ -118,12 +102,13 @@ const floatingVisibilityStyles = computed(() => ({
   visibility: isTooltipHidden.value ? 'hidden' : 'visible',
   pointerEvents: isTooltipHidden.value ? 'none' : 'auto',
 }))
+
+const isReferenceHidden = computed(() => Boolean(middlewareData.value.hide?.referenceHidden))
 const handleMouseEnter = () => {
   if (isTriggerHover && !props.disabled) {
     isOpen.value = true
   }
 }
-
 const handleMouseLeave = () => {
   if (isTriggerHover) {
     isOpen.value = false
@@ -142,8 +127,8 @@ onMounted(() => {
   }
 })
 
-watch(isTooltipHidden, (tooltipHidden) => {
-  if (tooltipHidden && isTriggerClick && isOpen.value) {
+watch(isReferenceHidden, (referenceHidden) => {
+  if (referenceHidden && isTriggerClick && isOpen.value) {
     isOpen.value = false
   }
 })
