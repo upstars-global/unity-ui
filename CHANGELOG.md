@@ -1,3 +1,16 @@
+## [1.23.1](https://github.com/upstars-global/unity-ui/compare/v1.23.0...v1.23.1) (2026-08-05)
+
+### 🐛 Bug Fixes
+
+* UN-2964 optimize button theme ([#35](https://github.com/upstars-global/unity-ui/issues/35))
+ ([e54880e](https://github.com/upstars-global/unity-ui/commit/e54880e9214a791b95b2e8f97a4446302d698834))
+
+
+
+    * fix: UN-2964 optimize button theme
+
+    * fix: UN-2964 optimize button theme
+
 ## [1.23.0](https://github.com/upstars-global/unity-ui/compare/v1.22.0...v1.23.0) (2026-08-03)
 
 ### 🚀 Features
