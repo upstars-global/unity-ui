@@ -60,9 +60,8 @@ const middleware = computed(() => {
   })
   const baseMiddleware = [
     offset(props.offsetValue + 8),
-    hide({
-      boundary: collisionBoundary.value,
-    }),
+    shift(),
+    flip(),
   ]
 
   const arrowConfig = arrow({ element: floatingArrow, padding: 16 });
@@ -76,11 +75,6 @@ const { floatingStyles, middlewareData, placement: currentPlacement } = useFloat
   placement: resolvedPlacement,
   middleware,
   strategy: 'absolute',
-  whileElementsMounted: (referenceEl, floatingEl, update) => {
-    return autoUpdate(referenceEl, floatingEl, update, {
-      ancestorScroll: true,
-    })
-  },
 })
 
 const appConfig = useAppConfig()
