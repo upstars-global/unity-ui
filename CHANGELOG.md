@@ -1,3 +1,14 @@
+## [1.23.2](https://github.com/upstars-global/unity-ui/compare/v1.23.1...v1.23.2) (2026-08-06)
+
+### 🐛 Bug Fixes
+
+* UN-3008 fix tooltip arrow ([#34](https://github.com/upstars-global/unity-ui/issues/34))
+ ([552e4ec](https://github.com/upstars-global/unity-ui/commit/552e4ecf4a49b5e52a14e66b9e9343363e249448))
+
+
+
+    * fix: UN-3008 fix tooltip arrow
+
 ## [1.23.1](https://github.com/upstars-global/unity-ui/compare/v1.23.0...v1.23.1) (2026-08-05)
 
 ### 🐛 Bug Fixes
