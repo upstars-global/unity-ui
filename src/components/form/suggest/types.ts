@@ -39,16 +39,9 @@ export interface UiSuggestListSelectPayload<TValue extends UiSuggestListValue = 
   item: UiSuggestListItem<TValue>
 }
 
-export interface UiSuggestListActivePayload<TValue extends UiSuggestListValue = UiSuggestListValue> {
-  index: number
-  item: UiSuggestListItem<TValue> | null
-}
-
 export interface UiSuggestListEmits<TValue extends UiSuggestListValue = UiSuggestListValue> {
   (event: 'select', payload: UiSuggestListSelectPayload<TValue>): void
   (event: 'close', payload: Event | KeyboardEvent | undefined): void
-  (event: 'hover', payload: UiSuggestListSelectPayload<TValue>): void
-  (event: 'active-change', payload: UiSuggestListActivePayload<TValue>): void
 }
 
 export interface UiSuggestListSlots<TValue extends UiSuggestListValue = UiSuggestListValue> {
@@ -59,12 +52,5 @@ export interface UiSuggestListSlots<TValue extends UiSuggestListValue = UiSugges
 }
 
 export interface UiSuggestListExposed {
-  activeIndex: number
-  handleKeydown: (event: KeyboardEvent) => boolean
-  setActiveIndex: (index: number) => boolean
-  syncActiveIndex: (preferredIndex?: number) => number
-  focusFirst: () => number
-  focusLast: () => number
-  selectActiveItem: () => UiSuggestListItem | null
   getItemId: (index: number) => string | undefined
 }

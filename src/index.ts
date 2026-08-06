@@ -4,7 +4,6 @@ export { useEventBus } from './composables/useEventBus';
 export { useModalController } from './components/modal/useModalController';
 export { useToastController } from './components/notifications/toast/useToastController';
 export { useInputSuggest } from './composables/useInputSuggest';
-export { useSuggestListNavigation } from './composables/useSuggestListNavigation';
 export { getThemeConfig } from './themes/registry';
 export { default as modal } from './plugins/modal';
 export { default as toast } from './plugins/toast';
@@ -24,11 +23,6 @@ export type {
   UseInputSuggestOptions,
   UseInputSuggestResult,
 } from './composables/useInputSuggest';
-export type {
-  SuggestNavigationItem,
-  UseSuggestListNavigationOptions,
-  UseSuggestListNavigationResult,
-} from './composables/useSuggestListNavigation';
 export type { UiThemeName, UiThemeIconName } from './themes/registry';
 export type { UnityUIOptions } from './plugins/vue-plugin';
 export type {

@@ -20,7 +20,7 @@ const suggest: Partial<Config> = {
               },
             },
 
-            '&:hover, &[data-active="true"]': {
+            '&:hover:not(&[aria-selected="true"])': {
               backgroundColor: 'var(--component-input-list-hover)',
             }
           },

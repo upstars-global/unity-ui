@@ -1,4 +1,4 @@
-import {computed, ref, type Ref, watch} from 'vue'
+import { computed, ref, type Ref, watch } from 'vue'
 import type {UiSuggestListExposed} from '../components/form/suggest/types'
 
 export type InputSuggestValue = string | number
@@ -24,7 +24,7 @@ export function useInputSuggest({
   modelValue,
   suggestList,
   suggestListReplacer,
-  suggestListRef,
+  suggestListRef: _suggestListRef,
 }: UseInputSuggestOptions): UseInputSuggestResult {
   const suggestItemPosition = ref(-1)
   const suggestListVisible = ref(true)
@@ -33,12 +33,9 @@ export function useInputSuggest({
     return Boolean(suggestList.value?.length) && suggestListVisible.value
   })
 
-  function syncSuggestPosition() {
-    suggestItemPosition.value = suggestListRef.value?.activeIndex ?? -1
-  }
-
   function suggestListDisable() {
     suggestListVisible.value = false
+    suggestItemPosition.value = -1
   }
 
   function suggestListShow() {
@@ -50,48 +47,16 @@ export function useInputSuggest({
   })
 
   function selectSuggestItem(payload: { selectValue?: string } = {}) {
-    if (!suggestListRendered.value || !suggestListRef.value) {
+    if (!suggestListRendered.value || !payload.selectValue) {
       return
     }
 
-    if (payload.selectValue) {
-      const index = suggestList.value?.findIndex((item) => item === payload.selectValue) ?? -1
-
-      if (index >= 0) {
-        suggestListRef.value.setActiveIndex(index)
-      }
-    }
-
-    const selectedItem = suggestListRef.value.selectActiveItem()
-
-    if (!selectedItem) {
-      return
-    }
-
-    modelValue.value = suggestListReplacer.value?.(String(modelValue.value), String(selectedItem.value)) ?? selectedItem.value
-    syncSuggestPosition()
+    modelValue.value = suggestListReplacer.value?.(String(modelValue.value), payload.selectValue) ?? payload.selectValue
     suggestListDisable()
   }
 
-  function keydownSuggestHandler(event: KeyboardEvent) {
-    if (!suggestListRendered.value || !suggestListRef.value) {
-      return
-    }
-
-    const handled = suggestListRef.value.handleKeydown(event)
-
-    if (handled) {
-      syncSuggestPosition()
-      return
-    }
-
-    if (event.key === 'Escape') {
-      suggestListDisable()
-    }
-  }
 
   return {
-    keydownSuggestHandler,
     selectSuggestItem,
     suggestItemPosition,
     suggestListDisable,

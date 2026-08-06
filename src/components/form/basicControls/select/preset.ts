@@ -27,9 +27,6 @@ const select: Partial<Config> = {
           '&--disabled': {
             opacity: 'var(--component-input-disabled-opacity)',
           },
-          '&--error .ui-select__label': {
-            color: 'var(--component-input-error-label)',
-          },
           '.ui-select__list': {
             boxShadow: '0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)',
           },

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { computed, nextTick, onMounted, reactive, ref } from 'vue'
 import UiInput from '../../components/form/basicControls/input/UiInput.vue'
 import UiSuggestList from '../../components/form/suggest/UiSuggestList.vue'
-import type { UiSuggestListExposed, UiSuggestListSelectPayload } from '../../components/form/suggest/types'
+import type { UiSuggestListSelectPayload } from '../../components/form/suggest/types'
 
 type InputStoryArgs = {
   modelValue: string
@@ -89,7 +89,6 @@ export const WithSuggestList: Story = {
     setup() {
       const value = ref('')
       const visible = ref(false)
-      const suggestListRef = ref<UiSuggestListExposed | null>(null)
       const suggestions = [
         'Amsterdam',
         'Athens',
@@ -133,21 +132,14 @@ export const WithSuggestList: Story = {
           return
         }
 
-        if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && !visible.value) {
+        if ((event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') && !visible.value) {
           visible.value = true
           return
         }
 
         if (event.key === 'Escape') {
           closeSuggest()
-          return
         }
-
-        if (!visible.value) {
-          return
-        }
-
-        suggestListRef.value?.handleKeydown(event)
       }
 
       const isVisible = computed(() => {
@@ -160,7 +152,6 @@ export const WithSuggestList: Story = {
       return {
         value,
         visible,
-        suggestListRef,
         filteredItems,
         isVisible,
         closeSuggest,
@@ -184,7 +175,6 @@ export const WithSuggestList: Story = {
         >
           <template #suggestList>
             <UiSuggestList
-              ref="suggestListRef"
               :items="filteredItems"
               :visible="isVisible"
               leadingIconName="fill_lock"

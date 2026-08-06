@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useAppConfig } from '../../../composables/useAppConfig'
-import { useSuggestListNavigation } from '../../../composables/useSuggestListNavigation'
 import UiIcon from '../../icon/UiIcon.vue'
 import type {
-  UiSuggestListEmits,
-  UiSuggestListExposed,
   UiSuggestListItem,
   UiSuggestListProps,
   UiSuggestListSlots,
+  UiSuggestListEmits,
+  UiSuggestListExposed,
 } from './types.ts'
 
 defineOptions({
@@ -32,7 +31,6 @@ defineSlots<UiSuggestListSlots>()
 
 const appConfig = useAppConfig()
 const suggestTheme = appConfig.components.suggest
-const rootRef = ref<HTMLElement | null>(null)
 
 const normalizedItems = computed<UiSuggestListItem[]>(() => {
   return props.items.map((item) => {
@@ -65,30 +63,6 @@ const rootClasses = computed(() => {
   ]
 })
 
-const {
-  activeIndex,
-  focusFirst,
-  focusLast,
-  handleKeydown,
-  selectActiveItem,
-  setActiveIndex,
-  syncActiveIndex,
-} = useSuggestListNavigation({
-  items: normalizedItems,
-  listRef: rootRef,
-  onActiveChange({ item, index }) {
-    emit('active-change', { item, index })
-  },
-  onSelect({ item, index }) {
-    emit('select', {
-      item,
-      index,
-      label: item.label,
-      value: item.value,
-    })
-  },
-})
-
 function getItemId(index: number) {
   if (!props.idPrefix) {
     return undefined
@@ -105,12 +79,12 @@ function handlerClickOutside(event: Event) {
   emit('close', event)
 }
 
-function selectItem(item: UiSuggestListItem, index: number) {
-  if (item.disabled) {
+function selectItem(item: UiSuggestListItem, index: number, $event: Event) {
+  if (item.disabled || selectedIndex.value === index) {
+    $event.preventDefault()
     return
   }
 
-  setActiveIndex(index)
   emit('select', {
     item,
     index,
@@ -119,43 +93,7 @@ function selectItem(item: UiSuggestListItem, index: number) {
   })
 }
 
-function handleMouseEnter(item: UiSuggestListItem, index: number) {
-  if (item.disabled) {
-    return
-  }
-
-  setActiveIndex(index)
-  emit('hover', {
-    item,
-    index,
-    label: item.label,
-    value: item.value,
-  })
-}
-
-watch([() => props.visible, selectedIndex], ([visible, index]) => {
-  if (!visible) {
-    return
-  }
-
-  if (index >= 0) {
-    syncActiveIndex(index)
-    return
-  }
-
-  setActiveIndex(-1)
-})
-
 defineExpose<UiSuggestListExposed>({
-  get activeIndex() {
-    return activeIndex.value
-  },
-  handleKeydown,
-  setActiveIndex,
-  syncActiveIndex,
-  focusFirst,
-  focusLast,
-  selectActiveItem,
   getItemId,
 })
 </script>
@@ -163,7 +101,6 @@ defineExpose<UiSuggestListExposed>({
 <template>
   <div
     v-if="visible"
-    ref="rootRef"
     v-click-outside="handlerClickOutside"
     class="ui-input-suggest"
     :class="rootClasses"
@@ -180,14 +117,12 @@ defineExpose<UiSuggestListExposed>({
         class="ui-input-suggest__item flex shrink-0 grow-0 items-center cursor-pointer text-body font-medium text-nowrap text-left"
         :disabled="disabled || suggestItem.disabled"
         :aria-selected="selectedIndex === index"
-        :data-active="activeIndex === index"
-        @mouseenter="handleMouseEnter(suggestItem, index)"
-        @click="selectItem(suggestItem, index)"
+        @click="selectItem(suggestItem, index, $event)"
       >
         <slot
           name="leading"
           :item="suggestItem"
-          :active="activeIndex === index"
+          :active="false"
           :selected="selectedIndex === index"
         >
           <UiIcon
@@ -199,7 +134,6 @@ defineExpose<UiSuggestListExposed>({
         </slot>
         <slot
           :item="suggestItem"
-          :active="activeIndex === index"
           :selected="selectedIndex === index"
         >
           <span class="min-w-0 flex-1 truncate ui-input-suggest__label">
@@ -215,7 +149,6 @@ defineExpose<UiSuggestListExposed>({
           <slot
               name="trailing"
               :item="suggestItem"
-              :active="activeIndex === index"
               :selected="selectedIndex === index"
           >
             <UiIcon

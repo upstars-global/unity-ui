@@ -46,10 +46,8 @@ export const TEXT_BASE = ['min-w-0', 'truncate']
 export const LABEL_BASE = [
     'left-0 origin-left transition-all duration-200 ease-out w-full',
     'text-body',
-
     'duration-150',
     tokenClass('--component-input-label', 'text'),
-    'group-data-[invalid=true]:text-[var(--component-input-error-label)]',
     'group-focus-within:!text-[var(--component-input-focus-label)]',
 ]
 

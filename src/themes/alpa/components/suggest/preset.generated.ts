@@ -23,7 +23,7 @@ const suggest: Partial<Config> = {
               },
             },
 
-            '&:hover, &[data-active="true"]': {
+            '&:hover:not(&[aria-selected="true"])': {
               backgroundColor: "rgb(var(--color-neutral-200) / 0.4)",
             }
           },

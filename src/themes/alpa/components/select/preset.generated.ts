@@ -30,9 +30,6 @@ const select: Partial<Config> = {
           '&--disabled': {
             opacity: "0.45",
           },
-          '&--error .ui-select__label': {
-            color: "rgb(var(--color-error-100) / 1)",
-          },
           '.ui-select__list': {
             boxShadow: "0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)",
           },

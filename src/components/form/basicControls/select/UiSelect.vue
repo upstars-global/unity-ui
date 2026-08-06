@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { autoUpdate, flip, offset, shift, size as sizeMiddleware, useFloating } from '@floating-ui/vue'
-import { computed, nextTick, ref, useAttrs, useSlots, watch } from 'vue'
+import { computed, ref, useAttrs, useSlots } from 'vue'
 import { useAppConfig } from '../../../../composables/useAppConfig'
 import { flattenClasses } from '../../../../helpers/flattenClasses'
 import UiSuggestList from '../../suggest/UiSuggestList.vue'
-import type { UiSuggestListExposed, UiSuggestListSelectPayload } from '../../suggest/types'
+import type { UiSuggestListSelectPayload } from '../../suggest/types'
 import UiIcon from '../../../icon/UiIcon.vue'
 import { baseFieldDefault } from '../BaseField.ts'
 import { LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS } from '../input/theme.ts'
@@ -43,10 +43,8 @@ const selectTheme = appConfig.components.select
 const rootRef = ref<HTMLElement | null>(null)
 const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
-const suggestListRef = ref<UiSuggestListExposed | null>(null)
 const isOpen = ref(false)
 const isFocused = ref(false)
-const activeIndex = ref(-1)
 
 const hasErrorMessage = computed(() =>
     props.invalid &&
@@ -62,13 +60,6 @@ const shouldFloatLabel = computed(() => hasFloatingLabel.value && (isFocused.val
 const currentLeadingIconName = computed(() => selectedOption.value?.leadingIconName ?? props.leadingIconName)
 
 const listboxId = computed(() => `${props.name}-listbox`)
-const activeDescendant = computed(() => {
-  if (!isOpen.value || activeIndex.value < 0) {
-    return undefined
-  }
-
-  return `${props.name}-option-${activeIndex.value}`
-})
 const displayedValue = computed(() => {
   if (hasFloatingLabel.value && !shouldFloatLabel.value) {
     return ''
@@ -163,23 +154,12 @@ function openList() {
   emit('open')
 }
 
-function openListAndRun(callback?: () => void) {
-  openList()
-
-  if (callback) {
-    nextTick(() => {
-      callback()
-    })
-  }
-}
-
 function closeList() {
   if (!isOpen.value) {
     return
   }
 
   isOpen.value = false
-  activeIndex.value = -1
   emit('close')
 }
 
@@ -202,23 +182,6 @@ function selectOption(payload: UiSuggestListSelectPayload<SelectValue>) {
   closeList()
 }
 
-const OPEN_KEY_HANDLERS: Partial<Record<string, () => void>> = {
-  Home: () => suggestListRef.value?.focusFirst(),
-  End: () => suggestListRef.value?.focusLast(),
-  ArrowDown: () => suggestListRef.value?.focusFirst(),
-  ArrowUp: () => suggestListRef.value?.focusLast(),
-}
-
-function handleListNavigation(event: KeyboardEvent) {
-  if (event.key === ' ') {
-    event.preventDefault()
-    suggestListRef.value?.selectActiveItem()
-    return
-  }
-
-  suggestListRef.value?.handleKeydown(event)
-}
-
 function handleKeydown(event: KeyboardEvent) {
   if (props.disabled) {
     return
@@ -230,20 +193,11 @@ function handleKeydown(event: KeyboardEvent) {
     return
   }
 
-  if (event.key === 'Home' || event.key === 'End') {
-    event.preventDefault()
-    openListAndRun(OPEN_KEY_HANDLERS[event.key])
-    return
-  }
-
   if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') {
     if (!isOpen.value) {
       event.preventDefault()
-      openListAndRun(OPEN_KEY_HANDLERS[event.key])
-      return
+      openList()
     }
-
-    handleListNavigation(event)
   }
 }
 
@@ -267,18 +221,6 @@ function handleBlur(event: FocusEvent) {
 function handleClickOutside() {
   closeList()
 }
-
-function handleActiveChange(payload: { index: number }) {
-  activeIndex.value = payload.index
-}
-
-watch(() => props.modelValue, () => {
-  if (!isOpen.value) {
-    return
-  }
-
-  suggestListRef.value?.syncActiveIndex(selectedIndex.value)
-})
 </script>
 
 <template>
@@ -303,7 +245,6 @@ watch(() => props.modelValue, () => {
       aria-haspopup="listbox"
       role="combobox"
       :aria-controls="listboxId"
-      :aria-activedescendant="activeDescendant"
       :data-test="dataTest"
       :data-disabled="disabled"
       :data-invalid="invalid"
@@ -371,7 +312,6 @@ watch(() => props.modelValue, () => {
       class="ui-select__list"
     >
       <UiSuggestList
-        ref="suggestListRef"
         :items="list"
         :visible="isOpen"
         :selected-value="modelValue"
@@ -379,7 +319,6 @@ watch(() => props.modelValue, () => {
         variant="embedded"
         :close-on-click-outside="false"
         @select="selectOption"
-        @active-change="handleActiveChange"
       />
     </div>
 
