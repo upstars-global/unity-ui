@@ -16,9 +16,9 @@ const button = {
         }
     },
     "slots": {
-        "field": "flex items-center w-full overflow-hidden border-solid [border:0.125rem_solid_rgb(80_80_254_/_0.4)] gap-8 bg-white hover:[&:not(:focus-within):not([data-invalid=true]):not([data-disabled=true])]:border-primary-400/40 focus-within:border-primary-300 data-[invalid=true]:[&:not(:focus-within)]:border-error-100 text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed",
+        "field": "flex items-center w-full overflow-hidden border-solid text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed",
         "content": "relative flex min-w-0 flex-1 flex-col justify-center overflow-hidden",
-        "label": "absolute left-0 origin-left transition-all duration-200 ease-out w-full text-body duration-150 text-neutral-400 group-focus-within:!text-primary-300 min-w-0 truncate",
+        "label": "absolute left-0 origin-left transition-all duration-200 ease-out w-full text-body duration-150 min-w-0 truncate",
         "value": "absolute z-1 w-full min-w-0 text-body font-medium text-neutral-600 min-w-0 truncate",
         "placeholder": "absolute z-1 w-full min-w-0 text-body text-neutral-300 min-w-0 truncate",
         "message": "px-16 text-neutral-400 group-data-[invalid=true]:text-error-100 group-focus-within:!text-neutral-400 text-caption",

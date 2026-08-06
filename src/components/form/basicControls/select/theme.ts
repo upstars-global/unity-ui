@@ -64,7 +64,11 @@ const select: SelectUiOptimized = {
   },
   slots: {
     field: [
-      ...FIELD_BASE,
+      'flex',
+      'items-center',
+      'w-full',
+      'overflow-hidden',
+      'border-solid',
       'text-left',
       'cursor-pointer',
       'focus-visible:outline-none',
@@ -72,8 +76,9 @@ const select: SelectUiOptimized = {
     ].join(' '),
     content: ['relative', 'flex', 'min-w-0', 'flex-1', 'flex-col', 'justify-center', 'overflow-hidden'].join(' '),
     label: [
-      'absolute',
-      ...LABEL_BASE,
+      'absolute left-0 origin-left transition-all duration-200 ease-out w-full',
+      'text-body',
+      'duration-150',
       ...TEXT_BASE,
     ].join(' '),
     value: [

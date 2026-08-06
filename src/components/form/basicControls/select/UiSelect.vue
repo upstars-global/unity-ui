@@ -56,7 +56,7 @@ const selectedIndex = computed(() => props.list.findIndex((item) => item.value =
 const selectedOption = computed<UiSelectOption | null>(() => props.list[selectedIndex.value] ?? null)
 const hasValue = computed(() => selectedOption.value !== null)
 const hasFloatingLabel = computed(() => props.size === 'default' && Boolean(props.label))
-const shouldFloatLabel = computed(() => hasFloatingLabel.value && (isFocused.value || isOpen.value || hasValue.value))
+const shouldFloatLabel = computed(() => hasFloatingLabel.value && (isOpen.value || hasValue.value))
 const currentLeadingIconName = computed(() => selectedOption.value?.leadingIconName ?? props.leadingIconName)
 
 const listboxId = computed(() => `${props.name}-listbox`)
@@ -120,7 +120,7 @@ const { floatingStyles } = useFloating(reference, floating, {
   open: isOpen,
   placement: 'bottom-start',
   middleware: [
-    offset(8),
+    offset(4),
     flip({
       fallbackPlacements: ['top-start'],
       padding: 8,
@@ -182,25 +182,6 @@ function selectOption(payload: UiSuggestListSelectPayload<SelectValue>) {
   closeList()
 }
 
-function handleKeydown(event: KeyboardEvent) {
-  if (props.disabled) {
-    return
-  }
-
-  if (event.key === 'Escape') {
-    event.preventDefault()
-    closeList()
-    return
-  }
-
-  if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Enter' || event.key === ' ') {
-    if (!isOpen.value) {
-      event.preventDefault()
-      openList()
-    }
-  }
-}
-
 function handleFocus(event: FocusEvent) {
   isFocused.value = true
   emit('focus', event)
@@ -252,8 +233,6 @@ function handleClickOutside() {
       :class="fieldClasses"
       @click="toggleList"
       @focus="handleFocus"
-      @blur="handleBlur"
-      @keydown="handleKeydown"
       class="ui-select__field"
     >
       <slot

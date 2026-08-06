@@ -30,6 +30,15 @@ const select: Partial<Config> = {
           '.ui-select__list': {
             boxShadow: '0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)',
           },
+          '&__field': {
+            gap: 'var(--component-input-field-gap)',
+            backgroundColor: 'var(--component-input-bg)',
+            borderColor: 'var(--component-input-bordercolor)',
+            borderWidth: 'var(--component-input-borderwidth)',
+          },
+          '&__label': {
+            color: 'var(--component-input-label)',
+          },
           '&--open': {
             '.ui-select__field': {
               borderColor: 'var(--component-input-focus-bordercolor)',
@@ -41,6 +50,11 @@ const select: Partial<Config> = {
               transform: 'rotate(180deg)',
             },
           },
+          '&--error': {
+            '.ui-select__field': {
+              borderColor: 'var(--component-input-error-bordercolor)',
+            },
+          }
         },
       })
     }),

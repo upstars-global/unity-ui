@@ -81,7 +81,6 @@ function handlerClickOutside(event: Event) {
 
 function selectItem(item: UiSuggestListItem, index: number, $event: Event) {
   if (item.disabled || selectedIndex.value === index) {
-    $event.preventDefault()
     return
   }
 
