@@ -8,9 +8,6 @@ const button = {
         "outlined": "border border-neutral-200/80 bg-bg-surface",
         "alt": "border border-neutral-200/80 bg-bg-surface-alt",
         "gradient": "bg-gradient-card"
-    },
-    "slots": {
-        "content": "w-full"
     }
 } as const
 

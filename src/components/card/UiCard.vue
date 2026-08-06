@@ -37,10 +37,6 @@ const rootClasses = computed(() => {
   )
 })
 
-const contentClasses = computed(() => {
-  return flattenClasses(cardTheme.slots.content)
-})
-
 const attributes = computed(() => {
   const { class: _class, ...rest } = attrs
 
@@ -54,8 +50,6 @@ const attributes = computed(() => {
       :class="[rootClasses, attrs.class]"
       v-bind="attributes"
   >
-    <div :class="contentClasses">
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
