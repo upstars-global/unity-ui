@@ -12,6 +12,7 @@ export { default as UiTimer } from './components/timer/UiTimer.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
+export { default as UiSelect } from './components/form/basicControls/select/UiSelect.vue';
 export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
 
 export type { AppConfig } from './components/types';
@@ -65,6 +66,15 @@ export type {
   UiInputEmits,
   UiInputSlots,
 } from './components/form/basicControls/input/types';
+export type {
+  SelectSize,
+  SelectState,
+  SelectValue,
+  UiSelectOption,
+  UiSelectProps,
+  UiSelectEmits,
+  UiSelectSlots,
+} from './components/form/basicControls/select/types';
 export type {
   IModalOptions,
   ModalCloseOptions,
