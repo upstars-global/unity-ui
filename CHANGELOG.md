@@ -1,3 +1,14 @@
+## [1.24.0](https://github.com/upstars-global/unity-ui/compare/v1.23.2...v1.24.0) (2026-08-07)
+
+### 🚀 Features
+
+* UN-2222 Create FeSelect component ([#32](https://github.com/upstars-global/unity-ui/issues/32))
+ ([da34c94](https://github.com/upstars-global/unity-ui/commit/da34c94724c9df8f9c5df19368361595df069b4a))
+
+
+
+    * feat: UN-2222 Create FeSelect component
+
 ## [1.23.2](https://github.com/upstars-global/unity-ui/compare/v1.23.1...v1.23.2) (2026-08-06)
 
 ### 🐛 Bug Fixes
