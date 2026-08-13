@@ -1,12 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { AppConfigSymbol } from '../../src/composables/useAppConfig';
+import { EventBusSymbol } from '../../src/composables/useEventBus';
 import UnityUI from '../../src/plugins/vue-plugin';
-import { getThemeConfig } from '../../src/themes/registry';
-
-vi.mock('../../src/themes/registry', () => ({
-  getThemeConfig: vi.fn(),
-}));
 
 describe('UnityUI plugin', () => {
   const provide = vi.fn();
@@ -20,28 +16,26 @@ describe('UnityUI plugin', () => {
   beforeEach(() => {
     provide.mockReset();
     app.config.globalProperties = {};
-    vi.mocked(getThemeConfig).mockReset();
   });
 
-  it('installs theme config with the default theme name', () => {
+  it('installs the provided theme config', () => {
     const themeConfig = { icons: { close: '<svg />' } };
-    vi.mocked(getThemeConfig).mockReturnValue(themeConfig);
 
-    UnityUI.install(app);
+    UnityUI.install(app, { themeConfig });
 
-    expect(getThemeConfig).toHaveBeenCalledWith('alpa');
     expect(provide).toHaveBeenCalledWith(AppConfigSymbol, themeConfig);
     expect(app.config.globalProperties.$appConfig).toBe(themeConfig);
   });
 
-  it('installs theme config for the provided theme name', () => {
-    const themeConfig = { store: { env: { isMockerMode: true } } };
-    vi.mocked(getThemeConfig).mockReturnValue(themeConfig);
+  it('installs the provided event bus', () => {
+    const themeConfig = { icons: { close: '<svg />' } };
+    const bus = { $emit: vi.fn() };
 
-    UnityUI.install(app, 'king');
+    UnityUI.install(app, { themeConfig, bus });
 
-    expect(getThemeConfig).toHaveBeenCalledWith('king');
     expect(provide).toHaveBeenCalledWith(AppConfigSymbol, themeConfig);
+    expect(provide).toHaveBeenCalledWith(EventBusSymbol, bus);
     expect(app.config.globalProperties.$appConfig).toBe(themeConfig);
+    expect(app.config.globalProperties.$bus).toBe(bus);
   });
 });
