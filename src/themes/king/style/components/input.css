@@ -8,7 +8,7 @@
     --component-input-message-padding-x: var(--spacing-16);
     --component-input-height-sm: 2.75rem;
     --component-input-height-default: 3.5rem;
-    --component-input-padding-sm: 0.625rem;
+    --component-input-padding-sm: var(--spacing-8);
     --component-input-borderwidth: 0.125rem;
     --component-input-disabled-opacity: 0.45;
 

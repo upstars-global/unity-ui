@@ -18,7 +18,6 @@ const args = new Set(process.argv.slice(2))
 const shouldWrite = args.has('--write')
 
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
-const COMPONENT_VAR_USAGE_REGEX = /var\((--component-[a-z0-9-]+)\)/gi
 const CSS_VAR_REFERENCE_REGEX = /var\((--[A-Za-z0-9-]+)\)/g
 
 type Predicate = (filePath: string) => boolean
@@ -387,6 +386,53 @@ function mapComponentVariable({
     return resolvedValue.value
 }
 
+function mapCssVariable({
+    varName,
+    definitions,
+    lookup,
+    meta,
+}: {
+    varName: string
+    definitions: CssDefinitions
+    lookup: CommonThemeLookup
+    meta: TransformMeta
+}): string {
+    if (varName.startsWith('--component-')) {
+        return mapComponentVariable({
+            componentVarName: varName,
+            definitions,
+            lookup,
+            meta,
+        })
+    }
+
+    const resolvedValue = resolveValueThroughAliases(varName, definitions)
+
+    if (!resolvedValue?.value) {
+        meta.unresolved.add(varName)
+        return `var(${varName})`
+    }
+
+    if (resolvedValue.kind === 'var') {
+        const commonExpression = resolveCommonExpressionForVar(varName, lookup)
+            ?? resolveCommonExpressionForVar(resolvedValue.value, lookup)
+
+        if (commonExpression) {
+            return commonExpression
+        }
+
+        return `var(${resolvedValue.value})`
+    }
+
+    const literalThemeEntry = lookup.literalToTheme.get(resolvedValue.value)
+
+    if (literalThemeEntry) {
+        return buildCommonExpression(literalThemeEntry)
+    }
+
+    return resolvedValue.value
+}
+
 function applyTextReplacements(source: string, replacements: TextReplacement[]): string {
     return replacements
         .sort((left, right) => right.start - left.start)
@@ -406,9 +452,9 @@ function buildStringLiteralReplacement({
     lookup: CommonThemeLookup
     meta: TransformMeta
 }): string {
-    return JSON.stringify(literalText.replace(COMPONENT_VAR_USAGE_REGEX, (_fullMatch, componentVarName) => {
-        return mapComponentVariable({
-            componentVarName,
+    return JSON.stringify(literalText.replace(CSS_VAR_REFERENCE_REGEX, (_fullMatch, varName) => {
+        return mapCssVariable({
+            varName,
             definitions,
             lookup,
             meta,
@@ -435,7 +481,7 @@ function transformPresetSource({
     const replacements: TextReplacement[] = []
 
     function visit(node: ts.Node) {
-        if (ts.isStringLiteralLike(node) && node.text.includes('var(--component-')) {
+        if (ts.isStringLiteralLike(node) && node.text.includes('var(--')) {
             const nextValue = buildStringLiteralReplacement({
                 literalText: node.text,
                 definitions,

@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/vue3-vite'
+import { setup } from '@storybook/vue3-vite'
 import { provide } from 'vue'
+import Vue3OutsideEvents from 'vue3-outside-events'
 import alpaThemeCssUrl from '../src/themes/alpa/style/tailwind.storybook.css?url'
 import kingThemeCssUrl from '../src/themes/king/style/tailwind.storybook.css?url'
 import { createStorybookEventBus } from './createStorybookEventBus'
@@ -12,6 +14,10 @@ import { getThemeConfig } from '../src/themes/registry'
 const storybookEventBus = createStorybookEventBus()
 toast.init(storybookEventBus)
 modal.init(storybookEventBus)
+
+setup((app) => {
+    app.use(Vue3OutsideEvents)
+})
 
 const TAILWIND_VIEWPORTS = {
     xxs: {
