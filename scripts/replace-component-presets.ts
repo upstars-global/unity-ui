@@ -6,13 +6,13 @@ import process from 'node:process'
 import ts from 'typescript'
 
 const rootDir = process.cwd()
+const presetsDir = path.join(rootDir, 'src/tailwind/presets')
 const componentsDir = path.join(rootDir, 'src/components')
 const themesRootDir = path.join(rootDir, 'src/themes')
-const commonPresetPaths = [
-    path.join(rootDir, 'src/tailwind/presets/colors.preset.ts'),
-    path.join(rootDir, 'src/tailwind/presets/layout.preset.ts'),
-    path.join(rootDir, 'src/tailwind/presets/typography.preset.ts'),
-]
+const commonPresetPaths = readdirSync(presetsDir)
+    .filter((fileName) => fileName.endsWith('.preset.ts'))
+    .sort()
+    .map((fileName) => path.join(presetsDir, fileName))
 
 const args = new Set(process.argv.slice(2))
 const shouldWrite = args.has('--write')
