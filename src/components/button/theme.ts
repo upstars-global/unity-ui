@@ -161,7 +161,7 @@ const button = {
             tokenClass('--component-button-padding-x-slab-sm', 'px'),
             tokenClass('--component-button-padding-y-slab-sm', 'py'),
           ],
-          icon: ['w-6'],
+          icon: ['w-24'],
           label: ['text-button-xs', ...LABEL_BASE],
         },
       } satisfies ButtonTypeSizeMap,
@@ -183,7 +183,7 @@ const button = {
             tokenClass('--component-button-height-action-sm', 'h'),
             tokenClass('--radius-button-action', 'rounded'),
           ],
-          icon: ['w-6'],
+          icon: ['w-24'],
           label: [
             'text-button-caption',
             tokenClass('--component-button-label', 'text'),
