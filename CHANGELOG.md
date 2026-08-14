@@ -1,3 +1,16 @@
+## [1.25.0](https://github.com/upstars-global/unity-ui/compare/v1.24.0...v1.25.0) (2026-08-14)
+
+### 🚀 Features
+
+* UN-2993 Structure and optimize tailwind config ([#36](https://github.com/upstars-global/unity-ui/issues/36))
+ ([5dacd1f](https://github.com/upstars-global/unity-ui/commit/5dacd1f3ca3317bc1b9ea990014d9b477de28bb6))
+
+
+
+    * feat: UN-2993 Structure and optimize tailwind config
+
+    * feat: UN-2993 Structure and optimize tailwind config
+
 ## [1.24.0](https://github.com/upstars-global/unity-ui/compare/v1.23.2...v1.24.0) (2026-08-07)
 
 ### 🚀 Features
