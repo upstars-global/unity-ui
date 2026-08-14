@@ -1,10 +1,8 @@
 import { type Config } from 'tailwindcss'
 
-import commonPreset from '../../tailwind/presets/index.ts'
 import themePreset from './tailwind.preset.ts'
 
 export const UiKitTailwindPresets: NonNullable<Config['presets']> = [
-  commonPreset,
   themePreset,
 ]
 
