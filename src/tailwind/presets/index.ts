@@ -1,16 +1,24 @@
 import { type Config } from 'tailwindcss'
 
 import colorsPreset from './colors.preset.ts'
-import layoutPreset from './layout.preset.ts'
+import motionPreset from './motion.preset.ts'
+import responsivePreset from './responsive.preset.ts'
+import shapeAndSpacingPreset from './shape-and-spacing.preset.ts'
 import typographyPreset from './typography.preset.ts'
+import utilitiesPreset from './utilities.preset.ts'
 
 const theme = {
     ...typographyPreset.theme,
-    ...layoutPreset.theme,
+    ...responsivePreset.theme,
+    ...shapeAndSpacingPreset.theme,
+    ...motionPreset.theme,
+    ...utilitiesPreset.theme,
     ...colorsPreset.theme,
     extend: {
         ...typographyPreset.theme?.extend,
-        ...layoutPreset.theme?.extend,
+        ...shapeAndSpacingPreset.theme?.extend,
+        ...motionPreset.theme?.extend,
+        ...utilitiesPreset.theme?.extend,
         ...colorsPreset.theme?.extend,
     },
 }
@@ -19,8 +27,6 @@ const preset: Partial<Config> = {
     theme,
     plugins: [
         ...(typographyPreset.plugins ?? []),
-        ...(layoutPreset.plugins ?? []),
-        ...(colorsPreset.plugins ?? []),
     ],
 }
 

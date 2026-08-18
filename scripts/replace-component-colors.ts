@@ -8,8 +8,12 @@ import { pathToFileURL } from 'node:url'
 import ts from 'typescript'
 
 const rootDir = process.cwd()
-const colorsPresetPath = path.join(rootDir, 'src/tailwind/presets/colors.preset.ts')
-const layoutPresetPath = path.join(rootDir, 'src/tailwind/presets/layout.preset.ts')
+const presetsDir = path.join(rootDir, 'src/tailwind/presets')
+const colorsPresetPath = path.join(presetsDir, 'colors.preset.ts')
+const presetPaths = readdirSync(presetsDir)
+    .filter((fileName) => fileName.endsWith('.preset.ts'))
+    .sort()
+    .map((fileName) => path.join(presetsDir, fileName))
 const componentsDir = path.join(rootDir, 'src/components')
 const themesRootDir = path.join(rootDir, 'src/themes')
 
@@ -76,8 +80,6 @@ const SPACING_UTILITIES = new Set([
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
 const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
-const PRESET_SECTION_REGEX = /([A-Za-z0-9_-]+):\s*{([\s\S]*?)^\s*}/gm
-const PRESET_VALUE_ENTRY_REGEX = /^\s*(?:"([^"]+)"|'([^']+)'|([A-Za-z0-9_.-]+)):\s*["']([^"']+)["']/gm
 const RUNTIME_IMPORT_REGEX = /^\s*import\s+(?!type\b)(?:[\s\S]*?\sfrom\s+)?['"](.+?)['"]/gm
 
 type Predicate = (filePath: string) => boolean
@@ -271,32 +273,57 @@ function parsePresetVars(filePath: string): PresetVars {
     return varToTailwindColor
 }
 
-function parseValuePresetMap(filePath: string, sectionNames: Set<string>): ValueToKeyMap {
-    if (!filePath) {
-        throw new Error('parseValuePresetMap expected a preset file path, but received an empty value')
+function parseValuePresetMap(filePaths: string[], sectionNames: Set<string>): ValueToKeyMap {
+    if (!filePaths.length) {
+        throw new Error('parseValuePresetMap expected at least one preset file path')
     }
 
-    const source = readFileSync(filePath, 'utf8')
     const valueToKey = new Map()
 
-    for (const sectionMatch of source.matchAll(PRESET_SECTION_REGEX)) {
-        const sectionName = sectionMatch[1]
-        const sectionBody = sectionMatch[2]
+    for (const filePath of filePaths) {
+        const source = readFileSync(filePath, 'utf8')
+        const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
 
-        if (!sectionName || !sectionBody || !sectionNames.has(sectionName)) {
-            continue
+        function collectSectionEntries(objectLiteral: ts.ObjectLiteralExpression) {
+            for (const property of objectLiteral.properties) {
+                if (!ts.isPropertyAssignment(property)) {
+                    continue
+                }
+
+                const propertyName = getPropertyNameText(property.name)
+                const propertyValue = unwrapExpression(property.initializer)
+
+                if (propertyName && sectionNames.has(propertyName) && ts.isObjectLiteralExpression(propertyValue)) {
+                    for (const sectionProperty of propertyValue.properties) {
+                        if (!ts.isPropertyAssignment(sectionProperty)) {
+                            continue
+                        }
+
+                        const sectionKey = getPropertyNameText(sectionProperty.name)
+                        const sectionValue = unwrapExpression(sectionProperty.initializer)
+
+                        if (
+                            !sectionKey
+                            || (!ts.isStringLiteralLike(sectionValue) && !ts.isNoSubstitutionTemplateLiteral(sectionValue))
+                        ) {
+                            continue
+                        }
+
+                        valueToKey.set(sectionValue.text.trim(), sectionKey)
+                    }
+                }
+            }
         }
 
-        for (const entryMatch of sectionBody.matchAll(PRESET_VALUE_ENTRY_REGEX)) {
-            const key = entryMatch[1] ?? entryMatch[2] ?? entryMatch[3]
-            const value = entryMatch[4]?.trim()
-
-            if (!key || !value) {
-                continue
+        function visit(node: ts.Node) {
+            if (ts.isObjectLiteralExpression(node)) {
+                collectSectionEntries(node)
             }
 
-            valueToKey.set(value, key)
+            ts.forEachChild(node, visit)
         }
+
+        visit(sourceFile)
     }
 
     return valueToKey
@@ -318,15 +345,15 @@ function resolvePresetScalarValue(value: string, definitions: CssDefinitions): s
 }
 
 function parseResolvedValuePresetMap({
-    filePath,
+    filePaths,
     sectionNames,
     definitions,
 }: {
-    filePath: string
+    filePaths: string[]
     sectionNames: Set<string>
     definitions: CssDefinitions
 }): ValueToKeyMap {
-    const rawValueToKey = parseValuePresetMap(filePath, sectionNames)
+    const rawValueToKey = parseValuePresetMap(filePaths, sectionNames)
     const resolvedValueToKey = new Map()
 
     for (const [value, key] of rawValueToKey.entries()) {
@@ -1051,7 +1078,7 @@ async function main() {
         const presetVars = parsePresetVars(colorsPresetPath)
         const definitions = parseCssVariables(cssFiles)
         const spacingValueToKey = parseResolvedValuePresetMap({
-            filePath: layoutPresetPath,
+            filePaths: presetPaths,
             sectionNames: new Set(['spacing', 'height', 'maxWidth', 'minWidth', 'width']),
             definitions,
         })
@@ -1059,14 +1086,14 @@ async function main() {
             ['0', '0'],
             ['0rem', '0'],
             ...parseResolvedValuePresetMap({
-                filePath: layoutPresetPath,
+                filePaths: presetPaths,
                 sectionNames: new Set(['borderRadius']),
                 definitions,
             }),
         ])
-        const borderWidthValueToKey = parseValuePresetMap(layoutPresetPath, new Set(['borderWidth']))
+        const borderWidthValueToKey = parseValuePresetMap(presetPaths, new Set(['borderWidth']))
         const opacityValueToKey: ValueToKeyMap = new Map(
-            Array.from(parseValuePresetMap(layoutPresetPath, new Set(['opacity'])).entries()).map(([value, key]) => [
+            Array.from(parseValuePresetMap(presetPaths, new Set(['opacity'])).entries()).map(([value, key]) => [
                 normalizeScalarForLookup(value),
                 key,
             ]),
