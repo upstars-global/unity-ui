@@ -36,7 +36,7 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6">
+      <div class="bg-bg-page-deep p-6">
         <div class="bg-white"></div>
         <UiInlineActionNotification
             :title="args.title"
@@ -91,7 +91,7 @@ export const Examples: Story = {
       }
     },
     template: `
-      <div class="bg-bg-deep p-6 text-white">
+      <div class="bg-bg-page-deep p-6 text-white">
         <div
           v-for="item in items"
           :key="item.id"
@@ -124,14 +124,14 @@ export const CustomContent: Story = {
   render: () => ({
     components: { UiInlineActionNotification, UiButton },
     template: `
-      <div class="bg-bg-deep p-6 text-white">
+      <div class="bg-bg-page-deep p-6 text-white">
         <div >
           <UiInlineActionNotification icon-name="fill_info">
             <div class="space-y-2">
-              <div class="text-title-xs text-fg-primary">
+              <div class="text-title-xs text-fg-page-primary">
                 Maintenance window tonight
               </div>
-              <div class="text-body-sm text-fg-secondary">
+              <div class="text-body-sm text-fg-page-secondary">
                 Payments may be temporarily delayed between 02:00 and 02:30 UTC.
               </div>
             </div>

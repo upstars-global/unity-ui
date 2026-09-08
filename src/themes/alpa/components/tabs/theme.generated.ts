@@ -12,7 +12,7 @@ const button = {
     },
     "slots": {
         "label": "text-body-sm font-bold uppercase whitespace-nowrap text-center",
-        "accent": "size-8 shrink-0 rounded-full bg-fg-status-error"
+        "accent": "size-8 shrink-0 rounded-full bg-fg-page-status-error"
     }
 } as const
 

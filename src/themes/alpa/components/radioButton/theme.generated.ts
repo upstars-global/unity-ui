@@ -7,13 +7,13 @@ const button = {
         "field": "flex w-full items-start gap-8 cursor-pointer select-none data-[disabled=true]:cursor-not-allowed",
         "input": "peer sr-only",
         "control": "relative flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden transition-all duration-150 border-2 border-neutral-100 peer-checked:border-primary-300 m-2 rounded-full peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary-300",
-        "controlInvalid": "[border-color:var(--fg-status-error)]",
+        "controlInvalid": "[border-color:var(--fg-page-status-error)]",
         "indicator": "pointer-events-none block h-12 w-12 shrink-0 opacity-0 rounded-full transition-all duration-150 bg-primary-300",
         "indicatorChecked": "opacity-100 scale-100",
         "content": "flex min-w-0 flex-1 flex-col gap-4",
-        "label": "min-w-0 break-words text-body font-normal text-fg-primary",
-        "message": "text-caption text-fg-secondary",
-        "errorMessage": "text-caption text-fg-status-error"
+        "label": "min-w-0 break-words text-body font-normal text-fg-page-primary",
+        "message": "text-caption text-fg-page-secondary",
+        "errorMessage": "text-caption text-fg-page-status-error"
     }
 } as const
 

@@ -77,7 +77,7 @@ export const Grid: Story = {
       }
     },
     template: `
-      <section class="min-h-screen p-6 lg:p-10 bg-bg-deep">
+      <section class="min-h-screen p-6 lg:p-10 bg-bg-page-deep">
         <div class="mx-auto max-w-7xl ">
           <h2 class="text-title-sm text-content-text-primary">Theme icons</h2>
           <p class="mt-2 text-body-sm text-content-text-secondary">
@@ -100,7 +100,7 @@ export const Grid: Story = {
                 <article
                   v-for="name in group.names"
                   :key="name"
-                  class="cursor-pointer rounded-lg border border-bg-surface bg-bg-surface bg-layer-body p-3 text-content-text-primary transition hover:border-primary-brand-active"
+                  class="cursor-pointer rounded-lg border border-bg-page-surface bg-bg-page-surface bg-layer-body p-3 text-content-text-primary transition hover:border-primary-brand-active"
                   :class="group.type === 'flat' ? 'p-4' : ''"
                   @click="copyIconName(name)"
                 >
@@ -108,15 +108,15 @@ export const Grid: Story = {
                     class="flex items-center justify-center rounded-md bg-layer-alt-2"
                   >
                     <div :class="group.type === 'flat' ? 'size-18' : iconWrapperClass">
-                      <UiIcon :name="name" :size="group.type === 'flat' ? '72' : iconSize" class="text-fg-primary"/>
+                      <UiIcon :name="name" :size="group.type === 'flat' ? '72' : iconSize" class="text-fg-page-primary"/>
                     </div>
                   </div>
-                  <p class="mt-2 break-words text-center text-caption text-content-text text-fg-primary">
+                  <p class="mt-2 break-words text-center text-caption text-content-text text-fg-page-primary">
                     {{ name }}
                   </p>
                   <p
                     v-if="copiedIconName === name"
-                    class="mt-1 text-center text-caption text-fg-brand"
+                    class="mt-1 text-center text-caption text-fg-page-brand"
                   >
                     Copied
                   </p>

@@ -68,7 +68,7 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="min-h-56 bg-bg-deep p-6">
+      <div class="min-h-56 bg-bg-page-deep p-6">
         <div class="grid grid-cols-1 gap-6 rounded-2xl md:grid-cols-3" :key="args.trigger">
           <UiCard
               v-for="item in gridItems"
@@ -115,14 +115,14 @@ export const TriggerModes: Story = {
       }
     },
     template: `
-      <div class="space-y-4 bg-bg-deep p-6">
+      <div class="space-y-4 bg-bg-page-deep p-6">
         <div class="grid gap-4 md:grid-cols-3">
           <UiCard
             v-for="trigger in triggers"
             :key="trigger"
             class="min-h-[10rem] p-16 gap-16"
           >
-            <div class="text-body text-fg-primary capitalize">
+            <div class="text-body text-fg-page-primary capitalize">
               {{ trigger }}
             </div>
 

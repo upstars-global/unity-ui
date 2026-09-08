@@ -5,7 +5,7 @@ const button = {
     "base": "relative",
     "slots": {
         "trigger": "inline-flex",
-        "content": "text-caption min-w-52 p-8 rounded-8 bg-secondary-300 text-fg-primary",
+        "content": "text-caption min-w-52 p-8 rounded-8 bg-secondary-300 text-fg-page-primary",
         "content_arrow": "bg-secondary-300"
     }
 } as const

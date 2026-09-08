@@ -87,20 +87,20 @@
     --component-card-gradient-to: rgba(189 245 255);
     --fg-effect-shadow-default: rgb(var(--color-neutral-600) / 0.1);
 
-    --bg-deep: rgb(var(--color-neutral-50));
-    --bg-surface: rgb(var(--color-white));
-    --bg-surface-alt: var(--color-neutral-500-10);
-    --fg-brand: rgb(var(--color-primary-300));
-    --fg-pending: rgb(var(--color-warning-100));
-    --fg-primary: rgb(var(--color-neutral-800));
-    --fg-secondary: rgb(var(--color-neutral-500));
-    --fg-link-default: rgb(var(--color-primary-300));
-    --fg-link-hover: rgb(var(--color-primary-400));
-    --fg-link-underline-default: var(--color-primary-300-40);
-    --fg-link-underline-hover: rgb(var(--color-primary-400));
-    --fg-status-error: rgb(var(--color-error-100));
-    --fg-status-success: rgb(var(--color-success-100));
-    --fg-status-warning: rgb(var(--color-warning-100));
+    --bg-page-deep: rgb(var(--color-neutral-50));
+    --bg-page-surface: rgb(var(--color-white));
+    --bg-page-surface-alt: var(--color-neutral-500-10);
+    --fg-page-brand: rgb(var(--color-primary-300));
+    --fg-page-pending: rgb(var(--color-warning-100));
+    --fg-page-primary: rgb(var(--color-neutral-800));
+    --fg-page-secondary: rgb(var(--color-neutral-500));
+    --fg-page-link-default: rgb(var(--color-primary-300));
+    --fg-page-link-hover: rgb(var(--color-primary-400));
+    --fg-page-link-underline-default: var(--color-primary-300-40);
+    --fg-page-link-underline-hover: rgb(var(--color-primary-400));
+    --fg-page-status-error: rgb(var(--color-error-100));
+    --fg-page-status-success: rgb(var(--color-success-100));
+    --fg-page-status-warning: rgb(var(--color-warning-100));
     --component-other-scroll: var(--color-neutral-300-80);
 
     --gradient-transparent: 180deg, var(--gradient-transparent-color-1) 25%, var(--gradient-transparent-color-2) 100%;

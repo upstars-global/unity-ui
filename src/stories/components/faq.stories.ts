@@ -50,7 +50,7 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6 text-fg-primary">
+      <div class="bg-bg-page-deep p-6 text-fg-page-primary">
         <div class="bg-black/10 p-6">
           <UiFaq
             :title="args.title"

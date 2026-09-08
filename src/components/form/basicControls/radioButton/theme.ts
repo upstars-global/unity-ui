@@ -75,15 +75,15 @@ const radioButton = {
       'break-words',
       'text-body',
       'font-normal',
-      'text-fg-primary',
+      'text-fg-page-primary',
     ],
     message: [
       'text-caption',
-      'text-fg-secondary',
+      'text-fg-page-secondary',
     ],
     errorMessage: [
       'text-caption',
-      'text-fg-status-error',
+      'text-fg-page-status-error',
     ],
   },
 } as const

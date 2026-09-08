@@ -7,8 +7,8 @@
     --component-accordion-faq-default-bordercolor: var(--color-neutral-800-10);
     --component-accordion-faq-opened-bg: var(--color-primary-50-80);
     --component-accordion-faq-opened-bordercolor: var(--color-primary-100);
-    --component-accordion-fg-primary: var(--fg-primary);
-    --component-accordion-fg-secondary: var(--fg-secondary);
+    --component-accordion-fg-primary: var(--fg-page-primary);
+    --component-accordion-fg-secondary: var(--fg-page-secondary);
     --component-accordion-opened-bg: var(--color-primary-50-80);
     --component-accordion-opened-bordercolor: var(--color-primary-100);
 }

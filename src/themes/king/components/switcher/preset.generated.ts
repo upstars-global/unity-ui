@@ -25,7 +25,7 @@ const button: Partial<Config> = {
                         left: 'auto',
                     },
                     '&[data-invalid="true"] .ui-switcher__track, &[data-invalid="true"] .ui-switcher__thumb': {
-                        backgroundColor: "var(--fg-status-error)",
+                        backgroundColor: "var(--fg-page-status-error)",
                     },
                     '&[data-disabled="true"] .ui-switcher__label': {
                         opacity: '0.45',

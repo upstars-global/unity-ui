@@ -13,12 +13,12 @@ const button = {
     "variant": {
         "filled": {
             "container": "bg-neutral-300/80",
-            "label": "text-fg-secondary",
+            "label": "text-fg-page-secondary",
             "text": "text-white"
         },
         "ghost": {
             "container": "",
-            "label": "text-fg-secondary",
+            "label": "text-fg-page-secondary",
             "text": "text-white"
         }
     },
