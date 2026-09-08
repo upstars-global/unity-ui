@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/upstars-global/unity-ui/compare/v1.25.0...v1.25.1) (2026-08-14)
+
+### 🐛 Bug Fixes
+
+* UN-3069 fix button icon size ([#38](https://github.com/upstars-global/unity-ui/issues/38))
+ ([5d5d3c7](https://github.com/upstars-global/unity-ui/commit/5d5d3c7e56078f18c457de60af5890238d352213))
+
 ## [1.25.0](https://github.com/upstars-global/unity-ui/compare/v1.24.0...v1.25.0) (2026-08-14)
 
 ### 🚀 Features
