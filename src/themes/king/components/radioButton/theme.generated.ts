@@ -11,9 +11,9 @@ const button = {
         "indicator": "pointer-events-none block h-12 w-12 shrink-0 opacity-0 rounded-full transition-all duration-150 bg-primary-300",
         "indicatorChecked": "opacity-100 scale-100",
         "content": "flex min-w-0 flex-1 flex-col gap-4",
-        "label": "min-w-0 break-words text-body font-normal text-fg-page-primary",
-        "message": "text-caption text-fg-page-secondary",
-        "errorMessage": "text-caption text-fg-page-status-error"
+        "label": "min-w-0 break-words text-body font-normal text-page-primary",
+        "message": "text-caption text-page-secondary",
+        "errorMessage": "text-caption text-page-status-error"
     }
 } as const
 

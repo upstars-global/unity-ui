@@ -97,11 +97,11 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="min-h-screen bg-bg-page-deep p-6 h-[120dvh]">
+      <div class="min-h-screen bg-page-deep p-6 h-[120dvh]">
         <div class="mx-auto flex max-w-3xl flex-col gap-4">
           <div class="rounded-24 bg-bg-base p-6 shadow-sm">
-            <h3 class="mb-2 text-title-4 text-fg-page-primary">Modal controller playground</h3>
-            <p class="mb-6 text-body text-fg-page-secondary">
+            <h3 class="mb-2 text-title-4 text-page-primary">Modal controller playground</h3>
+            <p class="mb-6 text-body text-page-secondary">
               Story uses the same \`useModalController()\` composable for open and close actions.
             </p>
 

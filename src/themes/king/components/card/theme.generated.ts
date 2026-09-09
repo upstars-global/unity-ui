@@ -4,9 +4,9 @@
 const button = {
     "base": "relative flex flex-col items-start overflow-hidden rounded-16",
     "variant": {
-        "default": "bg-bg-page-surface",
-        "outlined": "border border-neutral-200/80 bg-bg-page-surface",
-        "alt": "border border-neutral-200/80 bg-bg-page-surface-alt",
+        "default": "bg-page-surface",
+        "outlined": "border border-neutral-200/80 bg-page-surface",
+        "alt": "border border-neutral-200/80 bg-page-surface-alt",
         "gradient": "bg-gradient-card"
     }
 } as const

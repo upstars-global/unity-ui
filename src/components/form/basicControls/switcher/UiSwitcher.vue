@@ -109,7 +109,7 @@ function handleBlur(event: FocusEvent) {
       >
       <span
           v-if="label || $slots.default"
-          class="ui-switcher__label break-words text-body text-fg-page-primary"
+          class="ui-switcher__label break-words text-body text-page-primary"
       >
             {{ label }}
           <slot />

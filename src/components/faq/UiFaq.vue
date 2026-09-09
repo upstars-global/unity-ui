@@ -39,7 +39,7 @@ const getRootClasses = (index: number) => {
         toggle-classes="flex items-center justify-between w-full cursor-pointer"
         title-classes="text-body font-bold"
         icon-classes="transition-transform"
-        content-classes="pt-4 pb-2 text-body text-fg-page-secondary"
+        content-classes="pt-4 pb-2 text-body text-page-secondary"
         @toggle="handleAccordionToggle(index, $event)"
     >
       {{question.answer}}

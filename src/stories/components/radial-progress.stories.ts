@@ -80,13 +80,13 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-page-deep p-6">
-        <div class="inline-flex rounded-3xl border border-white/10 bg-bg-page-surface p-8">
+      <div class="bg-page-deep p-6">
+        <div class="inline-flex rounded-3xl border border-white/10 bg-page-surface p-8">
           <UiRadialProgress v-bind="args">
             <template #default="{ progress, max }">
               <div class="flex flex-col items-center">
-                <div class="text-2xl font-semibold text-fg-page-primary">{{ progress }}</div>
-                <div class="text-xs uppercase tracking-[0.1em] text-fg-page-secondary">of {{ max }}</div>
+                <div class="text-2xl font-semibold text-page-primary">{{ progress }}</div>
+                <div class="text-xs uppercase tracking-[0.1em] text-page-secondary">of {{ max }}</div>
               </div>
             </template>
           </UiRadialProgress>
@@ -109,14 +109,14 @@ export const PositionsMatrix: Story = {
       }
     },
     template: `
-      <div class="bg-bg-page-deep p-6">
+      <div class="bg-page-deep p-6">
         <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <section
             v-for="position in positions"
             :key="position"
-            class="rounded-2xl border border-white/10 bg-bg-page-surface p-5"
+            class="rounded-2xl border border-white/10 bg-page-surface p-5"
           >
-            <div class="mb-4 text-xs uppercase tracking-[0.1em] text-fg-page-secondary">
+            <div class="mb-4 text-xs uppercase tracking-[0.1em] text-page-secondary">
               {{ labels[position] }}
             </div>
 
@@ -130,7 +130,7 @@ export const PositionsMatrix: Story = {
                 :start-angle="position"
               >
                 <template #default="{ progress }">
-                  <div class="text-xl font-semibold text-fg-page-primary">{{ progress }}%</div>
+                  <div class="text-xl font-semibold text-page-primary">{{ progress }}%</div>
                 </template>
               </UiRadialProgress>
             </div>

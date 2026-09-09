@@ -2,7 +2,7 @@
 // Do not edit manually. Update theme.ts or CSS token mappings and rerun the generator.
 
 const button = {
-    "base": "ui-accordion flex flex-col overflow-hidden border transition-colors rounded-12 text-fg-page-primary px-16 py-12",
+    "base": "ui-accordion flex flex-col overflow-hidden border transition-colors rounded-12 text-page-primary px-16 py-12",
     "slots": {
         "iconOpened": "rotate-180"
     },

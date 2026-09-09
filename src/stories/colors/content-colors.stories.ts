@@ -15,28 +15,28 @@ export const Cards: Story = {
   render: () => ({
     setup() {
       const statuses = [
-        { label: 'Success', className: 'text-fg-page-status-success' },
-        { label: 'Warning', className: 'text-fg-page-status-warning' },
-        { label: 'Error', className: 'text-fg-page-status-error' },
+        { label: 'Success', className: 'text-page-status-success' },
+        { label: 'Warning', className: 'text-page-status-warning' },
+        { label: 'Error', className: 'text-page-status-error' },
       ]
 
       return { statuses }
     },
     template: `
-      <div class="min-h-screen bg-bg-page-deep p-6 lg:p-10">
+      <div class="min-h-screen bg-page-deep p-6 lg:p-10">
         <div class="mx-auto grid max-w-5xl gap-6">
-          <h2 class="text-title-sm text-fg-page-primary">
+          <h2 class="text-title-sm text-page-primary">
             Content colors: page + surface cards
           </h2>
 
           <section class="rounded-xl border border-white/20 p-5">
-            <div class="mb-2 text-caption text-fg-page-secondary">
+            <div class="mb-2 text-caption text-page-secondary">
               На странице (без карточки)
             </div>
-            <h3 class="text-subtitle text-fg-page-primary">Primary text</h3>
-            <p class="mt-2 text-body-sm text-fg-page-secondary">Secondary text</p>
+            <h3 class="text-subtitle text-page-primary">Primary text</h3>
+            <p class="mt-2 text-body-sm text-page-secondary">Secondary text</p>
             <a href="#" class="mt-3 inline-flex text-link text-body-sm">Link example</a>
-            <div class="mt-4 text-caption text-fg-page-secondary">Badges / text-fg-page-primary</div>
+            <div class="mt-4 text-caption text-page-secondary">Badges / text-page-primary</div>
             <div class="mt-2 flex flex-wrap gap-2">
               <span
                 v-for="status in statuses"
@@ -49,14 +49,14 @@ export const Cards: Story = {
             </div>
           </section>
 
-          <article class="rounded-xl bg-bg-page-surface p-5 shadow-sm">
-            <div class="mb-2 text-caption text-fg-page-secondary">
+          <article class="rounded-xl bg-page-surface p-5 shadow-sm">
+            <div class="mb-2 text-caption text-page-secondary">
               Карточка слой 1 (bg-page-surface)
             </div>
-            <h3 class="text-subtitle text-fg-page-primary">Primary text</h3>
-            <p class="mt-2 text-body-sm text-fg-page-secondary">Secondary text</p>
+            <h3 class="text-subtitle text-page-primary">Primary text</h3>
+            <p class="mt-2 text-body-sm text-page-secondary">Secondary text</p>
             <a href="#" class="mt-3 inline-flex text-link text-body-sm">Link example</a>
-            <div class="mt-4 text-caption text-fg-page-secondary">Badges / text-fg-page-primary</div>
+            <div class="mt-4 text-caption text-page-secondary">Badges / text-page-primary</div>
             <div class="mt-2 flex flex-wrap gap-2">
               <span
                 v-for="status in statuses"
@@ -68,14 +68,14 @@ export const Cards: Story = {
               </span>
             </div>
 
-            <div class="mt-5 rounded-lg bg-bg-page-surface-alt p-4">
-              <div class="mb-2 text-caption text-fg-page-secondary">
+            <div class="mt-5 rounded-lg bg-page-surface-alt p-4">
+              <div class="mb-2 text-caption text-page-secondary">
                 Карточка внутри карточки, слой 2 (bg-page-surface-alt)
               </div>
-              <h4 class="text-subtitle text-fg-page-primary">Primary text</h4>
-              <p class="mt-2 text-body-sm text-fg-page-secondary">Secondary text</p>
+              <h4 class="text-subtitle text-page-primary">Primary text</h4>
+              <p class="mt-2 text-body-sm text-page-secondary">Secondary text</p>
               <a href="#" class="mt-3 inline-flex text-link text-body-sm">Link example</a>
-              <div class="mt-4 text-caption text-fg-page-secondary">Badges / text-fg-page-primary</div>
+              <div class="mt-4 text-caption text-page-secondary">Badges / text-page-primary</div>
               <div class="mt-2 flex flex-wrap gap-2">
                 <span
                   v-for="status in statuses"
@@ -89,14 +89,14 @@ export const Cards: Story = {
             </div>
           </article>
 
-          <article class="rounded-xl bg-bg-page-surface-alt p-5 shadow-sm">
-            <div class="mb-2 text-caption text-fg-page-secondary">
+          <article class="rounded-xl bg-page-surface-alt p-5 shadow-sm">
+            <div class="mb-2 text-caption text-page-secondary">
               Просто карточка слой 2 на странице (bg-page-surface-alt)
             </div>
-            <h3 class="text-subtitle text-fg-page-primary">Primary text</h3>
-            <p class="mt-2 text-body-sm text-fg-page-secondary">Secondary text</p>
+            <h3 class="text-subtitle text-page-primary">Primary text</h3>
+            <p class="mt-2 text-body-sm text-page-secondary">Secondary text</p>
             <a href="#" class="mt-3 inline-flex text-link text-body-sm">Link example</a>
-            <div class="mt-4 text-caption text-fg-page-secondary">Badges / text-fg-page-primary</div>
+            <div class="mt-4 text-caption text-page-secondary">Badges / text-page-primary</div>
             <div class="mt-2 flex flex-wrap gap-2">
               <p
                 v-for="status in statuses"

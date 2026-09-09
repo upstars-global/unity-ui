@@ -142,7 +142,7 @@ defineExpose<UiSuggestListExposed>({
         <UiIcon
             v-if="selectedIndex === index"
             name="line_check"
-            class="text-fg-page-status-success"
+            class="text-page-status-success"
         />
         <template v-else>
           <slot

@@ -39,35 +39,35 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-page-deep p-6 flex flex-col gap-4">
-        <div class="w-full rounded-3xl border border-white/10 bg-bg-page-surface p-6">
+      <div class="bg-page-deep p-6 flex flex-col gap-4">
+        <div class="w-full rounded-3xl border border-white/10 bg-page-surface p-6">
           <UiProgressBar :progress="args.progress">
             <template #top>
               <div class="flex items-center justify-between">
-                <span class="text-fg-page-secondary">{{ args.title }}</span>
-                <span class="font-bold text-fg-page-primary">{{ args.progress }}%</span>
+                <span class="text-page-secondary">{{ args.title }}</span>
+                <span class="font-bold text-page-primary">{{ args.progress }}%</span>
               </div>
             </template>
 
-            <div class="mt-3 text-sm text-fg-page-secondary">
+            <div class="mt-3 text-sm text-page-secondary">
               {{ args.caption }}
             </div>
           </UiProgressBar>
         </div>
 
-        <div class="w-full rounded-3xl border border-white/10 bg-bg-page-surface p-6">
+        <div class="w-full rounded-3xl border border-white/10 bg-page-surface p-6">
           <UiProgressBar :progress="args.progress">
             <template #left>
               {{ args.progress }}%
             </template>
           </UiProgressBar>
         </div>
-        <div class="w-full rounded-3xl border border-white/10 bg-bg-page-surface p-6">
+        <div class="w-full rounded-3xl border border-white/10 bg-page-surface p-6">
           <UiProgressBar :progress="args.progress">
             <template #bottom>
               <div class="flex items-center justify-between">
-                <span class="text-fg-page-secondary">{{ args.caption }}</span>
-                <span class="font-bold text-fg-page-primary">{{ args.progress }}%</span>
+                <span class="text-page-secondary">{{ args.caption }}</span>
+                <span class="font-bold text-page-primary">{{ args.progress }}%</span>
               </div>
             </template>
           </UiProgressBar>
