@@ -9,27 +9,59 @@ const suggest: Partial<Config> = {
     plugin(({ addComponents }) => {
       addComponents({
         '.ui-input-suggest': {
+          '@apply flex flex-col max-h-[20rem] overflow-y-auto overflow-x-hidden gap-4 p-4': {},
+          backgroundColor: "rgb(var(--color-white))",
+          borderRadius: "var(--radius-12)",
+
+          '&--floating': {
+            '@apply absolute top-full left-0 right-0 mt-8': {},
+          },
+
           '&__item': {
+            '@apply flex shrink-0 grow-0 items-center cursor-pointer text-nowrap text-left': {},
             height: '3rem',
             gap: "var(--radius-8)",
             padding: "var(--radius-8) var(--radius-12)",
             borderRadius: "var(--radius-12)",
-            color: "rgb(var(--color-neutral-600) / 1)",
 
             '&[aria-selected="true"]': {
+              backgroundColor: "rgb(var(--color-neutral-200) / 0.4)",
               cursor: 'not-allowed',
-              '.ui-input-suggest__leading-icon, .ui-input-suggest__label': {
-                opacity: '0.45',
-              },
+              '.ui-input-suggest__label': {
+                '@apply font-medium': {},
+              }
             },
 
             '&:hover:not(&[aria-selected="true"])': {
               backgroundColor: "rgb(var(--color-neutral-100) / 1)",
-            }
+            },
+          },
+
+          '&__label': {
+            '@apply truncate text-body': {},
+            color: "rgb(var(--color-neutral-800) / 1)",
+          },
+
+          '&__additional-label': {
+            '@apply shrink-0 truncate text-caption': {},
+            color: "rgb(var(--color-neutral-400) / 1)",
+          },
+
+          '&__icon': {
+            color: "rgb(var(--color-neutral-400) / 1)",
+          },
+
+          '&__trailing-icon': {
+            '@apply ml-auto': {},
+          },
+
+          '&__empty': {
+            '@apply text-body font-medium': {},
+            color: "rgb(var(--color-neutral-600) / 1)",
           },
         },
       })
-    })
+    }),
   ],
 }
 
