@@ -18,7 +18,6 @@ import type {ModalUiOptimized} from "./modal/theme.ts";
 import type { CheckboxUiOptimized } from './form/basicControls/checkbox/theme';
 import type { RadioButtonUiOptimized } from './form/basicControls/radioButton/theme';
 import type { SwitcherUiOptimized } from './form/basicControls/switcher/theme';
-import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
 export type UiIconsGroups<TIconName extends string = string> = Record<string, UiIcons<TIconName>>;
@@ -46,7 +45,6 @@ export interface AppConfig<TIconName extends string = string> {
     checkbox: CheckboxUiOptimized
     radioButton: RadioButtonUiOptimized
     switcher: SwitcherUiOptimized
-    textArea: TextAreaUiOptimized
     modal?: ModalUiOptimized
   }
   store?: {

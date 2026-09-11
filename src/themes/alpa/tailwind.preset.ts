@@ -7,6 +7,7 @@ import inputPreset from './components/input/preset.generated.ts'
 import selectPreset from './components/select/preset.generated.ts'
 import suggestPreset from './components/suggest/preset.generated.ts'
 import switcherPreset from './components/switcher/preset.generated.ts'
+import textAreaPreset from './components/textArea/preset.generated.ts'
 
 const preset: Partial<Config> = {
   presets: [commonPreset],
@@ -17,6 +18,7 @@ const preset: Partial<Config> = {
     ...(selectPreset.plugins ?? []),
     ...(suggestPreset.plugins ?? []),
     ...(switcherPreset.plugins ?? []),
+    ...(textAreaPreset.plugins ?? []),
   ],
 }
 

@@ -19,7 +19,6 @@ import modalTheme from './components/modal/theme.generated';
 import checkboxTheme from './components/checkbox/theme.generated';
 import radioButtonTheme from './components/radioButton/theme.generated';
 import switcherTheme from './components/switcher/theme.generated';
-import textAreaTheme from './components/textArea/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 
 const appConfig: AppConfig<UiIconName> = {
@@ -46,7 +45,6 @@ const appConfig: AppConfig<UiIconName> = {
     checkbox: checkboxTheme,
     radioButton: radioButtonTheme,
     switcher: switcherTheme,
-    textArea: textAreaTheme,
   },
   store: {
     env: {
