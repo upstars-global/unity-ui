@@ -1,6 +1,6 @@
 import type { Slot } from 'vue'
 import type { UiThemeIconName } from '../../../../themes/registry'
-import type { IBaseFieldProps, InputMode } from '../BaseField'
+import type { IBaseFieldProps, IBaseMessage, InputMode } from '../BaseField'
 
 export const INPUT_SIZES = ['sm', 'default'] as const
 export const INPUT_STATES = ['default', 'hover', 'focus', 'error', 'disabled'] as const
@@ -8,7 +8,7 @@ export const INPUT_STATES = ['default', 'hover', 'focus', 'error', 'disabled'] a
 export type InputSize = (typeof INPUT_SIZES)[number]
 export type InputState = (typeof INPUT_STATES)[number]
 
-export interface UiInputProps extends IBaseFieldProps {
+export interface UiInputProps extends Omit<IBaseFieldProps, 'errorMessages' | 'infoMessage'> {
   type?: HTMLInputElement['type']
   autocomplete?: string
   fullWidth?: boolean
@@ -34,8 +34,7 @@ export interface UiInputEmits {
 export interface UiInputSlots {
   default?: Slot
   label?: Slot
-  errorMessages?: Slot
-  message?: Slot
+  message?: Slot<{ message: IBaseMessage }>
   leading?: Slot
   trailing?: Slot
   action?: Slot

@@ -1,12 +1,3 @@
-import {
-  DEFAULT_SIZE, ERROR_MESSAGE_BASE,
-  FIELD_BASE,
-  INPUT_BASE,
-  LABEL_BASE,
-  MESSAGE_BASE,
-  TEXT_BASE,
-} from '../basicTheme.ts'
-
 const CONTENT_BASE = ['relative', 'flex', 'min-w-0', 'flex-1', 'flex-col']
 
 const VALUE_BASE = [
@@ -21,11 +12,10 @@ const VALUE_BASE = [
 ]
 
 const textArea = {
-  base: INPUT_BASE,
+  base: ['ui-input'],
   size: {
     default: {
       field: [
-        ...DEFAULT_SIZE.field,
         'h-auto',
         'items-start',
       ],
@@ -33,22 +23,23 @@ const textArea = {
   },
   slots: {
     field: [
-      ...FIELD_BASE,
+      'ui-input__field',
       'items-start',
     ],
     content: CONTENT_BASE,
     label: [
-        'text-caption font-medium',
-      ...LABEL_BASE,
-      ...TEXT_BASE,
+      'ui-input__label',
+      'text-caption font-medium',
+      'min-w-0',
+      'truncate',
     ],
     value: VALUE_BASE,
     messageRow: [
-      ...MESSAGE_BASE,
+      'ui-input__message',
       'flex w-full items-start gap-[var(--spacing-8)]',
     ],
     message: ['min-w-0 flex-1'],
-    errorMessage: ERROR_MESSAGE_BASE,
+    errorMessage: ['ui-input__error-message'],
     counter: ['shrink-0 text-right whitespace-nowrap'],
   },
 } as const

@@ -18,9 +18,6 @@ import linearProgressTheme from './components/linear/theme.generated';
 import modalTheme from './components/modal/theme.generated';
 import checkboxTheme from './components/checkbox/theme.generated';
 import radioButtonTheme from './components/radioButton/theme.generated';
-import inputTheme from './components/input/theme.generated';
-import selectTheme from './components/select/theme.generated';
-import suggestTheme from './components/suggest/theme.generated';
 import switcherTheme from './components/switcher/theme.generated';
 import textAreaTheme from './components/textArea/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
@@ -48,11 +45,8 @@ const appConfig: AppConfig<UiIconName> = {
     modal: modalTheme,
     checkbox: checkboxTheme,
     radioButton: radioButtonTheme,
-    select: selectTheme,
     switcher: switcherTheme,
-    input: inputTheme,
     textArea: textAreaTheme,
-    suggest: suggestTheme,
   },
   store: {
     env: {

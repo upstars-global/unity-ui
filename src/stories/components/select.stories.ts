@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import UiSelect from '../../components/form/basicControls/select/UiSelect.vue'
 import UiCard from '../../components/card/UiCard.vue'
+import type { IBaseMessage } from '../../components/form/basicControls/BaseField'
 import type { UiSelectOption } from '../../components/form/basicControls/select/types'
 import type { UiThemeIconName } from '../../themes/registry'
 import { icons as alpaIcons } from '../../themes/alpa/icons/config'
@@ -12,10 +13,9 @@ type SelectStoryArgs = {
   name: string
   label: string
   placeholder: string
-  infoMessage: string
+  message?: IBaseMessage
   disabled: boolean
   invalid: boolean
-  errorMessages: string
   size: 'sm' | 'default'
   leadingIconName?: UiThemeIconName
   trailingIconName?: UiThemeIconName
@@ -56,6 +56,27 @@ const OPTIONS: UiSelectOption[] = [
   },
 ]
 
+const ADDITIONAL_LABEL_OPTIONS: UiSelectOption[] = [
+  {
+    label: 'Identity document',
+    additionalLabel: 'Recommended',
+    value: 'identity',
+    leadingIconName: 'fill_lock',
+  },
+  {
+    label: 'Driver license',
+    additionalLabel: 'Expires in 2028',
+    value: 'license',
+    leadingIconName: 'fill_key',
+  },
+  {
+    label: 'Bank statement',
+    additionalLabel: 'PDF',
+    value: 'statement',
+    leadingIconName: 'fill_wallet',
+  },
+]
+
 const meta = {
   title: 'Components/Form/Select',
   component: UiSelect,
@@ -65,10 +86,9 @@ const meta = {
     name: 'documents',
     label: 'Label',
     placeholder: 'Placeholder',
-    infoMessage: '',
+    message: undefined,
     disabled: false,
     invalid: false,
-    errorMessages: '',
     size: 'default',
     leadingIconName: undefined,
     trailingIconName: 'line_dropdown_down',
@@ -79,10 +99,9 @@ const meta = {
     name: { control: 'text' },
     label: { control: 'text' },
     placeholder: { control: 'text' },
-    infoMessage: { control: 'text' },
+    message: { control: 'object' },
     disabled: { control: 'boolean' },
     invalid: { control: 'boolean' },
-    errorMessages: { control: 'text' },
     size: { control: 'inline-radio', options: ['sm', 'default'] },
     leadingIconName: { control: 'select', options: ICON_SELECT_OPTIONS, mapping: ICON_SELECT_MAPPING },
     trailingIconName: { control: 'select', options: ICON_SELECT_OPTIONS, mapping: ICON_SELECT_MAPPING },
@@ -97,11 +116,14 @@ const renderSelectStory = (args: SelectStoryArgs) => ({
   components: { UiSelect, UiCard },
   setup() {
     const value = ref<string | number | boolean | null>(args.modelValue)
+    const additionalLabelValue = ref<string | number | boolean | null>(null)
 
     return {
       args,
       value,
       options: OPTIONS,
+      additionalLabelValue,
+      additionalLabelOptions: ADDITIONAL_LABEL_OPTIONS,
     }
   },
   template: `
@@ -122,7 +144,18 @@ const renderSelectStory = (args: SelectStoryArgs) => ({
               class="w-[19rem] justify-self-start"
           />
         </div>
-        
+
+        <UiSelect
+            v-bind="args"
+            v-model="additionalLabelValue"
+            :list="additionalLabelOptions"
+            name="documents-with-additional-label"
+            label="With additional label"
+            placeholder="Select a document"
+            option-trailing-icon-name="line_arrow_top_left"
+            class="w-[19rem] mt-16"
+        />
+
         <UiSelect
             v-bind="args"
             v-model="value"
@@ -171,19 +204,40 @@ export const Invalid: Story = {
   },
   args: {
     invalid: true,
-    errorMessages: 'Please select a document type',
+    message: {
+      message: 'Please select a document type',
+      type: 'error',
+    },
   },
   render: renderSelectStory,
 }
 
-export const WithInfoMessage: Story = {
+export const SuccessMessage: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  args: {
+    modelValue: 'identity',
+    message: {
+      message: 'Document type selected successfully',
+      type: 'success',
+    },
+  },
+  render: renderSelectStory,
+}
+
+export const DefaultMessage: Story = {
   parameters: {
     controls: { disable: true },
     layout: 'fullscreen',
   },
   args: {
     modelValue: null,
-    infoMessage: 'Choose the document you want to upload',
+    message: {
+      message: 'Choose the document you want to upload',
+      type: 'default',
+    },
   },
   render: renderSelectStory,
 }

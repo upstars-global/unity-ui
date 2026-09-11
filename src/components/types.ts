@@ -15,13 +15,10 @@ import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
 import type {ModalUiOptimized} from "./modal/theme.ts";
-import type { InputUiOptimized } from './form/basicControls/input/theme';
 import type { CheckboxUiOptimized } from './form/basicControls/checkbox/theme';
 import type { RadioButtonUiOptimized } from './form/basicControls/radioButton/theme';
-import type { SelectUiOptimized } from './form/basicControls/select/theme';
 import type { SwitcherUiOptimized } from './form/basicControls/switcher/theme';
 import type { TextAreaUiOptimized } from './form/basicControls/textArea/theme';
-import type {SuggestUiOptimized} from "./form/suggest/theme.ts";
 
 export type UiIcons<TIconName extends string = string> = Partial<Record<TIconName, string>>;
 export type UiIconsGroups<TIconName extends string = string> = Record<string, UiIcons<TIconName>>;
@@ -48,11 +45,8 @@ export interface AppConfig<TIconName extends string = string> {
     linearProgress?: LinearProgressUiOptimized
     checkbox: CheckboxUiOptimized
     radioButton: RadioButtonUiOptimized
-    select: SelectUiOptimized
     switcher: SwitcherUiOptimized
-    input: InputUiOptimized
     textArea: TextAreaUiOptimized
-    suggest: SuggestUiOptimized
     modal?: ModalUiOptimized
   }
   store?: {

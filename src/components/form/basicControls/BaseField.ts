@@ -1,4 +1,18 @@
+import type { UiThemeIconName } from '../../../themes/registry';
+
 export type InputMode = "text" | "email" | "search" | "tel" | "url" | "none" | "numeric" | "decimal";
+export type MessageType = "default" | "success" | "error";
+
+export const MessageIconNames = {
+    success: "fill_check",
+    error: "fill_attention_1",
+} as const;
+
+export interface IBaseMessage {
+    message: string;
+    iconName?: UiThemeIconName;
+    type: MessageType;
+}
 
 export interface IBaseFieldProps {
     autofocus?: boolean;
@@ -11,6 +25,7 @@ export interface IBaseFieldProps {
     name: string;
     placeholder?: string;
     rules?: string | string[];
+    message?: IBaseMessage
 }
 
 export const baseFieldDefault = {

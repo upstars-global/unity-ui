@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {computed, ref, useAttrs, useSlots} from 'vue'
-import { useAppConfig } from '../../../../composables/useAppConfig'
-import { flattenClasses } from '../../../../helpers/flattenClasses'
+import { computed, ref, useAttrs, useSlots } from 'vue'
 import UiIcon from '../../../icon/UiIcon.vue'
+import UiMessage from '../message/UiMessage.vue'
 import type { UiInputEmits, UiInputProps, UiInputSlots } from './types'
-import {baseFieldDefault} from "../BaseField.ts";
-import {LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS} from "./theme.ts";
+import { baseFieldDefault } from '../BaseField.ts'
 
 defineOptions({
   name: 'UiInput',
@@ -24,10 +22,8 @@ const props = withDefaults(defineProps<UiInputProps>(), {
 const emit = defineEmits<UiInputEmits>()
 defineSlots<UiInputSlots>()
 
-const appConfig = useAppConfig()
 const attrs = useAttrs()
 const slots = useSlots()
-const inputTheme = appConfig.components.input;
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const isFocused = ref(false)
@@ -35,37 +31,14 @@ const isFocused = ref(false)
 const invalid = computed(() => props.invalid)
 const hasValue = computed(() => Boolean(props.modelValue))
 const shouldFloatLabel = computed(() => Boolean(props.label) && (isFocused.value || hasValue.value))
-const hasErrorMessage = computed(() => invalid.value && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
-const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
 const showLeadingIcon = computed(() => Boolean(props.leadingIconName))
 const showTrailingIcon = computed(() => Boolean(props.trailingIconName))
 const showClearAction = computed(() => Boolean(props.showClearAction && props.modelValue && isFocused.value))
 
 const rootClasses = computed(() => {
-  return flattenClasses(
-    inputTheme.base,
+  return [
+    shouldFloatLabel.value && 'ui-input--floating-label',
     attrs.class,
-  )
-})
-const fieldClasses = computed(() => {
-  return flattenClasses(
-      inputTheme?.slots.field,
-      inputTheme?.size.default.field
-  )
-})
-
-const floatingLabelClasses = computed(() => {
-  return [
-      shouldFloatLabel.value
-          ? LABEL_FOCUS
-          : LABEL_BLUR,
-      inputTheme.slots.label,
-  ]
-})
-const controlClasses = computed(() => {
-  return [
-    inputTheme.slots.value,
-    shouldFloatLabel.value && VALUE_FOCUS
   ]
 })
 
@@ -137,11 +110,12 @@ function handleBlur(event: FocusEvent) {
       :data-disabled="disabled"
       :data-invalid="invalid"
       :class="rootClasses"
+      class="ui-input ui-input-control"
   >
     <div
         :data-disabled="disabled"
         :data-invalid="invalid"
-        :class="fieldClasses"
+        class="ui-input__field"
         @focusin="handleFocus"
         @focusout="handleBlur"
     >
@@ -149,14 +123,14 @@ function handleBlur(event: FocusEvent) {
         <UiIcon
             v-if="showLeadingIcon"
             :name="leadingIconName"
-            :class="inputTheme.slots.leadingIcon"
+            class="ui-input__icon"
         />
       </slot>
-      <div :class="inputTheme.slots.content">
+      <div class="ui-input__content">
         <label
             v-if="label"
             :for="name"
-            :class="floatingLabelClasses"
+            class="ui-input__label"
         >
           <slot name="label">
             {{ label }}
@@ -172,7 +146,7 @@ function handleBlur(event: FocusEvent) {
             :disabled="disabled"
             :aria-invalid="invalid"
             :placeholder="placeholderText"
-            :class="controlClasses"
+            class="ui-input__value"
             :maxlength="maxlength"
             :inputmode="inputMode"
             :autofocus="autofocus"
@@ -186,13 +160,12 @@ function handleBlur(event: FocusEvent) {
       <UiIcon
           v-if="showClearAction"
           name="fill_close"
-          class="cursor-pointer relative z-2"
-          :class="inputTheme.slots.trailingIcon"
+          class="ui-input__icon cursor-pointer relative z-2"
           @mousedown.prevent="handlerClearValue"
       />
       <div
           v-else-if="showTrailingSlot"
-          :class="inputTheme.slots.action"
+          class="ui-input__action"
       >
         <slot
             name="trailing"
@@ -200,36 +173,25 @@ function handleBlur(event: FocusEvent) {
           <UiIcon
               v-if="showTrailingIcon"
               :name="trailingIconName"
-              :class="inputTheme.slots.trailingIcon"
+              class="ui-input__icon"
           />
         </slot>
       </div>
     </div>
     <slot name="suggestList"/>
-    <div
-        v-if="hasBottomMessage"
-        :class="inputTheme.slots.message"
+    <UiMessage
+      v-if="message"
+      :message="message"
     >
-      <div
-          v-if="hasErrorMessage"
-          :class="inputTheme.slots.errorMessage"
+      <template
+        v-if="$slots.message"
+        #default="slotProps"
       >
         <slot
-            name="errorMessages"
-        >
-          <UiIcon
-              name="fill_attention_1"
-              size="16"
-          />
-          {{ errorMessages }}
-        </slot>
-      </div>
-      <slot
-          v-else
           name="message"
-      >
-        {{ infoMessage }}
-      </slot>
-    </div>
+          v-bind="slotProps"
+        />
+      </template>
+    </UiMessage>
   </div>
 </template>
