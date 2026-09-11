@@ -1,3 +1,10 @@
+## [1.25.2](https://github.com/upstars-global/unity-ui/compare/v1.25.1...v1.25.2) (2026-09-11)
+
+### 🐛 Bug Fixes
+
+* UN-3047 fix install plugin
+ ([768a312](https://github.com/upstars-global/unity-ui/commit/768a3123fc6e1ffa6fad1d49cca0475a3b2cc1e2))
+
 ## [1.25.1](https://github.com/upstars-global/unity-ui/compare/v1.25.0...v1.25.1) (2026-08-14)
 
 ### 🐛 Bug Fixes
