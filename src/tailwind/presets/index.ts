@@ -24,6 +24,9 @@ const theme = {
 }
 
 const preset: Partial<Config> = {
+    corePlugins: {
+        container: false,
+    },
     theme,
     plugins: [
         ...(typographyPreset.plugins ?? []),

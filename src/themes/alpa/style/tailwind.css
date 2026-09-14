@@ -5,6 +5,7 @@
 @import "components/tabs.css";
 @import "../../../tailwind/base/typography-elements.css";
 @import "../../../tailwind/base/scrollbar.css";
+@import "../../../tailwind/base/responsive.css";
 
 
 @tailwind components;
