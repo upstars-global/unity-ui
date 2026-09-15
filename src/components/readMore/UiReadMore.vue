@@ -93,7 +93,7 @@ function handleClickReadMore(): void {
 
     <UiIcon
         name="fill_more"
-        class="text-fg-secondary"
+        class="text-page-secondary"
         v-show="!isOpen"
     />
 

@@ -4,6 +4,6 @@
     --component-progress-bg: var(--color-neutral-800-10);
     --component-progress-brand: var(--color-primary-300);
     --component-progress-default: var(--color-success-100);
-    --component-progress-fg-primary: var(--fg-primary);
-    --component-progress-fg-secondary: var(--fg-secondary);
+    --component-progress-fg-primary: var(--fg-page-primary);
+    --component-progress-fg-secondary: var(--fg-page-secondary);
 }

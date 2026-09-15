@@ -15,5 +15,5 @@
     --component-badge-status-bg-warning: var(--color-warning-100);
     --component-badge-timer-bg: var(--color-neutral-800-10);
     --component-badge-timer-fg-primary: var(--color-neutral-800);
-    --component-badge-timer-fg-secondary: var(--fg-secondary);
+    --component-badge-timer-fg-secondary: var(--fg-page-secondary);
 }

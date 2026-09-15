@@ -27,7 +27,7 @@ const linearProgressTheme = appConfig.components?.linearProgress
             :style="{width: progress + '%'}"
         />
       </div>
-      <span class="font-bold text-fg-primary"><slot name="left" /></span>
+      <span class="font-bold text-page-primary"><slot name="left" /></span>
     </div>
     <slot name="bottom" />
   </div>

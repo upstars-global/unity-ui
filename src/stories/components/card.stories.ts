@@ -35,10 +35,10 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6">
+      <div class="bg-page-deep p-6">
         <UiCard :variant="args.variant" class="max-w-[536px]">
-          <div class="min-h-[196px] p-4 text-fg-primary">
-            <div class="mb-2 text-xs uppercase tracking-[0.1em] text-fg-secondary">
+          <div class="min-h-[196px] p-4 text-page-primary">
+            <div class="mb-2 text-xs uppercase tracking-[0.1em] text-page-secondary">
               {{ args.variant }}
             </div>
             <div class="text-body">
@@ -63,7 +63,7 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-6 bg-bg-deep p-6">
+      <div class="space-y-6 bg-page-deep p-6">
         <section
           v-for="variant in variants"
           :key="variant"
@@ -75,13 +75,13 @@ export const VariantsMatrix: Story = {
 
           <div class="grid gap-4 lg:grid-cols-[536px_328px]">
             <UiCard :variant="variant">
-              <div class="min-h-[196px] p-4 text-fg-primary">
+              <div class="min-h-[196px] p-4 text-page-primary">
                 <div class="text-body">Wide card</div>
               </div>
             </UiCard>
 
             <UiCard :variant="variant">
-              <div class="min-h-[196px] p-4 text-fg-primary">
+              <div class="min-h-[196px] p-4 text-page-primary">
                 <div class="text-body">Compact card</div>
               </div>
             </UiCard>

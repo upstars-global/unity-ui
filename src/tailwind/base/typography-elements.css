@@ -42,11 +42,11 @@
 
     a, .text-link {
         cursor: pointer;
-        color: var(--fg-link-default);
+        color: var(--fg-page-link-default);
         text-decoration-line: underline;
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;
-        text-decoration-color: var(--fg-link-underline-default);
+        text-decoration-color: var(--fg-page-link-underline-default);
         text-underline-position: from-font;
         text-decoration-thickness: .15em;
         text-underline-offset: .2em;
@@ -56,8 +56,8 @@
     }
 
     a:hover, .text-link:hover {
-        color: var(--fg-link-hover);
-        text-decoration-color: var(--fg-link-hover);
+        color: var(--fg-page-link-hover);
+        text-decoration-color: var(--fg-page-link-hover);
     }
 
     b, strong {

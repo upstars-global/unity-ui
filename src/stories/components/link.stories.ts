@@ -34,7 +34,7 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="p-6 bg-bg-deep">
+      <div class="p-6 bg-page-deep">
         <UiLink :to="args.to" :size="args.size">
           {{ args.label }}
         </UiLink>
@@ -55,7 +55,7 @@ export const Sizes: Story = {
       }
     },
     template: `
-      <div class="space-y-4 p-6 bg-bg-deep">
+      <div class="space-y-4 p-6 bg-page-deep">
         <div
           v-for="size in sizes"
           :key="size"
@@ -78,7 +78,7 @@ export const LinkKinds: Story = {
   render: () => ({
     components: { UiLink },
     template: `
-      <div class="space-y-4 p-6 bg-bg-deep">
+      <div class="space-y-4 p-6 bg-page-deep">
         <div class="rounded-2xl border border-black/10 bg-white p-4">
           <div class="mb-3 text-xs uppercase tracking-[0.1em] text-black/45">External</div>
           <UiLink to="https://example.com">External link</UiLink>

@@ -48,7 +48,7 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="p-6 bg-bg-deep">
+      <div class="p-6 bg-page-deep">
         <UiSwitcher
           v-bind="args"
           :model-value="args.modelValue"
@@ -137,13 +137,13 @@ export const PropsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-6 bg-bg-deep p-6">
+      <div class="space-y-6 bg-page-deep p-6">
         <section
           v-for="section in sections"
           :key="section.title"
           class="rounded-3xl border border-white/10 bg-white/5 p-5"
         >
-          <div class="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-fg-secondary">
+          <div class="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-page-secondary">
             {{ section.title }}
           </div>
 
@@ -151,9 +151,9 @@ export const PropsMatrix: Story = {
             <div
               v-for="item in section.items"
               :key="item.title"
-              class="rounded-2xl border border-fg-brand bg-bg-surface p-16"
+              class="rounded-2xl border border-primary-300 bg-page-surface p-16"
             >
-              <div class="mb-3 text-caption text-fg-secondary">
+              <div class="mb-3 text-caption text-page-secondary">
                 {{ item.title }}
               </div>
 

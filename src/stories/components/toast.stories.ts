@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import UiButton from '../../components/button/UiButton.vue'
 import UiToast from '../../components/notifications/toast/UiToast.vue'
 import toast from '../../plugins/toast'
 import { type BaseNotificationVariants } from '../../components/notifications/baseNotification/types'
@@ -38,7 +39,7 @@ export const Playground: Story = {
     layout: 'fullscreen',
   },
   render: (args) => ({
-    components: { UiToast },
+    components: { UiButton, UiToast },
     setup() {
       function showToast(variant: BaseNotificationVariants, showMessage: boolean = true) {
         toast.show({
@@ -53,49 +54,43 @@ export const Playground: Story = {
       return { showToast }
     },
     template: `
-      <div class="min-h-screen bg-bg-deep p-6">
-        <p class="text-subtitle text-fg-secondary mb-2">Without Message</p>
-        <div class="mb-6 flex gap-3">
-          <button
-            class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+      <div class="min-h-screen bg-page-deep p-6">
+        <p class="text-subtitle text-page-secondary mb-2">Without Message</p>
+        <div class="mb-6 flex gap-16">
+          <UiButton
             @click="showToast('neutral')"
           >
             Show toast neutral
-          </button>
-          <button
-              class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+          </UiButton>
+          <UiButton
               @click="showToast('success')"
           >
             Show toast success
-          </button>
-          <button
-              class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+          </UiButton>
+          <UiButton
               @click="showToast('error')"
           >
             Show toast error
-          </button>
+          </UiButton>
         </div>
 
-        <p class="text-subtitle text-fg-secondary mb-2">Without Message</p>
-        <div class="mb-6 flex gap-3">
-          <button
-              class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+        <p class="text-subtitle text-page-secondary mb-2">Without Message</p>
+        <div class="mb-6 flex gap-16">
+          <UiButton
               @click="showToast('neutral', false)"
           >
             Show toast neutral
-          </button>
-          <button
-              class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+          </UiButton>
+          <UiButton
               @click="showToast('success', false)"
           >
             Show toast success
-          </button>
-          <button
-              class="rounded-12 bg-primary-300 px-4 py-2 text-bg-deep"
+          </UiButton>
+          <UiButton
               @click="showToast('error', false)"
           >
             Show toast error
-          </button>
+          </UiButton>
         </div>
 
         <UiToast />

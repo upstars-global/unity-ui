@@ -4,9 +4,9 @@
     --radius-card-m: var(--radius-16);
     --radius-card-l: var(--radius-24);
 
-    --component-card-bg: var(--bg-surface);
-    --component-card-alt-bg: var(--bg-surface-alt);
+    --component-card-bg: var(--bg-page-surface);
+    --component-card-alt-bg: var(--bg-page-surface-alt);
     --component-card-alt-bordercolor: var(--color-neutral-200-80);
-    --component-card-fg-primary: var(--fg-primary);
-    --component-card-fg-secondary: var(--fg-secondary);
+    --component-card-fg-primary: var(--fg-page-primary);
+    --component-card-fg-secondary: var(--fg-page-secondary);
 }
