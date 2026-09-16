@@ -47,8 +47,8 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6">
-        <div class="max-w-2xl rounded-2xl border border-white/10 bg-black/10 p-5 text-fg-primary">
+      <div class="bg-page-deep p-6">
+        <div class="max-w-2xl rounded-2xl border border-white/10 bg-black/10 p-5 text-page-primary">
           <UiReadMore
             :start-height="args.startHeight"
             :show-less-button="args.showLessButton"

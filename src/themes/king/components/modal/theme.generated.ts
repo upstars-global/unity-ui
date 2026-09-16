@@ -4,9 +4,9 @@
 const button = {
     "base": "w-full h-full fixed top-0 left-0 top-0 bottom-0 bg-neutral-50 z-index-100 bg-[var(--bg-overlay)]",
     "slots": {
-        "modalContainer": "flex items-center justify-center max-h-80dvh min-w-[20rem] max-w-100dvw md:w-full cursor-default p-16 rounded-t-24 md:rounded-24 bg-bg-surface",
+        "modalContainer": "flex items-center justify-center max-h-80dvh min-w-[20rem] max-w-100dvw md:w-full cursor-default p-16 rounded-t-24 md:rounded-24 bg-page-surface",
         "modalContent": "max-w-full w-full box-border flex flex-col gap-6 overflow-hidden pb-safe gap-24",
-        "modalHeader": "flex justify-space-between items-center w-full text-subtitle gap-8 text-fg-primary",
+        "modalHeader": "flex justify-space-between items-center w-full text-subtitle gap-8 text-page-primary",
         "modalHeaderIcons": "w-6 h-6",
         "modalHeaderTitle": "shrink grow basis-auto text-center",
         "modalBottomActions": "flex w-full justify-center items-center gap-16"

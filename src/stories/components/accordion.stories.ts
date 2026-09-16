@@ -52,11 +52,11 @@ function renderAccordion(args: AccordionStoryArgs) {
       }
     },
     template: `
-      <div class="bg-bg-deep p-6">
+      <div class="bg-page-deep p-6">
         <div class="flex items-start gap-4 mb-4">
           <UiAccordion 
               :title="args.title">
-            <div class="text-body text-fg-secondary">
+            <div class="text-body text-page-secondary">
               <p
                 v-for="(paragraph, index) in args.content.split('\\n\\n')"
                 :key="index"
@@ -71,7 +71,7 @@ function renderAccordion(args: AccordionStoryArgs) {
             :title="args.title"
             default-opened
           >
-            <div class="text-body text-fg-secondary">
+            <div class="text-body text-page-secondary">
               <p
                 v-for="(paragraph, index) in args.content.split('\\n\\n')"
                 :key="index"
@@ -86,7 +86,7 @@ function renderAccordion(args: AccordionStoryArgs) {
             title="Accordion with action slot"
             default-opened
         >
-          <div class="space-y-4 text-body text-fg-secondary">
+          <div class="space-y-4 text-body text-page-secondary">
             <p
                 v-for="(paragraph, index) in args.content.split('\\n\\n')"
                 :key="index"

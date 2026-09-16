@@ -106,7 +106,7 @@ const renderSelectStory = (args: SelectStoryArgs) => ({
   },
   template: `
     <div class=" max-h-[32rem]">
-      <div class="bg-bg-deep p-12 h-[132rem] flex flex-col">
+      <div class="bg-page-deep p-12 h-[132rem] flex flex-col">
         <div class="flex gap-16">
           <UiSelect
               v-bind="args"

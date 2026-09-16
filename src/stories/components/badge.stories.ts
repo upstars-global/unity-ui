@@ -36,7 +36,7 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6">
+      <div class="bg-page-deep p-6">
         <div class="inline-flex rounded-2xl bg-black/10 p-4">
           <UiBadge :variant="args.variant">
             {{ args.label }}
@@ -61,12 +61,12 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="flex gap-8 bg-bg-deep p-6">
+      <div class="flex gap-8 bg-page-deep p-6">
         <section class="inline-flex rounded-2xlbg-black/10 p-4">
           <div class="space-y-4">
             <div class="text-xs uppercase tracking-[0.1em] text-white/50">badge-status</div>
 
-            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-bg-surface">
+            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-page-surface">
               <UiBadge
                 v-for="variant in statusVariants"
                 :key="variant"
@@ -82,7 +82,7 @@ export const VariantsMatrix: Story = {
           <div class="space-y-4">
             <div class="text-xs uppercase tracking-[0.1em] text-white/50">badge-navigation</div>
 
-            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-bg-surface">
+            <div class="flex gap-4 rounded-xl bg-black/10 p-4 bg-page-surface">
               <UiBadge
                 v-for="variant in navigationVariants"
                 :key="variant"
