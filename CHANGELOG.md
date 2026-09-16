@@ -1,3 +1,16 @@
+## [1.25.3](https://github.com/upstars-global/unity-ui/compare/v1.25.2...v1.25.3) (2026-09-16)
+
+### 🐛 Bug Fixes
+
+* UN-3182 change color naming ([#39](https://github.com/upstars-global/unity-ui/issues/39))
+ ([88edd4b](https://github.com/upstars-global/unity-ui/commit/88edd4b8ba2433e80edaa89e323956006c2e5494))
+
+
+
+    * fix: UN-3182 change color naming
+
+    * fix: UN-3182 change color naming
+
 ## [1.25.2](https://github.com/upstars-global/unity-ui/compare/v1.25.1...v1.25.2) (2026-09-11)
 
 ### 🐛 Bug Fixes
