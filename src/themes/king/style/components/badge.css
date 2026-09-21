@@ -3,7 +3,7 @@
     --component-badge-padding-x: 0.5rem;
     --radius-badge: var(--radius-full);
 
-    --component-badge-navigation-fg: var(--color-black);
+    --component-badge-navigation-fg: var(--color-white);
     --component-badge-navigation-bg-default: var(--color-primary-300);
     --component-badge-navigation-bg-new: var(--color-error-100);
     --component-badge-neutral-bg: var(--color-neutral-800-10);

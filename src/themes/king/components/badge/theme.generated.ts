@@ -13,8 +13,8 @@ const button = {
         "status-error": "bg-error-100 text-white",
         "status-warning": "bg-warning-100 text-white",
         "status-success": "bg-success-100 text-white",
-        "navigation-default": "bg-primary-300 text-black",
-        "navigation-new": "bg-error-100 text-black",
+        "navigation-default": "bg-primary-300 text-white",
+        "navigation-new": "bg-error-100 text-white",
         "neutral": "bg-neutral-800/10 text-neutral-800",
         "personal": "bg-gradient-personal text-neutral-800"
     },
