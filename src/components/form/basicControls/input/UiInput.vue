@@ -67,6 +67,10 @@ function focusInputToEnd() {
   moveCaretToEnd()
 }
 
+function focusInput() {
+  inputRef.value?.focus()
+}
+
 function useFormatter(event: Event) {
   if (props.formatter) {
     props.formatter(event);
@@ -111,6 +115,7 @@ function handleBlur(event: FocusEvent) {
       :data-invalid="invalid"
       :class="rootClasses"
       class="ui-input ui-input-control"
+      @click="focusInput"
   >
     <div
         :data-disabled="disabled"
@@ -150,6 +155,7 @@ function handleBlur(event: FocusEvent) {
             :maxlength="maxlength"
             :inputmode="inputMode"
             :autofocus="autofocus"
+            :autocomplete="autocomplete"
             @change="handlerChange"
             @input="handlerInput"
             @keydown.up="handlerKeyDown"

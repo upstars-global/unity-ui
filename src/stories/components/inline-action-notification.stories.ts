@@ -73,7 +73,7 @@ export const Examples: Story = {
           },
           {
             id: 'success',
-            iconName: 'fill_check',
+            iconName: 'fill_check_input',
             title: 'Payout method saved',
             message: 'Your new payout method is ready to use for the next withdrawal.',
             primaryActionLabel: 'View details',

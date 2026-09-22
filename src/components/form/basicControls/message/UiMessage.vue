@@ -32,7 +32,7 @@ const typeClasses: Partial<Record<MessageType, string>> = {
 
 <template>
   <div
-    class="ui-input__message"
+    class="ui-input__message flex gap-4 items-center "
     :class="typeClasses[message.type]"
   >
     <UiIcon
@@ -41,7 +41,7 @@ const typeClasses: Partial<Record<MessageType, string>> = {
       size="16"
     />
     <slot :message="message">
-      {{ message.message }}
+      <span class="text-caption">{{ message.message }}</span>
     </slot>
   </div>
 </template>

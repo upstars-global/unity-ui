@@ -72,7 +72,7 @@ export const Variants: Story = {
           },
           {
             variant: 'success',
-            iconName: 'fill_check',
+            iconName: 'fill_check_input',
             label: 'success',
             message: 'Verification completed successfully and your profile is now active.',
           },

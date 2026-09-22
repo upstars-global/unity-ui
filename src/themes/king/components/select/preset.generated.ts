@@ -44,6 +44,10 @@ const select: Partial<Config> = {
             opacity: "0.45",
           },
 
+          '&:not([data-open="true"]):not([data-invalid="true"]):not([data-disabled="true"]):hover .ui-select__field': {
+            borderColor: "rgb(var(--color-primary-400) / 0.4)",
+          },
+
           '&--open': {
             '.ui-select__field': {
               borderColor: "rgb(var(--color-primary-300) / 1)",

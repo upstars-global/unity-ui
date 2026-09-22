@@ -4,7 +4,7 @@ export type InputMode = "text" | "email" | "search" | "tel" | "url" | "none" | "
 export type MessageType = "default" | "success" | "error";
 
 export const MessageIconNames = {
-    success: "fill_check",
+    success: "fill_check_input",
     error: "fill_attention_1",
 } as const;
 

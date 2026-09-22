@@ -17,7 +17,7 @@ const meta = {
   component: UiToast,
   tags: ['autodocs'],
   args: {
-    icon: 'fill_check',
+    icon: 'fill_check_input',
     title: 'Operation completed',
     text: 'Toast is emitted through the Storybook EventBus mock.',
     time: 0,

@@ -9,6 +9,29 @@ const basicControls: Partial<Config> = {
           '@apply relative flex flex-col': {},
           gap: 'var(--component-input-gap)',
 
+          '& :is(input):autofill, & :is(input):autofill:active, & :is(input):autofill:focus, & :is(input):autofill:hover, & :is(input):-webkit-autofill, & :is(input):-webkit-autofill:active, & :is(input):-webkit-autofill:focus, & :is(input):-webkit-autofill:hover': {
+            '-webkit-text-fill-color': 'var(--component-input-value) !important',
+            backgroundColor: 'transparent',
+            backgroundClip: 'text',
+            transition: 'background-color 5000s ease-in-out 0s',
+          },
+
+          '& input::-webkit-credentials-auto-fill-button': {
+            visibility: 'hidden',
+            pointerEvents: 'none',
+            position: 'absolute',
+            right: '0',
+          },
+
+          '& :is(input)[type=number]::-webkit-inner-spin-button, & :is(input)[type=number]::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: '0',
+          },
+
+          '& :is(input)[type=number]': {
+            '-moz-appearance': 'textfield',
+          },
+
           '&[data-disabled="true"]': {
             opacity: 'var(--component-input-disabled-opacity)',
           },
@@ -55,7 +78,6 @@ const basicControls: Partial<Config> = {
         },
 
         '.ui-input__message': {
-          '@apply flex gap-4 text-caption': {},
           paddingInline: 'var(--component-input-message-padding-x)',
           color: 'var(--component-input-message)',
 
