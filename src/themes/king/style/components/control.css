@@ -1,6 +1,6 @@
 :root[data-product="king"] {
     --component-control-default: var(--color-neutral-400);
-    --component-control-error: var(--fg-status-error);
+    --component-control-error: var(--fg-page-status-error);
     --component-control-selected: var(--color-primary-300);
     --component-control-segment-bg: var(--color-neutral-100);
     --component-control-segment-bordercolor: var(--color-neutral-200-40);

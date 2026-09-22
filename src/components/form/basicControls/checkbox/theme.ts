@@ -70,15 +70,15 @@ const checkbox = {
       'break-words',
       'text-body',
       'font-normal',
-      'text-fg-primary',
+      'text-page-primary',
     ],
     message: [
       'text-caption',
-      'text-fg-secondary',
+      'text-page-secondary',
     ],
     errorMessage: [
       'text-caption',
-      'text-fg-status-error',
+      'text-page-status-error',
     ],
   },
 } as const

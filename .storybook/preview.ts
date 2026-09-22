@@ -9,7 +9,11 @@ import { AppConfigSymbol } from '../src/composables/useAppConfig'
 import { EventBusSymbol } from '../src/composables/useEventBus'
 import modal from '../src/plugins/modal'
 import toast from '../src/plugins/toast'
-import { getThemeConfig } from '../src/themes/registry'
+import {
+    getThemeConfig,
+    UI_THEME_NAMES,
+    type UiThemeName,
+} from '../src/themes/registry'
 
 const storybookEventBus = createStorybookEventBus()
 toast.init(storybookEventBus)
@@ -67,7 +71,7 @@ const TAILWIND_VIEWPORTS = {
     },
 } as const
 
-type ThemeKey = 'alpa' | 'king'
+type ThemeKey = UiThemeName
 type ThemeChoice = 'default' | ThemeKey
 
 const THEME_LINK_ELEMENT_ID = 'storybook-active-theme'
@@ -75,6 +79,10 @@ const THEME_CSS_URLS: Record<ThemeKey, string> = {
     alpa: alpaThemeCssUrl,
     king: kingThemeCssUrl,
 }
+
+const PRODUCT_THEME_MODES = Object.fromEntries(
+    UI_THEME_NAMES.map((theme) => [theme, { productTheme: theme }]),
+)
 
 function applyThemeStyles(theme: ThemeKey) {
     const target = document.head ?? document.documentElement
@@ -129,9 +137,13 @@ export const decorators = [
 
 const preview: Preview = {
     initialGlobals: {
+        productTheme: 'alpa',
         viewport: { value: 'xs', isRotated: false },
     },
     parameters: {
+        chromatic: {
+            modes: PRODUCT_THEME_MODES,
+        },
         viewport: {
             disable: false,
             options: TAILWIND_VIEWPORTS,

@@ -110,10 +110,10 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="bg-bg-deep p-16">
+      <div class="bg-page-deep p-16">
         <div class="flex gap-8">
           <div class="space-y-2">
-            <div class="text-xs font-medium uppercase text-fg-primary">filled</div>
+            <div class="text-xs font-medium uppercase text-page-primary">filled</div>
             <div class="inline-flex rounded-2xl border border-white/10 bg-white p-8">
               <UiTimer
                 variant="filled"
@@ -124,8 +124,8 @@ export const Playground: Story = {
           </div>
 
           <div class="space-y-2">
-            <div class="text-xs font-medium uppercase text-fg-primary">ghost</div>
-            <div class="inline-flex rounded-2xl bg-bg-surface p-8">
+            <div class="text-xs font-medium uppercase text-page-primary">ghost</div>
+            <div class="inline-flex rounded-2xl bg-page-surface p-8">
               <UiTimer
                 variant="ghost"
                 :config="timerConfig"
@@ -181,16 +181,16 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-6 bg-bg-deep p-6">
+      <div class="space-y-6 bg-page-deep p-6">
         <div class="text-xs font-medium uppercase text-white">filled</div>
-        <section class="flex gap-2 rounded-2xl border border-white/10 bg-bg-surface-alt p-4">
+        <section class="flex gap-2 rounded-2xl border border-white/10 bg-page-surface-alt p-4">
           <UiTimer :config="startConfig" />
           <UiTimer :config="finishConfig" />
           <UiTimer :config="overConfig" />
         </section>
 
         <div class="text-xs font-medium uppercase text-white">ghost</div>
-        <section class="flex gap-2 rounded-2xl bg-bg-surface p-4">
+        <section class="flex gap-2 rounded-2xl bg-page-surface p-4">
           <UiTimer :config="startConfig" variant="ghost" />
           <UiTimer :config="finishConfig" variant="ghost" />
           <UiTimer :config="overConfig" variant="ghost" />

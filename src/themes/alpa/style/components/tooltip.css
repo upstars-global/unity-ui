@@ -2,5 +2,5 @@
     --radius-tooltip: var(--radius-8);
 
     --component-tooltip-bg: var(--color-secondary-300);
-    --component-tooltip-fg: var(--fg-primary);
+    --component-tooltip-fg: var(--fg-page-primary);
 }

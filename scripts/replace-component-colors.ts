@@ -78,7 +78,7 @@ const SPACING_UTILITIES = new Set([
 ])
 
 const CLASS_TOKEN_REGEX = /[!@%\w:[\]/.-]+-\[var\((--[a-z0-9-]+)\)\]/gi
-const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./\[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
+const ARBITRARY_PROPERTY_REGEX = /((?:[!@%\w./[\]-]+:|\[[^\]]+\]:)*)\[([a-z-]+):([^\]]*var\(--component-[a-z0-9-]+\)[^\]]*)\]/gi
 const CSS_VAR_DEFINITION_REGEX = /(--[A-Za-z0-9-]+)\s*:\s*([^;]+);/g
 const RUNTIME_IMPORT_REGEX = /^\s*import\s+(?!type\b)(?:[\s\S]*?\sfrom\s+)?['"](.+?)['"]/gm
 
@@ -229,21 +229,25 @@ function collectPresetColorVars({
     }
 }
 
-function findColorsObjectLiteral(sourceFile: ts.SourceFile): ts.ObjectLiteralExpression | null {
-    let colorsObject: ts.ObjectLiteralExpression | null = null
+function findColorObjectLiterals(sourceFile: ts.SourceFile): ts.ObjectLiteralExpression[] {
+    let colorObjects: ts.ObjectLiteralExpression[] = []
 
     const visit = (node: ts.Node) => {
-        if (colorsObject) {
+        if (colorObjects.length) {
             return
         }
 
         if (ts.isObjectLiteralExpression(node)) {
             const themeObject = getObjectLiteralProperty(node, 'theme')
             const extendObject = themeObject ? getObjectLiteralProperty(themeObject, 'extend') : null
-            const nestedColorsObject = extendObject ? getObjectLiteralProperty(extendObject, 'colors') : null
+            const nestedColorObjects = extendObject
+                ? ['colors', 'backgroundColor', 'textColor']
+                    .map((sectionName) => getObjectLiteralProperty(extendObject, sectionName))
+                    .filter((objectLiteral): objectLiteral is ts.ObjectLiteralExpression => Boolean(objectLiteral))
+                : []
 
-            if (nestedColorsObject) {
-                colorsObject = nestedColorsObject
+            if (nestedColorObjects.length) {
+                colorObjects = nestedColorObjects
                 return
             }
         }
@@ -252,23 +256,25 @@ function findColorsObjectLiteral(sourceFile: ts.SourceFile): ts.ObjectLiteralExp
     }
 
     visit(sourceFile)
-    return colorsObject
+    return colorObjects
 }
 
 function parsePresetVars(filePath: string): PresetVars {
     const source = readFileSync(filePath, 'utf8')
     const varToTailwindColor: PresetVars = new Map()
     const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
-    const colorsObject = findColorsObjectLiteral(sourceFile)
+    const colorObjects = findColorObjectLiterals(sourceFile)
 
-    if (!colorsObject) {
+    if (!colorObjects.length) {
         return varToTailwindColor
     }
 
-    collectPresetColorVars({
-        objectLiteral: colorsObject,
-        result: varToTailwindColor,
-    })
+    for (const colorObject of colorObjects) {
+        collectPresetColorVars({
+            objectLiteral: colorObject,
+            result: varToTailwindColor,
+        })
+    }
 
     return varToTailwindColor
 }
