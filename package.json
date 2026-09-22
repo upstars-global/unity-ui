@@ -9,6 +9,9 @@
     "preview": "vite preview",
     "generate:themes": "node ./scripts/replace-component-colors.ts --write && node ./scripts/replace-component-presets.ts --write",
     "generate:themes:presets": "node ./scripts/replace-component-presets.ts --write",
+    "figma:connect": "figma connect",
+    "figma:connect:parse": "figma connect parse --exit-on-unreadable-files",
+    "figma:connect:publish": "figma connect publish",
     "test": "vitest run --passWithNoTests",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
@@ -26,6 +29,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.0.0",
+    "@figma/code-connect": "^2.0.1",
     "@octokit/auth-app": "^8.2.0",
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/exec": "^7.1.0",
@@ -63,8 +67,8 @@
     "vue-tsc": "^3.1.5"
   },
   "dependencies": {
-    "dayjs": "^1.11.20",
     "@floating-ui/vue": "^1.1.11",
+    "dayjs": "^1.11.20",
     "vue3-mask": "upstars-global/vue3-mask#v3.0.8",
     "vue3-outside-events": "upstars-global/vue3-outside-events#v2.0.5"
   }
