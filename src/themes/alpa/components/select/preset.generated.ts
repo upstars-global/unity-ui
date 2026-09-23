@@ -66,6 +66,10 @@ const select: Partial<Config> = {
             borderColor: "rgb(var(--color-error-100) / 1)",
           },
 
+          '&[data-invalid="true"] .ui-input__message': {
+            color: "rgb(var(--color-error-100) / 1)",
+          },
+
           '&__field': {
             '@apply flex items-center w-full overflow-hidden border-solid text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed': {},
             gap: "var(--spacing-8)",

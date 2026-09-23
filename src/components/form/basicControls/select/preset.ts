@@ -63,6 +63,10 @@ const select: Partial<Config> = {
             borderColor: 'var(--component-input-error-bordercolor)',
           },
 
+          '&[data-invalid="true"] .ui-input__message': {
+            color: 'var(--component-input-error-message)',
+          },
+
           '&__field': {
             '@apply flex items-center w-full overflow-hidden border-solid text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed': {},
             gap: 'var(--component-input-field-gap)',

@@ -11,6 +11,7 @@ const basicControls: Partial<Config> = {
 
           '& :is(input):autofill, & :is(input):autofill:active, & :is(input):autofill:focus, & :is(input):autofill:hover, & :is(input):-webkit-autofill, & :is(input):-webkit-autofill:active, & :is(input):-webkit-autofill:focus, & :is(input):-webkit-autofill:hover': {
             '-webkit-text-fill-color': 'var(--component-input-value) !important',
+            caretColor: 'var(--component-input-value)',
             backgroundColor: 'transparent',
             backgroundClip: 'text',
             transition: 'background-color 5000s ease-in-out 0s',
@@ -44,7 +45,7 @@ const basicControls: Partial<Config> = {
             color: 'var(--component-input-error-message)',
           },
 
-          '&:focus-within .ui-input__message, &:focus-within .ui-input__error-message': {
+          '&:not([data-invalid="true"]):focus-within .ui-input__message:not(.ui-input__message--error):not(.ui-input__message--success), &:not([data-invalid="true"]):focus-within .ui-input__error-message': {
             color: 'var(--component-input-message)',
           },
         },
