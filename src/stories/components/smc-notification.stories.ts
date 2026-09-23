@@ -53,8 +53,8 @@ export const Playground: Story = {
 const variants = [
   {
     name: 'Two actions · plain text',
-    titleHtml: 'Your reward is ready',
-    messageHtml: 'Open the offer to see your bonus details.',
+    titleHtml: 'Reward ready',
+    messageHtml: 'Open the offer.',
     actionCount: 2,
   },
   {
@@ -65,14 +65,14 @@ const variants = [
   },
   {
     name: 'No actions · plain text',
-    titleHtml: 'Your reward is ready',
-    messageHtml: 'Open the offer to see your bonus details.',
+    titleHtml: 'Your personal reward is ready to claim',
+    messageHtml: 'Open the offer to see all available bonus details and discover everything included in this promotion.',
     actionCount: 0,
   },
   {
     name: 'No title',
     titleHtml: '',
-    messageHtml: 'Open the offer to see your bonus details.',
+    messageHtml: 'Open the offer.',
     actionCount: 0,
   },
   {

@@ -38,9 +38,9 @@ function handleDismiss() {
     <div v-if="visible" class="smc-notification select-none [-webkit-tap-highlight-color:transparent]" data-test="smc-notification" @click.capture="handleDismiss">
       <div class="smc-notification__card rounded-b-24 p-16 md:rounded-24">
         <div
-          class="flex cursor-pointer items-center gap-8"
+          class="grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-stretch gap-8"
         >
-          <div class="smc-notification__copy min-w-0 flex flex-col flex-1 gap-4 md:gap-8">
+          <div class="smc-notification__copy min-w-0 flex flex-col gap-4 md:gap-8">
             <div v-if="titleHtml" class="smc-notification__title line-clamp-2 text-title-sm" v-html="titleHtml" />
             <div v-if="messageHtml" class="smc-notification__message line-clamp-3 text-body" v-html="messageHtml" />
           </div>

@@ -51,9 +51,17 @@ const smcNotification: Partial<Config> = {
             textDecoration: 'underline',
           },
           '&__image': {
-            width: 'clamp(4rem, 20%, 5rem)',
+            width: 'auto',
+            height: '100%',
+            minWidth: '4rem',
+            maxWidth: '5rem',
+            minHeight: '4rem',
+            maxHeight: '5rem',
             aspectRatio: '1',
-            '@screen md': { width: 'clamp(4rem, 20%, 6rem)' },
+            '@screen md': {
+              maxWidth: '6rem',
+              maxHeight: '6rem',
+            },
           },
           '&__actions > *': {
             flex: '1',
