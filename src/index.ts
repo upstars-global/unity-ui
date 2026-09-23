@@ -14,6 +14,7 @@ export { default as UiRadioButton } from './components/form/basicControls/radioB
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
 export { default as UiSelect } from './components/form/basicControls/select/UiSelect.vue';
 export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
+export { default as SMCNotification } from './components/notifications/smcNotification/SMCNotification.vue';
 
 export type { AppConfig } from './components/types';
 export type {
@@ -82,4 +83,5 @@ export type {
   UiModalEventBus,
 } from './components/modal/types';
 export type { UiToastClosePayload, UiToastEventBus, UiToastItem } from './components/notifications/toast/types';
+export type { SMCNotificationEmits, SMCNotificationProps, SMCNotificationSlots } from './components/notifications/smcNotification/types';
 export type { Dayjs } from 'dayjs';

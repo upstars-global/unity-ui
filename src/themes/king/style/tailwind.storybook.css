@@ -5,6 +5,7 @@
 @import "components/card.css";
 @import "components/control.css";
 @import "components/tab.css";
+@import "components/smc-notification.css";
 @import "../../../tailwind/base/typography-elements.css";
 
 @config "../tailwind.config.ts";
