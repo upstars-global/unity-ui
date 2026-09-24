@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, ref, useAttrs, useSlots } from 'vue'
-import { useAppConfig } from '../../../../composables/useAppConfig'
-import { flattenClasses } from '../../../../helpers/flattenClasses'
+import { computed, ref, useAttrs } from 'vue'
 import type { UiTextAreaEmits, UiTextAreaProps, UiTextAreaSlots } from './types'
 import { baseFieldDefault } from '../BaseField.ts'
-import UiIcon from "@src/components/icon/UiIcon.vue";
+import UiMessage from '../message/UiMessage.vue'
 
 defineOptions({
   name: 'UiTextArea',
@@ -16,7 +14,6 @@ const props = withDefaults(defineProps<UiTextAreaProps>(), {
   modelValue: '',
   invalid: false,
   label: '',
-  message: '',
   rows: 3,
   resize: 'none',
 })
@@ -24,33 +21,13 @@ const props = withDefaults(defineProps<UiTextAreaProps>(), {
 const emit = defineEmits<UiTextAreaEmits>()
 defineSlots<UiTextAreaSlots>()
 
-const appConfig = useAppConfig()
 const attrs = useAttrs()
-const slots = useSlots()
-const textAreaTheme = appConfig.components.textArea
 const textareaRef = ref<HTMLTextAreaElement | null>(null)
 
-const isFocused = ref(false)
-
 const normalizedValue = computed(() => String(props.modelValue ?? ''))
-const hasErrorMessage = computed(() => props.invalid && (Boolean(props.errorMessages) || Boolean(slots.errorMessages)))
-const hasBottomMessage = computed(() => Boolean(props.message || slots.message || hasErrorMessage.value || props.maxlength))
+const hasBottomMessage = computed(() => Boolean(props.message || props.maxlength))
 const shouldShowCounter = computed(() => Boolean(props.maxlength))
 const characterCount = computed(() => normalizedValue.value.length)
-
-const rootClasses = computed(() => {
-  return flattenClasses(
-    textAreaTheme.base,
-    attrs.class,
-  )
-})
-
-const fieldClasses = computed(() => {
-  return flattenClasses(
-    textAreaTheme.slots.field,
-    textAreaTheme.size.default.field,
-  )
-})
 
 function updateValue(value: string) {
   emit('update:modelValue', value)
@@ -67,13 +44,11 @@ function handleChange(event: Event) {
 }
 
 function handleFocus(event: FocusEvent) {
-  isFocused.value = true
   textareaRef.value?.focus()
   emit('focus', event)
 }
 
 function handleBlur(event: FocusEvent) {
-  isFocused.value = false
   textareaRef.value?.blur()
   emit('blur', event)
 }
@@ -83,20 +58,21 @@ function handleBlur(event: FocusEvent) {
   <div
     :data-disabled="disabled"
     :data-invalid="invalid"
-    :class="rootClasses"
+    :class="attrs.class"
+    class="ui-input ui-textarea"
   >
     <div
       :data-disabled="disabled"
       :data-invalid="invalid"
-      :class="fieldClasses"
+      class="ui-input__field ui-textarea__field"
       @focusin="handleFocus"
       @focusout="handleBlur"
     >
-      <div :class="textAreaTheme.slots.content">
+      <div class="ui-textarea__content">
         <label
           v-if="label"
           :for="name"
-          :class="textAreaTheme.slots.label"
+          class="ui-input__label ui-textarea__label"
         >
           <slot name="label">
             {{ label }}
@@ -108,7 +84,7 @@ function handleBlur(event: FocusEvent) {
           :disabled="disabled"
           :aria-invalid="invalid"
           :placeholder="placeholder"
-          :class="textAreaTheme.slots.value"
+          class="ui-textarea__value"
           :name="name"
           :id="name"
           :maxlength="maxlength"
@@ -125,33 +101,26 @@ function handleBlur(event: FocusEvent) {
     </div>
     <div
       v-if="hasBottomMessage"
-      :class="textAreaTheme.slots.messageRow"
+      class="ui-input__message ui-textarea__message-row"
     >
-      <div :class="textAreaTheme.slots.message">
-        <div
-            v-if="hasErrorMessage"
-            :class="textAreaTheme.slots.errorMessage"
+      <UiMessage
+        v-if="message"
+        :message="message"
+        class="ui-textarea__message"
+      >
+        <template
+          v-if="$slots.message"
+          #default="slotProps"
         >
           <slot
-              name="errorMessages"
-          >
-            <UiIcon
-                name="fill_attention_1"
-                size="16"
-            />
-            {{ errorMessages }}
-          </slot>
-        </div>
-        <slot
-          v-else
-          name="message"
-        >
-          {{ message }}
-        </slot>
-      </div>
+            name="message"
+            v-bind="slotProps"
+          />
+        </template>
+      </UiMessage>
       <div
         v-if="shouldShowCounter"
-        :class="textAreaTheme.slots.counter"
+        class="ui-textarea__counter"
       >
         {{ characterCount }}/{{ maxlength }}
       </div>

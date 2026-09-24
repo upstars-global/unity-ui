@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useAppConfig } from '../../../composables/useAppConfig'
 import UiIcon from '../../icon/UiIcon.vue'
 import type {
   UiSuggestListItem,
@@ -29,9 +28,6 @@ const props = withDefaults(defineProps<UiSuggestListProps>(), {
 const emit = defineEmits<UiSuggestListEmits>()
 defineSlots<UiSuggestListSlots>()
 
-const appConfig = useAppConfig()
-const suggestTheme = appConfig.components.suggest
-
 const normalizedItems = computed<UiSuggestListItem[]>(() => {
   return props.items.map((item) => {
     if (typeof item === 'string') {
@@ -55,13 +51,6 @@ const selectedIndex = computed(() => {
 
 const isFloating = computed(() => props.variant === 'floating')
 const shouldCloseOnClickOutside = computed(() => props.closeOnClickOutside ?? isFloating.value)
-const rootClasses = computed(() => {
-  return [
-    suggestTheme.base,
-    isFloating.value ? suggestTheme.slots.floating : suggestTheme.slots.embedded,
-    suggestTheme.slots.panel,
-  ]
-})
 
 function getItemId(index: number) {
   if (!props.idPrefix) {
@@ -79,7 +68,7 @@ function handlerClickOutside(event: Event) {
   emit('close', event)
 }
 
-function selectItem(item: UiSuggestListItem, index: number, $event: Event) {
+function selectItem(item: UiSuggestListItem, index: number) {
   if (item.disabled || selectedIndex.value === index) {
     return
   }
@@ -102,7 +91,10 @@ defineExpose<UiSuggestListExposed>({
     v-if="visible"
     v-click-outside="handlerClickOutside"
     class="ui-input-suggest"
-    :class="rootClasses"
+    :class="{
+      'ui-input-suggest--floating': variant === 'floating',
+      'ui-input-suggest--embedded': variant === 'embedded',
+    }"
     role="listbox"
   >
     <template v-if="normalizedItems.length">
@@ -113,10 +105,10 @@ defineExpose<UiSuggestListExposed>({
         :data-suggest-index="index"
         type="button"
         role="option"
-        class="ui-input-suggest__item flex shrink-0 grow-0 items-center cursor-pointer text-body font-medium text-nowrap text-left"
+        class="ui-input-suggest__item"
         :disabled="disabled || suggestItem.disabled"
         :aria-selected="selectedIndex === index"
-        @click="selectItem(suggestItem, index, $event)"
+        @click="selectItem(suggestItem, index)"
       >
         <slot
           name="leading"
@@ -126,23 +118,30 @@ defineExpose<UiSuggestListExposed>({
         >
           <UiIcon
             v-if="suggestItem.leadingIconName || leadingIconName"
-            :class="suggestTheme.slots.icon"
             :name="suggestItem.leadingIconName || leadingIconName"
-            class="ui-input-suggest__leading-icon"
+            class="ui-input-suggest__icon ui-input-suggest__leading-icon"
           />
         </slot>
         <slot
           :item="suggestItem"
           :selected="selectedIndex === index"
         >
-          <span class="min-w-0 flex-1 truncate ui-input-suggest__label">
-            {{ suggestItem.label }}
-          </span>
+          <div class="flex flex-col min-w-0 flex-1" >
+            <span
+                v-if="suggestItem.additionalLabel"
+                class="ui-input-suggest__additional-label"
+            >
+              {{ suggestItem.additionalLabel }}
+            </span>
+            <span class="ui-input-suggest__label">
+              {{ suggestItem.label }}
+            </span>
+          </div>
         </slot>
         <UiIcon
             v-if="selectedIndex === index"
             name="line_check"
-            class="text-page-status-success"
+            class="ui-input-suggest__icon"
         />
         <template v-else>
           <slot
@@ -152,8 +151,7 @@ defineExpose<UiSuggestListExposed>({
           >
             <UiIcon
                 v-if="suggestItem.trailingIconName || trailingIconName"
-                class="ml-auto"
-                :class="suggestTheme.slots.icon"
+                class="ui-input-suggest__icon ui-input-suggest__trailing-icon"
                 :name="suggestItem.trailingIconName || trailingIconName"
             />
           </slot>
@@ -162,7 +160,7 @@ defineExpose<UiSuggestListExposed>({
     </template>
     <template v-else>
       <slot name="empty">
-        <div :class="suggestTheme.slots.empty">
+        <div class="ui-input-suggest__empty">
           {{ emptyText }}
         </div>
       </slot>

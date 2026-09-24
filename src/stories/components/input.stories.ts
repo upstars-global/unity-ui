@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { computed, nextTick, onMounted, reactive, ref } from 'vue'
 import UiInput from '../../components/form/basicControls/input/UiInput.vue'
 import UiSuggestList from '../../components/form/suggest/UiSuggestList.vue'
+import type { IBaseMessage } from '../../components/form/basicControls/BaseField'
 import type { UiSuggestListSelectPayload } from '../../components/form/suggest/types'
 
 type InputStoryArgs = {
@@ -12,7 +13,7 @@ type InputStoryArgs = {
   placeholder: string
   disabled: boolean
   invalid: boolean
-  errorMessages: string
+  message?: IBaseMessage
   showClearAction: boolean
   leadingIconName?: 'line_search'
   trailingIconName?: 'line_arrow_top_left'
@@ -30,7 +31,7 @@ const meta = {
     placeholder: 'name@example.com',
     disabled: false,
     invalid: false,
-    errorMessages: '',
+    message: undefined,
     showClearAction: true,
     leadingIconName: undefined,
     trailingIconName: undefined,
@@ -43,7 +44,7 @@ const meta = {
     placeholder: { control: 'text' },
     disabled: { control: 'boolean' },
     invalid: { control: 'boolean' },
-    errorMessages: { control: 'text' },
+    message: { control: 'object' },
     showClearAction: { control: 'boolean' },
     leadingIconName: { control: 'text' },
     trailingIconName: { control: 'text' },
@@ -275,22 +276,7 @@ export const StateFocus: Story = {
   }),
 }
 
-export const StateEmptyError: Story = {
-  parameters: {
-    controls: { disable: true },
-    layout: 'fullscreen',
-  },
-  render: () => renderStateStory({
-    props: {
-      name: 'state-empty-error',
-      label: 'Email',
-      placeholder: 'name@example.com',
-      invalid: true,
-      errorMessages: 'Email is required',
-    },
-  }),
-}
-export const StateError: Story = {
+export const ErrorMessage: Story = {
   parameters: {
     controls: { disable: true },
     layout: 'fullscreen',
@@ -298,11 +284,51 @@ export const StateError: Story = {
   render: () => renderStateStory({
     value: 'wrong-email',
     props: {
-      name: 'state-error',
+      name: 'error-message',
       label: 'Email',
       placeholder: 'name@example.com',
       invalid: true,
-      errorMessages: 'Invalid email address',
+      message: {
+        message: 'Invalid email address',
+        type: 'error',
+      },
+    },
+  }),
+}
+
+export const SuccessMessage: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    value: 'name@example.com',
+    props: {
+      name: 'success-message',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      message: {
+        message: 'Email address is valid',
+        type: 'success',
+      },
+    },
+  }),
+}
+
+export const DefaultMessage: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => renderStateStory({
+    props: {
+      name: 'default-message',
+      label: 'Email',
+      placeholder: 'name@example.com',
+      message: {
+        message: 'Enter the email address associated with your account',
+        type: 'default',
+      },
     },
   }),
 }

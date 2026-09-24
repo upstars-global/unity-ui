@@ -5,6 +5,7 @@ export type UiSuggestListValue = string | number | boolean
 
 export interface UiSuggestListItem<TValue extends UiSuggestListValue = UiSuggestListValue> {
   label: string
+  additionalLabel?: string
   value: TValue
   disabled?: boolean
   leadingIconName?: UiThemeIconName

@@ -6,7 +6,7 @@ import fill_attention_3 from './fill/attention_3.svg?raw';
 import fill_attention_4 from './fill/attention_4.svg?raw';
 import fill_category from './fill/category.svg?raw';
 import fill_chat from './fill/chat.svg?raw';
-import fill_check from './fill/check.svg?raw';
+import fill_check_input from './fill/check_input.svg?raw';
 import fill_close from './fill/close.svg?raw';
 import fill_copy from './fill/copy.svg?raw';
 import fill_deposit from './fill/deposit.svg?raw';
@@ -157,7 +157,7 @@ export const fillIcons = {
   fill_attention_4: fill_attention_4,
   fill_category: fill_category,
   fill_chat: fill_chat,
-  fill_check: fill_check,
+  fill_check_input: fill_check_input,
   fill_close: fill_close,
   fill_copy: fill_copy,
   fill_deposit: fill_deposit,
