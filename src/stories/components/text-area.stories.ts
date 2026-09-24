@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { reactive, ref } from 'vue'
+import type { IBaseMessage } from '../../components/form/basicControls/BaseField'
 import UITextArea from '../../components/form/basicControls/textArea/UITextArea.vue'
 
 type TextAreaStoryArgs = {
@@ -9,8 +10,7 @@ type TextAreaStoryArgs = {
   placeholder: string
   disabled: boolean
   invalid: boolean
-  errorMessages: string
-  message: string
+  message?: IBaseMessage
   maxlength?: number
   rows: number
   resize: 'none' | 'vertical' | 'horizontal' | 'both'
@@ -27,8 +27,7 @@ const meta = {
     placeholder: 'Tell us more',
     disabled: false,
     invalid: false,
-    errorMessages: '',
-    message: 'Message',
+    message: undefined,
     maxlength: 100,
     rows: 3,
     resize: 'none',
@@ -40,8 +39,7 @@ const meta = {
     placeholder: { control: 'text' },
     disabled: { control: 'boolean' },
     invalid: { control: 'boolean' },
-    errorMessages: { control: 'text' },
-    message: { control: 'text' },
+    message: { control: 'object' },
     maxlength: { control: 'number' },
     rows: { control: 'number' },
     resize: {
@@ -54,15 +52,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Playground: Story = {
-  parameters: {
-    controls: { disable: true },
-    layout: 'fullscreen',
-  },
-  render: (args) => ({
-    components: { UITextArea },
-    setup() {
-      const value = ref(args.modelValue)
+const renderTextAreaStory = (args: TextAreaStoryArgs) => ({
+  components: { UITextArea },
+  setup() {
+    const value = ref(args.modelValue)
 
       return {
         args,
@@ -78,7 +71,58 @@ export const Playground: Story = {
         />
       </div>
     `,
-  }),
+})
+
+export const Playground: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: renderTextAreaStory,
+}
+
+export const Invalid: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  args: {
+    invalid: true,
+    message: {
+      message: 'Please provide more details.',
+      type: 'error',
+    },
+  },
+  render: renderTextAreaStory,
+}
+
+export const SuccessMessage: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  args: {
+    modelValue: 'The issue has been described in sufficient detail.',
+    message: {
+      message: 'Description is ready to submit',
+      type: 'success',
+    },
+  },
+  render: renderTextAreaStory,
+}
+
+export const DefaultMessage: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  args: {
+    message: {
+      message: 'Add any details that may help us understand the issue',
+      type: 'default',
+    },
+  },
+  render: renderTextAreaStory,
 }
 
 export const PropsMatrix: Story = {
@@ -100,7 +144,10 @@ export const PropsMatrix: Story = {
                 name: 'empty',
                 label: 'Comment',
                 placeholder: 'Add your comment',
-                message: 'Message',
+                message: {
+                  message: 'Add a short comment',
+                  type: 'default',
+                },
                 maxlength: 100,
               },
             },
@@ -111,7 +158,10 @@ export const PropsMatrix: Story = {
                 name: 'filled',
                 label: 'Feedback',
                 placeholder: 'Share your thoughts',
-                message: 'Message',
+                message: {
+                  message: 'Your feedback is ready',
+                  type: 'success',
+                },
                 maxlength: 140,
               },
             },
@@ -123,7 +173,10 @@ export const PropsMatrix: Story = {
                 label: 'Generated summary',
                 placeholder: 'This field is disabled',
                 disabled: true,
-                message: 'Message',
+                message: {
+                  message: 'This value cannot be edited',
+                  type: 'default',
+                },
                 maxlength: 100,
               },
             },
@@ -140,7 +193,10 @@ export const PropsMatrix: Story = {
                 label: 'Issue description',
                 placeholder: 'Describe the issue',
                 invalid: true,
-                errorMessages: 'Please provide more details.',
+                message: {
+                  message: 'Please provide more details.',
+                  type: 'error',
+                },
                 maxlength: 120,
               },
             },
@@ -151,7 +207,6 @@ export const PropsMatrix: Story = {
                 name: 'counter',
                 label: 'Internal note',
                 placeholder: 'Write a note',
-                message: '',
                 maxlength: 60,
               },
             },
@@ -164,7 +219,10 @@ export const PropsMatrix: Story = {
                 placeholder: 'You can drag the corner to resize',
                 rows: 5,
                 resize: 'vertical',
-                message: 'Message',
+                message: {
+                  message: 'You can resize this field vertically',
+                  type: 'default',
+                },
                 maxlength: 240,
               },
             },

@@ -9,55 +9,120 @@ const select: Partial<Config> = {
     plugin(({ addComponents }) => {
       addComponents({
         '.ui-select': {
-          '&__icon': {
-            flexShrink: '0',
-            width: '1.5rem',
-            height: '1.5rem',
-            color: "rgb(var(--color-neutral-400) / 1)",
-            '&--selected': {
-              color: "var(--fg-page-status-success)"
-            }
+          '@apply relative flex flex-col': {},
+          gap: "var(--spacing-4)",
+
+          '&--sm .ui-select__field': {
+            height: "2.75rem",
+            padding: "var(--spacing-8)",
+            borderRadius: "var(--radius-8)",
           },
-          '&__text': {
-            minWidth: '0',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
+
+          '&--sm .ui-select__content': {
+            '@apply h-24': {},
           },
-          '.ui-select__displayed-value': {
-            textAlign: 'left',
+
+          '&--default .ui-select__field': {
+            height: "3.5rem",
+            padding: "var(--radius-8) var(--radius-12)",
+            borderRadius: "var(--radius-12)",
           },
+
+          '&--default .ui-select__content': {
+            '@apply h-[2.25rem]': {},
+          },
+
+          '&--floating-label .ui-select__label': {
+            '@apply top-0 translate-y-0 scale-100 text-caption': {},
+          },
+
+          '&--floating-label .ui-select__displayed-value': {
+            '@apply top-auto bottom-0 translate-y-0 scale-100': {},
+          },
+
           '&--disabled': {
             opacity: "0.45",
           },
-          '.ui-select__list': {
-            boxShadow: "0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)",
+
+          '&:not([data-open="true"]):not([data-invalid="true"]):not([data-disabled="true"]):hover .ui-select__field': {
+            borderColor: "rgb(var(--color-primary-400) / 0.4)",
           },
+
+          '&--open': {
+            '.ui-select__field': {
+              borderColor: "rgb(var(--color-primary-300) / 1)",
+            },
+
+            '.ui-select__label': {
+              color: "rgb(var(--color-primary-300) / 1)",
+            },
+
+            '.ui-select__dropdown-icon': {
+              transform: 'rotate(180deg)',
+            },
+          },
+
+          '&--error .ui-select__field': {
+            borderColor: "rgb(var(--color-error-100) / 1)",
+          },
+
+          '&[data-invalid="true"] .ui-input__message': {
+            color: "rgb(var(--color-error-100) / 1)",
+          },
+
           '&__field': {
+            '@apply flex items-center w-full overflow-hidden border-solid text-left cursor-pointer focus-visible:outline-none disabled:cursor-not-allowed': {},
             gap: "var(--spacing-8)",
             backgroundColor: "rgb(var(--color-white))",
             borderColor: "rgb(var(--color-primary-200) / 0.4)",
             borderWidth: "var(--radius-2)",
           },
+
+          '&__content': {
+            '@apply relative flex min-w-0 flex-1 flex-col justify-center overflow-hidden': {},
+          },
+
           '&__label': {
+            '@apply absolute top-1/2 -translate-y-1/2 left-0 origin-left transition-all duration-150 ease-out w-full text-body min-w-0 truncate': {},
             color: "rgb(var(--color-neutral-400) / 1)",
           },
-          '&--open': {
-            '.ui-select__field': {
-              borderColor: "rgb(var(--color-primary-300) / 1)",
+
+          '&__displayed-value': {
+            '@apply absolute z-1 w-full min-w-0 text-body truncate text-left': {},
+
+            '&--value': {
+              '@apply font-medium': {},
+              color: "rgb(var(--color-neutral-600) / 1)",
             },
-            '.ui-select__label': {
-              color: "rgb(var(--color-primary-300) / 1)",
-            },
-            '.ui-select__dropdown-icon': {
-              transform: 'rotate(180deg)',
+
+            '&--placeholder': {
+              color: "rgb(var(--color-neutral-300) / 1)",
             },
           },
-          '&--error': {
-            '.ui-select__field': {
-              borderColor: "rgb(var(--color-error-100) / 1)",
+
+          '&__icon': {
+            '@apply shrink-0 size-6': {},
+            color: "rgb(var(--color-neutral-400) / 1)",
+
+            '&--selected': {
+              color: "var(--fg-status-success)",
             },
-          }
+          },
+
+          '&__dropdown-icon': {
+            '@apply transition-transform': {},
+          },
+
+          '&__action': {
+            '@apply ml-auto shrink-0': {},
+          },
+
+          '&__list': {
+            '@apply z-20 overflow-hidden': {},
+            backgroundColor: "rgb(var(--color-white))",
+            borderRadius: "var(--radius-12)",
+            boxShadow: "0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)",
+          },
         },
       })
     }),
