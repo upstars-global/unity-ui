@@ -34,8 +34,8 @@ export const Playground: Story = {
       return { args }
     },
     template: `
-      <div class="bg-bg-deep p-6">
-        <div class="max-w-[420px] rounded-2xl border border-black/10 bg-bg-surface-alt p-4">
+      <div class="bg-page-deep p-6">
+        <div class="max-w-[420px] rounded-2xl border border-black/10 bg-page-surface-alt p-4">
           <UiBaseNotification :variant="args.variant" class="px-4 py-3">
             {{ args.content }}
           </UiBaseNotification>
@@ -77,13 +77,13 @@ export const Variants: Story = {
       }
     },
     template: `
-      <div class="space-y-4 bg-bg-deep p-6">
+      <div class="space-y-4 bg-page-deep p-6">
         <section
           v-for="item in items"
           :key="item.variant"
-          class="max-w-[520px] rounded-2xl border border-black/10 bg-bg-surface-alt p-4"
+          class="max-w-[520px] rounded-2xl border border-black/10 bg-page-surface-alt p-4"
         >
-          <div class="mb-3 text-xs uppercase tracking-[0.1em] text-fg-secondary">
+          <div class="mb-3 text-xs uppercase tracking-[0.1em] text-page-secondary">
             {{ item.label }}
           </div>
 

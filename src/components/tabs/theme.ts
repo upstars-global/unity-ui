@@ -53,7 +53,7 @@ const tabs = {
       'size-8',
       'shrink-0',
       'rounded-full',
-      tokenClass('--fg-status-error', 'bg'),
+      tokenClass('--color-error-100', 'bg'),
     ] as TabsClassList,
   },
 } as const

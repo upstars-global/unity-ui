@@ -15,7 +15,7 @@ const select: Partial<Config> = {
             height: '1.5rem',
             color: "rgb(var(--color-neutral-400) / 1)",
             '&--selected': {
-              color: "var(--fg-status-success)"
+              color: "var(--fg-page-status-success)"
             }
           },
           '&__text': {

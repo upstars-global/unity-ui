@@ -111,9 +111,9 @@ export const Playground: Story = {
       }
     },
     template: `
-      <div class="p-6 bg-bg-deep">
-        <div class="rounded-2xl border border-neutral-100 bg-bg-surface p-6 shadow-sm">
-          <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-fg-primary">
+      <div class="p-6 bg-page-deep">
+        <div class="rounded-2xl border border-neutral-100 bg-page-surface p-6 shadow-sm">
+          <div class="mb-4 text-title-md uppercase tracking-[0.1em] text-page-primary">
             type: {{ args.type }}, variant: {{ args.variant }}
           </div>
 
@@ -121,9 +121,9 @@ export const Playground: Story = {
             <div
               v-for="layout in layouts"
               :key="layout"
-              class="rounded-xl border border-neutral-100 bg-bg-surface p-16"
+              class="rounded-xl border border-neutral-100 bg-page-surface p-16"
             >
-              <div class="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-fg-primary">
+              <div class="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-page-primary">
                 {{ layout }}
               </div>
 
@@ -164,13 +164,13 @@ export const VariantsMatrix: Story = {
       }
     },
     template: `
-      <div class="space-y-8 p-6 bg-bg-deep">
+      <div class="space-y-8 p-6 bg-page-deep">
         <section
           v-for="layout in gridLayouts"
           :key="layout"
-          class="rounded-2xl border border-black/10 bg-bg-surface p-5 shadow-sm"
+          class="rounded-2xl border border-black/10 bg-page-surface p-5 shadow-sm"
         >
-          <div class="mb-4 text-fg-primary">
+          <div class="mb-4 text-page-primary">
             <div class="text-sm font-semibold uppercase tracking-[0.12em]">{{ layout }}</div>
             <div class="text-xs ">
               Supported sizes: {{ layoutSupportedSizes[layout].join(', ') }}
@@ -181,9 +181,9 @@ export const VariantsMatrix: Story = {
             <div
               v-for="variant in gridVariants"
               :key="variant"
-              class="grid gap-3 rounded-xl border border-black/5 bg-bg-surface-alt p-4 md:grid-cols-[140px_repeat(3,minmax(0,1fr))]"
+              class="grid gap-3 rounded-xl border border-black/5 bg-page-surface-alt p-4 md:grid-cols-[140px_repeat(3,minmax(0,1fr))]"
             >
-              <div class="flex items-center text-sm font-medium text-fg-primary">
+              <div class="flex items-center text-sm font-medium text-page-primary">
                 <div>
                   <div class="capitalize">{{ variant }}</div>
                   <div class="text-xs font-normal text-black/45">{{ getVariantNote(variant) }}</div>
@@ -193,9 +193,9 @@ export const VariantsMatrix: Story = {
               <div
                 v-for="size in gridSizes"
                 :key="size"
-                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-bg-surface px-3 py-3"
+                class="flex min-h-24 flex-col items-start justify-center gap-2 rounded-lg bg-page-surface px-3 py-3"
               >
-                <div class="text-[11px] uppercase tracking-[0.1em] text-fg-primary">{{ size }}</div>
+                <div class="text-[11px] uppercase tracking-[0.1em] text-page-primary">{{ size }}</div>
 
                 <UiButton
                   v-if="layoutSupportedSizes[layout].includes(size)"
@@ -233,13 +233,13 @@ export const States: Story = {
       }
     },
     template: `
-      <div class="space-y-4 p-6 bg-bg-deep">
+      <div class="space-y-4 p-6 bg-page-deep">
         <div
           v-for="variant in variants"
           :key="variant"
-          class="grid gap-3 rounded-2xl border border-black/10 bg-bg-surface p-4 md:grid-cols-5"
+          class="grid gap-3 rounded-2xl border border-black/10 bg-page-surface p-4 md:grid-cols-5"
         >
-          <div class="flex items-center text-sm font-medium capitalize text-fg-primary">{{ variant }}</div>
+          <div class="flex items-center text-sm font-medium capitalize text-page-primary">{{ variant }}</div>
           <UiButton :variant="variant" layout="standard" size="md" icon-name="line_plus" leading-icon-name="line_plus">
             Default
           </UiButton>
