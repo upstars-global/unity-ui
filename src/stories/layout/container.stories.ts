@@ -172,8 +172,8 @@ export const Overview: Story = {
                   <span>Centred · one column</span>
                   <span>{{ activeRule.centred }}</span>
                 </div>
-                <div class="mx-auto h-80 w-1/2 min-w-0 rounded-8 bg-success-100/40 p-12 text-center text-xs">
-                  50% centred column
+                <div class="mx-auto h-80 container-centred-single-column min-w-0 rounded-8 bg-success-100/40 p-12 text-center text-xs">
+                  container-centred-single-column
                 </div>
 
               <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-page-status-success px-12">

@@ -4,6 +4,7 @@
         --container-centred-max-width: 100%;
         --container-safezone-x: 1rem;
         --container-safezone-bottom: 3rem;
+        --container-centred-single-column-max-width: 32rem;
     }
 
     @screen sm {
@@ -58,5 +59,10 @@
 
     .container-safezone-bottom {
         padding-bottom: var(--container-safezone-bottom);
+    }
+
+    .container-centred-single-column {
+        @apply mx-auto w-full;
+        max-width: var(--container-centred-single-column-max-width);
     }
 }
