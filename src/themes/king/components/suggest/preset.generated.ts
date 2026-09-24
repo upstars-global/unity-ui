@@ -14,7 +14,7 @@ const suggest: Partial<Config> = {
           borderRadius: "var(--radius-12)",
 
           '&--floating': {
-            '@apply absolute top-full left-0 right-0 mt-8': {},
+            '@apply absolute top-full left-0 right-0 mt-4': {},
           },
 
           '&__item': {
