@@ -63,12 +63,12 @@ export const Overview: Story = {
       return { activeRule, breakpoints, containerRules, width }
     },
     template: `
-      <div class="min-h-screen bg-bg-deep text-fg-primary">
-        <header class="mx-16 xl:mx-auto mb-24 max-w-[80rem] rounded-16 bg-bg-surface p-16 shadow-fg-default md:p-24">
+      <div class="min-h-screen bg-page-deep text-page-primary">
+        <header class="mx-16 xl:mx-auto mb-24 max-w-[80rem] rounded-16 bg-page-surface p-16 shadow-fg-default md:p-24">
           <div class="flex flex-wrap items-start justify-between gap-16">
             <div>
               <h1 class="text-xl font-bold">Container rules</h1>
-              <p class="mt-8 max-w-[44rem] text-sm text-fg-secondary">
+              <p class="mt-8 max-w-[44rem] text-sm text-page-secondary">
                 Изменяйте ширину viewport. Цветом бренда показан Full-контейнер, цветом статуса success —
                 точечно вложенный Centred-контейнер.
               </p>
@@ -91,39 +91,39 @@ export const Overview: Story = {
 
           <dl class="mt-16 grid gap-8 text-xs sm:grid-cols-2 lg:grid-cols-5">
             <div class="rounded-12 bg-primary-50/40 p-12">
-              <dt class="text-fg-secondary">Active range</dt>
+              <dt class="text-page-secondary">Active range</dt>
               <dd class="mt-4 font-bold">{{ activeRule.range }}</dd>
             </div>
             <div class="rounded-12 bg-primary-50/40 p-12">
-              <dt class="text-fg-secondary">Full max-width</dt>
+              <dt class="text-page-secondary">Full max-width</dt>
               <dd class="mt-4 font-bold">{{ activeRule.full }}</dd>
             </div>
             <div class="rounded-12 bg-success-100/10 p-12">
-              <dt class="text-fg-secondary">Centred max-width</dt>
+              <dt class="text-page-secondary">Centred max-width</dt>
               <dd class="mt-4 font-bold">{{ activeRule.centred }}</dd>
             </div>
-            <div class="rounded-12 bg-bg-surface-alt p-12">
-              <dt class="text-fg-secondary">Safezone X</dt>
+            <div class="rounded-12 bg-page-surface-alt p-12">
+              <dt class="text-page-secondary">Safezone X</dt>
               <dd class="mt-4 font-bold">{{ activeRule.safezoneX }}</dd>
             </div>
-            <div class="rounded-12 bg-bg-surface-alt p-12">
-              <dt class="text-fg-secondary">Safezone bottom</dt>
+            <div class="rounded-12 bg-page-surface-alt p-12">
+              <dt class="text-page-secondary">Safezone bottom</dt>
               <dd class="mt-4 font-bold">{{ activeRule.safezoneBottom }}</dd>
             </div>
           </dl>
         </header>
 
-        <section class="mb-24 overflow-hidden rounded-16 border border-neutral-200/80 bg-bg-surface py-24">
+        <section class="mb-24 overflow-hidden rounded-16 border border-neutral-200/80 bg-page-surface py-24">
           <div class="mb-16 px-16 md:px-24">
             <div class="text-sm font-bold">1. Full container</div>
-            <p class="mt-4 text-xs text-fg-secondary">
+            <p class="mt-4 text-xs text-page-secondary">
               Safezone-классы добавляются независимо от правила ширины контейнера.
             </p>
           </div>
 
-          <div class="bg-bg-deep py-16">
+          <div class="bg-page-deep py-16">
             <section class="container border-x-2 border-b-2 border-dashed border-primary-300 bg-primary-50/40 pt-16">
-              <div class="mb-12 flex items-center justify-between gap-12 px-12 text-xs font-bold text-fg-brand">
+              <div class="mb-12 flex items-center justify-between gap-12 px-12 text-xs font-bold text-page-brand">
                 <span>Full · base content</span>
                 <span>{{ activeRule.full }}</span>
               </div>
@@ -133,7 +133,7 @@ export const Overview: Story = {
                 </div>
               </div>
 
-              <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-fg-brand">
+              <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-page-brand">
                 <span>Full · Safezone X</span>
                 <span>safezoneX: {{ activeRule.safezoneX }}</span>
               </div>
@@ -145,7 +145,7 @@ export const Overview: Story = {
                 </div>
               </div>
 
-              <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-fg-brand">
+              <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-page-brand">
                 <span>Full · Safezone X + Bottom</span>
                 <span>{{ activeRule.safezoneX }} / {{ activeRule.safezoneBottom }}</span>
               </div>
@@ -160,15 +160,15 @@ export const Overview: Story = {
           </div>
         </section>
 
-        <section class="overflow-hidden rounded-16 border border-neutral-200/80 bg-bg-surface py-24">
+        <section class="overflow-hidden rounded-16 border border-neutral-200/80 bg-page-surface py-24">
           <div class="mb-16 px-12 md:px-24">
             <div class="text-sm font-bold">2. Full + Centred section</div>
-            <code class="mt-4 block text-xs text-fg-secondary">.container-centred</code>
+            <code class="mt-4 block text-xs text-page-secondary">.container-centred</code>
           </div>
 
-          <div class="bg-bg-deep py-16">
+          <div class="bg-page-deep py-16">
             <section class="container-centred border-x-2 border-b-2 border-dashed border-success-100 bg-success-100/10 pt-16">
-                <div class="mb-12 flex items-center justify-between gap-12 text-xs font-bold text-fg-status-success px-12">
+                <div class="mb-12 flex items-center justify-between gap-12 text-xs font-bold text-page-status-success px-12">
                   <span>Centred · one column</span>
                   <span>{{ activeRule.centred }}</span>
                 </div>
@@ -176,7 +176,7 @@ export const Overview: Story = {
                   50% centred column
                 </div>
 
-              <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-fg-status-success px-12">
+              <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-page-status-success px-12">
                 <span>Centred · Safezone X</span>
                 <span>safezoneX: {{ activeRule.safezoneX }}</span>
               </div>
@@ -186,7 +186,7 @@ export const Overview: Story = {
                   <div class="h-80 rounded-8 bg-success-100/40 p-12 text-xs">Column 2</div>
                 </div>
               </div>
-              <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-fg-status-success px-12">
+              <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-page-status-success px-12">
                 <span>Centred · Safezone X + Bottom</span>
                 <span>{{ activeRule.safezoneX }} / {{ activeRule.safezoneBottom }}</span>
               </div>
@@ -200,11 +200,11 @@ export const Overview: Story = {
           </div>
         </section>
 
-        <section class="mx-auto mt-24 max-w-[80rem] overflow-hidden rounded-16 border border-neutral-200/80 bg-bg-surface">
+        <section class="mx-auto mt-24 max-w-[80rem] overflow-hidden rounded-16 border border-neutral-200/80 bg-page-surface">
           <div class="border-b border-neutral-200/80 px-16 py-12 text-sm font-bold">Rules matrix</div>
           <div class="overflow-x-auto">
             <table class="w-full min-w-[44rem] border-collapse text-left text-xs">
-              <thead class="bg-bg-surface-alt text-fg-secondary">
+              <thead class="bg-page-surface-alt text-page-secondary">
                 <tr>
                   <th class="px-12 py-8">Range</th>
                   <th class="px-12 py-8">Breakpoint</th>
