@@ -9,6 +9,8 @@ export { default as modal } from './plugins/modal';
 export { default as toast } from './plugins/toast';
 export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
+export { default as UiCarousel } from './components/carousel/UiCarousel.vue';
+export { default as UiCarouselNavigation } from './components/carousel/UiCarouselNavigation.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
@@ -30,6 +32,15 @@ export type {
   CardVariant,
   UiCardProps,
 } from './components/card/types';
+export type {
+  CarouselDirection,
+  UiCarouselEmits,
+  UiCarouselNavigationEmits,
+  UiCarouselNavigationProps,
+  UiCarouselNavigationSlotProps,
+  UiCarouselProps,
+  UiCarouselSlots,
+} from './components/carousel/types';
 
 export type {
   TimerPhase,

@@ -31,18 +31,18 @@ const button = {
             "base": "aspect-square p-0 flex items-center justify-center",
             "sizes": {
                 "sm": {
-                    "base": "rounded-full",
-                    "container": "h-32 rounded-full",
+                    "base": "rounded-[9999px]",
+                    "container": "h-32 rounded-[9999px]",
                     "icon": "!w-16 !h-16"
                 },
                 "md": {
-                    "base": "rounded-full",
-                    "container": "h-40 rounded-full",
+                    "base": "rounded-[9999px]",
+                    "container": "h-40 rounded-[9999px]",
                     "icon": "w-24"
                 },
                 "lg": {
-                    "base": "rounded-full",
-                    "container": "h-[3rem] rounded-full",
+                    "base": "rounded-[9999px]",
+                    "container": "h-[3rem] rounded-[9999px]",
                     "icon": "w-24"
                 }
             }
@@ -85,7 +85,7 @@ const button = {
             "base": "flex-col items-center justify-center text-center gap-6 gap-6",
             "sizes": {
                 "sm": {
-                    "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
+                    "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-[9999px]",
                     "icon": "w-24",
                     "label": "text-button-caption text-white truncate lowercase first-letter:uppercase"
                 }

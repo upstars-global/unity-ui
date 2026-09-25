@@ -5,7 +5,7 @@ const button = {
     "base": "inline-flex items-center justify-center overflow-hidden shrink-0 whitespace-nowrap gap-4 p-8",
     "size": {
         "default": {
-            "container": "rounded-full",
+            "container": "rounded-[9999px]",
             "dot": "size-8 rounded-full shrink-0",
             "text": "text-caption font-medium tabular-nums"
         }
