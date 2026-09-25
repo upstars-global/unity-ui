@@ -1,0 +1,13 @@
+:root[data-product="alpa"] {
+    --component-smc-notification-card-bg: rgb(var(--color-neutral-400));
+    --component-smc-notification-card-fg: var(--fg-page-secondary);
+    --component-smc-notification-title-fg: var(--fg-page-brand);
+    --component-smc-notification-emphasis-fg: var(--fg-page-primary);
+    --component-smc-notification-link-fg: var(--fg-page-link-default);
+    --component-smc-notification-dismiss-bg: rgb(var(--color-neutral-400));
+    --component-smc-notification-dismiss-fg: var(--fg-page-secondary);
+    --component-smc-notification-progress-bg: var(--color-neutral-500-80);
+    --component-smc-notification-gradient: linear-gradient(to top, rgb(var(--color-neutral-500) / 0) 0%, rgb(var(--color-neutral-500) / 0.1) 2rem, rgb(var(--color-neutral-500) / 0.8) 5rem, rgb(var(--color-neutral-500)) 100%);
+    --component-smc-notification-shadow: var(--shadow-default);
+    --component-smc-notification-dismiss-shadow: var(--shadow-default);
+}
