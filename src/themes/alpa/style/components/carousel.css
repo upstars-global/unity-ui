@@ -1,0 +1,14 @@
+/* Generated from local Figma variables and paint styles. Do not edit manually. */
+
+:root[data-product="alpa"] {
+  /* Foreground / Background */
+  --component-carousel-control-bg: var(--color-neutral-200-80);
+  --component-carousel-control-fg: var(--color-white);
+
+  /* Sizes */
+  --component-carousel-control-radius-radius: var(--radius-full);
+
+  /* Other */
+  --component-carousel-control-effect: blur(16px);
+  --component-carousel-control-shadow: 0px 4px 8px -4px var(--color-neutral-500-80);
+}

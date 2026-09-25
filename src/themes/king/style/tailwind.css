@@ -3,6 +3,7 @@
 @import "base/typography.css";
 @import "fonts.css";
 @import "components/card.css";
+@import "components/carousel.css";
 @import "components/control.css";
 @import "components/tab.css";
 @import "../../../tailwind/base/typography-elements.css";

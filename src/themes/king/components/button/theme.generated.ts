@@ -85,7 +85,7 @@ const button = {
             "base": "flex-col items-center justify-center text-center gap-6 gap-6",
             "sizes": {
                 "sm": {
-                    "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
+                    "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-[9999px]",
                     "icon": "w-24",
                     "label": "text-button-caption text-neutral-800 truncate lowercase first-letter:uppercase"
                 }

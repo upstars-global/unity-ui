@@ -3,8 +3,8 @@
 
 const button = {
     "base": "ui-progress-bar flex flex-col text-caption gap-4",
-    "full": "h-8 w-full bg-neutral-300 rounded-full overflow-hidden",
-    "progress": "bg-gradient-personal h-8 rounded-full"
+    "full": "h-8 w-full bg-neutral-300 rounded-[9999px] overflow-hidden",
+    "progress": "bg-gradient-personal h-8 rounded-[9999px]"
 } as const
 
 export default button
