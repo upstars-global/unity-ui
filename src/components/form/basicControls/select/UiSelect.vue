@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { autoUpdate, flip, offset, shift, size as sizeMiddleware, useFloating } from '@floating-ui/vue'
-import { computed, ref, useAttrs, useSlots } from 'vue'
-import { useAppConfig } from '../../../../composables/useAppConfig'
-import { flattenClasses } from '../../../../helpers/flattenClasses'
+import { computed, ref, useAttrs } from 'vue'
 import UiSuggestList from '../../suggest/UiSuggestList.vue'
 import type { UiSuggestListSelectPayload } from '../../suggest/types'
 import UiIcon from '../../../icon/UiIcon.vue'
 import { baseFieldDefault } from '../BaseField.ts'
-import { LABEL_BLUR, LABEL_FOCUS, VALUE_FOCUS } from '../input/theme.ts'
+import UiMessage from '../message/UiMessage.vue'
 import type {
   SelectValue,
   UiSelectEmits,
@@ -35,23 +33,13 @@ const props = withDefaults(defineProps<UiSelectProps>(), {
 const emit = defineEmits<UiSelectEmits>()
 defineSlots<UiSelectSlots>()
 
-const appConfig = useAppConfig()
 const attrs = useAttrs()
-const slots = useSlots()
-const selectTheme = appConfig.components.select
 
 const rootRef = ref<HTMLElement | null>(null)
 const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
 const isOpen = ref(false)
-const isFocused = ref(false)
 
-const hasErrorMessage = computed(() =>
-    props.invalid &&
-    (Boolean(props.errorMessages) || Boolean(slots.errorMessages)) &&
-    !isFocused.value
-)
-const hasBottomMessage = computed(() => Boolean(props.infoMessage || slots.message || hasErrorMessage.value))
 const selectedIndex = computed(() => props.list.findIndex((item) => item.value === props.modelValue))
 const selectedOption = computed<UiSelectOption | null>(() => props.list[selectedIndex.value] ?? null)
 const hasValue = computed(() => selectedOption.value !== null)
@@ -76,38 +64,14 @@ const displayedValue = computed(() => {
   return props.placeholder
 })
 const rootClasses = computed(() => {
-  return flattenClasses(
-    selectTheme.base,
+  return [
     `ui-select--${props.size}`,
+    shouldFloatLabel.value && 'ui-select--floating-label',
     isOpen.value && 'ui-select--open',
     props.disabled && 'ui-select--disabled',
     props.invalid && 'ui-select--error',
-    attrs.class as string | undefined,
-  )
-})
-const fieldClasses = computed(() => {
-  return flattenClasses(
-    selectTheme.slots.field,
-    selectTheme.size[props.size].field,
-  )
-})
-const contentClasses = computed(() => {
-  return flattenClasses(
-    selectTheme.slots.content,
-    selectTheme.size[props.size].content,
-  )
-})
-const floatingLabelClasses = computed(() => {
-  return flattenClasses(
-    selectTheme.slots.label,
-    shouldFloatLabel.value ? LABEL_FOCUS : LABEL_BLUR,
-  )
-})
-const displayedValueClasses = computed(() => {
-  return flattenClasses(
-    hasValue.value ? selectTheme.slots.value : selectTheme.slots.placeholder,
-    shouldFloatLabel.value && VALUE_FOCUS,
-  )
+    attrs.class,
+  ]
 })
 const attributes = computed(() => {
   const { class: _class, ...rest } = attrs
@@ -183,20 +147,7 @@ function selectOption(payload: UiSuggestListSelectPayload<SelectValue>) {
 }
 
 function handleFocus(event: FocusEvent) {
-  isFocused.value = true
   emit('focus', event)
-}
-
-function handleBlur(event: FocusEvent) {
-  isFocused.value = false
-
-  requestAnimationFrame(() => {
-    if (!rootRef.value?.contains(document.activeElement)) {
-      closeList()
-    }
-  })
-
-  emit('blur', event)
 }
 
 function handleClickOutside() {
@@ -213,7 +164,7 @@ function handleClickOutside() {
     :data-open="isOpen"
     :class="rootClasses"
     v-bind="attributes"
-    class="ui-select"
+    class="ui-select group"
   >
     <button
       :id="name"
@@ -230,10 +181,9 @@ function handleClickOutside() {
       :data-disabled="disabled"
       :data-invalid="invalid"
       :data-open="isOpen"
-      :class="fieldClasses"
+      class="ui-select__field"
       @click="toggleList"
       @focus="handleFocus"
-      class="ui-select__field"
     >
       <slot
         name="leading"
@@ -243,14 +193,12 @@ function handleClickOutside() {
           v-if="currentLeadingIconName"
           :name="currentLeadingIconName"
           class="ui-select__icon"
-          :class="selectTheme.slots.leadingIcon"
         />
       </slot>
-      <div :class="contentClasses">
+      <div class="ui-select__content">
         <span
           v-if="size === 'default' && label"
-          :class="floatingLabelClasses"
-          class="ui-select__label ui-select__text"
+          class="ui-select__label"
         >
           <slot name="label">
             {{ label }}
@@ -258,14 +206,14 @@ function handleClickOutside() {
         </span>
         <span
           v-if="displayedValue"
-          :class="displayedValueClasses"
-          class="ui-select__text ui-select__displayed-value"
+          :class="hasValue ? 'ui-select__displayed-value--value' : 'ui-select__displayed-value--placeholder'"
+          class="ui-select__displayed-value"
         >
           {{ displayedValue }}
         </span>
       </div>
       <div
-        :class="selectTheme.slots.action"
+        class="ui-select__action"
       >
         <slot
           name="trailing"
@@ -275,7 +223,6 @@ function handleClickOutside() {
           <UiIcon
             :name="trailingIconName"
             class="ui-select__icon ui-select__dropdown-icon"
-            :class="selectTheme.slots.trailingIcon"
           />
         </slot>
       </div>
@@ -286,7 +233,6 @@ function handleClickOutside() {
       :id="listboxId"
       ref="floating"
       role="presentation"
-      :class="selectTheme.slots.list"
       :style="floatingStyles"
       class="ui-select__list"
     >
@@ -301,28 +247,19 @@ function handleClickOutside() {
       />
     </div>
 
-    <div
-      v-if="hasBottomMessage"
-      :class="selectTheme.slots.message"
+    <UiMessage
+      v-if="message"
+      :message="message"
     >
-      <div
-        v-if="hasErrorMessage"
-        :class="selectTheme.slots.errorMessage"
+      <template
+        v-if="$slots.message"
+        #default="slotProps"
       >
-        <slot name="errorMessages">
-          <UiIcon
-            name="fill_attention_1"
-            size="16"
-          />
-          {{ errorMessages }}
-        </slot>
-      </div>
-      <slot
-        v-else
-        name="message"
-      >
-        {{ infoMessage }}
-      </slot>
-    </div>
+        <slot
+          name="message"
+          v-bind="slotProps"
+        />
+      </template>
+    </UiMessage>
   </div>
 </template>

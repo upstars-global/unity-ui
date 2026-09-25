@@ -1,0 +1,53 @@
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
+
+const input: Partial<Config> = {
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.ui-input-control': {
+          '&.ui-input--floating-label .ui-input__label': {
+            '@apply top-0 translate-y-0 scale-100 text-caption': {},
+          },
+
+          '&.ui-input--floating-label .ui-input__value': {
+            '@apply top-auto bottom-0 translate-y-0 scale-100': {},
+          },
+
+          '.ui-input__content': {
+            '@apply relative flex min-w-0 flex-1 flex-col justify-center h-[2.25rem]': {},
+          },
+
+          '.ui-input__label': {
+            '@apply absolute top-1/2 -translate-y-1/2 min-w-0 truncate': {},
+          },
+
+          '.ui-input__icon': {
+            '@apply shrink-0 size-24': {},
+            color: 'var(--component-input-icon)',
+          },
+
+          '.ui-input__action': {
+            '@apply shrink-0': {},
+          },
+
+          '.ui-input__value': {
+            '@apply text-body font-medium absolute z-1 w-full min-w-0 border-0 bg-transparent p-0 outline-none truncate': {},
+            color: 'var(--component-input-value)',
+
+            '&:disabled': {
+              '@apply cursor-not-allowed': {},
+            },
+
+            '&::placeholder': {
+              '@apply font-normal opacity-100': {},
+              color: 'var(--component-input-placeholder)',
+            },
+          },
+        },
+      })
+    }),
+  ],
+}
+
+export default input

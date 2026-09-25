@@ -1,3 +1,24 @@
+## [1.26.0](https://github.com/upstars-global/unity-ui/compare/v1.25.4...v1.26.0) (2026-09-24)
+
+### 🚀 Features
+
+* UN-3184 update input and select component ([#40](https://github.com/upstars-global/unity-ui/issues/40))
+ ([58539c7](https://github.com/upstars-global/unity-ui/commit/58539c7d9fabc8dc3bf388a9e7b1a46f5c0ea639))
+
+
+
+    * feat: UN-3184 update input and select component
+
+    * feat: UN-3184 update input and select component
+
+    * feat: UN-3184 update input and select component
+
+    * feat: UN-3184 update input and select component
+
+    * feat: UN-3184 update input and select component
+
+    * feat: UN-3184 update input and select component
+
 ## [1.25.4](https://github.com/upstars-global/unity-ui/compare/v1.25.3...v1.25.4) (2026-09-22)
 
 ### 🔧 Maintenance

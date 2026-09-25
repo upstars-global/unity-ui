@@ -1,5 +1,5 @@
 import type { Slot } from 'vue'
-import type { IBaseFieldProps } from '../BaseField'
+import type { IBaseFieldProps, IBaseMessage } from '../BaseField'
 import type { UiSuggestListItem } from '../../suggest/types'
 import type { UiThemeIconName } from '../../../../themes/registry'
 
@@ -12,7 +12,7 @@ export type SelectValue = string | number | boolean
 
 export type UiSelectOption = UiSuggestListItem<SelectValue>
 
-export interface UiSelectProps extends Omit<IBaseFieldProps, 'modelValue'> {
+export interface UiSelectProps extends Omit<IBaseFieldProps, 'modelValue' | 'errorMessages' | 'infoMessage'> {
   modelValue?: SelectValue | null
   fullWidth?: boolean
   invalid?: boolean
@@ -34,8 +34,7 @@ export interface UiSelectEmits {
 
 export interface UiSelectSlots {
   label?: Slot
-  message?: Slot
-  errorMessages?: Slot
+  message?: Slot<{ message: IBaseMessage }>
   leading?: Slot<{ selectedOption: UiSelectOption | null }>
   trailing?: Slot<{ selectedOption: UiSelectOption | null; isOpen: boolean }>
   option?: Slot<{ option: UiSelectOption; selected: boolean; active: boolean }>

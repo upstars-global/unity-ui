@@ -12,6 +12,7 @@ export { default as UiTimer } from './components/timer/UiTimer.vue';
 export { default as UiCheckbox } from './components/form/basicControls/checkbox/UiCheckbox.vue';
 export { default as UiRadioButton } from './components/form/basicControls/radioButton/UiRadioButton.vue';
 export { default as UiInput } from './components/form/basicControls/input/UiInput.vue';
+export { default as UiMessage } from './components/form/basicControls/message/UiMessage.vue';
 export { default as UiSelect } from './components/form/basicControls/select/UiSelect.vue';
 export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
 export { default as SMCNotification } from './components/notifications/smcNotification/SMCNotification.vue';
@@ -67,6 +68,15 @@ export type {
   UiInputEmits,
   UiInputSlots,
 } from './components/form/basicControls/input/types';
+export { MessageIconNames } from './components/form/basicControls/BaseField';
+export type {
+  IBaseMessage,
+  MessageType,
+} from './components/form/basicControls/BaseField';
+export type {
+  UiMessageProps,
+  UiMessageSlots,
+} from './components/form/basicControls/message/types';
 export type {
   SelectSize,
   SelectState,

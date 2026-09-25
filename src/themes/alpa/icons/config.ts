@@ -9,7 +9,7 @@ import fill_attention_4 from './fill/attention_4.svg?raw';
 import fill_banknote from './fill/banknote.svg?raw';
 import fill_calendar from './fill/calendar.svg?raw';
 import fill_category from './fill/category.svg?raw';
-import fill_check from './fill/check.svg?raw';
+import fill_check_input from './fill/check_input.svg?raw';
 import fill_close from './fill/close.svg?raw';
 import fill_coin from './fill/coin.svg?raw';
 import fill_copy from './fill/copy.svg?raw';
@@ -181,7 +181,7 @@ export const fillIcons = {
   fill_banknote: fill_banknote,
   fill_calendar: fill_calendar,
   fill_category: fill_category,
-  fill_check: fill_check,
+  fill_check_input: fill_check_input,
   fill_close: fill_close,
   fill_coin: fill_coin,
   fill_copy: fill_copy,
