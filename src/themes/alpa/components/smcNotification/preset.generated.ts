@@ -29,6 +29,7 @@ const smcNotification: Partial<Config> = {
 
       addComponents({
         '.smc-notification': {
+          WebkitTapHighlightColor: 'transparent',
           width: '100%',
           background: "linear-gradient(to top, rgb(var(--color-neutral-500) / 0) 0%, rgb(var(--color-neutral-500) / 0.1) 2rem, rgb(var(--color-neutral-500) / 0.8) 5rem, rgb(var(--color-neutral-500)) 100%)",
           '@screen md': {
@@ -81,7 +82,7 @@ const smcNotification: Partial<Config> = {
             bottom: '0',
             left: '0',
             width: '100%',
-            borderRadius: '0 24px 24px 0',
+            borderRadius: '0 1.5rem 1.rem 0',
             transform: 'translateX(-100%)',
             '&--running': { animation: 'smc-notification-progress linear forwards' },
             '&--active': {

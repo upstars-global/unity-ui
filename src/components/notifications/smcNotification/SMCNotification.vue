@@ -35,7 +35,7 @@ function handleDismiss() {
 
 <template>
   <Transition appear name="smc-notification" @after-leave="emit('dismiss')">
-    <div v-if="visible" class="smc-notification select-none [-webkit-tap-highlight-color:transparent]" data-test="smc-notification" @click.capture="handleDismiss">
+    <div v-if="visible" class="smc-notification select-none" data-test="smc-notification" @click.capture="handleDismiss">
       <div class="smc-notification__card rounded-b-24 p-16 md:rounded-24">
         <div
           class="grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-stretch gap-8"
