@@ -118,22 +118,21 @@ const button: Partial<Config> = {
                     },
 
                     '&.slab': {
-                        '&.tertiary-alt ': {
+                        '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-default-alt-bg)',
                                 border: '2px solid var(--component-button-tertiary-default-alt-bordercolor)',
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
-                                '&:hover': {
-                                    background: 'var(--component-button-tertiary-hover-alt-bg)',
-                                    color: 'var(--component-button-tertiary-hover-alt-fg)',
-                                },
-                                '&:active': {
-                                    background: 'var(--component-button-tertiary-pressed-alt-bg)',
-                                    color: 'var(--component-button-tertiary-pressed-alt-fg)',
-                                },
-                                '&:hover, &:active, &:disabled': {
-                                    borderColor: 'transparent',
-                                }
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                background: 'var(--component-button-tertiary-hover-alt-bg)',
+                                borderColor: 'transparent',
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                background: 'var(--component-button-tertiary-pressed-alt-bg)',
+                                borderColor: 'transparent',
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
                             }
                         }
                     },
@@ -141,23 +140,23 @@ const button: Partial<Config> = {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
-                                '&:hover': {
-                                    color: 'var(--component-button-tertiary-hover-alt-fg)',
-                                },
-                                '&:active': {
-                                    color: 'var(--component-button-tertiary-pressed-alt-fg)',
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
                             }
                         },
                         '&.ghost-alt': {
                             '.ui-button--ghost': {
                                 color: 'var(--component-button-ghost-default-alt-fg)',
-                                '&:hover': {
-                                    color: 'var(--component-button-ghost-hover-alt-fg)',
-                                },
-                                '&:active': {
-                                    color: 'var(--component-button-ghost-pressed-alt-fg)',
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--ghost': {
+                                color: 'var(--component-button-ghost-hover-alt-fg)',
+                            },
+                            '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
+                                color: 'var(--component-button-ghost-pressed-alt-fg)',
                             }
                         }
                     },
@@ -165,12 +164,12 @@ const button: Partial<Config> = {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
-                                '&:hover': {
-                                    color: 'var(--component-button-tertiary-hover-alt-fg)',
-                                },
-                                '&:active': {
-                                    color: 'var(--component-button-tertiary-pressed-alt-fg)',
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
                             }
                         }
                     }

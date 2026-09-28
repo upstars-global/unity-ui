@@ -121,22 +121,21 @@ const button: Partial<Config> = {
                     },
 
                     '&.slab': {
-                        '&.tertiary-alt ': {
+                        '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 background: "rgb(var(--color-neutral-100) / 0.1)",
                                 border: "2px solid rgb(var(--color-neutral-50) / 0.1)",
                                 color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    background: "rgb(var(--color-neutral-50) / 0.1)",
-                                    color: "rgb(var(--color-white))",
-                                },
-                                '&:active': {
-                                    background: "rgb(var(--color-neutral-50) / 0.1)",
-                                    color: "rgb(var(--color-white))",
-                                },
-                                '&:hover, &:active, &:disabled': {
-                                    borderColor: 'transparent',
-                                }
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                background: "rgb(var(--color-neutral-50) / 0.1)",
+                                borderColor: 'transparent',
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                background: "rgb(var(--color-neutral-50) / 0.1)",
+                                borderColor: 'transparent',
+                                color: "rgb(var(--color-white))",
                             }
                         }
                     },
@@ -144,23 +143,23 @@ const button: Partial<Config> = {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "rgb(var(--color-white))",
-                                },
-                                '&:active': {
-                                    color: "rgb(var(--color-white))",
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
                             }
                         },
                         '&.ghost-alt': {
                             '.ui-button--ghost': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "var(--component-button-ghost-hover-alt-fg)",
-                                },
-                                '&:active': {
-                                    color: "var(--component-button-ghost-pressed-alt-fg)",
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--ghost': {
+                                color: "var(--component-button-ghost-hover-alt-fg)",
+                            },
+                            '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
+                                color: "var(--component-button-ghost-pressed-alt-fg)",
                             }
                         }
                     },
@@ -168,12 +167,12 @@ const button: Partial<Config> = {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "rgb(var(--color-white))",
-                                },
-                                '&:active': {
-                                    color: "rgb(var(--color-white))",
-                                },
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
                             }
                         }
                     }
