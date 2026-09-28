@@ -11,34 +11,34 @@ const button: Partial<Config> = {
                 '.ui-button': {
                     '&.primary': {
                         '.ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-300) / 1)",
+                            background: "linear-gradient(to right, rgb(var(--color-primary-400) / 1) 0%, rgb(var(--color-primary-100) / 1) 100%)",
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-primary-300) / 1)",
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--primary, &[aria-busy="true"] .ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-100) / 1)",
+                            background: "rgb(var(--color-primary-200) / 1)",
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
                     },
 
                     '&.destructive': {
                         '.ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 1)",
+                            background: "rgb(var(--color-error-100) / 1)",
                             color: "var(--color-black)",
                         },
 
                         '&:not(:disabled):hover .ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 0.8)",
+                            background: "rgb(var(--color-error-100) / 0.8)",
                             color: "var(--color-black)",
                         },
 
                         '&:not(:disabled):active .ui-button--destructive, &[aria-busy="true"] .ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 1)",
+                            background: "rgb(var(--color-error-100) / 1)",
                             color: "var(--color-black)",
                         },
                     },
@@ -47,54 +47,54 @@ const button: Partial<Config> = {
                         '.ui-button--secondary': {
                             borderWidth: '2px',
                             borderColor: "rgb(var(--color-primary-300) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-300) / 0.1)",
+                            background: "rgb(var(--color-neutral-400) / 0.4)",
                             color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):hover .ui-button--secondary': {
-                            borderColor: "rgb(var(--color-primary-200) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-200) / 0.1)",
+                            borderColor: "rgb(var(--color-primary-300) / 1)",
+                            background: "rgb(var(--color-neutral-200) / 0.4)",
                             color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):active .ui-button--secondary, &[aria-busy="true"] .ui-button--secondary': {
                             borderColor: "rgb(var(--color-primary-100) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-100) / 0.1)",
-                            color: "rgb(var(--color-white))",
+                            background: "rgb(var(--color-neutral-400) / 0.4)",
+                            color: "rgb(var(--color-neutral-50) / 1)",
                         },
                     },
 
                     '&.tertiary': {
                         '.ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-200) / 0.4)",
+                            background: "rgb(var(--color-neutral-100) / 0.1)",
                             color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-200) / 0.4)",
+                            color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-50) / 0.1)",
+                            color: "rgb(var(--color-primary-50) / 1)",
                         },
                     },
 
                     '&.ghost': {
                         '.ui-button--ghost': {
-                            backgroundColor: "var(--color-transparent)",
+                            background: "var(--color-transparent)",
                             color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--ghost': {
-                            backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-100) / 0.1)",
+                            color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
-                            backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-50) / 0.1)",
+                            color: "rgb(var(--color-primary-50) / 1)",
                         },
                     },
 
@@ -106,25 +106,33 @@ const button: Partial<Config> = {
                             opacity: '0.45'
                         }
                     },
-                    '&[aria-busy="true"]': {
-                        '.ui-button__content': {
+                    '&[aria-busy="true"]:not(.slab)': {
+                        '.ui-button__main-icon': {
                             opacity: '0'
                         }
+                    },
+
+                    '.ui-button__loading-overlay': {
+                        '@apply absolute inset-0': {},
+                        background: "rgb(var(--color-neutral-500) / 0.8)",
+                    },
+                    '.ui-button__loading-icon': {
+                        '@apply size-32': {}
                     },
 
                     '&.slab': {
                         '&.tertiary-alt ': {
                             '.ui-button--tertiary': {
-                                backgroundColor: "rgb(var(--color-neutral-100) / 0.1)",
+                                background: "rgb(var(--color-neutral-100) / 0.1)",
                                 border: "2px solid rgb(var(--color-neutral-50) / 0.1)",
                                 color: "rgb(var(--color-neutral-50) / 1)",
                                 '&:hover': {
-                                    backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    background: "rgb(var(--color-neutral-50) / 0.1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                                 '&:active': {
-                                    backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    background: "rgb(var(--color-neutral-50) / 0.1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                                 '&:hover, &:active, &:disabled': {
                                     borderColor: 'transparent',
@@ -137,10 +145,10 @@ const button: Partial<Config> = {
                             '.ui-button--tertiary': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
                                 '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                                 '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                             }
                         },
@@ -148,10 +156,10 @@ const button: Partial<Config> = {
                             '.ui-button--ghost': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
                                 '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "var(--component-button-ghost-hover-alt-fg)",
                                 },
                                 '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "var(--component-button-ghost-pressed-alt-fg)",
                                 },
                             }
                         }
@@ -161,10 +169,10 @@ const button: Partial<Config> = {
                             '.ui-button--tertiary': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
                                 '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                                 '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
+                                    color: "rgb(var(--color-white))",
                                 },
                             }
                         }

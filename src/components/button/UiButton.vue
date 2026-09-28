@@ -114,7 +114,7 @@ const trailingIconClasses = computed(() => {
 })
 const mainIconWrapperClasses = computed(() => {
   return flattenClasses(
-      'ui-button__main-icon',
+      'ui-button__main-icon-wrapper',
       (isActionType ? `ui-button--${props.variant}`: ''),
       buttonTheme.slots.leadingIcon,
       isActionType && sizeConfig.value.container,
@@ -126,17 +126,12 @@ const labelClasses = computed(() => {
 const loadingOverlayClasses = computed(() => {
   return flattenClasses(
       'ui-button__loading-overlay',
-      'absolute inset-0',
-      `ui-button--${props.variant}`,
       buttonTheme.base,
       typeConfig.value.base,
       sizeConfig.value.container,
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
   )
-})
-const loadingIconClasses = computed(() => {
-  return flattenClasses(sizeConfig.value.icon, buttonTheme.animation.loading)
 })
 
 function handleClick(event: MouseEvent) {
@@ -172,6 +167,7 @@ function handleClick(event: MouseEvent) {
         <slot name="mainIcon">
           <UiIcon
               :name="mainIconName"
+              class="ui-button__main-icon"
               :class="sizeConfig.icon"
           />
         </slot>
@@ -203,8 +199,8 @@ function handleClick(event: MouseEvent) {
         :class="loadingOverlayClasses"
     >
       <UiIcon
-          name="line_loader"
-          :class="loadingIconClasses"
+          name="animated_preloader_simple"
+          class="ui-button__loading-icon"
       />
     </span>
   </button>
