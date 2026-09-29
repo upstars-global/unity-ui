@@ -75,7 +75,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "base": "rounded-12",
-                    "container": "h-[3.75rem] gap-4 rounded-12 px-16 py-4",
+                    "container": "h-[4rem] gap-4 rounded-12 px-16 py-4",
                     "icon": "w-24",
                     "label": "text-button-xs truncate lowercase first-letter:uppercase"
                 }
