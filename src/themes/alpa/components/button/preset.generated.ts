@@ -154,12 +154,6 @@ const button: Partial<Config> = {
                         '&.ghost-alt': {
                             '.ui-button--ghost': {
                                 color: "rgb(var(--color-neutral-50) / 1)",
-                            },
-                            '&:not(:disabled):hover .ui-button--ghost': {
-                                color: "var(--component-button-ghost-hover-alt-fg)",
-                            },
-                            '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
-                                color: "var(--component-button-ghost-pressed-alt-fg)",
                             }
                         }
                     },
