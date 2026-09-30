@@ -88,11 +88,12 @@ const backward = ref(false)
 const forward = ref(false)
 const isScrolling = ref(false)
 
-let autoplayId: ReturnType<typeof setInterval> | null = null
+let autoplayId: ReturnType<typeof setTimeout> | null = null
 let scrollEndId: ReturnType<typeof setTimeout> | null = null
 let resizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
 let frameId: number | null = null
+let autoplayPaused = false
 
 function getItems() {
   return Array.from(viewport.value?.children ?? []) as HTMLElement[]
@@ -231,9 +232,11 @@ function finishScrolling() {
 
   isScrolling.value = false
   updateState()
+  startAutoplay()
 }
 
 function handleScroll() {
+  stopAutoplay()
   isScrolling.value = true
   scheduleStateUpdate()
 
@@ -245,9 +248,12 @@ function handleScroll() {
 }
 
 function change(direction: CarouselDirection) {
+  stopAutoplay()
+
   const index = getAdjacentIndex(direction)
 
   if (index === null || index < 0) {
+    startAutoplay()
     return
   }
 
@@ -256,7 +262,7 @@ function change(direction: CarouselDirection) {
 
 function stopAutoplay() {
   if (autoplayId !== null) {
-    clearInterval(autoplayId)
+    clearTimeout(autoplayId)
     autoplayId = null
   }
 }
@@ -264,11 +270,13 @@ function stopAutoplay() {
 function startAutoplay() {
   stopAutoplay()
 
-  if (props.autoplay <= 0 || getItems().length < 2) {
+  if (autoplayPaused || props.autoplay <= 0 || getItems().length < 2) {
     return
   }
 
-  autoplayId = setInterval(() => {
+  autoplayId = setTimeout(() => {
+    autoplayId = null
+
     if (forward.value) {
       change(1)
       return
@@ -278,9 +286,19 @@ function startAutoplay() {
   }, props.autoplay)
 }
 
+function pauseAutoplay() {
+  autoplayPaused = true
+  stopAutoplay()
+}
+
+function resumeAutoplay() {
+  autoplayPaused = false
+  startAutoplay()
+}
+
 function handleFocusOut(event: FocusEvent) {
   if (!root.value?.contains(event.relatedTarget as Node | null)) {
-    startAutoplay()
+    resumeAutoplay()
   }
 }
 
@@ -381,9 +399,9 @@ defineExpose({
       'ui-carousel--center-active-slide': centerActiveSlide,
       'ui-carousel--scrolling': isScrolling && backward,
     }"
-    @mouseenter="stopAutoplay"
-    @mouseleave="startAutoplay"
-    @focusin="stopAutoplay"
+    @mouseenter="pauseAutoplay"
+    @mouseleave="resumeAutoplay"
+    @focusin="pauseAutoplay"
     @focusout="handleFocusOut"
   >
     <div

@@ -34,6 +34,7 @@ const preset: Partial<Config> = {
                 12: 'var(--radius-12)',
                 16: 'var(--radius-16)',
                 24: 'var(--radius-24)',
+                full: 'var(--radius-full)',
             },
         },
     },
