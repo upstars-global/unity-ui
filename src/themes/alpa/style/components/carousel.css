@@ -9,6 +9,6 @@
   --component-carousel-control-radius-radius: var(--radius-full);
 
   /* Other */
-  --component-carousel-control-effect: blur(16px);
+  --component-carousel-control-effect: blur(8px);
   --component-carousel-control-shadow: 0px 4px 8px -4px var(--color-neutral-500-80);
 }

@@ -10,6 +10,7 @@ import {
   watch,
   type VNodeChild,
 } from 'vue'
+import { getAdjacentPageIndex, getPerPage } from './navigation'
 import UiCarouselNavigation from './UiCarouselNavigation.vue'
 import type {
   CarouselDirection,
@@ -152,21 +153,22 @@ function getAdjacentIndex(direction: CarouselDirection) {
     return null
   }
 
-  const currentScrollLeft = element.scrollLeft
+  const style = getComputedStyle(element)
+  const gap = Number.parseFloat(style.columnGap) || 0
+  const paddingLeft = Number.parseFloat(style.paddingLeft) || 0
+  const paddingRight = Number.parseFloat(style.paddingRight) || 0
+  const availableWidth = element.clientWidth - paddingLeft - paddingRight
+  const perPage = getPerPage(availableWidth, items[0]?.offsetWidth ?? 0, gap, props.centerActiveSlide)
+  const maxScrollLeft = Math.max(element.scrollWidth - element.clientWidth, 0)
 
-  if (direction > 0) {
-    return items.findIndex(item => getTargetScrollLeft(item) > currentScrollLeft + 1)
-  }
-
-  for (let index = items.length - 1; index >= 0; index -= 1) {
-    const item = items[index]
-
-    if (item && getTargetScrollLeft(item) < currentScrollLeft - 1) {
-      return index
-    }
-  }
-
-  return -1
+  return getAdjacentPageIndex(
+    items.length,
+    perPage,
+    maxScrollLeft,
+    element.scrollLeft,
+    direction,
+    index => getTargetScrollLeft(items[index]!),
+  )
 }
 
 function updateState() {
