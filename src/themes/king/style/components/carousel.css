@@ -1,0 +1,8 @@
+:root[data-product="king"] {
+    --component-carousel-control-bg: rgb(var(--color-white));
+    --component-carousel-control-fg: rgb(var(--color-neutral-500));
+    --component-carousel-control-radius-radius: var(--radius-8);
+    --component-carousel-control-effect: none;
+    --component-carousel-control-shadow: 0 4px 8px 0 var(--color-neutral-800-10);
+    --container-safezone-x: 1.5rem;
+}
