@@ -35,7 +35,7 @@ function handleDismiss() {
 
 <template>
   <Transition appear name="smc-notification" @after-leave="emit('dismiss')">
-    <div v-if="visible" class="smc-notification select-none" data-test="smc-notification" @click.capture="handleDismiss">
+    <div v-if="visible" class="smc-notification select-none" data-test="smc-notification" @click="handleDismiss">
       <div class="smc-notification__card rounded-b-24 p-16 md:rounded-24">
         <div
           class="grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-stretch gap-8"
@@ -58,6 +58,7 @@ function handleDismiss() {
       <div
         class="smc-notification__dismiss relative mx-auto mt-4 flex h-40 w-fit cursor-pointer items-center gap-4 overflow-hidden rounded-full border-2 pl-16 pr-8 text-body-sm transition-colors duration-200"
         :class="{ 'smc-notification__dismiss--active': phase === 'active' }"
+        @click.stop="handleDismiss"
       >
         <span
           ref="progressElement"
