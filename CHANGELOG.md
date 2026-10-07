@@ -1,3 +1,28 @@
+## [1.27.0](https://github.com/upstars-global/unity-ui/compare/v1.26.0...v1.27.0) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* image size
+ ([1521cff](https://github.com/upstars-global/unity-ui/commit/1521cff53d156a4ff84adf01475156f46db44e26))
+
+
+* styles
+ ([dc6b5de](https://github.com/upstars-global/unity-ui/commit/dc6b5de42db39224f48e6738b4893f9d713d32ea))
+
+
+
+### 🚀 Features
+
+* **UN-3129:** SMCNotification component
+ ([542ccd8](https://github.com/upstars-global/unity-ui/commit/542ccd831eced05f92b8e53460e32a7a0ab0c410))
+
+
+
+### 🔧 Maintenance
+
+* generate presets
+ ([e9031da](https://github.com/upstars-global/unity-ui/commit/e9031dab75cbf74707f6875643dc6a6a1a9b7949))
+
 ## [1.26.0](https://github.com/upstars-global/unity-ui/compare/v1.25.4...v1.26.0) (2026-09-24)
 
 ### 🚀 Features
