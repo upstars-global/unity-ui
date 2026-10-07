@@ -1,0 +1,68 @@
+@layer base {
+    :root {
+        --container-max-width: 100%;
+        --container-centred-max-width: 100%;
+        --container-safezone-x: 1rem;
+        --container-safezone-bottom: 3rem;
+        --container-centred-single-column-max-width: 32rem;
+    }
+
+    @screen sm {
+        :root {
+            --container-centred-max-width: 32rem;
+            --container-safezone-x: 1.5rem;
+        }
+    }
+
+    @screen lg {
+        :root {
+            --container-max-width: 65rem;
+            --container-centred-max-width: 65rem;
+            --container-safezone-x: 0;
+            --container-safezone-bottom: 5rem;
+        }
+    }
+
+    @screen xl {
+        :root {
+            --container-max-width: 70rem;
+        }
+    }
+
+    @screen 2xl {
+        :root {
+            --container-max-width: 80rem;
+        }
+    }
+
+    @screen 3xl {
+        :root {
+            --container-max-width: 80rem;
+        }
+    }
+}
+
+@layer components {
+    .container {
+        max-width: var(--container-max-width);
+        @apply mx-auto w-full;
+    }
+
+    .container-centred {
+        max-width: var(--container-centred-max-width);
+        @apply mx-auto w-full;
+    }
+
+    .container-safezone-x {
+        padding-inline: var(--container-safezone-x);
+    }
+
+    .container-safezone-bottom {
+        padding-bottom: var(--container-safezone-bottom);
+    }
+
+    .container-centred-single-column {
+        @apply mx-auto w-full;
+        max-width: var(--container-centred-single-column-max-width);
+    }
+}
