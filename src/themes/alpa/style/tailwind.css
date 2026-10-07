@@ -2,6 +2,7 @@
 @import "base/colors.css";
 @import "base/typography.css";
 @import "fonts.css";
+@import "components/carousel.css";
 @import "components/tabs.css";
 @import "components/smc-notification.css";
 @import "../../../tailwind/base/typography-elements.css";
