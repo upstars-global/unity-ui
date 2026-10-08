@@ -42,11 +42,11 @@ const button = {
       base: ['flex-row', 'items-center', 'justify-center'],
       sizes: {
         sm: {
-          base: [tokenClass('--radius-button-default-sm', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
             tokenClass('--component-button-gap-standard-sm', 'gap'),
-            tokenClass('--radius-button-default-sm', 'rounded'),
+            tokenClass('--component-button-radius-default-sm', 'rounded'),
             tokenClass('--component-button-padding-x-standard-sm', 'px'),
             tokenClass('--component-button-padding-y-standard-sm', 'py'),
           ],
@@ -54,11 +54,11 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.sm, ...LABEL_BASE],
         },
         md: {
-          base: [tokenClass('--radius-button-default-md', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
             tokenClass('--component-button-gap-standard-md', 'gap'),
-            tokenClass('--radius-button-default-md', 'rounded'),
+            tokenClass('--component-button-radius-default-md', 'rounded'),
             tokenClass('--component-button-padding-x-standard-md', 'px'),
             tokenClass('--component-button-padding-y-standard-md', 'py'),
           ],
@@ -66,11 +66,11 @@ const button = {
           label: [BUTTON_LABEL_TEXT_BY_SIZE.md, ...LABEL_BASE],
         },
         lg: {
-          base: [tokenClass('--radius-button-default-lg', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
             tokenClass('--component-button-gap-standard-lg', 'gap'),
-            tokenClass('--radius-button-default-lg', 'rounded'),
+            tokenClass('--component-button-radius-default-lg', 'rounded'),
             tokenClass('--component-button-padding-x-standard-lg', 'px'),
             tokenClass('--component-button-padding-y-standard-lg', 'py'),
           ],
@@ -83,26 +83,26 @@ const button = {
       base: ['aspect-square', 'p-0', 'flex', 'items-center', 'justify-center'],
       sizes: {
         sm: {
-          base: [tokenClass('--radius-button-icon', 'rounded')],
+          base: [tokenClass('--component-button-radius-icon-only', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-sm', 'h'),
-            tokenClass('--radius-button-icon', 'rounded'),
+            tokenClass('--component-button-radius-icon-only', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.sm,
         },
         md: {
-          base: [tokenClass('--radius-button-icon', 'rounded')],
+          base: [tokenClass('--component-button-radius-icon-only', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-md', 'h'),
-            tokenClass('--radius-button-icon', 'rounded'),
+            tokenClass('--component-button-radius-icon-only', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.md,
         },
         lg: {
-          base: [tokenClass('--radius-button-icon', 'rounded')],
+          base: [tokenClass('--component-button-radius-icon-only', 'rounded')],
           container: [
             tokenClass('--component-button-height-standard-lg', 'h'),
-            tokenClass('--radius-button-icon', 'rounded'),
+            tokenClass('--component-button-radius-icon-only', 'rounded'),
           ],
           icon: ICON_ONLY_ICON_BY_SIZE.lg,
         },
@@ -112,11 +112,11 @@ const button = {
       base: ['flex-col', 'text-center', 'justify-center', 'items-center'],
       sizes: {
         sm: {
-          base: [tokenClass('--radius-button-default-sm', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-sm', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-sm', 'h'),
             tokenClass('--component-button-gap-caption-sm', 'gap'),
-            tokenClass('--radius-button-default-sm', 'rounded'),
+            tokenClass('--component-button-radius-default-sm', 'rounded'),
             tokenClass('--component-button-padding-x-caption-sm', 'px'),
             tokenClass('--component-button-padding-y-caption-sm', 'py'),
           ],
@@ -124,11 +124,11 @@ const button = {
           caption: CAPTION_BASE,
         },
         md: {
-          base: [tokenClass('--radius-button-default-md', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-md', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-md', 'h'),
             tokenClass('--component-button-gap-caption-md', 'gap'),
-            tokenClass('--radius-button-default-md', 'rounded'),
+            tokenClass('--component-button-radius-default-md', 'rounded'),
             tokenClass('--component-button-padding-x-caption-md', 'px'),
             tokenClass('--component-button-padding-y-caption-md', 'py'),
           ],
@@ -136,11 +136,11 @@ const button = {
           caption: CAPTION_BASE,
         },
         lg: {
-          base: [tokenClass('--radius-button-default-lg', 'rounded')],
+          base: [tokenClass('--component-button-radius-default-lg', 'rounded')],
           container: [
             tokenClass('--component-button-height-caption-lg', 'h'),
             tokenClass('--component-button-gap-caption-lg', 'gap'),
-            tokenClass('--radius-button-default-lg', 'rounded'),
+            tokenClass('--component-button-radius-default-lg', 'rounded'),
             tokenClass('--component-button-padding-x-caption-lg', 'px'),
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
@@ -153,11 +153,11 @@ const button = {
       base: ['flex-col', 'items-center', 'justify-center'],
       sizes: {
         sm: {
-          base: [tokenClass('--radius-button-slab', 'rounded')],
+          base: [tokenClass('--component-button-radius-slab', 'rounded')],
           container: [
             tokenClass('--component-button-height-slab-sm', 'h'),
             tokenClass('--component-button-gap-slab-sm', 'gap'),
-            tokenClass('--radius-button-slab', 'rounded'),
+            tokenClass('--component-button-radius-slab', 'rounded'),
             tokenClass('--component-button-padding-x-slab-sm', 'px'),
             tokenClass('--component-button-padding-y-slab-sm', 'py'),
           ],
@@ -181,7 +181,7 @@ const button = {
             'flex justify-center items-center',
             tokenClass('--component-button-height-action-sm', 'w'),
             tokenClass('--component-button-height-action-sm', 'h'),
-            tokenClass('--radius-button-action', 'rounded'),
+            tokenClass('--component-button-radius-action', 'rounded'),
           ],
           icon: ['w-24'],
           label: [
