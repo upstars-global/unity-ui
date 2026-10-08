@@ -114,7 +114,7 @@ const button: Partial<Config> = {
 
                     '.ui-button__loading-overlay': {
                         '@apply absolute inset-0': {},
-                        background: "rgb(var(--color-neutral-500) / 0.8)",
+                        background: "rgb(var(--color-neutral-500) / 0.4)",
                     },
                     '.ui-button__loading-icon': {
                         '@apply size-32': {}

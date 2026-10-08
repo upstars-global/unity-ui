@@ -46,7 +46,7 @@
   --component-button-secondary-hover-bordercolor: var(--color-primary-300);
   --component-button-secondary-pressed-bordercolor: var(--color-primary-100);
   --component-button-tertiary-default-alt-bordercolor: var(--color-neutral-50-10);
-  --component-button-tint: var(--color-neutral-500-80);
+  --component-button-tint: var(--color-neutral-500-40);
 
   /* Sizes */
   --component-button-gap-action-sm: 0.375rem;
