@@ -1,3 +1,16 @@
+## [1.27.1](https://github.com/upstars-global/unity-ui/compare/v1.27.0...v1.27.1) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* title fontweight
+ ([627ebef](https://github.com/upstars-global/unity-ui/commit/627ebef2a0b47a9a415ba4d1f04a66dc266d5170))
+
+
+
+    fix: title fontweight
+* title fontweight
+ ([ad45f40](https://github.com/upstars-global/unity-ui/commit/ad45f40123670b774ad2d68d450eb941534b2a8f))
+
 ## [1.27.0](https://github.com/upstars-global/unity-ui/compare/v1.26.0...v1.27.0) (2026-10-06)
 
 ### 🐛 Bug Fixes
