@@ -11,9 +11,6 @@ const preset: Partial<Config> = {
             xl: '1280px',
             '2xl': '1440px',
             '3xl': '1664px',
-            landscape: {
-                raw: "(max-width: 754px) and (orientation: landscape)",
-            },
         },
     },
 }
