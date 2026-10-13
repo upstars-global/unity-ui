@@ -26,7 +26,6 @@ const theme = {
 const preset: Partial<Config> = {
     corePlugins: {
         container: false,
-        orientationVariants: false,
     },
     theme,
     plugins: [

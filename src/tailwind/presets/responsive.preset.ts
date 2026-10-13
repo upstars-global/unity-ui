@@ -16,8 +16,7 @@ const preset: Partial<Config> = {
     },
     plugins: [
         plugin(({ addVariant }) => {
-            addVariant('landscape', '@media (max-width: 754px) and (orientation: landscape)')
-            addVariant('portrait', '@media (orientation: portrait)')
+            addVariant('mobile-landscape', '@media (max-width: 754px) and (orientation: landscape)')
         }),
     ],
 }
