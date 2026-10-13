@@ -1,4 +1,5 @@
 import { type Config } from 'tailwindcss'
+import plugin from "tailwindcss/plugin.js";
 
 const preset: Partial<Config> = {
     theme: {
@@ -13,6 +14,14 @@ const preset: Partial<Config> = {
             '3xl': '1664px',
         },
     },
+    plugins: [
+        plugin(({ addVariant }) => {
+            addVariant(
+                "landscape",
+                "@media (max-width: 754px) and (orientation: landscape)",
+            );
+        })
+    ]
 }
 
 export default preset
