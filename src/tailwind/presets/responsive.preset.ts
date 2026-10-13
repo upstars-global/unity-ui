@@ -1,5 +1,5 @@
 import { type Config } from 'tailwindcss'
-import plugin from "tailwindcss/plugin.js";
+import plugin from 'tailwindcss/plugin.js'
 
 const preset: Partial<Config> = {
     theme: {
@@ -16,12 +16,10 @@ const preset: Partial<Config> = {
     },
     plugins: [
         plugin(({ addVariant }) => {
-            addVariant(
-                "landscape",
-                "@media (max-width: 754px) and (orientation: landscape)",
-            );
-        })
-    ]
+            addVariant('landscape', '@media (max-width: 754px) and (orientation: landscape)')
+            addVariant('portrait', '@media (orientation: portrait)')
+        }),
+    ],
 }
 
 export default preset
