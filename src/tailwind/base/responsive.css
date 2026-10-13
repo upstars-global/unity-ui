@@ -53,16 +53,18 @@
         @apply mx-auto w-full;
     }
 
+    .container-centred-single-column {
+        @apply mx-auto w-full;
+        max-width: var(--container-centred-single-column-max-width);
+    }
+}
+
+@layer utilities {
     .container-safezone-x {
         padding-inline: var(--container-safezone-x);
     }
 
     .container-safezone-bottom {
         padding-bottom: var(--container-safezone-bottom);
-    }
-
-    .container-centred-single-column {
-        @apply mx-auto w-full;
-        max-width: var(--container-centred-single-column-max-width);
     }
 }
