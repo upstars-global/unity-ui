@@ -30,7 +30,6 @@ const preset: Partial<Config> = {
     theme,
     plugins: [
         ...(typographyPreset.plugins ?? []),
-        ...(responsivePreset.plugins ?? []),
     ],
 }
 
