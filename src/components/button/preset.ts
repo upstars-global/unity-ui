@@ -61,7 +61,7 @@ const button: Partial<Config> = {
 
                     '&.secondary': {
                         '.ui-button--secondary': {
-                            borderWidth: '2px',
+                            borderWidth: 'var(--component-button-borderwidth-outline)',
                             borderColor: 'var(--component-button-secondary-default-bordercolor)',
                             background: 'var(--component-button-secondary-default-bg)',
                             color: 'var(--component-button-secondary-default-fg)',
@@ -80,7 +80,7 @@ const button: Partial<Config> = {
                         },
                         '.ui-button__loading-overlay': {
                             background: 'var(--component-button-secondary-loading-bg)',
-                            border: '2px solid var(--component-button-secondary-loading-bordercolor)',
+                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-secondary-loading-bordercolor)',
                         },
                         '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
                             background: 'var(--component-button-secondary-loading-bg)',
@@ -93,7 +93,7 @@ const button: Partial<Config> = {
 
                     '&.tertiary': {
                         '.ui-button--tertiary': {
-                            border: '2px solid var(--component-button-tertiary-default-bordercolor)',
+                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-default-bordercolor)',
                             background: 'var(--component-button-tertiary-default-bg)',
                             color: 'var(--component-button-tertiary-default-fg)',
                         },
@@ -110,7 +110,7 @@ const button: Partial<Config> = {
                             color: 'var(--component-button-tertiary-pressed-fg)',
                         },
                         '.ui-button__loading-overlay': {
-                            border: '2px solid var(--component-button-tertiary-default-bordercolor)',
+                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-default-bordercolor)',
                             background: 'var(--component-button-tertiary-loading-bg)',
                         },
                         '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
@@ -124,7 +124,7 @@ const button: Partial<Config> = {
                         },
                         '&.slab.tertiary-alt .ui-button__loading-overlay': {
                             background: 'var(--component-button-tertiary-loading-alt-bg)',
-                            border: '2px solid var(--component-button-tertiary-loading-alt-bordercolor)',
+                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-loading-alt-bordercolor)',
                             backdropFilter: 'blur(8px)',
                         },
                     },
@@ -176,7 +176,7 @@ const button: Partial<Config> = {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-default-alt-bg)',
-                                border: '2px solid var(--component-button-tertiary-default-alt-bordercolor)',
+                                border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-default-alt-bordercolor)',
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
                                 backdropFilter: 'blur(8px)',
                             },

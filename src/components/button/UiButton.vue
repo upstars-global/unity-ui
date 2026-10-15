@@ -39,7 +39,6 @@ const isCaptionType = props.layout === 'caption'
 const isSlabType = props.layout === 'slab'
 const isActionType = props.layout === 'action'
 const isIconType = props.layout === 'icon'
-const hasSlabAltBorder = computed(() => props.variant === 'tertiary' && isSlabType)
 const mainIconName = computed(() => {
   return ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
 });
@@ -96,7 +95,6 @@ const contentClasses = computed(() => {
       buttonTheme.base,
       typeConfig.value.base,
       !isActionType && sizeConfig.value.container,
-      hasSlabAltBorder.value && 'border-2',
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
   )

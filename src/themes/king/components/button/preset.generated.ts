@@ -64,7 +64,7 @@ const button: Partial<Config> = {
 
                     '&.secondary': {
                         '.ui-button--secondary': {
-                            borderWidth: '2px',
+                            borderWidth: "2px",
                             borderColor: "rgb(var(--color-primary-200) / var(--opacity-40))",
                             background: "rgb(var(--color-white))",
                             color: "rgb(var(--color-primary-300) / 1)",
