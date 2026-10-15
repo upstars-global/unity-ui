@@ -16,12 +16,21 @@ const button: Partial<Config> = {
                         },
 
                         '&:not(:disabled):hover .ui-button--primary': {
-                            background: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-primary-400) / 1)",
                             color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):active .ui-button--primary, &[aria-busy="true"] .ui-button--primary': {
-                            background: "rgb(var(--color-primary-400) / 1)",
+                            background: "rgb(var(--color-primary-200) / 1)",
+                            color: "rgb(var(--color-white))",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-primary-200) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-primary-200) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
                             color: "rgb(var(--color-white))",
                         },
                     },
@@ -33,7 +42,7 @@ const button: Partial<Config> = {
                         },
 
                         '&:not(:disabled):hover .ui-button--destructive': {
-                            background: "rgb(var(--color-error-100) / 0.8)",
+                            background: "rgb(var(--color-error-100) / var(--opacity-80))",
                             color: "rgb(var(--color-white))",
                         },
 
@@ -41,43 +50,85 @@ const button: Partial<Config> = {
                             background: "rgb(var(--color-error-100) / 1)",
                             color: "rgb(var(--color-white))",
                         },
+
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-error-100) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-error-100) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
+                            color: "rgb(var(--color-white))",
+                        },
                     },
 
                     '&.secondary': {
                         '.ui-button--secondary': {
                             borderWidth: '2px',
-                            borderColor: "rgb(var(--color-primary-200) / 0.4)",
+                            borderColor: "rgb(var(--color-primary-200) / var(--opacity-40))",
                             background: "rgb(var(--color-white))",
                             color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--secondary': {
-                            borderColor: "rgb(var(--color-primary-200) / 1)",
+                            borderColor: "rgb(var(--color-primary-400) / var(--opacity-40))",
                             background: "rgb(var(--color-white))",
-                            color: "rgb(var(--color-primary-300) / 1)",
+                            color: "rgb(var(--color-primary-400) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--secondary, &[aria-busy="true"] .ui-button--secondary': {
-                            borderColor: "rgb(var(--color-primary-300) / 1)",
-                            background: "rgb(var(--color-white))",
+                            borderColor: "rgb(var(--color-primary-50) / 1)",
+                            background: "rgb(var(--color-primary-50) / 1)",
+                            color: "rgb(var(--color-primary-300) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-primary-50) / 1)",
+                            border: "2px solid rgb(var(--color-primary-50) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-primary-50) / 1)",
+                            borderColor: "rgb(var(--color-primary-50) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
                             color: "rgb(var(--color-primary-300) / 1)",
                         },
                     },
 
                     '&.tertiary': {
                         '.ui-button--tertiary': {
-                            background: "rgb(var(--color-primary-100) / 0.4)",
-                            color: "rgb(var(--color-neutral-800) / 1)",
+                            border: "2px solid rgb(var(--color-neutral-200) / var(--opacity-40))",
+                            background: "rgb(var(--color-white))",
+                            color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--tertiary': {
-                            background: "rgb(var(--color-neutral-200) / 0.4)",
-                            color: "rgb(var(--color-neutral-700) / 1)",
+                            borderColor: "rgb(var(--color-neutral-200) / var(--opacity-40))",
+                            background: "rgb(var(--color-neutral-100) / 1)",
+                            color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                            background: "rgb(var(--color-neutral-200) / 0.1)",
-                            color: "rgb(var(--color-neutral-700) / 1)",
+                            borderColor: "rgb(var(--color-neutral-200) / var(--opacity-40))",
+                            background: "rgb(var(--color-neutral-100) / 1)",
+                            color: "rgb(var(--color-neutral-800) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            border: "2px solid rgb(var(--color-neutral-200) / var(--opacity-40))",
+                            background: "rgb(var(--color-neutral-100) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-neutral-100) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
+                            color: "rgb(var(--color-neutral-800) / 1)",
+                        },
+                        '&.tertiary-alt .ui-button__loading-icon': {
+                            color: "rgb(var(--color-neutral-500) / 1)",
+                        },
+                        '&.slab.tertiary-alt .ui-button__loading-overlay': {
+                            background: "rgb(var(--color-white))",
+                            border: "2px solid rgb(var(--color-primary-300) / 1)",
+                            backdropFilter: 'blur(8px)',
                         },
                     },
 
@@ -88,12 +139,21 @@ const button: Partial<Config> = {
                         },
 
                         '&:not(:disabled):hover .ui-button--ghost': {
-                            background: "rgb(var(--color-neutral-200) / 0.4)",
+                            background: "rgb(var(--color-neutral-200) / var(--opacity-40))",
                             color: "rgb(var(--color-neutral-700) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
-                            background: "rgb(var(--color-neutral-300) / 0.4)",
+                            background: "rgb(var(--color-neutral-300) / var(--opacity-40))",
+                            color: "rgb(var(--color-neutral-700) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-neutral-300) / var(--opacity-40))",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-neutral-300) / var(--opacity-40))",
+                        },
+                        '.ui-button__loading-icon': {
                             color: "rgb(var(--color-neutral-700) / 1)",
                         },
                     },
@@ -106,67 +166,66 @@ const button: Partial<Config> = {
                             opacity: '0.45'
                         }
                     },
-                    '&[aria-busy="true"]:not(.slab)': {
-                        '.ui-button__main-icon': {
+                    '&[aria-busy="true"]:not(.action)': {
+                        '.ui-button__content': {
                             opacity: '0'
                         }
                     },
 
                     '.ui-button__loading-overlay': {
                         '@apply absolute inset-0': {},
-                        background: "rgb(var(--color-neutral-50) / 0.8)",
                     },
-                    '.ui-button__loading-icon': {
-                        '@apply size-32': {}
-                    },
-
                     '&.slab': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                background: "rgb(var(--color-white))",
-                                border: "2px solid rgb(var(--color-neutral-300) / 0.4)",
-                                color: "rgb(var(--color-neutral-600) / 1)",
+                                background: "rgb(var(--color-neutral-300) / var(--opacity-10))",
+                                border: "2px solid rgb(var(--color-neutral-200) / var(--opacity-80))",
+                                color: "rgb(var(--color-neutral-500) / 1)",
+                                backdropFilter: 'blur(8px)',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
-                                background: "rgb(var(--color-neutral-200) / 0.4)",
-                                borderColor: 'transparent',
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                background: "rgb(var(--color-white))",
+                                borderColor: "rgb(var(--color-neutral-200) / var(--opacity-80))",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             },
                             '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                                background: "rgb(var(--color-neutral-300) / 0.4)",
-                                borderColor: 'transparent',
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                background: "rgb(var(--color-white))",
+                                borderColor: "rgb(var(--color-primary-300) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             }
                         }
                     },
                     '&.icon': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-600) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             },
                             '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             }
                         },
                         '&.ghost-alt': {
                             '.ui-button--ghost': {
                                 color: "rgb(var(--color-neutral-800) / 1)",
-                            }
+                            },
+                            '.ui-button__loading-icon': {
+                                color: "var(--component-button-ghost-pressed-alt-fg)",
+                            },
                         }
                     },
                     '&.action': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-600) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             },
                             '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-700) / 1)",
+                                color: "rgb(var(--color-neutral-500) / 1)",
                             }
                         }
                     }

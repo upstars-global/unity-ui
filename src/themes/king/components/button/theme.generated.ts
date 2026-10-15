@@ -87,7 +87,7 @@ const button = {
                 "sm": {
                     "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
                     "icon": "w-24",
-                    "label": "text-button-caption text-neutral-800 truncate lowercase first-letter:uppercase"
+                    "label": "text-button-xs max-w-[80px] text-neutral-800 truncate lowercase first-letter:uppercase"
                 }
             }
         }

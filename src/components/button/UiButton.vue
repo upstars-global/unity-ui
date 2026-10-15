@@ -51,6 +51,7 @@ const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.tra
 const showLabel = computed(() => props.layout !== 'icon')
 const showCaption = computed(() => isCaptionType && Boolean(props.caption))
 const hasMainIcon = computed(() => Boolean(mainIconName.value || slots.mainIcon))
+const loadingIconSize = computed(() => supportedSize.value === 'sm' && (isStandardType || isIconType || isCaptionType) ? '16' : '24')
 
 const supportedSize = computed(() => {
   const sizes = buttonTheme.type[props.layout].sizes
@@ -161,16 +162,22 @@ function handleClick(event: MouseEvent) {
         />
       </slot>
       <span
-          v-if="hasMainIcon"
+          v-if="hasMainIcon || (isActionType && loading)"
           :class="mainIconWrapperClasses"
       >
-        <slot name="mainIcon">
+        <slot v-if="!isActionType || !loading" name="mainIcon">
           <UiIcon
               :name="mainIconName"
               class="ui-button__main-icon"
               :class="sizeConfig.icon"
           />
         </slot>
+        <UiIcon
+            v-else
+            name="line_loader_spin"
+            :size="loadingIconSize"
+            class="ui-button__loading-icon animate-spin"
+        />
       </span>
       <span
           v-if="showLabel"
@@ -195,12 +202,13 @@ function handleClick(event: MouseEvent) {
       </slot>
     </span>
     <span
-        v-if="loading"
+        v-if="loading && !isActionType"
         :class="loadingOverlayClasses"
     >
       <UiIcon
-          name="animated_preloader_simple"
-          class="ui-button__loading-icon"
+          name="line_loader_spin"
+          :size="loadingIconSize"
+          class="ui-button__loading-icon animate-spin"
       />
     </span>
   </button>

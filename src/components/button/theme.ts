@@ -185,7 +185,8 @@ const button = {
           ],
           icon: ['w-24'],
           label: [
-            'text-button-caption',
+            'text-button-xs',
+            'max-w-[80px]',
             tokenClass('--component-button-label', 'text'),
             ...LABEL_BASE
           ],

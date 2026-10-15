@@ -148,6 +148,7 @@ import social_whatsapp_color from './social/whatsapp_color.svg?raw';
 import social_whatsapp_outline from './social/whatsapp_outline.svg?raw';
 import social_x from './social/x.svg?raw';
 import preloader_simple from './animated/preloader_simple.svg?raw';
+import line_loader_spin from './line/loader_spin.svg?raw';
 
 export const fillIcons = {
   fill_address: fill_address,
@@ -245,6 +246,7 @@ export const lineIcons = {
   line_search: line_search,
   line_shuffle: line_shuffle,
   line_update: line_update,
+  line_loader_spin: line_loader_spin,
 } as const;
 
 export const flatIcons = {
