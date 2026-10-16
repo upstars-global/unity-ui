@@ -22,7 +22,7 @@
         --text-button-label-xs-lineheight: 0.875rem;
         --text-caption-letterspacing: -0.0125rem;
         --text-caption-fontsize: 0.75rem;
-        --text-caption-lineheight: 1rem;
+        --text-caption-lineheight: 115%;
         --text-fontweight-normal: 400;
         --text-fontweight-medium: 600;
         --text-fontweight-bold: 700;
