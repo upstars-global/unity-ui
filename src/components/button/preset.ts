@@ -104,13 +104,18 @@ const button: Partial<Config> = {
                             color: 'var(--component-button-tertiary-hover-fg)',
                         },
 
-                        '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                            borderColor: 'var(--component-button-tertiary-default-bordercolor)',
+                        '&:not(:disabled):active .ui-button--tertiary': {
+                            borderColor: 'var(--component-button-tertiary-pressed-bordercolor)',
                             background: 'var(--component-button-tertiary-pressed-bg)',
                             color: 'var(--component-button-tertiary-pressed-fg)',
                         },
+                        '&[aria-busy="true"] .ui-button--tertiary': {
+                            borderColor: 'var(--component-button-tertiary-loading-bordercolor)',
+                            background: 'var(--component-button-tertiary-loading-bg)',
+                            color: 'var(--component-button-tertiary-loading-fg)',
+                        },
                         '.ui-button__loading-overlay': {
-                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-default-bordercolor)',
+                            border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-loading-bordercolor)',
                             background: 'var(--component-button-tertiary-loading-bg)',
                         },
                         '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
@@ -120,7 +125,7 @@ const button: Partial<Config> = {
                             color: 'var(--component-button-tertiary-loading-fg)',
                         },
                         '&.tertiary-alt .ui-button__loading-icon': {
-                            color: 'var(--component-button-tertiary-default-alt-fg)',
+                            color: 'var(--component-button-tertiary-loading-alt-fg)',
                         },
                         '&.slab.tertiary-alt .ui-button__loading-overlay': {
                             background: 'var(--component-button-tertiary-loading-alt-bg)',
@@ -183,12 +188,17 @@ const button: Partial<Config> = {
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-hover-alt-bg)',
                                 borderColor: 'var(--component-button-tertiary-hover-alt-bordercolor)',
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
                             },
-                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
+                            '&:not(:disabled):active .ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-pressed-alt-bg)',
                                 borderColor: 'var(--component-button-tertiary-pressed-alt-bordercolor)',
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                background: 'var(--component-button-tertiary-loading-alt-bg)',
+                                borderColor: 'var(--component-button-tertiary-loading-alt-bordercolor)',
+                                color: 'var(--component-button-tertiary-loading-alt-fg)',
                             }
                         }
                     },
@@ -198,10 +208,13 @@ const button: Partial<Config> = {
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
                             },
-                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                            '&:not(:disabled):active .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-loading-alt-fg)',
                             }
                         },
                         '&.ghost-alt': {
@@ -219,10 +232,13 @@ const button: Partial<Config> = {
                                 color: 'var(--component-button-tertiary-default-alt-fg)',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-hover-alt-fg)',
                             },
-                            '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                            '&:not(:disabled):active .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-pressed-alt-fg)',
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                color: 'var(--component-button-tertiary-loading-alt-fg)',
                             }
                         }
                     }
