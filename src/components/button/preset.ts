@@ -6,15 +6,18 @@ const button: Partial<Config> = {
         plugin(({ addComponents }) => {
             addComponents({
                 '.ui-button': {
+                    '&.standard .ui-button__content, &.caption .ui-button__content, &.slab .ui-button__content': {
+                        minWidth: 'var(--component-button-minwidth-default)',
+                    },
                     '&.primary': {
                         '.ui-button--primary': {
                             background: 'var(--component-button-primary-default-bg)',
-                            color: 'var(--component-button-primary-default-fg)',
+                            color: 'var(--component-button-primary-fg)',
                         },
 
                         '&:not(:disabled):hover .ui-button--primary': {
                             background: 'var(--component-button-primary-hover-bg)',
-                            color: 'var(--component-button-primary-hover-fg)',
+                            color: 'var(--component-button-primary-fg)',
                         },
 
                         '&:not(:disabled):active .ui-button--primary, &[aria-busy="true"] .ui-button--primary': {
@@ -35,17 +38,17 @@ const button: Partial<Config> = {
                     '&.destructive': {
                         '.ui-button--destructive': {
                             background: 'var(--component-button-destructive-default-bg)',
-                            color: 'var(--component-button-destructive-default-fg)',
+                            color: 'var(--component-button-destructive-fg)',
                         },
 
                         '&:not(:disabled):hover .ui-button--destructive': {
                             background: 'var(--component-button-destructive-hover-bg)',
-                            color: 'var(--component-button-destructive-hover-fg)',
+                            color: 'var(--component-button-destructive-fg)',
                         },
 
                         '&:not(:disabled):active .ui-button--destructive, &[aria-busy="true"] .ui-button--destructive': {
                             background: 'var(--component-button-destructive-pressed-bg)',
-                            color: 'var(--component-button-destructive-pressed-fg)',
+                            color: 'var(--component-button-destructive-fg)',
                         },
 
                         '.ui-button__loading-overlay': {
@@ -64,7 +67,7 @@ const button: Partial<Config> = {
                             borderWidth: 'var(--component-button-borderwidth-outline)',
                             borderColor: 'var(--component-button-secondary-default-bordercolor)',
                             background: 'var(--component-button-secondary-default-bg)',
-                            color: 'var(--component-button-secondary-default-fg)',
+                            color: 'var(--component-button-secondary-fg)',
                         },
 
                         '&:not(:disabled):hover .ui-button--secondary': {
@@ -130,7 +133,7 @@ const button: Partial<Config> = {
                         '&.slab.tertiary-alt .ui-button__loading-overlay': {
                             background: 'var(--component-button-tertiary-loading-alt-bg)',
                             border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-loading-alt-bordercolor)',
-                            backdropFilter: 'blur(8px)',
+                            backdropFilter: 'blur(calc(var(--effect-blur-default) / 2))',
                         },
                     },
 
@@ -182,8 +185,8 @@ const button: Partial<Config> = {
                             '.ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-default-alt-bg)',
                                 border: 'var(--component-button-borderwidth-outline) solid var(--component-button-tertiary-default-alt-bordercolor)',
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
-                                backdropFilter: 'blur(8px)',
+                                color: 'var(--component-button-tertiary-fg-alt)',
+                                backdropFilter: 'blur(calc(var(--effect-blur-default) / 2))',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 background: 'var(--component-button-tertiary-hover-alt-bg)',
@@ -205,7 +208,7 @@ const button: Partial<Config> = {
                     '&.icon': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-fg-alt)',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 color: 'var(--component-button-tertiary-hover-alt-fg)',
@@ -218,18 +221,15 @@ const button: Partial<Config> = {
                             }
                         },
                         '&.ghost-alt': {
-                            '.ui-button--ghost': {
-                                color: 'var(--component-button-ghost-default-alt-fg)',
-                            },
-                            '.ui-button__loading-icon': {
-                                color: 'var(--component-button-ghost-loading-alt-fg)',
+                            '&:not(:disabled):active .ui-button--ghost': {
+                                color: 'var(--component-button-tertiary-pressed-fg)',
                             },
                         }
                     },
                     '&.action': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: 'var(--component-button-tertiary-default-alt-fg)',
+                                color: 'var(--component-button-tertiary-fg-alt)',
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 color: 'var(--component-button-tertiary-hover-alt-fg)',

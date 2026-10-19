@@ -9,6 +9,9 @@ const button: Partial<Config> = {
         plugin(({ addComponents }) => {
             addComponents({
                 '.ui-button': {
+                    '&.standard .ui-button__content, &.caption .ui-button__content, &.slab .ui-button__content': {
+                        minWidth: "5rem",
+                    },
                     '&.primary': {
                         '.ui-button--primary': {
                             background: "linear-gradient(to right, rgb(var(--color-primary-400) / 1) 0%, rgb(var(--color-primary-100) / 1) 100%)",
@@ -133,7 +136,7 @@ const button: Partial<Config> = {
                         '&.slab.tertiary-alt .ui-button__loading-overlay': {
                             background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
                             border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-0))",
-                            backdropFilter: 'blur(8px)',
+                            backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
                         },
                     },
 
@@ -186,7 +189,7 @@ const button: Partial<Config> = {
                                 background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
                                 border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-20))",
                                 color: "rgb(var(--color-white))",
-                                backdropFilter: 'blur(8px)',
+                                backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
@@ -221,11 +224,8 @@ const button: Partial<Config> = {
                             }
                         },
                         '&.ghost-alt': {
-                            '.ui-button--ghost': {
-                                color: "rgb(var(--color-white))",
-                            },
-                            '.ui-button__loading-icon': {
-                                color: "var(--component-button-ghost-pressed-alt-fg)",
+                            '&:not(:disabled):active .ui-button--ghost': {
+                                color: "rgb(var(--color-primary-300) / 1)",
                             },
                         }
                     },

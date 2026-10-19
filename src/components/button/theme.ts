@@ -144,7 +144,7 @@ const button = {
             tokenClass('--component-button-padding-x-caption-lg', 'px'),
             tokenClass('--component-button-padding-y-caption-lg', 'py'),
           ],
-          label: [BUTTON_LABEL_TEXT_BY_SIZE.lg, ...LABEL_BASE],
+          label: ['text-button-xl', ...LABEL_BASE],
           caption: CAPTION_BASE,
         },
       } satisfies ButtonTypeSizeMap,
@@ -186,7 +186,7 @@ const button = {
           icon: ['w-24'],
           label: [
             'text-button-xs',
-            'max-w-[80px]',
+            tokenClass('--component-button-maxwidth-action-sm', 'max-w'),
             tokenClass('--component-button-label', 'text'),
             ...LABEL_BASE
           ],

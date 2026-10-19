@@ -9,6 +9,9 @@ const button: Partial<Config> = {
         plugin(({ addComponents }) => {
             addComponents({
                 '.ui-button': {
+                    '&.standard .ui-button__content, &.caption .ui-button__content, &.slab .ui-button__content': {
+                        minWidth: "5rem",
+                    },
                     '&.primary': {
                         '.ui-button--primary': {
                             background: "rgb(var(--color-primary-300) / 1)",
@@ -22,7 +25,7 @@ const button: Partial<Config> = {
 
                         '&:not(:disabled):active .ui-button--primary, &[aria-busy="true"] .ui-button--primary': {
                             background: "rgb(var(--color-primary-200) / 1)",
-                            color: "rgb(var(--color-white))",
+                            color: "rgb(var(--color-primary-50) / 1)",
                         },
                         '.ui-button__loading-overlay': {
                             background: "rgb(var(--color-primary-200) / 1)",
@@ -31,7 +34,7 @@ const button: Partial<Config> = {
                             background: "rgb(var(--color-primary-200) / 1)",
                         },
                         '.ui-button__loading-icon': {
-                            color: "rgb(var(--color-white))",
+                            color: "rgb(var(--color-primary-50) / 1)",
                         },
                     },
 
@@ -58,7 +61,7 @@ const button: Partial<Config> = {
                             background: "rgb(var(--color-error-100) / 1)",
                         },
                         '.ui-button__loading-icon': {
-                            color: "rgb(var(--color-white))",
+                            color: "rgb(var(--color-neutral-50) / 1)",
                         },
                     },
 
@@ -133,7 +136,7 @@ const button: Partial<Config> = {
                         '&.slab.tertiary-alt .ui-button__loading-overlay': {
                             background: "rgb(var(--color-white))",
                             border: "var(--borderwidth-2) solid rgb(var(--color-primary-300) / 1)",
-                            backdropFilter: 'blur(8px)',
+                            backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
                         },
                     },
 
@@ -186,7 +189,7 @@ const button: Partial<Config> = {
                                 background: "rgb(var(--color-neutral-300) / var(--opacity-10))",
                                 border: "var(--borderwidth-2) solid rgb(var(--color-neutral-200) / var(--opacity-80))",
                                 color: "rgb(var(--color-neutral-500) / 1)",
-                                backdropFilter: 'blur(8px)',
+                                backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
                             },
                             '&:not(:disabled):hover .ui-button--tertiary': {
                                 background: "rgb(var(--color-white))",
@@ -221,11 +224,8 @@ const button: Partial<Config> = {
                             }
                         },
                         '&.ghost-alt': {
-                            '.ui-button--ghost': {
+                            '&:not(:disabled):active .ui-button--ghost': {
                                 color: "rgb(var(--color-neutral-800) / 1)",
-                            },
-                            '.ui-button__loading-icon': {
-                                color: "var(--component-button-ghost-pressed-alt-fg)",
                             },
                         }
                     },

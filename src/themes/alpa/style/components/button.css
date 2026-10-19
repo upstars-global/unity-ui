@@ -4,6 +4,7 @@
   /* Foreground / Background */
   --component-button-destructive-default-bg: var(--color-error-100);
   --component-button-destructive-default-fg: var(--color-black);
+  --component-button-destructive-fg: var(--color-black);
   --component-button-destructive-hover-bg: rgb(var(--color-error-100) / var(--opacity-80));
   --component-button-destructive-hover-fg: var(--color-black);
   --component-button-destructive-loading-bg: var(--component-button-destructive-pressed-bg);
@@ -18,10 +19,12 @@
   --component-button-ghost-loading-alt-fg: var(--component-button-ghost-pressed-alt-fg);
   --component-button-ghost-loading-bg: var(--component-button-ghost-pressed-bg);
   --component-button-ghost-loading-fg: var(--component-button-ghost-pressed-fg);
+  --component-button-ghost-pressed-alt-fg: var(--color-neutral-50);
   --component-button-ghost-pressed-bg: rgb(var(--color-neutral-100) / var(--opacity-20));
   --component-button-ghost-pressed-fg: var(--color-white);
   --component-button-primary-default-bg: linear-gradient(to right, rgb(var(--color-primary-400) / 1) 0%, rgb(var(--color-primary-100) / 1) 100%);
   --component-button-primary-default-fg: var(--color-neutral-500);
+  --component-button-primary-fg: var(--color-neutral-500);
   --component-button-primary-hover-bg: var(--color-primary-200);
   --component-button-primary-hover-fg: var(--color-neutral-500);
   --component-button-primary-loading-bg: var(--component-button-primary-pressed-bg);
@@ -30,6 +33,7 @@
   --component-button-primary-pressed-fg: var(--color-neutral-500);
   --component-button-secondary-default-bg: rgb(var(--color-neutral-100) / var(--opacity-10));
   --component-button-secondary-default-fg: var(--color-white);
+  --component-button-secondary-fg: var(--color-white);
   --component-button-secondary-hover-bg: rgb(var(--color-neutral-100) / var(--opacity-20));
   --component-button-secondary-hover-fg: var(--color-white);
   --component-button-secondary-loading-bg: var(--component-button-secondary-pressed-bg);
@@ -37,9 +41,9 @@
   --component-button-secondary-pressed-bg: rgb(var(--color-neutral-100) / var(--opacity-15));
   --component-button-secondary-pressed-fg: var(--color-neutral-50);
   --component-button-tertiary-default-alt-bg: rgb(var(--color-neutral-100) / var(--opacity-10));
-  --component-button-tertiary-default-alt-fg: var(--color-white);
   --component-button-tertiary-default-bg: rgb(var(--color-neutral-100) / var(--opacity-20));
   --component-button-tertiary-default-fg: var(--color-primary-300);
+  --component-button-tertiary-fg-alt: var(--color-white);
   --component-button-tertiary-hover-alt-bg: rgb(var(--color-neutral-100) / var(--opacity-10));
   --component-button-tertiary-hover-alt-fg: var(--color-white);
   --component-button-tertiary-hover-bg: rgb(var(--color-neutral-100) / var(--opacity-10));
@@ -88,6 +92,8 @@
   --component-button-height-standard-lg: 3rem;
   --component-button-height-standard-md: 2.5rem;
   --component-button-height-standard-sm: 2rem;
+  --component-button-minwidth-default: 5rem;
+  --component-button-maxwidth-action-sm: 5rem;
   --component-button-padding-x-caption-lg: 1.5rem;
   --component-button-padding-x-caption-md: 1.5rem;
   --component-button-padding-x-caption-sm: 1rem;
