@@ -44,13 +44,31 @@
 
 @layer components {
     .container {
+        --container-safezone-x: 1rem;
         max-width: var(--container-max-width);
         @apply mx-auto w-full;
     }
 
     .container-centred {
+        --container-safezone-x: 1rem;
         max-width: var(--container-centred-max-width);
         @apply mx-auto w-full;
+    }
+
+    @screen sm {
+        .container {
+            --container-safezone-x: 1.5rem;
+        }
+
+        .container-centred {
+            --container-safezone-x: 0;
+        }
+    }
+
+    @screen lg {
+        .container {
+            --container-safezone-x: 0;
+        }
     }
 
     .container-centred-single-column {

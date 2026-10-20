@@ -3,12 +3,12 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import UiBadge from '../../components/badge/UiBadge.vue'
 
 const containerRules = [
-  { name: 'base', range: '320–543px', min: 320, full: '100%', centred: '100%', safezoneX: '1rem', safezoneBottom: '3rem' },
-  { name: 'sm', range: '544–1087px', min: 544, full: '100%', centred: '32rem', safezoneX: '1.5rem', safezoneBottom: '3rem' },
-  { name: 'lg', range: '1088–1279px', min: 1088, full: '65rem', centred: '65rem', safezoneX: '0', safezoneBottom: '5rem' },
-  { name: 'xl', range: '1280–1439px', min: 1280, full: '70rem', centred: '65rem', safezoneX: '0', safezoneBottom: '5rem' },
-  { name: '2xl', range: '1440–1663px', min: 1440, full: '80rem', centred: '65rem', safezoneX: '0', safezoneBottom: '5rem' },
-  { name: '3xl', range: '1664px+', min: 1664, full: '80rem', centred: '65rem', safezoneX: '0', safezoneBottom: '5rem' },
+  { name: 'base', range: '320–543px', min: 320, full: '100%', centred: '100%', fullSafezoneX: '1rem', centredSafezoneX: '1rem', safezoneBottom: '3rem' },
+  { name: 'sm', range: '544–1087px', min: 544, full: '100%', centred: '32rem', fullSafezoneX: '1.5rem', centredSafezoneX: '0', safezoneBottom: '3rem' },
+  { name: 'lg', range: '1088–1279px', min: 1088, full: '65rem', centred: '65rem', fullSafezoneX: '0', centredSafezoneX: '0', safezoneBottom: '5rem' },
+  { name: 'xl', range: '1280–1439px', min: 1280, full: '70rem', centred: '65rem', fullSafezoneX: '0', centredSafezoneX: '0', safezoneBottom: '5rem' },
+  { name: '2xl', range: '1440–1663px', min: 1440, full: '80rem', centred: '65rem', fullSafezoneX: '0', centredSafezoneX: '0', safezoneBottom: '5rem' },
+  { name: '3xl', range: '1664px+', min: 1664, full: '80rem', centred: '65rem', fullSafezoneX: '0', centredSafezoneX: '0', safezoneBottom: '5rem' },
 ]
 
 const breakpoints = [
@@ -89,7 +89,7 @@ export const Overview: Story = {
             </UiBadge>
           </div>
 
-          <dl class="mt-16 grid gap-8 text-xs sm:grid-cols-2 lg:grid-cols-5">
+          <dl class="mt-16 grid gap-8 text-xs sm:grid-cols-2 lg:grid-cols-6">
             <div class="rounded-12 bg-primary-50/40 p-12">
               <dt class="text-page-secondary">Active range</dt>
               <dd class="mt-4 font-bold">{{ activeRule.range }}</dd>
@@ -103,8 +103,12 @@ export const Overview: Story = {
               <dd class="mt-4 font-bold">{{ activeRule.centred }}</dd>
             </div>
             <div class="rounded-12 bg-page-surface-alt p-12">
-              <dt class="text-page-secondary">Safezone X</dt>
-              <dd class="mt-4 font-bold">{{ activeRule.safezoneX }}</dd>
+              <dt class="text-page-secondary">Full Safezone X</dt>
+              <dd class="mt-4 font-bold">{{ activeRule.fullSafezoneX }}</dd>
+            </div>
+            <div class="rounded-12 bg-page-surface-alt p-12">
+              <dt class="text-page-secondary">Centred Safezone X</dt>
+              <dd class="mt-4 font-bold">{{ activeRule.centredSafezoneX }}</dd>
             </div>
             <div class="rounded-12 bg-page-surface-alt p-12">
               <dt class="text-page-secondary">Safezone bottom</dt>
@@ -135,7 +139,7 @@ export const Overview: Story = {
 
               <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-page-brand">
                 <span>Full · Safezone X</span>
-                <span>safezoneX: {{ activeRule.safezoneX }}</span>
+                <span>safezoneX: {{ activeRule.fullSafezoneX }}</span>
               </div>
               <div class="container-safezone-x">
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -147,7 +151,7 @@ export const Overview: Story = {
 
               <div class="mb-12 flex items-center justify-between gap-12 px-12 py-12 text-xs font-bold text-page-brand">
                 <span>Full · Safezone X + Bottom</span>
-                <span>{{ activeRule.safezoneX }} / {{ activeRule.safezoneBottom }}</span>
+                <span>{{ activeRule.fullSafezoneX }} / {{ activeRule.safezoneBottom }}</span>
               </div>
               <div class="container-safezone-x container-safezone-bottom">
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -178,7 +182,7 @@ export const Overview: Story = {
 
               <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-page-status-success px-12">
                 <span>Centred · Safezone X</span>
-                <span>safezoneX: {{ activeRule.safezoneX }}</span>
+                <span>safezoneX: {{ activeRule.centredSafezoneX }}</span>
               </div>
               <div class="container-safezone-x">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -188,7 +192,7 @@ export const Overview: Story = {
               </div>
               <div class="mb-12 flex items-center justify-between gap-12 py-12 text-xs font-bold text-page-status-success px-12">
                 <span>Centred · Safezone X + Bottom</span>
-                <span>{{ activeRule.safezoneX }} / {{ activeRule.safezoneBottom }}</span>
+                <span>{{ activeRule.centredSafezoneX }} / {{ activeRule.safezoneBottom }}</span>
               </div>
               <div class="container-safezone-x container-safezone-bottom">
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -210,7 +214,8 @@ export const Overview: Story = {
                   <th class="px-12 py-8">Breakpoint</th>
                   <th class="px-12 py-8">Full</th>
                   <th class="px-12 py-8">Centred</th>
-                  <th class="px-12 py-8">Safezone X</th>
+                  <th class="px-12 py-8">Full Safezone X</th>
+                  <th class="px-12 py-8">Centred Safezone X</th>
                   <th class="px-12 py-8">Bottom</th>
                 </tr>
               </thead>
@@ -225,7 +230,8 @@ export const Overview: Story = {
                   <td class="px-12 py-8">{{ rule.name }}</td>
                   <td class="px-12 py-8">{{ rule.full }}</td>
                   <td class="px-12 py-8">{{ rule.centred }}</td>
-                  <td class="px-12 py-8">{{ rule.safezoneX }}</td>
+                  <td class="px-12 py-8">{{ rule.fullSafezoneX }}</td>
+                  <td class="px-12 py-8">{{ rule.centredSafezoneX }}</td>
                   <td class="px-12 py-8">{{ rule.safezoneBottom }}</td>
                 </tr>
               </tbody>
