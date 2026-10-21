@@ -10,7 +10,6 @@
     @screen sm {
         :root {
             --container-centred-max-width: 32rem;
-            --container-safezone-x: 1.5rem;
         }
     }
 
