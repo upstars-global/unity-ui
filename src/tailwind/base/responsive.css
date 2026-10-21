@@ -64,6 +64,12 @@
         }
     }
 
+    @screen md {
+        .container {
+            --container-safezone-x: 1.5rem;
+        }
+    }
+
     @screen lg {
         .container {
             --container-safezone-x: 0;
