@@ -57,7 +57,7 @@
 
     @screen sm {
         .container {
-            --container-safezone-x: 1.5rem;
+            --container-safezone-x: 1rem;
         }
 
         .container-centred {
