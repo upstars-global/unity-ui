@@ -257,3 +257,32 @@ export const States: Story = {
     `,
   }),
 }
+
+export const LoadingStates: Story = {
+  parameters: {
+    controls: { disable: true },
+    layout: 'fullscreen',
+  },
+  render: () => ({
+    components: { UiButton },
+    setup() {
+      return { variants: GRID_VARIANTS }
+    },
+    template: `
+      <div class="space-y-4 bg-page-deep p-6">
+        <div
+          v-for="variant in variants"
+          :key="variant"
+          class="flex flex-wrap items-center gap-6 border-b border-neutral-100 pb-4"
+        >
+          <span class="w-[100px] shrink-0 text-page-primary">{{ variant }}</span>
+          <UiButton :variant="variant" layout="standard" size="sm" loading>Button</UiButton>
+          <UiButton :variant="variant" layout="icon" size="sm" loading icon-name="line_plus" />
+          <UiButton :variant="variant" layout="caption" size="sm" loading caption="Caption">Button</UiButton>
+          <UiButton :variant="variant" layout="slab" size="sm" loading icon-name="line_plus">Button</UiButton>
+          <UiButton :variant="variant" layout="action" size="sm" loading icon-name="line_plus">Button</UiButton>
+        </div>
+      </div>
+    `,
+  }),
+}

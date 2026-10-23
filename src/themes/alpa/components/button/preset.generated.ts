@@ -9,92 +9,160 @@ const button: Partial<Config> = {
         plugin(({ addComponents }) => {
             addComponents({
                 '.ui-button': {
+                    '&.standard .ui-button__content, &.caption .ui-button__content, &.slab .ui-button__content': {
+                        minWidth: "5rem",
+                    },
                     '&.primary': {
                         '.ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-300) / 1)",
+                            background: "linear-gradient(to right, rgb(var(--color-primary-400) / 1) 0%, rgb(var(--color-primary-100) / 1) 100%)",
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-primary-200) / 1)",
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
 
                         '&:not(:disabled):active .ui-button--primary, &[aria-busy="true"] .ui-button--primary': {
-                            backgroundColor: "rgb(var(--color-primary-100) / 1)",
+                            background: "rgb(var(--color-primary-100) / 1)",
+                            color: "rgb(var(--color-neutral-500) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-primary-100) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-primary-100) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
                             color: "rgb(var(--color-neutral-500) / 1)",
                         },
                     },
 
                     '&.destructive': {
                         '.ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 1)",
+                            background: "rgb(var(--color-error-100) / 1)",
                             color: "var(--color-black)",
                         },
 
                         '&:not(:disabled):hover .ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 0.8)",
+                            background: "rgb(var(--color-error-100) / var(--opacity-80))",
                             color: "var(--color-black)",
                         },
 
                         '&:not(:disabled):active .ui-button--destructive, &[aria-busy="true"] .ui-button--destructive': {
-                            backgroundColor: "rgb(var(--color-error-100) / 1)",
+                            background: "rgb(var(--color-error-100) / 1)",
+                            color: "var(--color-black)",
+                        },
+
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-error-100) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-error-100) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
                             color: "var(--color-black)",
                         },
                     },
 
                     '&.secondary': {
                         '.ui-button--secondary': {
-                            borderWidth: '2px',
+                            borderWidth: "var(--borderwidth-2)",
                             borderColor: "rgb(var(--color-primary-300) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-300) / 0.1)",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
                             color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):hover .ui-button--secondary': {
-                            borderColor: "rgb(var(--color-primary-200) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-200) / 0.1)",
+                            borderColor: "rgb(var(--color-primary-100) / 1)",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
                             color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):active .ui-button--secondary, &[aria-busy="true"] .ui-button--secondary': {
-                            borderColor: "rgb(var(--color-primary-100) / 1)",
-                            backgroundColor: "rgb(var(--color-primary-100) / 0.1)",
-                            color: "rgb(var(--color-white))",
+                            borderColor: "rgb(var(--color-primary-300) / 1)",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-15))",
+                            color: "rgb(var(--color-neutral-50) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-15))",
+                            border: "var(--borderwidth-2) solid rgb(var(--color-primary-300) / 1)",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-15))",
+                            borderColor: "rgb(var(--color-primary-300) / 1)",
+                        },
+                        '.ui-button__loading-icon': {
+                            color: "rgb(var(--color-neutral-50) / 1)",
                         },
                     },
 
                     '&.tertiary': {
                         '.ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-200) / 0.4)",
+                            border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
                             color: "rgb(var(--color-primary-300) / 1)",
                         },
 
                         '&:not(:disabled):hover .ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
+                            color: "rgb(var(--color-primary-100) / 1)",
                         },
 
-                        '&:not(:disabled):active .ui-button--tertiary, &[aria-busy="true"] .ui-button--tertiary': {
-                            backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                        '&:not(:disabled):active .ui-button--tertiary': {
+                            borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                            color: "rgb(var(--color-primary-300) / 1)",
+                        },
+                        '&[aria-busy="true"] .ui-button--tertiary': {
+                            borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                            color: "rgb(var(--color-primary-300) / 1)",
+                        },
+                        '.ui-button__loading-overlay': {
+                            border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                        },
+                        '.ui-button__loading-icon': {
+                            color: "rgb(var(--color-primary-300) / 1)",
+                        },
+                        '&.tertiary-alt .ui-button__loading-icon': {
+                            color: "rgb(var(--color-white))",
+                        },
+                        '&.slab.tertiary-alt .ui-button__loading-overlay': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                            border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-0))",
+                            backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
                         },
                     },
 
                     '&.ghost': {
                         '.ui-button--ghost': {
-                            backgroundColor: "var(--color-transparent)",
-                            color: "rgb(var(--color-primary-300) / 1)",
+                            background: "var(--color-transparent)",
+                            color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):hover .ui-button--ghost': {
-                            backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
+                            color: "rgb(var(--color-white))",
                         },
 
                         '&:not(:disabled):active .ui-button--ghost, &[aria-busy="true"] .ui-button--ghost': {
-                            backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                            color: "rgb(var(--color-primary-200) / 1)",
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                            color: "rgb(var(--color-white))",
+                        },
+                        '.ui-button__loading-overlay': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                        },
+                        '&.action[aria-busy="true"] .ui-button__main-icon-wrapper': {
+                            background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                        },
+                        '.ui-button__loading-icon': {
+                            color: "rgb(var(--color-white))",
                         },
                     },
 
@@ -106,66 +174,74 @@ const button: Partial<Config> = {
                             opacity: '0.45'
                         }
                     },
-                    '&[aria-busy="true"]': {
+                    '&[aria-busy="true"]:not(.action)': {
                         '.ui-button__content': {
                             opacity: '0'
                         }
                     },
 
+                    '.ui-button__loading-overlay': {
+                        '@apply absolute inset-0': {},
+                    },
                     '&.slab': {
-                        '&.tertiary-alt ': {
+                        '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                backgroundColor: "rgb(var(--color-neutral-100) / 0.1)",
-                                border: "2px solid rgb(var(--color-neutral-50) / 0.1)",
-                                color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    backgroundColor: "rgb(var(--color-neutral-50) / 0.1)",
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                                '&:active': {
-                                    backgroundColor: "rgb(var(--color-neutral-100) / 0.4)",
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                                '&:hover, &:active, &:disabled': {
-                                    borderColor: 'transparent',
-                                }
+                                background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
+                                border: "var(--borderwidth-2) solid rgb(var(--color-neutral-100) / var(--opacity-20))",
+                                color: "rgb(var(--color-white))",
+                                backdropFilter: "blur(calc(var(--effect-blur-default) / 2))",
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                background: "rgb(var(--color-neutral-100) / var(--opacity-10))",
+                                borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary': {
+                                background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                                borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                background: "rgb(var(--color-neutral-100) / var(--opacity-20))",
+                                borderColor: "rgb(var(--color-neutral-100) / var(--opacity-0))",
+                                color: "rgb(var(--color-white))",
                             }
                         }
                     },
                     '&.icon': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                                '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
                             }
                         },
                         '&.ghost-alt': {
-                            '.ui-button--ghost': {
-                                color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                                '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                            }
+                            '&:not(:disabled):active .ui-button--ghost': {
+                                color: "rgb(var(--color-primary-300) / 1)",
+                            },
                         }
                     },
                     '&.action': {
                         '&.tertiary-alt': {
                             '.ui-button--tertiary': {
-                                color: "rgb(var(--color-neutral-50) / 1)",
-                                '&:hover': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
-                                '&:active': {
-                                    color: "rgb(var(--color-neutral-50) / 1)",
-                                },
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):hover .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&:not(:disabled):active .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
+                            },
+                            '&[aria-busy="true"] .ui-button--tertiary': {
+                                color: "rgb(var(--color-white))",
                             }
                         }
                     }

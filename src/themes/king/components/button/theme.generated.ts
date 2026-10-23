@@ -65,7 +65,7 @@ const button = {
                 "lg": {
                     "base": "rounded-12",
                     "container": "h-[4rem] gap-4 rounded-12 px-24 py-4",
-                    "label": "text-button-lg truncate lowercase first-letter:uppercase",
+                    "label": "text-button-xl truncate lowercase first-letter:uppercase",
                     "caption": "text-button-caption truncate lowercase first-letter:uppercase opacity-85"
                 }
             }
@@ -75,7 +75,7 @@ const button = {
             "sizes": {
                 "sm": {
                     "base": "rounded-12",
-                    "container": "h-[3.75rem] gap-4 rounded-12 px-16 py-4",
+                    "container": "h-[4rem] gap-4 rounded-12 px-16 py-4",
                     "icon": "w-24",
                     "label": "text-button-xs truncate lowercase first-letter:uppercase"
                 }
@@ -87,7 +87,7 @@ const button = {
                 "sm": {
                     "container": "flex justify-center items-center w-[3rem] h-[3rem] rounded-full",
                     "icon": "w-24",
-                    "label": "text-button-caption text-neutral-800 truncate lowercase first-letter:uppercase"
+                    "label": "text-button-xs max-w-[5rem] text-neutral-800 truncate lowercase first-letter:uppercase"
                 }
             }
         }
