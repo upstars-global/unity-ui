@@ -117,7 +117,7 @@ const typographyFontSize: NonNullable<Config['theme']>['fontSize'] = {
     'button-caption': [
         'var(--text-button-caption-fontsize)',
         {
-            lineHeight: 'var(--text-caption-lineheight)',
+            lineHeight: 'var(--text-button-caption-lineheight)',
             letterSpacing: 'var(--text-button-caption-letterspacing)',
             fontWeight: 'var(--text-button-caption-fontweight)',
         },
