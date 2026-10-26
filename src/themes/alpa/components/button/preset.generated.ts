@@ -223,11 +223,6 @@ const button: Partial<Config> = {
                                 color: "rgb(var(--color-white))",
                             }
                         },
-                        '&.ghost-alt': {
-                            '&:not(:disabled):active .ui-button--ghost': {
-                                color: "rgb(var(--color-primary-300) / 1)",
-                            },
-                        }
                     },
                     '&.action': {
                         '&.tertiary-alt': {

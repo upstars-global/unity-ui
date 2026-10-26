@@ -64,7 +64,7 @@ const supportedSize = computed(() => {
 const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
 const isAltVariant = computed(() => {
-  return ['tertiary', 'ghost'].includes(props.variant) && (isIconType || isSlabType || isActionType)
+  return ['tertiary'].includes(props.variant) && (isIconType || isSlabType || isActionType)
 })
 
 const fullWidthClasses = computed(() => {

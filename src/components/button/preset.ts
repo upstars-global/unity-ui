@@ -220,11 +220,6 @@ const button: Partial<Config> = {
                                 color: 'var(--component-button-tertiary-loading-alt-fg)',
                             }
                         },
-                        '&.ghost-alt': {
-                            '&:not(:disabled):active .ui-button--ghost': {
-                                color: 'var(--component-button-tertiary-pressed-fg)',
-                            },
-                        }
                     },
                     '&.action': {
                         '&.tertiary-alt': {
