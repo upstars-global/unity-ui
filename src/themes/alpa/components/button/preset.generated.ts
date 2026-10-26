@@ -10,7 +10,7 @@ const button: Partial<Config> = {
             addComponents({
                 '.ui-button': {
                     '&.standard .ui-button__content, &.caption .ui-button__content, &.slab .ui-button__content': {
-                        minWidth: "4rem",
+                        minWidth: "3rem",
                     },
                     '&.primary': {
                         '.ui-button--primary': {
