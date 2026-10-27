@@ -108,4 +108,13 @@
     --gradient-card: 90deg, var(--component-card-gradient-from) 0%, var(--component-card-gradient-to) 100%;
 
     --shadow-fg-default: 0 0 16px 0 var(--fg-effect-shadow-default), 0 0 4px 2px var(--fg-effect-shadow-default);
+
+
+    /* Sizes */
+    --blur-16: 1rem;
+    --borderwidth-0: 0rem;
+    --borderwidth-1: 0.0625rem;
+    --borderwidth-2: 0.125rem;
+    --borderwidth-4: 0.25rem;
+    --effect-blur-default: var(--blur-16);
 }

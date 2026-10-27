@@ -1,3 +1,14 @@
+## [1.28.0](https://github.com/upstars-global/unity-ui/compare/v1.27.1...v1.28.0) (2026-10-27)
+
+### 🚀 Features
+
+* UN-3209 DS. Buttons update ([#46](https://github.com/upstars-global/unity-ui/issues/46))
+ ([00a13a0](https://github.com/upstars-global/unity-ui/commit/00a13a061d07f6da4cec857eda5d1838c8dc23b1))
+
+
+
+    * feat: UN-3209 DS. Buttons update
+
 ## [1.27.1](https://github.com/upstars-global/unity-ui/compare/v1.27.0...v1.27.1) (2026-10-07)
 
 ### 🐛 Bug Fixes
