@@ -1,5 +1,7 @@
 export { UnityUI } from './plugins/vue-plugin';
 export { useAppConfig } from './composables/useAppConfig';
+export { useBreakpoint } from './composables/useBreakpoint';
+export type { Breakpoint } from './tailwind/breakpoints';
 export { useEventBus } from './composables/useEventBus';
 export { useModalController } from './components/modal/useModalController';
 export { useToastController } from './components/notifications/toast/useToastController';
