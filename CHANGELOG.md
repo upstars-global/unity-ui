@@ -1,3 +1,14 @@
+## [1.29.0](https://github.com/upstars-global/unity-ui/compare/v1.28.0...v1.29.0) (2026-10-29)
+
+### 🚀 Features
+
+* UN-3186 DS. Containers ([#41](https://github.com/upstars-global/unity-ui/issues/41))
+ ([7fb0ba6](https://github.com/upstars-global/unity-ui/commit/7fb0ba613d8c9059bd7051b14cc48a55fb19193b))
+
+
+
+    * feat: UN-3186 DS. Containers
+
 ## [1.28.0](https://github.com/upstars-global/unity-ui/compare/v1.27.1...v1.28.0) (2026-10-27)
 
 ### 🚀 Features
