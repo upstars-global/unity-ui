@@ -94,7 +94,7 @@ const button = {
     },
     "states": {
         "fullWidth": "w-full",
-        "fullWidthMobile": "w-full md:w-auto"
+        "fullWidthMobile": "w-full lg:w-auto"
     },
     "slots": {
         "leadingIcon": "shrink-0",
