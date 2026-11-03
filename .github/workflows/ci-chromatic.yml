@@ -17,8 +17,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        node:
-          - 22.19.0
 
     steps:
       - name: Checkout code
@@ -29,7 +27,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: .nvmrc
           cache: yarn
 
       - name: Install dependencies
