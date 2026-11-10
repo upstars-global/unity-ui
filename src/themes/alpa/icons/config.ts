@@ -168,6 +168,8 @@ import social_telegram from './social/telegram.svg?raw';
 import social_whatsapp_color from './social/whatsapp_color.svg?raw';
 import social_whatsapp_outline from './social/whatsapp_outline.svg?raw';
 import social_x from './social/x.svg?raw';
+import preloader_simple from './animated/preloader_simple.svg?raw';
+import line_loader_spin from './line/loader_spin.svg?raw';
 
 export const fillIcons = {
   fill_address: fill_address,
@@ -287,6 +289,7 @@ export const lineIcons = {
   line_shuffle: line_shuffle,
   line_update: line_update,
   line_vip_club: line_vip_club,
+  line_loader_spin: line_loader_spin,
 } as const;
 
 export const flatIcons = {
@@ -354,12 +357,17 @@ export const socialIcons = {
   social_x: social_x,
 } as const;
 
+export const animatedIcons = {
+  animated_preloader_simple: preloader_simple
+}as const;
+
 export const icons = {
   ...fillIcons,
   ...lineIcons,
   ...flatIcons,
   ...navigationIcons,
   ...socialIcons,
+  ...animatedIcons,
 } as const;
 
 export type UiIcons = typeof icons;
@@ -371,4 +379,5 @@ export const allIcons = {
   flat: flatIcons,
   navigation: navigationIcons,
   social: socialIcons,
+  animated: animatedIcons,
 } as const;

@@ -1,3 +1,76 @@
+## [1.29.1](https://github.com/upstars-global/unity-ui/compare/v1.29.0...v1.29.1) (2026-11-05)
+
+### 🐛 Bug Fixes
+
+* UN-3311 fix line height buttons ([#49](https://github.com/upstars-global/unity-ui/issues/49))
+ ([be1db1c](https://github.com/upstars-global/unity-ui/commit/be1db1ca4b85ff2892b881f59b24f82094e2b8a9))
+
+
+
+    * fix: UN-3311 fix line height buttons
+
+    * fix: UN-3311 fix line height buttons
+
+## [1.29.0](https://github.com/upstars-global/unity-ui/compare/v1.28.0...v1.29.0) (2026-10-29)
+
+### 🚀 Features
+
+* UN-3186 DS. Containers ([#41](https://github.com/upstars-global/unity-ui/issues/41))
+ ([7fb0ba6](https://github.com/upstars-global/unity-ui/commit/7fb0ba613d8c9059bd7051b14cc48a55fb19193b))
+
+
+
+    * feat: UN-3186 DS. Containers
+
+## [1.28.0](https://github.com/upstars-global/unity-ui/compare/v1.27.1...v1.28.0) (2026-10-27)
+
+### 🚀 Features
+
+* UN-3209 DS. Buttons update ([#46](https://github.com/upstars-global/unity-ui/issues/46))
+ ([00a13a0](https://github.com/upstars-global/unity-ui/commit/00a13a061d07f6da4cec857eda5d1838c8dc23b1))
+
+
+
+    * feat: UN-3209 DS. Buttons update
+
+## [1.27.1](https://github.com/upstars-global/unity-ui/compare/v1.27.0...v1.27.1) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* title fontweight
+ ([627ebef](https://github.com/upstars-global/unity-ui/commit/627ebef2a0b47a9a415ba4d1f04a66dc266d5170))
+
+
+
+    fix: title fontweight
+* title fontweight
+ ([ad45f40](https://github.com/upstars-global/unity-ui/commit/ad45f40123670b774ad2d68d450eb941534b2a8f))
+
+## [1.27.0](https://github.com/upstars-global/unity-ui/compare/v1.26.0...v1.27.0) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* image size
+ ([1521cff](https://github.com/upstars-global/unity-ui/commit/1521cff53d156a4ff84adf01475156f46db44e26))
+
+
+* styles
+ ([dc6b5de](https://github.com/upstars-global/unity-ui/commit/dc6b5de42db39224f48e6738b4893f9d713d32ea))
+
+
+
+### 🚀 Features
+
+* **UN-3129:** SMCNotification component
+ ([542ccd8](https://github.com/upstars-global/unity-ui/commit/542ccd831eced05f92b8e53460e32a7a0ab0c410))
+
+
+
+### 🔧 Maintenance
+
+* generate presets
+ ([e9031da](https://github.com/upstars-global/unity-ui/commit/e9031dab75cbf74707f6875643dc6a6a1a9b7949))
+
 ## [1.26.0](https://github.com/upstars-global/unity-ui/compare/v1.25.4...v1.26.0) (2026-09-24)
 
 ### 🚀 Features

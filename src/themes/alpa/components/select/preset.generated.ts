@@ -121,7 +121,7 @@ const select: Partial<Config> = {
             '@apply z-20 overflow-hidden': {},
             backgroundColor: "rgb(var(--color-neutral-300) / 1)",
             borderRadius: "var(--radius-16)",
-            boxShadow: "0px 0px 16px 0px var(--effect-shadow-default), 0px 0px 4px 2px var(--effect-shadow-default)",
+            boxShadow: "0px 0px 16px 0px var(--color-transparent), 0px 0px 4px 2px var(--color-transparent)",
           },
         },
       })

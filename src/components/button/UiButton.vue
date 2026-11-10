@@ -39,7 +39,6 @@ const isCaptionType = props.layout === 'caption'
 const isSlabType = props.layout === 'slab'
 const isActionType = props.layout === 'action'
 const isIconType = props.layout === 'icon'
-const hasSlabAltBorder = computed(() => props.variant === 'tertiary' && isSlabType)
 const mainIconName = computed(() => {
   return ['icon', 'slab', 'action'].includes(props.layout) ? props.iconName : ''
 });
@@ -51,6 +50,7 @@ const showTrailingIcon = computed(() => showSideSlots.value && Boolean(props.tra
 const showLabel = computed(() => props.layout !== 'icon')
 const showCaption = computed(() => isCaptionType && Boolean(props.caption))
 const hasMainIcon = computed(() => Boolean(mainIconName.value || slots.mainIcon))
+const loadingIconSize = computed(() => supportedSize.value === 'sm' && (isStandardType || isIconType || isCaptionType) ? '16' : '24')
 
 const supportedSize = computed(() => {
   const sizes = buttonTheme.type[props.layout].sizes
@@ -64,7 +64,7 @@ const supportedSize = computed(() => {
 const typeConfig = computed(() => buttonTheme.type[props.layout])
 const sizeConfig = computed(() => typeConfig.value.sizes[supportedSize.value])
 const isAltVariant = computed(() => {
-  return ['tertiary', 'ghost'].includes(props.variant) && (isIconType || isSlabType || isActionType)
+  return ['tertiary'].includes(props.variant) && (isIconType || isSlabType || isActionType)
 })
 
 const fullWidthClasses = computed(() => {
@@ -95,7 +95,6 @@ const contentClasses = computed(() => {
       buttonTheme.base,
       typeConfig.value.base,
       !isActionType && sizeConfig.value.container,
-      hasSlabAltBorder.value && 'border-2',
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
   )
@@ -114,7 +113,7 @@ const trailingIconClasses = computed(() => {
 })
 const mainIconWrapperClasses = computed(() => {
   return flattenClasses(
-      'ui-button__main-icon',
+      'ui-button__main-icon-wrapper',
       (isActionType ? `ui-button--${props.variant}`: ''),
       buttonTheme.slots.leadingIcon,
       isActionType && sizeConfig.value.container,
@@ -126,17 +125,12 @@ const labelClasses = computed(() => {
 const loadingOverlayClasses = computed(() => {
   return flattenClasses(
       'ui-button__loading-overlay',
-      'absolute inset-0',
-      `ui-button--${props.variant}`,
       buttonTheme.base,
       typeConfig.value.base,
       sizeConfig.value.container,
       fullWidthClasses.value,
       fullWidthMobileClasses.value,
   )
-})
-const loadingIconClasses = computed(() => {
-  return flattenClasses(sizeConfig.value.icon, buttonTheme.animation.loading)
 })
 
 function handleClick(event: MouseEvent) {
@@ -166,15 +160,22 @@ function handleClick(event: MouseEvent) {
         />
       </slot>
       <span
-          v-if="hasMainIcon"
+          v-if="hasMainIcon || (isActionType && loading)"
           :class="mainIconWrapperClasses"
       >
-        <slot name="mainIcon">
+        <slot v-if="!isActionType || !loading" name="mainIcon">
           <UiIcon
               :name="mainIconName"
+              class="ui-button__main-icon"
               :class="sizeConfig.icon"
           />
         </slot>
+        <UiIcon
+            v-else
+            name="line_loader_spin"
+            :size="loadingIconSize"
+            class="ui-button__loading-icon animate-spin"
+        />
       </span>
       <span
           v-if="showLabel"
@@ -199,12 +200,13 @@ function handleClick(event: MouseEvent) {
       </slot>
     </span>
     <span
-        v-if="loading"
+        v-if="loading && !isActionType"
         :class="loadingOverlayClasses"
     >
       <UiIcon
-          name="line_loader"
-          :class="loadingIconClasses"
+          name="line_loader_spin"
+          :size="loadingIconSize"
+          class="ui-button__loading-icon animate-spin"
       />
     </span>
   </button>

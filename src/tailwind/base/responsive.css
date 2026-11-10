@@ -10,7 +10,6 @@
     @screen sm {
         :root {
             --container-centred-max-width: 32rem;
-            --container-safezone-x: 1.5rem;
         }
     }
 
@@ -44,25 +43,51 @@
 
 @layer components {
     .container {
+        --container-safezone-x: 1rem;
         max-width: var(--container-max-width);
         @apply mx-auto w-full;
     }
 
     .container-centred {
+        --container-safezone-x: 1rem;
         max-width: var(--container-centred-max-width);
         @apply mx-auto w-full;
     }
 
+    @screen sm {
+        .container {
+            --container-safezone-x: 1rem;
+        }
+
+        .container-centred {
+            --container-safezone-x: 0;
+        }
+    }
+
+    @screen md {
+        .container {
+            --container-safezone-x: 1.5rem;
+        }
+    }
+
+    @screen lg {
+        .container {
+            --container-safezone-x: 0;
+        }
+    }
+
+    .container-centred-single-column {
+        @apply mx-auto w-full;
+        max-width: var(--container-centred-single-column-max-width);
+    }
+}
+
+@layer utilities {
     .container-safezone-x {
         padding-inline: var(--container-safezone-x);
     }
 
     .container-safezone-bottom {
         padding-bottom: var(--container-safezone-bottom);
-    }
-
-    .container-centred-single-column {
-        @apply mx-auto w-full;
-        max-width: var(--container-centred-single-column-max-width);
     }
 }

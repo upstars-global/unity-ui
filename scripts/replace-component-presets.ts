@@ -406,6 +406,10 @@ function mapCssVariable({
         })
     }
 
+    if (varName.startsWith('--effect-blur-')) {
+        return `var(${varName})`
+    }
+
     const resolvedValue = resolveValueThroughAliases(varName, definitions)
 
     if (!resolvedValue?.value) {

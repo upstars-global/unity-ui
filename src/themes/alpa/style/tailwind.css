@@ -4,8 +4,10 @@
 @import "fonts.css";
 @import "components/carousel.css";
 @import "components/tabs.css";
+@import "components/smc-notification.css";
 @import "../../../tailwind/base/typography-elements.css";
 @import "../../../tailwind/base/scrollbar.css";
+@import "../../../tailwind/base/opacity.css";
 @import "../../../tailwind/base/responsive.css";
 
 

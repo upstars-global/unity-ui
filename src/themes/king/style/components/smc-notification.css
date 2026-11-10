@@ -1,0 +1,13 @@
+:root[data-product="king"] {
+    --component-smc-notification-card-bg: rgb(var(--color-white));
+    --component-smc-notification-card-fg: var(--fg-page-secondary);
+    --component-smc-notification-title-fg: var(--fg-page-brand);
+    --component-smc-notification-emphasis-fg: var(--fg-page-primary);
+    --component-smc-notification-link-fg: var(--fg-page-link-default);
+    --component-smc-notification-dismiss-bg: rgb(var(--color-white));
+    --component-smc-notification-dismiss-fg: var(--fg-page-secondary);
+    --component-smc-notification-progress-bg: rgb(var(--color-primary-50));
+    --component-smc-notification-gradient: linear-gradient(to top, rgb(var(--color-primary-300) / 0) 0%, rgb(var(--color-primary-300) / 0.1) 2rem, rgb(var(--color-primary-300) / 0.4) 5rem, rgb(var(--color-primary-300)) 100%);
+    --component-smc-notification-shadow: 0 8px 16px -8px rgb(var(--color-primary-200) / 40%);
+    --component-smc-notification-dismiss-shadow: var(--shadow-fg-default);
+}

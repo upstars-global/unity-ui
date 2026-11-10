@@ -1,5 +1,7 @@
 export { UnityUI } from './plugins/vue-plugin';
 export { useAppConfig } from './composables/useAppConfig';
+export { useBreakpoint } from './composables/useBreakpoint';
+export type { Breakpoint } from './tailwind/breakpoints';
 export { useEventBus } from './composables/useEventBus';
 export { useModalController } from './components/modal/useModalController';
 export { useToastController } from './components/notifications/toast/useToastController';
@@ -17,6 +19,7 @@ export { default as UiInput } from './components/form/basicControls/input/UiInpu
 export { default as UiMessage } from './components/form/basicControls/message/UiMessage.vue';
 export { default as UiSelect } from './components/form/basicControls/select/UiSelect.vue';
 export { default as UiSwitcher } from './components/form/basicControls/switcher/UiSwitcher.vue';
+export { default as SMCNotification } from './components/notifications/smcNotification/SMCNotification.vue';
 
 export type { AppConfig } from './components/types';
 export type {
@@ -103,4 +106,5 @@ export type {
   UiModalEventBus,
 } from './components/modal/types';
 export type { UiToastClosePayload, UiToastEventBus, UiToastItem } from './components/notifications/toast/types';
+export type { SMCNotificationEmits, SMCNotificationProps, SMCNotificationSlots } from './components/notifications/smcNotification/types';
 export type { Dayjs } from 'dayjs';
