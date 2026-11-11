@@ -1,3 +1,16 @@
+## [1.29.1](https://github.com/upstars-global/unity-ui/compare/v1.29.0...v1.29.1) (2026-11-05)
+
+### 🐛 Bug Fixes
+
+* UN-3311 fix line height buttons ([#49](https://github.com/upstars-global/unity-ui/issues/49))
+ ([be1db1c](https://github.com/upstars-global/unity-ui/commit/be1db1ca4b85ff2892b881f59b24f82094e2b8a9))
+
+
+
+    * fix: UN-3311 fix line height buttons
+
+    * fix: UN-3311 fix line height buttons
+
 ## [1.29.0](https://github.com/upstars-global/unity-ui/compare/v1.28.0...v1.29.0) (2026-10-29)
 
 ### 🚀 Features
