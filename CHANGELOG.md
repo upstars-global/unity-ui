@@ -1,3 +1,14 @@
+## [1.30.0](https://github.com/upstars-global/unity-ui/compare/v1.29.1...v1.30.0) (2026-11-17)
+
+### 🚀 Features
+
+* UN-3185 DS. Carousel ([#45](https://github.com/upstars-global/unity-ui/issues/45))
+ ([18a45ca](https://github.com/upstars-global/unity-ui/commit/18a45cae8a6db34aa6d148a989d7ab509737e12b))
+
+
+
+    * feat: UN-3185 DS. Carousel
+
 ## [1.29.1](https://github.com/upstars-global/unity-ui/compare/v1.29.0...v1.29.1) (2026-11-05)
 
 ### 🐛 Bug Fixes
