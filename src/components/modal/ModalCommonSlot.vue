@@ -11,6 +11,7 @@
         <UiModalHeaderDefault
             :title="modal.title"
             :hide-close-button="modal.hideCloseButton"
+            :modal-name="modal.name"
             @close="close"
         >
           <template

@@ -99,6 +99,7 @@ function close() {
     >
       <UiModalHeaderDefault
         :hide-close-button="modal.hideCloseButton"
+        :modal-name="modal.name"
         @close="close"
       >
         <template #title>

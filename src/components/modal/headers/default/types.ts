@@ -1,6 +1,11 @@
 export interface UiModalHeaderDefaultProps {
   title?: string
   hideCloseButton?: boolean
+  /**
+   * `name` of the modal this header belongs to. The close button closes exactly
+   * that modal; without it the topmost modal is closed.
+   */
+  modalName?: string
 }
 
 export interface UiModalHeaderDefaultEmits {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UiIcon from '../../../icon/UiIcon.vue'
+import modalApi from '../../../../plugins/modal'
 import type {
   UiModalHeaderDefaultEmits,
   UiModalHeaderDefaultProps,
@@ -10,14 +11,20 @@ defineOptions({
   name: 'UiModalHeaderDefault',
 })
 
-withDefaults(defineProps<UiModalHeaderDefaultProps>(), {
+const props = withDefaults(defineProps<UiModalHeaderDefaultProps>(), {
   title: '',
   hideCloseButton: false,
+  modalName: undefined,
 })
 
 defineSlots<UiModalHeaderDefaultSlots>()
 
 const emit = defineEmits<UiModalHeaderDefaultEmits>()
+
+function onClose(event: MouseEvent) {
+  modalApi.close({ name: props.modalName, clickOnCloseButton: true })
+  emit('close', event)
+}
 </script>
 
 <template>
@@ -45,7 +52,7 @@ const emit = defineEmits<UiModalHeaderDefaultEmits>()
           class="ui-modal-header-default__close"
           aria-label="Close"
           data-test="modal-header-default__close"
-          @click="emit('close', $event)"
+          @click="onClose"
         >
           <UiIcon name="line_close" />
         </button>
