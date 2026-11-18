@@ -44,6 +44,7 @@ const modalHeaderDefault: Partial<Config> = {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
+            '@apply text-subtitle': {},
           },
 
           '&__close': {
