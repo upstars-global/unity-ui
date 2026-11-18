@@ -33,6 +33,12 @@ const modal: Partial<Config> = {
           width: '100%',
           height: '100%',
           background: "rgb(212 212 216 / 0.8)",
+          // The backdrop is a tap target, not content: a long press must not
+          // select or highlight it (and on iOS must not open the callout menu)
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          WebkitTouchCallout: 'none',
+          WebkitTapHighlightColor: 'transparent',
         },
 
         // Positioning of a single modal inside the backdrop
@@ -70,6 +76,10 @@ const modal: Partial<Config> = {
           width: '100%',
           overflow: 'hidden',
           cursor: 'default',
+          // Modal content stays selectable (the backdrop above turns selection off)
+          userSelect: 'text',
+          WebkitUserSelect: 'text',
+          WebkitTouchCallout: 'default',
           background: "rgb(var(--bg-page-surface))",
           borderTopLeftRadius: "var(--radius-24)",
           borderTopRightRadius: "var(--radius-24)",
