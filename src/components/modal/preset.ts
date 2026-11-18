@@ -67,7 +67,7 @@ const modal: Partial<Config> = {
           width: '100%',
           overflow: 'hidden',
           cursor: 'default',
-          background: 'var(--component-modal-bg)',
+          background: 'rgb(var(--component-modal-bg))',
           borderTopLeftRadius: 'var(--component-modal-radius)',
           borderTopRightRadius: 'var(--component-modal-radius)',
 

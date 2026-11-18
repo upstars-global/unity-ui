@@ -19,7 +19,6 @@ const modalHeaderDefault: Partial<Config> = {
           gap: "var(--radius-8)",
           padding: "var(--radius-16)",
           overflow: 'hidden',
-          background: "var(--bg-page-surface)",
           color: "var(--fg-page-primary)",
 
           // Equal 24px sides keep the title centred

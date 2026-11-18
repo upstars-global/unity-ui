@@ -17,7 +17,6 @@ const modalFooterDefault: Partial<Config> = {
           gap: 'var(--spacing-8)',
           padding: 'var(--spacing-16)',
           overflow: 'hidden',
-          background: 'var(--bg-page-surface)',
 
           '@screen md': {
             padding: 'var(--spacing-24)',

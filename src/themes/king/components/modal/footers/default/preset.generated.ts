@@ -20,7 +20,6 @@ const modalFooterDefault: Partial<Config> = {
           gap: "var(--radius-8)",
           padding: "var(--radius-16)",
           overflow: 'hidden',
-          background: "var(--bg-page-surface)",
 
           '@screen md': {
             padding: "var(--radius-24)",

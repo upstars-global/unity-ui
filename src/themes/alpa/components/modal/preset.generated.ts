@@ -70,7 +70,7 @@ const modal: Partial<Config> = {
           width: '100%',
           overflow: 'hidden',
           cursor: 'default',
-          background: "var(--color-neutral-450)",
+          background: "rgb(var(--color-neutral-450))",
           borderTopLeftRadius: "var(--radius-24)",
           borderTopRightRadius: "var(--radius-24)",
 
