@@ -47,6 +47,7 @@
     "@vue/tsconfig": "^0.8.1",
     "autoprefixer": "^10.4.0",
     "chromatic": "^15.0.0",
+    "codebase-memory-mcp": "^0.12.1",
     "conventional-changelog-conventionalcommits": "^9.3.0",
     "dependency-cruiser": "^16.0.0",
     "eslint": "^9.0.0",

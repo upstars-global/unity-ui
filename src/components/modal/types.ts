@@ -1,9 +1,6 @@
 import type { Component } from 'vue'
+import type { UiModalFooterDefaultProps } from './footers/default/types'
 
-export const MODAL_SIZES = ['s', 'm', 'l', 'xl'] as const;
-
-
-export type ModalSize = (typeof MODAL_SIZES)[number];
 export interface ModalCloseOptions {
   immediate?: boolean
   clickOnCloseButton?: boolean
@@ -15,9 +12,18 @@ export interface UiModalClosePayload extends ModalCloseOptions {
 
 export interface IModalOptions {
   blockCloseOverlay?: boolean
-  size?: ModalSize
+  /** Desktop only: width follows the content instead of the fixed 432px */
+  hug?: boolean
   showFooter?: boolean
+  /**
+   * Props for the default footer (UiModalFooterDefault) rendered in the
+   * `bottom-side-under-scroll` slot when it isn't overridden.
+   * Clicks are emitted by ModalCommonSlot as `clickPrimary` / `clickSecondary`.
+   */
+  footer?: UiModalFooterDefaultProps
   hideHeaderToolbar?: boolean
+  /** Hides the top/bottom fades that hint at scrollable content */
+  hideScrollFade?: boolean
   hideCloseButton?: boolean
   fullScreen?: boolean
   name: string

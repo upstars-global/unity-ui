@@ -21,6 +21,7 @@
   --color-neutral-400-10: rgb(38 42 52 / 0.1);
   --color-neutral-400-40: rgb(38 42 52 / 0.4);
   --color-neutral-400-80: rgb(38 42 52 / 0.8);
+  --color-neutral-450: 23 25 31;
   --color-neutral-50: 232 236 242;
   --color-neutral-50-10: rgb(232 236 242 / 0.1);
   --color-neutral-50-40: rgb(232 236 242 / 0.4);
@@ -98,6 +99,7 @@
   --fg-page-status-warning: rgb(var(--color-warning-100));
 
   /* Gradients / Effects / Other colors */
+  --component-other-scroll: var(--color-neutral-200-80);
   --effect-shadow-balance: var(--color-transparent);
   --effect-shadow-cashboxamount: var(--color-transparent);
   --effect-shadow-default: var(--color-transparent);
@@ -129,6 +131,7 @@
   --gradient-gr-2-color-1: rgb(46 15 108);
   --gradient-gr-2-color-2: rgb(113 45 245);
   --unnamed-token: rgb(0 0 0 / 0);
+  --gradient-personal: 90deg, rgb(var(--color-primary-300)) 0%, rgb(var(--color-primary-400)) 100%;
 
   /* Sizes */
   --blur-16: 1rem;

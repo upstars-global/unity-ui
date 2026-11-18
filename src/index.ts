@@ -8,6 +8,14 @@ export { useToastController } from './components/notifications/toast/useToastCon
 export { useInputSuggest } from './composables/useInputSuggest';
 export { getThemeConfig } from './themes/registry';
 export { default as modal } from './plugins/modal';
+export { default as UiModalHeaderDefault } from './components/modal/headers/default/UiModalHeaderDefault.vue';
+export { default as UiModalFooterDefault } from './components/modal/footers/default/UiModalFooterDefault.vue';
+export { MODAL_FOOTER_DEFAULT_TYPES } from './components/modal/footers/default/types';
+export type {
+  UiModalHeaderDefaultEmits,
+  UiModalHeaderDefaultProps,
+  UiModalHeaderDefaultSlots,
+} from './components/modal/headers/default/types';
 export { default as toast } from './plugins/toast';
 export { default as UiCard } from './components/card/UiCard.vue';
 export { default as UiTimer } from './components/timer/UiTimer.vue';
@@ -105,6 +113,11 @@ export type {
   UiModalClosePayload,
   UiModalEventBus,
 } from './components/modal/types';
+export type {
+  ModalFooterDefaultType,
+  UiModalFooterDefaultEmits,
+  UiModalFooterDefaultProps,
+} from './components/modal/footers/default/types';
 export type { UiToastClosePayload, UiToastEventBus, UiToastItem } from './components/notifications/toast/types';
 export type { SMCNotificationEmits, SMCNotificationProps, SMCNotificationSlots } from './components/notifications/smcNotification/types';
 export type { Dayjs } from 'dayjs';

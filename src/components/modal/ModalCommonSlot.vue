@@ -1,6 +1,6 @@
 <template>
     <div
-        class="modal-content"
+        class="modal-content ui-modal-content"
         :class="modalContentClasses"
         data-test="modal-content"
     >
@@ -8,49 +8,70 @@
           name="header"
           v-if="!modal.hideHeaderToolbar"
       >
-        <div :class="theme?.slots.modalHeader">
-          <div :class="theme.slots.modalHeaderIcons">
+        <UiModalHeaderDefault
+            :title="modal.title"
+            :hide-close-button="modal.hideCloseButton"
+            @close="close"
+        >
+          <template
+              v-if="$slots['header-left']"
+              #left
+          >
             <slot name="header-left" />
-          </div>
-          <div :class="theme.slots.modalHeaderTitle">
-            <p>{{modal.title}}</p>
-          </div>
-          <div :class="theme.slots.modalHeaderIcons">
-            <slot
-                v-if="!modal.hideCloseButton"
-                name="header-right"
-            >
-              <UiIcon
-                  class="cursor-pointer"
-                  name="line_close"
-                  @click="close"
-              />
-            </slot>
-          </div>
-        </div>
+          </template>
+          <template
+              v-if="$slots['header-right']"
+              #right
+          >
+            <slot name="header-right" />
+          </template>
+        </UiModalHeaderDefault>
       </slot>
       <div
-          class="modal-content__body"
+          class="ui-modal-content__body"
           data-test="modal-common__body"
       >
-        <slot />
+        <div
+            ref="scroller"
+            class="ui-modal-content__scroll"
+        >
+          <div ref="scrollContent">
+            <slot />
+          </div>
+        </div>
+        <template v-if="!modal.hideScrollFade">
+          <div
+              class="ui-modal-content__fade ui-modal-content__fade--top"
+              :class="{ 'ui-modal-content__fade--visible': showTop }"
+              aria-hidden="true"
+          />
+          <div
+              class="ui-modal-content__fade ui-modal-content__fade--bottom"
+              :class="{ 'ui-modal-content__fade--visible': showBottom }"
+              aria-hidden="true"
+          />
+        </template>
       </div>
-      <div
+      <slot
           v-if="modal.showFooter"
-          :class="modalBottomActionClasses"
-          data-test="modal-content__under-scroll"
+          name="bottom-side-under-scroll"
       >
-        <slot name="bottom-side-under-scroll" />
-      </div>
+        <UiModalFooterDefault
+            v-if="modal.footer"
+            v-bind="modal.footer"
+            @primary="emits('clickPrimary', $event)"
+            @secondary="emits('clickSecondary', $event)"
+        />
+      </slot>
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import UiIcon from "../icon/UiIcon.vue";
-import { useAppConfig } from '../../composables/useAppConfig'
-import type {ModalUiOptimized} from "./theme.ts";
-import { MODAL_SIZES, type IModalOptions } from './types'
+import { computed, ref } from 'vue'
+import UiModalHeaderDefault from './headers/default/UiModalHeaderDefault.vue'
+import UiModalFooterDefault from './footers/default/UiModalFooterDefault.vue'
+import type { IModalOptions } from './types'
+import { useScrollFade } from './useScrollFade'
 
 defineOptions({
     name: 'ModalCommonSlot',
@@ -62,30 +83,18 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   (event: 'clickCloseButton'): void
+  (event: 'clickPrimary', value: MouseEvent): void
+  (event: 'clickSecondary', value: MouseEvent): void
 }>()
 
-const appConfig = useAppConfig()
-const theme: ModalUiOptimized = appConfig.components?.modal;
-const normalizedSize = computed(() => {
-    return props.modal?.size && MODAL_SIZES.includes(props.modal.size) ? props.modal.size : 's'
-})
+const modalContentClasses = computed(() => ({
+  'ui-modal-content--fullscreen': props.modal.fullScreen,
+  'ui-modal-content--hug': props.modal.hug && !props.modal.fullScreen,
+}))
 
-const modalContentClasses = computed(() => {
-  return [
-    theme?.slots.modalContainer,
-    props.modal.fullScreen ? theme?.sizes.fullScreen : theme?.sizes?.[normalizedSize.value],
-    theme?.slots.modalContent,
-  ]
-})
-
-const modalBottomActionClasses = computed(() => {
-  return [
-    theme.slots.modalBottomActions,
-    normalizedSize.value === 's' ?
-        'flex-col' :
-        'flex-col md:flex-row'
-  ]
-})
+const scroller = ref<HTMLElement | null>(null)
+const scrollContent = ref<HTMLElement | null>(null)
+const { showTop, showBottom } = useScrollFade(scroller, scrollContent)
 
 function close() {
   emits('clickCloseButton')

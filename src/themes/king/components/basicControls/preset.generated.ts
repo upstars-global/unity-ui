@@ -37,7 +37,7 @@ const basicControls: Partial<Config> = {
           },
 
           '&[data-disabled="true"]': {
-            opacity: "0.45",
+            opacity: "var(--opacity-45)",
           },
 
           '&:focus-within .ui-input__label': {
