@@ -16,7 +16,6 @@ import toastTheme from './components/toast/theme.generated';
 import { allIcons, icons, type UiIconName } from './icons/config';
 import inlineNotificationTheme from "./components/inlineNotification/theme.generated.ts";
 import linearProgressTheme from "./components/linear/theme.generated.ts";
-import modalTheme from "./components/modal/theme.generated.ts";
 import checkboxTheme from './components/checkbox/theme.generated';
 import radioButtonTheme from './components/radioButton/theme.generated';
 import switcherTheme from './components/switcher/theme.generated';
@@ -41,7 +40,6 @@ const appConfig: AppConfig<UiIconName> = {
     readMore: readMoreTheme,
     toast: toastTheme,
     linearProgress: linearProgressTheme,
-    modal: modalTheme,
     checkbox: checkboxTheme,
     radioButton: radioButtonTheme,
     switcher: switcherTheme,

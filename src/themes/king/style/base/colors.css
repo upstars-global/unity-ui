@@ -88,6 +88,7 @@
     --fg-effect-shadow-default: rgb(var(--color-neutral-600) / 0.1);
 
     --bg-page-deep: rgb(var(--color-neutral-50));
+    --bg-page-overlay: var(--color-neutral-200-80);
     --bg-page-surface: rgb(var(--color-white));
     --bg-page-surface-alt: var(--color-neutral-500-10);
     --fg-page-brand: rgb(var(--color-primary-300));
