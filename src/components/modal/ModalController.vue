@@ -19,6 +19,7 @@
             >
                 <component
                     :is="modal.component"
+                    v-bind="modal.props"
                     :class="[modal.component.name, modal.name]"
                     :modal="modal"
                     @clickCloseButton="close(modal.name)"

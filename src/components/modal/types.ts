@@ -10,7 +10,11 @@ export interface UiModalClosePayload extends ModalCloseOptions {
   name?: string
 }
 
-export interface IModalOptions {
+/**
+ * `TProps` types the `props` object passed to `component`. `object` (not `Record`)
+ * so that props declared with an `interface` satisfy the constraint too.
+ */
+export interface IModalOptions<TProps extends object = Record<string, unknown>> {
   blockCloseOverlay?: boolean
   /** Desktop only: width follows the content instead of the fixed 432px */
   hug?: boolean
@@ -28,7 +32,13 @@ export interface IModalOptions {
   fullScreen?: boolean
   name: string
   component: Component
-  title: string
+  /**
+   * Props passed to `component` (spread with v-bind). `modal` (these options)
+   * is always passed as well and can't be overridden from here.
+   */
+  props?: TProps
+  /** Shown by the default header. Optional for components that render their own. */
+  title?: string
   callback?(): void
 }
 

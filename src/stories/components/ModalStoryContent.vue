@@ -20,6 +20,8 @@ export interface ModalStoryOptions extends IModalOptions {
 
 const props = defineProps<{
   modal: ModalStoryOptions
+  /** Example of a prop passed through `Modal.show({ props })` */
+  note?: string
 }>()
 
 const PARAGRAPH =
@@ -119,6 +121,14 @@ function close() {
         'pb-16 md:pb-24': !modal.showFooter,
       }"
     >
+      <p
+        v-if="note"
+        class="rounded-12 bg-page-deep px-12 py-8 text-body text-page-primary"
+        data-test="modal-story-note"
+      >
+        {{ note }}
+      </p>
+
       <div class="flex flex-wrap gap-8">
         <UiBadge variant="status-success" label="ACTIVE" />
         <UiBadge variant="navigation-new" label="NEW" />

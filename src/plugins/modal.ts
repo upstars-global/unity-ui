@@ -8,8 +8,8 @@ const modal = {
     bus = $bus
   },
 
-  show(options: IModalOptions) {
-    bus?.$emit('modal.show', options)
+  show<TProps extends object = Record<string, unknown>>(options: IModalOptions<TProps>) {
+    bus?.$emit('modal.show', options as IModalOptions)
   },
 
   close(options: UiModalClosePayload = {}) {

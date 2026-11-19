@@ -125,6 +125,7 @@ export const Playground: Story = {
           blockCloseOverlay: overrides.blockCloseOverlay ?? args.blockCloseOverlay,
           fullScreen: overrides.fullScreen ?? args.fullScreen,
           component: markRaw(ModalStoryContent),
+          props: overrides.props,
         }
       }
 
@@ -139,6 +140,7 @@ export const Playground: Story = {
             { label: 'Hug', open: show({ name: 'modal-hug', title: 'Hug', hug: true, contentVariant: 'compact' }) },
             { label: 'Full screen', open: show({ name: 'modal-fullscreen', title: 'Full screen', fullScreen: true, showFooter: false, contentVariant: 'long' }) },
             { label: 'Blocked overlay', open: show({ name: 'modal-blocked', title: 'Overlay is blocked', blockCloseOverlay: true }) },
+            { label: 'Custom props', open: show({ name: 'modal-props', title: 'Custom props', props: { note: 'Passed via Modal.show({ props })' } }) },
           ],
         },
         {
