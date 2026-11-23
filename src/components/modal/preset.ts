@@ -3,9 +3,11 @@ import plugin from 'tailwindcss/plugin'
 
 const DESKTOP_WIDTH = '27rem'
 
-// Figma: Master / scroll-fade. Mask goes from transparent (content side)
-// to opaque (edge side); it is applied to the fill, not to the content.
-const FADE_MASK_STOPS = 'rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15625) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.84375) 75%, #000 100%'
+// Figma: Master / scroll-fade. Modal background fading from the edge (opaque) to the
+// content (transparent); the stops repeat the opacity curve of the Figma mask.
+const FADE_BG = 'var(--component-modal-bg)'
+const fadeGradient = (direction: string) => `linear-gradient(${direction}, ${FADE_BG} 0%, color-mix(in srgb, ${FADE_BG} 84.375%, transparent) 25%, color-mix(in srgb, ${FADE_BG} 50%, transparent) 50%, color-mix(in srgb, ${FADE_BG} 15.625%, transparent) 75%, transparent 100%)`
+
 
 const TRANSITION = 'all 0.5s'
 const MOBILE_OFFSET = 'translateY(450px)'
@@ -77,7 +79,7 @@ const modal: Partial<Config> = {
           userSelect: 'text',
           WebkitUserSelect: 'text',
           WebkitTouchCallout: 'default',
-          background: 'rgb(var(--component-modal-bg))',
+          background: 'var(--component-modal-bg)',
           borderTopLeftRadius: 'var(--component-modal-radius)',
           borderTopRightRadius: 'var(--component-modal-radius)',
 
@@ -123,7 +125,12 @@ const modal: Partial<Config> = {
             flex: '1 1 auto',
             minHeight: '0',
             overflowY: 'auto',
-            overscrollBehavior: 'contain',
+
+            // Only while the content actually overflows: then the scroll stays inside
+            // the modal. Without overflow the wheel/touch scroll is left alone.
+            '&--scrollable': {
+              overscrollBehavior: 'contain',
+            },
           },
 
           '&__fade': {
@@ -135,47 +142,20 @@ const modal: Partial<Config> = {
             pointerEvents: 'none',
             transition: 'opacity 200ms ease-out',
 
-            // Fill in the modal background; the gradient mask only affects this layer
-            '&::before': {
-              content: "''",
-              position: 'absolute',
-              inset: '0',
-              background: 'var(--bg-page-surface)',
-            },
-
-            // 1px line on the edge. Painted after ::before, so it sits on top of the
-            // solid fill (a parent border would be covered by the absolute ::before)
-            '&::after': {
-              content: "''",
-              position: 'absolute',
-              left: '0',
-              right: '0',
-              height: '1px',
-              background: 'var(--component-modal-header-border)',
-            },
+            // Gradient spans the border too, so the semi-transparent border
+            // sits on the opaque end of the gradient, not on the content
+            backgroundOrigin: 'border-box',
 
             '&--top': {
               top: '0',
-
-              '&::before': {
-                maskImage: `linear-gradient(to top, ${FADE_MASK_STOPS})`,
-              },
-
-              '&::after': {
-                top: '0',
-              },
+              borderTop: '1px solid var(--component-modal-header-border)',
+              backgroundImage: fadeGradient('to bottom'),
             },
 
             '&--bottom': {
               bottom: '0',
-
-              '&::before': {
-                maskImage: `linear-gradient(to bottom, ${FADE_MASK_STOPS})`,
-              },
-
-              '&::after': {
-                bottom: '0',
-              },
+              borderBottom: '1px solid var(--component-modal-header-border)',
+              backgroundImage: fadeGradient('to top'),
             },
 
             '&--visible': {

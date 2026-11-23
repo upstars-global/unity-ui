@@ -29,6 +29,7 @@ const modalHeaderDefault: Partial<Config> = {
             height: '1.5rem',
             alignItems: 'center',
             justifyContent: 'center',
+            color: "var(--fg-page-secondary)",
           },
 
           '&__title': {
@@ -48,6 +49,7 @@ const modalHeaderDefault: Partial<Config> = {
           },
 
           '&__close': {
+            color: "var(--fg-page-secondary)",
             display: 'flex',
             width: '100%',
             height: '100%',
@@ -56,7 +58,6 @@ const modalHeaderDefault: Partial<Config> = {
             padding: '0',
             border: '0',
             background: 'transparent',
-            color: 'inherit',
             cursor: 'pointer',
           },
         },

@@ -35,6 +35,7 @@
         <div
             ref="scroller"
             class="ui-modal-content__scroll"
+            :class="{ 'ui-modal-content__scroll--scrollable': isScrollable }"
         >
           <div ref="scrollContent">
             <slot />
@@ -95,7 +96,8 @@ const modalContentClasses = computed(() => ({
 
 const scroller = ref<HTMLElement | null>(null)
 const scrollContent = ref<HTMLElement | null>(null)
-const { showTop, showBottom } = useScrollFade(scroller, scrollContent)
+const { state: scrollState, showTop, showBottom } = useScrollFade(scroller, scrollContent)
+const isScrollable = computed(() => scrollState.value !== 'none')
 
 function close() {
   emits('clickCloseButton')
