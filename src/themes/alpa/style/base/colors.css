@@ -83,7 +83,7 @@
 
   /* Foreground / Background */
   --bg-page-deep: rgb(var(--color-neutral-500));
-  --bg-page-overlay: var(--color-neutral-500-80);
+  --bg-page-overlay: rgb(var(--color-neutral-500) / 0.6);
   --bg-page-surface: rgb(var(--color-neutral-400));
   --bg-page-surface-alt: rgb(var(--color-neutral-300));
   --fg-page-brand: rgb(var(--color-primary-300));

@@ -41,6 +41,7 @@ const modal: Partial<Config> = {
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
           WebkitTapHighlightColor: 'transparent',
+          backdropFilter: 'blur(6px)',
         },
 
         // Positioning of a single modal inside the backdrop

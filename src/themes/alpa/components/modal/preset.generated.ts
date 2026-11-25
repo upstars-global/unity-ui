@@ -34,13 +34,14 @@ const modal: Partial<Config> = {
           left: '0',
           width: '100%',
           height: '100%',
-          background: "rgb(0 10 18 / 0.8)",
+          background: "rgb(var(--color-neutral-500) / 0.6)",
           // The backdrop is a tap target, not content: a long press must not
           // select or highlight it (and on iOS must not open the callout menu)
           userSelect: 'none',
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
           WebkitTapHighlightColor: 'transparent',
+          backdropFilter: 'blur(6px)',
         },
 
         // Positioning of a single modal inside the backdrop
