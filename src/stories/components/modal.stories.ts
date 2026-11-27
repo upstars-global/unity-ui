@@ -30,7 +30,7 @@ type ModalStoryArgs = {
 
 const FOOTER_TYPES: ModalStoryFooter[] = ['slot', 'single', 'horizontal', 'vertical']
 const HEADER_VARIANTS: ModalStoryHeader[] = ['title', 'back', 'logo', 'custom']
-const CONTENT_VARIANTS: ModalStoryContentVariant[] = ['compact', 'short', 'long', 'list', 'dynamic']
+const CONTENT_VARIANTS: ModalStoryContentVariant[] = ['compact', 'short', 'long', 'list', 'dynamic', 'sections']
 
 const meta = {
   title: 'Components/Modal',
@@ -111,7 +111,7 @@ export const Playground: Story = {
           title: overrides.title ?? args.title,
           hug: overrides.hug ?? args.hug,
           footerType: overrides.footerType ?? args.footerType,
-          footer: {
+          footer: overrides.footer ?? {
             type: (overrides.footerType ?? args.footerType) === 'slot' ? undefined : (overrides.footerType ?? args.footerType) as ModalFooterDefaultType,
             primaryLabel: 'Confirm',
             secondaryLabel: 'Cancel',
@@ -139,6 +139,19 @@ export const Playground: Story = {
             { label: 'Playground (controls)', open: show({}) },
             { label: 'Hug', open: show({ name: 'modal-hug', title: 'Hug', hug: true, contentVariant: 'compact' }) },
             { label: 'Full screen', open: show({ name: 'modal-fullscreen', title: 'Full screen', fullScreen: true, showFooter: false, contentVariant: 'long' }) },
+            // Figma: Modal / Full screen — header, scrollable sections, one primary button at the bottom
+            {
+              label: 'Full screen + button',
+              open: show({
+                name: 'modal-fullscreen-button',
+                title: 'Title',
+                fullScreen: true,
+                showFooter: true,
+                contentVariant: 'sections',
+                footerType: 'single',
+                footer: { type: 'single', primaryLabel: 'Continue' },
+              }),
+            },
             { label: 'Blocked overlay', open: show({ name: 'modal-blocked', title: 'Overlay is blocked', blockCloseOverlay: true }) },
             { label: 'Custom props', open: show({ name: 'modal-props', title: 'Custom props', props: { note: 'Passed via Modal.show({ props })' } }) },
           ],

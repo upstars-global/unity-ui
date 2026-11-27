@@ -10,7 +10,7 @@ import modalApi from '../../plugins/modal'
 
 export type ModalStoryFooter = 'slot' | 'single' | 'horizontal' | 'vertical'
 export type ModalStoryHeader = 'title' | 'back' | 'logo' | 'custom'
-export type ModalStoryContentVariant = 'compact' | 'short' | 'long' | 'list' | 'dynamic'
+export type ModalStoryContentVariant = 'compact' | 'short' | 'long' | 'list' | 'dynamic' | 'sections'
 
 export interface ModalStoryOptions extends IModalOptions {
   contentVariant?: ModalStoryContentVariant
@@ -34,6 +34,16 @@ const LIST_ITEMS = Array.from({ length: 20 }, (_, index) => ({
   done: index % 3 !== 0,
 }))
 
+// Figma: Modal / Full screen example — long content made of titled sections
+const SECTIONS = [
+  { title: 'Demo content', text: 'This example shows long content inside the modal. Text, lists or a form go into the content slot, while the window structure stays the same.' },
+  { title: 'Scrollable area', text: 'If the information does not fit, only the central area scrolls. The top and bottom fades hint on which side there is more content. The title and the main actions stay visible.' },
+  { title: 'Modal structure', text: 'The top area holds the title and controls. The central area is for the scenario content. The bottom area combines the primary and secondary actions as the scenario needs.' },
+  { title: 'Placing actions', text: 'Button labels should explain the result of the action. The primary action is highlighted, the secondary one lets the user cancel or go back without continuing.' },
+  { title: 'Accessibility', text: 'Focus stays inside the open window. The background interface is not available for interaction. After closing, focus returns to the element the window was opened from.' },
+  { title: 'End of content', text: 'This is the last block of the demo content. At the end of the scroll the bottom fade disappears: there is no more information below this text. The actions stay under the content area.' },
+]
+
 const contentVariant = computed(() => props.modal.contentVariant ?? 'short')
 const headerVariant = computed(() => props.modal.headerVariant ?? 'title')
 const footerType = computed(() => props.modal.footerType ?? 'vertical')
@@ -51,6 +61,7 @@ const paragraphs = computed(() => {
     case 'dynamic':
       return Array.from({ length: dynamicCount.value }, () => PARAGRAPH)
     case 'list':
+    case 'sections':
       return []
     default:
       return [PARAGRAPH, PARAGRAPH]
@@ -129,9 +140,26 @@ function close() {
         {{ note }}
       </p>
 
-      <div class="flex flex-wrap gap-8">
+      <div
+        v-if="contentVariant !== 'sections'"
+        class="flex flex-wrap gap-8"
+      >
         <UiBadge variant="status-success" label="ACTIVE" />
         <UiBadge variant="navigation-new" label="NEW" />
+      </div>
+
+      <div
+        v-if="contentVariant === 'sections'"
+        class="flex flex-col gap-24 py-16 md:py-24"
+      >
+        <section
+          v-for="section in SECTIONS"
+          :key="section.title"
+          class="flex flex-col gap-8 text-body"
+        >
+          <h3 class="font-medium text-page-primary">{{ section.title }}</h3>
+          <p class="text-page-secondary">{{ section.text }}</p>
+        </section>
       </div>
 
       <div
