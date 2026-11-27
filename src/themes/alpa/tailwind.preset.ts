@@ -2,6 +2,9 @@ import { type Config } from 'tailwindcss'
 
 import commonPreset from '../../tailwind/presets/index.ts'
 import buttonPreset from './components/button/preset.generated.ts'
+import modalPreset from './components/modal/preset.generated.ts'
+import modalHeaderDefaultPreset from './components/modal/headers/default/preset.generated.ts'
+import modalFooterDefaultPreset from './components/modal/footers/default/preset.generated.ts'
 import carouselPreset from './components/carousel/preset.generated.ts'
 import basicControlsPreset from './components/basicControls/preset.generated.ts'
 import inputPreset from './components/input/preset.generated.ts'
@@ -18,6 +21,9 @@ const preset: Partial<Config> = {
     ...(basicControlsPreset.plugins ?? []),
     ...(inputPreset.plugins ?? []),
     ...(carouselPreset.plugins ?? []),
+    ...(modalPreset.plugins ?? []),
+    ...(modalHeaderDefaultPreset.plugins ?? []),
+    ...(modalFooterDefaultPreset.plugins ?? []),
     ...(selectPreset.plugins ?? []),
     ...(suggestPreset.plugins ?? []),
     ...(switcherPreset.plugins ?? []),

@@ -14,7 +14,6 @@ import type {InlineNotificationUiOptimized} from "./notifications/inlineNotifica
 import type { ToastUiOptimized } from './notifications/toast/theme.ts';
 import type { RadialProgressUiOptimized } from './progress/radial/theme';
 import type { LinearProgressUiOptimized } from './progress/linear/theme';
-import type {ModalUiOptimized} from "./modal/theme.ts";
 import type { CheckboxUiOptimized } from './form/basicControls/checkbox/theme';
 import type { RadioButtonUiOptimized } from './form/basicControls/radioButton/theme';
 import type { SwitcherUiOptimized } from './form/basicControls/switcher/theme';
@@ -45,7 +44,6 @@ export interface AppConfig<TIconName extends string = string> {
     checkbox: CheckboxUiOptimized
     radioButton: RadioButtonUiOptimized
     switcher: SwitcherUiOptimized
-    modal?: ModalUiOptimized
   }
   store?: {
     env?: {

@@ -15,7 +15,6 @@ import baseNotificationTheme from './components/baseNotification/theme.generated
 import inlineNotificationTheme from './components/inlineNotification/theme.generated';
 import toastTheme from './components/toast/theme.generated';
 import linearProgressTheme from './components/linear/theme.generated';
-import modalTheme from './components/modal/theme.generated';
 import checkboxTheme from './components/checkbox/theme.generated';
 import radioButtonTheme from './components/radioButton/theme.generated';
 import switcherTheme from './components/switcher/theme.generated';
@@ -41,7 +40,6 @@ const appConfig: AppConfig<UiIconName> = {
     radialProgress: radialProgressTheme,
     toast: toastTheme,
     linearProgress: linearProgressTheme,
-    modal: modalTheme,
     checkbox: checkboxTheme,
     radioButton: radioButtonTheme,
     switcher: switcherTheme,

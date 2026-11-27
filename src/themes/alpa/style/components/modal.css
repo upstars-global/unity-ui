@@ -1,7 +1,14 @@
-:root[data-product="alpa"] {
-    --radius-modal: var(--radius-24);
+/* Generated from local Figma variables and paint styles. Do not edit manually. */
 
-    --component-modal-bg: var(--bg-page-surface);
-    --component-modal-fg-primary: var(--fg-page-primary);
-    --component-modal-fg-secondary: var(--fg-page-secondary);
+:root[data-product="alpa"] {
+  /* Foreground / Background */
+  --component-modal-bg: rgb(var(--color-neutral-450));
+  --component-modal-fg-primary: var(--fg-page-primary);
+  --component-modal-fg-secondary: var(--fg-page-secondary);
+
+  /* Gradients / Effects / Other colors */
+  --component-modal-header-border: rgb(var(--color-neutral-50) / 0.1);
+
+  /* Sizes */
+  --component-modal-radius: var(--radius-24);
 }

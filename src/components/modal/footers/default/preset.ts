@@ -1,0 +1,49 @@
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
+
+const modalFooterDefault: Partial<Config> = {
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        // Figma: Modal / button-area (b-single, b-horizontal, b-vertical)
+        '.ui-modal-footer-default': {
+          display: 'flex',
+          // Only the scrollable body shrinks when the modal hits its max height
+          flexShrink: '0',
+          width: '100%',
+          boxSizing: 'border-box',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-end',
+          gap: 'var(--spacing-8)',
+          padding: 'var(--spacing-16)',
+          overflow: 'hidden',
+
+          '@screen md': {
+            padding: 'var(--spacing-24)',
+          },
+
+          '&__button': {
+            flex: '1 1 0',
+            minWidth: '0',
+          },
+
+          // single / horizontal: row, secondary on the left, primary on the right (DOM order)
+
+          // vertical: column, primary on top, secondary below
+          '&--vertical': {
+            flexDirection: 'column-reverse',
+            alignItems: 'center',
+            gap: 'var(--spacing-16)',
+
+            '.ui-modal-footer-default__button': {
+              flex: 'none',
+              width: '100%',
+            },
+          },
+        },
+      })
+    }),
+  ],
+}
+
+export default modalFooterDefault

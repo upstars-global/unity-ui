@@ -41,7 +41,7 @@ const select: Partial<Config> = {
           },
 
           '&--disabled': {
-            opacity: "0.45",
+            opacity: "var(--opacity-45)",
           },
 
           '&:not([data-open="true"]):not([data-invalid="true"]):not([data-disabled="true"]):hover .ui-select__field': {

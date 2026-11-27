@@ -1,9 +1,6 @@
 import type { Component } from 'vue'
+import type { UiModalFooterDefaultProps } from './footers/default/types'
 
-export const MODAL_SIZES = ['s', 'm', 'l', 'xl'] as const;
-
-
-export type ModalSize = (typeof MODAL_SIZES)[number];
 export interface ModalCloseOptions {
   immediate?: boolean
   clickOnCloseButton?: boolean
@@ -13,16 +10,35 @@ export interface UiModalClosePayload extends ModalCloseOptions {
   name?: string
 }
 
-export interface IModalOptions {
+/**
+ * `TProps` types the `props` object passed to `component`. `object` (not `Record`)
+ * so that props declared with an `interface` satisfy the constraint too.
+ */
+export interface IModalOptions<TProps extends object = Record<string, unknown>> {
   blockCloseOverlay?: boolean
-  size?: ModalSize
+  /** Desktop only: width follows the content instead of the fixed 432px */
+  hug?: boolean
   showFooter?: boolean
+  /**
+   * Props for the default footer (UiModalFooterDefault) rendered in the
+   * `bottom-side-under-scroll` slot when it isn't overridden.
+   * Clicks are emitted by ModalCommonSlot as `clickPrimary` / `clickSecondary`.
+   */
+  footer?: UiModalFooterDefaultProps
   hideHeaderToolbar?: boolean
+  /** Hides the top/bottom fades that hint at scrollable content */
+  hideScrollFade?: boolean
   hideCloseButton?: boolean
   fullScreen?: boolean
   name: string
   component: Component
-  title: string
+  /**
+   * Props passed to `component` (spread with v-bind). `modal` (these options)
+   * is always passed as well and can't be overridden from here.
+   */
+  props?: TProps
+  /** Shown by the default header. Optional for components that render their own. */
+  title?: string
   callback?(): void
 }
 

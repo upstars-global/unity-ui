@@ -557,9 +557,36 @@ function rewriteLocalImportSpecifiers(source: string, originalFilePath: string, 
     })
 }
 
+// Folder names used by more than one preset.ts (e.g. modal/headers/default and
+// modal/footers/default). Those keep their path relative to src/components so
+// their generated files don't overwrite each other.
+let ambiguousComponentNames = new Set<string>()
+
+function collectAmbiguousComponentNames(presetFiles: string[]): Set<string> {
+    const seen = new Set<string>()
+    const duplicates = new Set<string>()
+
+    for (const filePath of presetFiles) {
+        const componentName = path.basename(path.dirname(filePath))
+
+        if (seen.has(componentName)) {
+            duplicates.add(componentName)
+        }
+
+        seen.add(componentName)
+    }
+
+    return duplicates
+}
+
 function getGeneratedPresetPath(filePath: string, themeDir: string): string {
-    const componentName = path.basename(path.dirname(filePath))
-    return path.join(themeDir, 'components', componentName, 'preset.generated.ts')
+    const componentDir = path.dirname(filePath)
+    const componentName = path.basename(componentDir)
+    const componentPath = ambiguousComponentNames.has(componentName)
+        ? path.relative(componentsDir, componentDir)
+        : componentName
+
+    return path.join(themeDir, 'components', componentPath, 'preset.generated.ts')
 }
 
 function generateFileHeader(source: string): string {
@@ -616,6 +643,7 @@ async function main() {
         .filter((entry) => entry.isDirectory())
         .map((entry) => path.join(themesRootDir, entry.name))
     const presetFiles = walkFiles(componentsDir, (filePath) => path.basename(filePath) === 'preset.ts')
+    ambiguousComponentNames = collectAmbiguousComponentNames(presetFiles)
 
     const perThemeResults = []
 
