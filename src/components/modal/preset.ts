@@ -83,6 +83,7 @@ const modal: Partial<Config> = {
           background: 'var(--component-modal-bg)',
           borderTopLeftRadius: 'var(--component-modal-radius)',
           borderTopRightRadius: 'var(--component-modal-radius)',
+          boxShadow: '0 0 16px 0 var(--fg-effect-shadow-default), 0 0 4px 2px var(--fg-effect-shadow-default)',
 
           '@screen md': {
             width: DESKTOP_WIDTH,

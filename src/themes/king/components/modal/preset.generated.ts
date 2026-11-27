@@ -86,8 +86,9 @@ const modal: Partial<Config> = {
           background: "var(--bg-page-surface)",
           borderTopLeftRadius: "var(--radius-24)",
           borderTopRightRadius: "var(--radius-24)",
+          boxShadow: "0 0 16px 0 rgb(var(--color-neutral-600) / 0.1), 0 0 4px 2px rgb(var(--color-neutral-600) / 0.1)",
 
-          '@screen md': {
+      '@screen md': {
             width: DESKTOP_WIDTH,
             borderRadius: "var(--radius-24)",
           },
