@@ -1,3 +1,96 @@
+## [1.32.0](https://github.com/upstars-global/unity-ui/compare/v1.31.0...v1.32.0) (2026-11-27)
+
+### 🚀 Features
+
+* UN-3466 DS. Modal header, footer and scroll fade ([#50](https://github.com/upstars-global/unity-ui/issues/50))
+ ([41c7325](https://github.com/upstars-global/unity-ui/commit/41c7325915dc2172f0885d00102d713d2f7053e4))
+
+
+
+    * feat: UN-3466 DS. Modal header, footer and scroll fade
+
+    - Add UiModalHeaderDefault and UiModalFooterDefault components with presets
+
+    - Replace theme-based modal styles with Tailwind presets and CSS tokens
+
+    - Add scroll fade with useScrollFade composable and hideScrollFade option
+
+    - Support hug width, footer types and header slots in ModalCommonSlot
+
+    - Generate per-theme preset files for modal header and footer
+
+    - Ignore knowledge/ directory and add codebase-memory-mcp dependency
+
+    * fix: UN-3466 DS. Modal background uses component token
+
+    * fix: UN-3466 DS. Modal background moves to component token
+
+    - Remove page surface background from modal header and footer presets
+
+    - Wrap modal background token values in rgb() across components and themes
+
+    * feat: UN-3466 DS. Modal header closes its own modal by name
+
+    - Pass modal name from ModalCommonSlot and the story content to UiModalHeaderDefault
+
+    - Close button calls modalApi.close with the modal name before emitting close
+
+    - Add optional modalName prop with docs; without it the topmost modal is closed
+
+    * feat: UN-3466 DS. Modal header title applies subtitle text style
+
+    * feat: UN-3466 DS. Modal header title applies subtitle text style
+
+    * feat: UN-3466 DS. Modal backdrop blocks text selection, content stays selectable
+
+    - Backdrop disables user selection, callout menu and tap highlight
+
+    - Modal content explicitly re-enables text selection and default callout
+
+    - Applied to alpa, king and base modal presets
+
+    * feat: UN-3466 DS. Modal can open with custom props
+
+    - Pass props through Modal.show({ props }) and spread them onto the modal component
+
+    - Make title optional so components can render their own header
+
+    - Add a generic type parameter for typed props
+
+    - Add a story example that passes a note prop
+
+    * feat: UN-3466 DS. Modal scroll fade uses background gradient, scrollable overscroll lock
+
+    - Replace fade pseudo-element mask with a background gradient using the modal background token
+
+    - Apply overscroll-behavior contain only when the scroller overflows
+
+    - Move header close and title color to the secondary foreground token across themes
+
+    * feat: UN-3466 DS. Modal backdrop blurs behind it, background moves to neutral token
+
+    - Adds backdrop blur(6px) to the modal backdrop in base preset and the alpa and king generated presets
+
+    - Alpa backdrop background switches to the neutral-500 token at 0.6 alpha, and the page overlay token drops from 80% to 60%
+
+    * feat: UN-3466 DS. Modal story adds sections content variant and full screen button example
+
+    - Add 'sections' content variant with titled text blocks to the modal story content
+
+    - Add 'Full screen + button' playground example using the sections variant with a single primary button
+
+    - Let playground footer be overridden via overrides.footer
+
+    - Hide status badges for the sections variant
+
+    * feat: UN-3466 DS. Modal box gets shadow, generated presets match
+
+    - Adds box shadow to modal container in base preset
+
+    - Propagates shadow to alpa and king generated presets, using theme-specific shadow values
+
+    - Reindents the `@screen md` block in both generated presets
+
 ## [1.30.0](https://github.com/upstars-global/unity-ui/compare/v1.29.1...v1.30.0) (2026-11-17)
 
 ### 🚀 Features
